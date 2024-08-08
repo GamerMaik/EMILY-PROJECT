@@ -49,11 +49,14 @@ namespace KC {
             //Calcular el daño
             CalculateDamage(character);
 
+
             //Verificar de donde vino el daño
             //Determinar la animacion que se reproducirá
             //Comprobar las acumulaciones cuando sea aplicable (veneno, sangrado)
             //Reproducir algún sonido 
-
+            PlayDamageSFX(character);
+            //Reproducir algun efecto de sangre
+            PlayDamageVFX(character);
             //Comprobar si el personaje es IA, Verificar (Esta en fase beta aun XD)
         }
 
@@ -85,6 +88,20 @@ namespace KC {
             character.characterNetworkManager.currentHealth.Value -= finalDamageDealt;
             
             //Calcular Pise damage 
+        }
+
+        private void PlayDamageVFX(CharacterManager character)
+        {
+            //si en un futuro aplicamos daño por fuego se reproduce las particulas de fuego
+
+            character.characterEffectsManager.PlayBloodSplatterVFX(contactPoint);
+        }
+
+        private void PlayDamageSFX(CharacterManager character)
+        {
+            AudioClip physicalDamageSFX = WorldSoundFXManager.instance.ChooseRandomSFXFromArray(WorldSoundFXManager.instance.physicalDamageSFX);
+
+            character.characterSoundFXManager.PlaySoundFX(physicalDamageSFX);
         }
 
     }

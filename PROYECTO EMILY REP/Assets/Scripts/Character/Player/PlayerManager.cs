@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Unity.Netcode;
 namespace KC
 {
     public class PlayerManager : CharacterManager
@@ -62,6 +62,7 @@ namespace KC
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();
+            NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnectedCalback;
 
             //Si el personaje es propio
             if (IsOwner)
@@ -86,16 +87,33 @@ namespace KC
             playerNetworkManager.currentLeftHandWeaponID.OnValueChanged += playerNetworkManager.OnCurrentLeftHandWeaponIdChange;
             playerNetworkManager.currentWeaponBeingUsed.OnValueChanged += playerNetworkManager.OnCurrentWeaponBeingUsedIDChange;
 
-            //if(IsOwner && !IsServer)
-            //{
-            //    //Debug.LogWarning("Ingreso con exito pero no se ejecuta");
-            //    playerNetworkManager.vitality.OnValueChanged += playerNetworkManager.SetNewMaxHealthValue;
-            //    playerNetworkManager.endurance.OnValueChanged += playerNetworkManager.SetNewMaxStaminaValue;
-            //    playerNetworkManager.currentHealth.OnValueChanged += PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue;
-            //    playerNetworkManager.currentStamina.OnValueChanged += PlayerUIManager.instance.playerUIHudManager.SetNewStaminaValue;
-            //    playerNetworkManager.currentStamina.OnValueChanged += playerStatsManager.ResetStaminaRegenrationTimer;
-            //    LoadGameDataFromCurrentCharacterData(ref WorldSaveGameManager.instance.currentCharacterData);
-            //}
+            if (IsOwner && !IsServer)
+            {
+                //Debug.LogWarning("Ingreso con exito pero no se ejecuta");
+                //playerNetworkManager.vitality.OnValueChanged += playerNetworkManager.SetNewMaxHealthValue;
+                //playerNetworkManager.endurance.OnValueChanged += playerNetworkManager.SetNewMaxStaminaValue;
+                //playerNetworkManager.currentHealth.OnValueChanged += PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue;
+                //playerNetworkManager.currentStamina.OnValueChanged += PlayerUIManager.instance.playerUIHudManager.SetNewStaminaValue;
+                //playerNetworkManager.currentStamina.OnValueChanged += playerStatsManager.ResetStaminaRegenrationTimer;
+                LoadGameDataFromCurrentCharacterData(ref WorldSaveGameManager.instance.currentCharacterData);
+            }
+        }
+
+        private void OnClientConnectedCalback(ulong clienID)
+        {
+            WorldGameSessionManager.instance.AddPlayerToActivePlayerList(this);
+            //Una lista de los jugadores activos en la partida
+            if (!IsServer && IsOwner)
+            {
+                foreach (var player in WorldGameSessionManager.instance.players)
+                {
+                    //Comprobamos si no somos nostros
+                    if (player != this)
+                    {
+                        player.LoadOtherPlayerCharacterWhenJoiningServer();
+                    }
+                }
+            }
         }
         public override IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)
         {
@@ -156,6 +174,13 @@ namespace KC
             playerNetworkManager.currentStamina.Value = currentCharacterData.currentStamina;
 
             PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(playerNetworkManager.maxStamina.Value);
+        }
+
+        public void LoadOtherPlayerCharacterWhenJoiningServer()
+        {
+            //sincronizar armas
+            playerNetworkManager.OnCurrentRightHandWeaponIdChange(0, playerNetworkManager.currentRightHandWeaponID.Value);
+            playerNetworkManager.OnCurrentLeftHandWeaponIdChange(0, playerNetworkManager.currentLeftHandWeaponID.Value);
         }
 
         private void DebugMenu()

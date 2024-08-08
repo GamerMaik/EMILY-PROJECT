@@ -11,7 +11,8 @@ namespace KC
         //EFECTOS ESTATICOS (Añadir o eliminar mejoras)
 
         CharacterManager character;
-
+        [Header("VFX")]
+        [SerializeField] GameObject bloodSplatterVFX;
         protected virtual void Awake()
         {
             character = GetComponent<CharacterManager>();
@@ -20,6 +21,18 @@ namespace KC
         public virtual void ProccessInstantEffect(InstantCharacterEffect effect)
         {
             effect.ProccessEffect(character);
+        }
+
+        public void PlayBloodSplatterVFX(Vector3 contactPoint)
+        {
+            if(bloodSplatterVFX != null)
+            {
+                GameObject bloodSplatter = Instantiate(bloodSplatterVFX, contactPoint, Quaternion.identity);
+            }
+            else
+            {
+                GameObject bloodSplatter = Instantiate(WorldCharacterEffectsManager.instance.bloodSplatterVFX, contactPoint, Quaternion.identity);
+            }
         }
 
     }
