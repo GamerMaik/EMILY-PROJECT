@@ -52,6 +52,7 @@ namespace KC {
 
             //Verificar de donde vino el daño
             //Determinar la animacion que se reproducirá
+            PlayDirectionalBaseDamgeAnimation(character);
             //Comprobar las acumulaciones cuando sea aplicable (veneno, sangrado)
             //Reproducir algún sonido 
             PlayDamageSFX(character);
@@ -102,6 +103,45 @@ namespace KC {
             AudioClip physicalDamageSFX = WorldSoundFXManager.instance.ChooseRandomSFXFromArray(WorldSoundFXManager.instance.physicalDamageSFX);
 
             character.characterSoundFXManager.PlaySoundFX(physicalDamageSFX);
+        }
+
+        private void PlayDirectionalBaseDamgeAnimation(CharacterManager character)
+        {
+            if (!character.IsOwner)
+                return;
+
+            poiseIsBroken = true;
+
+            if(angleHitFrom >= 145 && angleHitFrom <= 180)
+            {
+                damageAnimation = character.characterAnimatorManager.hit_Forward_Medium_01;
+                //Reproducir animacion de daño frontal
+            }
+            else if(angleHitFrom <= -145 && angleHitFrom >= -180)
+            {
+                //Reproducir animacion de daño frontal
+                damageAnimation = character.characterAnimatorManager.hit_Forward_Medium_01;
+            }
+            else if (angleHitFrom >= -45 && angleHitFrom <= 45)
+            {
+                //Reproducir animacion de daño espalda
+                damageAnimation = character.characterAnimatorManager.hit_Backward_Medium_01;
+            }
+            else if (angleHitFrom >= -144  && angleHitFrom <= -45)
+            {
+                //Reproducir animacion de daño Izquierda
+                damageAnimation = character.characterAnimatorManager.hit_Left_Medium_01;
+            }
+            else if (angleHitFrom >= 45 && angleHitFrom <=144)
+            {
+                //Reproducir animacion de daño Derecha
+                damageAnimation = character.characterAnimatorManager.hit_Right_Medium_01;
+            }
+
+            if (poiseIsBroken)
+            {
+                character.characterAnimatorManager.PlayerTargetActionAnimation(damageAnimation, true);  
+            }
         }
 
     }

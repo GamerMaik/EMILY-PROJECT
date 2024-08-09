@@ -11,6 +11,12 @@ namespace KC
         int vertical;
         int horizontal;
 
+        [Header("Damage Animation")]
+        public string hit_Forward_Medium_01 = "hit_Forward_Medium_01";
+        public string hit_Backward_Medium_01 = "hit_Backward_Medium_01";
+        public string hit_Left_Medium_01 = "hit_Left_Medium_01";
+        public string hit_Right_Medium_01 = "hit_Right_Medium_01";
+
         protected virtual void Awake()
         {
             characterManager = GetComponent<CharacterManager>();
@@ -39,6 +45,7 @@ namespace KC
             bool canRotate= false,
             bool canMove = false)
         {
+            Debug.Log("Reproduciendo la animacion: " + targetAnimation);
             characterManager.applyRootMotion = applyRootMotion;
             characterManager.animator.CrossFade(targetAnimation, 0.2f);
 
@@ -76,5 +83,7 @@ namespace KC
             //Aca le decimos al servidor que vamos a realizar una accion
             characterManager.characterNetworkManager.NotifyTheServerOfAttackActionAnimationServerRpc(NetworkManager.Singleton.LocalClientId, targetAnimation, applyRootMotion);
         }
+
+
     }
 }
