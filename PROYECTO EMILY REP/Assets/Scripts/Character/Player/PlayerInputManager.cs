@@ -15,18 +15,22 @@ namespace KC
         public float cameraHorizontalInput;
         public float cameraVerticalInput;
 
+        [Header("Look On INput")]
+        [SerializeField] bool lookOn_Input;
+
         [Header("Player Movement Input")]
         [SerializeField] Vector2 movementInput;
-        public float horizontalInput; 
-        public float verticalInput;
+        public float horizontal_Input; 
+        public float vertical_Input;
         public float moveAmount;
 
         [Header("Player Actions input")]
-        [SerializeField] bool dodgeInput = false;
-        [SerializeField] bool sprintInput = false;
-        [SerializeField] bool jumpInput = false;
-
+        [SerializeField] bool dodge_Input = false;
+        [SerializeField] bool sprint_Input = false;
+        [SerializeField] bool jump_Input = false;
         [SerializeField] bool RB_Input = false;
+
+        
 
         #endregion
 
@@ -85,13 +89,16 @@ namespace KC
 
                 playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
                 playerControls.PlayerCamera.Movement.performed += i => cameraInput = i.ReadValue<Vector2>();
-                playerControls.PlayerActions.Dodge.performed += i => dodgeInput = true;
-                playerControls.PlayerActions.Jump.performed += i => jumpInput = true;
+                playerControls.PlayerActions.Dodge.performed += i => dodge_Input = true;
+                playerControls.PlayerActions.Jump.performed += i => jump_Input = true;
                 playerControls.PlayerActions.RB.performed += i => RB_Input = true;
 
                 //Detectar si cambia o no la entrada para saber si corre o deja de correr 
-                playerControls.PlayerActions.Sprint.performed += i => sprintInput = true;
-                playerControls.PlayerActions.Sprint.canceled += i => sprintInput = false;
+                playerControls.PlayerActions.Sprint.performed += i => sprint_Input = true;
+                playerControls.PlayerActions.Sprint.canceled += i => sprint_Input = false;
+
+                //Bloquar la camara a un objetivo
+                playerControls.PlayerActions.LookOn.performed += i => lookOn_Input = true;
             }
             playerControls.Enable();
         }
@@ -120,6 +127,7 @@ namespace KC
         }
         private void HandleAllInputs() 
         {
+            HandleLookOnInput();
             HandlePlayerMovementInput();
             HandleCameraMovementInput();
             HandleDodgeInput();
@@ -128,14 +136,49 @@ namespace KC
             HandRBInput();
         }
 
+        #region Look On
+        private void HandleLookOnInput()
+        {
+            //si el objetivo esta muerto
+            if(player.playerNetworkManager.isLokedOn.Value)
+            {
+                if(player.playerCombatManager.currentTarget == null)
+                    return;
+
+                if (player.playerCombatManager.currentTarget.isDead.Value)
+                {
+                    player.playerNetworkManager.isLokedOn.Value = false;
+
+                }
+                //Desbloquear el objetivo 
+                
+            }
+            if (lookOn_Input && player.playerNetworkManager.isLokedOn.Value)
+            {
+                lookOn_Input = false;
+                //verificamos si tenemos un objetivo
+                return;
+            }
+
+            if (lookOn_Input && !player.playerNetworkManager.isLokedOn.Value)
+            {
+                lookOn_Input = false;
+                //si se usa un arma de rango largo no se sbloqueará al objetivo ya que no queremos interferir con la vista o el apuntado
+
+
+            }
+        }
+
+        #endregion
+
         #region Movimiento
         private void HandlePlayerMovementInput()
         {
-            verticalInput = movementInput.y;
-            horizontalInput = movementInput.x;
+            vertical_Input = movementInput.y;
+            horizontal_Input = movementInput.x;
 
             //Regresa un numer absoluto(para moverse en horizontal)
-            moveAmount = Mathf.Clamp01(Mathf.Abs(verticalInput) + Mathf.Abs(horizontalInput));
+            moveAmount = Mathf.Clamp01(Mathf.Abs(vertical_Input) + Mathf.Abs(horizontal_Input));
 
             if (moveAmount <= 0.5 && moveAmount > 0)
             {
@@ -163,9 +206,9 @@ namespace KC
         #region Acciones
         private void HandleDodgeInput()
         {
-            if (dodgeInput)
+            if (dodge_Input)
             {
-                dodgeInput = false;
+                dodge_Input = false;
                 //En un futuro cuando tengamos un menu o interfaz activa no queremos realizar una accion si dicha ventana está abierta
                 player.playerlocomotionManager.AttempToPerformDodge();
             }
@@ -173,7 +216,7 @@ namespace KC
 
         private void HandleSprintInput()
         {
-            if (sprintInput)
+            if (sprint_Input)
             {
                 player.playerlocomotionManager.HandleSprinting();
             }
@@ -185,9 +228,9 @@ namespace KC
 
         private void HandleJumpInput()
         {
-            if (jumpInput)
+            if (jump_Input)
             {
-                jumpInput = false;
+                jump_Input = false;
 
                 player.playerlocomotionManager.AttempToPerformJump();
             }

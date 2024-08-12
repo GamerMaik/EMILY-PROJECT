@@ -70,8 +70,8 @@ namespace KC
 
         private void GetMovementsValues() 
         {
-            verticalMovement = PlayerInputManager.instance.verticalInput;
-            horizontalMovement = PlayerInputManager.instance.horizontalInput;
+            verticalMovement = PlayerInputManager.instance.vertical_Input;
+            horizontalMovement = PlayerInputManager.instance.horizontal_Input;
 
             moveAmount = PlayerInputManager.instance.moveAmount;
         }
@@ -122,8 +122,8 @@ namespace KC
             if (!player.isGrounded)
             {
                 Vector3 freeFallDIrection;
-                freeFallDIrection = PlayerCamera.instance.transform.forward * PlayerInputManager.instance.verticalInput;
-                freeFallDIrection += PlayerCamera.instance.transform.right * PlayerInputManager.instance.horizontalInput;
+                freeFallDIrection = PlayerCamera.instance.transform.forward * PlayerInputManager.instance.vertical_Input;
+                freeFallDIrection += PlayerCamera.instance.transform.right * PlayerInputManager.instance.horizontal_Input;
                 freeFallDIrection.y = 0;
 
                 player.characterController.Move(freeFallDIrection * freeFallSpeed * Time.deltaTime);
@@ -195,8 +195,8 @@ namespace KC
             //Solo queremos rodar cuando haya movimiento y cunado no se da un salto hacia atras
             if (PlayerInputManager.instance.moveAmount> 0)
             {
-                rollDirection = PlayerCamera.instance.cameraObject.transform.forward * PlayerInputManager.instance.verticalInput;
-                rollDirection += PlayerCamera.instance.cameraObject.transform.right * PlayerInputManager.instance.horizontalInput;
+                rollDirection = PlayerCamera.instance.cameraObject.transform.forward * PlayerInputManager.instance.vertical_Input;
+                rollDirection += PlayerCamera.instance.cameraObject.transform.right * PlayerInputManager.instance.horizontal_Input;
 
                 rollDirection.y = 0;
                 rollDirection.Normalize();
@@ -237,8 +237,8 @@ namespace KC
 
             player.playerNetworkManager.currentStamina.Value -= jumpStaminaCost;
 
-            jumpDirection = PlayerCamera.instance.cameraObject.transform.forward * PlayerInputManager.instance.verticalInput;
-            jumpDirection += PlayerCamera.instance.cameraObject.transform.right * PlayerInputManager.instance.horizontalInput;
+            jumpDirection = PlayerCamera.instance.cameraObject.transform.forward * PlayerInputManager.instance.vertical_Input;
+            jumpDirection += PlayerCamera.instance.cameraObject.transform.right * PlayerInputManager.instance.horizontal_Input;
             jumpDirection.y= 0;
 
             if(jumpDirection != Vector3.zero)

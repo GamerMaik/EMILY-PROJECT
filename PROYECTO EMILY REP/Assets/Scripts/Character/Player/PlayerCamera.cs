@@ -29,6 +29,11 @@ namespace KC
         private float cameraZPosition;
         private float targetCameraZPosition;
 
+        [Header("Look On")]
+        [SerializeField] float lockOnRadius = 20;
+        [SerializeField] float minimumViewableAngle = -50;
+        [SerializeField] float maximumViewableAngle = 50;
+        [SerializeField] float maximumLookOnDistance = 20;
         private void Awake()
         {
             if (instance == null)
@@ -117,6 +122,48 @@ namespace KC
 
             cameraObjectPosition.z = Mathf.Lerp(cameraObject.transform.localPosition.z, targetCameraZPosition, 0.2f);
             cameraObject.transform.localPosition = cameraObjectPosition;
+        }
+
+        private void HandleLocatingLockOnTragets()
+        {
+            float shortDistance = Mathf.Infinity; //se usa para determinar el objetivo más cercano
+            float shortDistanceOfRightTargert = Mathf.Infinity;
+            float shortDistanceOfLeftTargert = -Mathf.Infinity;
+
+            Collider[] colliders = Physics.OverlapSphere(player.transform.position, lockOnRadius);
+
+            for (int i = 0; i <colliders.Length; i++ )
+            {
+                CharacterManager lookOnTarget = colliders[i].GetComponent<CharacterManager>();
+
+                if (lookOnTarget != null)
+                {
+                    //Verificamos si esta dentro de nuestro campo de deteccion
+                    Vector3 lookOnTargetDirection = lookOnTarget.transform.position - player.transform.position;
+                    float distanceFromTarget = Vector3.Distance(player.transform.position, lookOnTarget.transform.position);
+                    float viewableAngle = Vector3.Angle(lookOnTargetDirection, cameraObject.transform.forward);
+
+
+                    //Comprobamos si nuestro objetivo actual esta muerto para enfocar el siguiente objetivo 
+                    if(lookOnTarget.isDead.Value)
+                        continue;
+
+                    if (lookOnTarget.transform.root == player.transform.root)
+                        continue;
+
+                    if(distanceFromTarget > maximumLookOnDistance)
+                        continue;
+
+                    if (viewableAngle > minimumViewableAngle && viewableAngle< maximumViewableAngle)
+                    {
+                        RaycastHit hit;
+                        //if (Physics.Linecast(player.transform.position))
+                        //{
+
+                        //}
+                    }
+                }
+            }
         }
     }
 }
