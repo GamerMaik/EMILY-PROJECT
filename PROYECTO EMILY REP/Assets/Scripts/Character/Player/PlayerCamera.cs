@@ -124,13 +124,13 @@ namespace KC
             cameraObject.transform.localPosition = cameraObjectPosition;
         }
 
-        private void HandleLocatingLockOnTragets()
+        public void HandleLocatingLockOnTarget()
         {
             float shortDistance = Mathf.Infinity; //se usa para determinar el objetivo más cercano
             float shortDistanceOfRightTargert = Mathf.Infinity;
             float shortDistanceOfLeftTargert = -Mathf.Infinity;
 
-            Collider[] colliders = Physics.OverlapSphere(player.transform.position, lockOnRadius);
+            Collider[] colliders = Physics.OverlapSphere(player.transform.position, lockOnRadius, WorldUtilityManager.Instance.GetCharacterLayers());
 
             for (int i = 0; i <colliders.Length; i++ )
             {
@@ -157,10 +157,14 @@ namespace KC
                     if (viewableAngle > minimumViewableAngle && viewableAngle< maximumViewableAngle)
                     {
                         RaycastHit hit;
-                        //if (Physics.Linecast(player.transform.position))
-                        //{
-
-                        //}
+                        if (Physics.Linecast(player.playerCombatManager.lookOnTransform.position, lookOnTarget.characterCombatManager.lookOnTransform.position, out hit, WorldUtilityManager.Instance.GetEnviroLayers()))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            Debug.Log("Lo hicimos Bien");
+                        }
                     }
                 }
             }

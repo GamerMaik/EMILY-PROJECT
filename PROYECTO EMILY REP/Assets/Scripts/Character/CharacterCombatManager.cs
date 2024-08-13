@@ -10,6 +10,10 @@ namespace KC
         [Header("Attack Type")]
         public AttackType currentAttackType;
 
+        [Header("Look On Transform")]
+        public Transform lookOnTransform;
+        
+
         protected virtual void Awake()
         {
             

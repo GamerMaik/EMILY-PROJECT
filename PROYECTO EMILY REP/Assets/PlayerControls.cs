@@ -471,8 +471,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4f348cb1-1c98-4594-901c-ec3aec157c48"",
-                    ""path"": ""<Mouse>/middleButton"",
+                    ""id"": ""85381173-3edc-4a1c-b718-12692da45ead"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -482,8 +482,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""85381173-3edc-4a1c-b718-12692da45ead"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""id"": ""8b801cde-fc7e-4c37-9535-6082e1d9a283"",
+                    ""path"": ""<Mouse>/middleButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

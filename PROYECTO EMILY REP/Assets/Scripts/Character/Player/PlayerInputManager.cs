@@ -92,13 +92,13 @@ namespace KC
                 playerControls.PlayerActions.Dodge.performed += i => dodge_Input = true;
                 playerControls.PlayerActions.Jump.performed += i => jump_Input = true;
                 playerControls.PlayerActions.RB.performed += i => RB_Input = true;
-
+                //Bloquar la camara a un objetivo
+                playerControls.PlayerActions.LookOn.performed += i => lookOn_Input = true;
                 //Detectar si cambia o no la entrada para saber si corre o deja de correr 
                 playerControls.PlayerActions.Sprint.performed += i => sprint_Input = true;
                 playerControls.PlayerActions.Sprint.canceled += i => sprint_Input = false;
 
-                //Bloquar la camara a un objetivo
-                playerControls.PlayerActions.LookOn.performed += i => lookOn_Input = true;
+                
             }
             playerControls.Enable();
         }
@@ -153,6 +153,7 @@ namespace KC
                 //Desbloquear el objetivo 
                 
             }
+
             if (lookOn_Input && player.playerNetworkManager.isLokedOn.Value)
             {
                 lookOn_Input = false;
@@ -164,7 +165,7 @@ namespace KC
             {
                 lookOn_Input = false;
                 //si se usa un arma de rango largo no se sbloqueará al objetivo ya que no queremos interferir con la vista o el apuntado
-
+                PlayerCamera.instance.HandleLocatingLockOnTarget();
 
             }
         }
