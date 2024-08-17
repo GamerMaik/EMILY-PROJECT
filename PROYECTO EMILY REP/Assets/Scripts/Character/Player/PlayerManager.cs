@@ -82,6 +82,10 @@ namespace KC
             //Estadisticas
             playerNetworkManager.currentHealth.OnValueChanged += playerNetworkManager.CheckHP;
 
+            //Bloquear A
+            playerNetworkManager.isLokedOn.OnValueChanged += playerNetworkManager.OnIsLockedOnChange;
+            playerNetworkManager.currentTargetNetworkObjetID.OnValueChanged += playerNetworkManager.OnLockOnTargetIdChange;
+
             //Equipamiento
             playerNetworkManager.currentRightHandWeaponID.OnValueChanged += playerNetworkManager.OnCurrentRightHandWeaponIdChange;
             playerNetworkManager.currentLeftHandWeaponID.OnValueChanged += playerNetworkManager.OnCurrentLeftHandWeaponIdChange;
@@ -134,6 +138,7 @@ namespace KC
 
             if (IsOwner) 
             {
+                isDead.Value = false;
                 playerNetworkManager.currentHealth.Value = playerNetworkManager.maxHealth.Value;
                 playerNetworkManager.currentStamina.Value = playerNetworkManager.maxStamina.Value;
 
@@ -181,6 +186,11 @@ namespace KC
             //sincronizar armas
             playerNetworkManager.OnCurrentRightHandWeaponIdChange(0, playerNetworkManager.currentRightHandWeaponID.Value);
             playerNetworkManager.OnCurrentLeftHandWeaponIdChange(0, playerNetworkManager.currentLeftHandWeaponID.Value);
+
+            if (playerNetworkManager.isLokedOn.Value)
+            {
+                playerNetworkManager.OnLockOnTargetIdChange(0, playerNetworkManager.currentTargetNetworkObjetID.Value);
+            }
         }
 
         private void DebugMenu()

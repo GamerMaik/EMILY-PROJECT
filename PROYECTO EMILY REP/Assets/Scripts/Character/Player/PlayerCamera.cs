@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 namespace KC
 {
@@ -33,7 +34,10 @@ namespace KC
         [SerializeField] float lockOnRadius = 20;
         [SerializeField] float minimumViewableAngle = -50;
         [SerializeField] float maximumViewableAngle = 50;
-        [SerializeField] float maximumLookOnDistance = 20;
+        private List<CharacterManager> availanbleTargets = new List<CharacterManager>();
+        public CharacterManager nearestLockOnTarget;
+        [SerializeField] float LockOnTargetFollowSpeed = 0.2f;
+
         private void Awake()
         {
             if (instance == null)
@@ -73,29 +77,51 @@ namespace KC
         private void HandleRotations()
         {
             //si estamos bloqueados, se fuerza la rotacion al objetivo, de lo contrario giras normalmente
+            if (player.playerNetworkManager.isLokedOn.Value)
+            {
+                //Fija la camara en el objetivo
+                Vector3 rotationDirection = player.playerCombatManager.currentTarget.characterCombatManager.lookOnTransform.position - transform.position;
+                rotationDirection.Normalize();
+                rotationDirection.y = 0;
+                Quaternion targetRotation = Quaternion.LookRotation(rotationDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, LockOnTargetFollowSpeed);
 
+                //fija la camara en el pivote del objetivo
+                rotationDirection = player.playerCombatManager.currentTarget.characterCombatManager.lookOnTransform.position - cameraPivotTransform.position;
+                rotationDirection.Normalize();
+
+                targetRotation = Quaternion.LookRotation(rotationDirection);
+                cameraPivotTransform.transform.rotation = Quaternion.Slerp(cameraPivotTransform.rotation, targetRotation, LockOnTargetFollowSpeed);
+
+                //Guardamos la rotacion para no hacer cosas extrañas con la camara
+                leftAndRightLookAngle = transform.eulerAngles.y;
+                upAndDownLookAngle = transform.eulerAngles.x;
+            }
             //Rotacion Normal
-            //Rotar de izquierda a derecha
-            leftAndRightLookAngle += (PlayerInputManager.instance.cameraHorizontalInput * leftAndRightRotationSpeed) * Time.deltaTime;
-            //Rotar de Arriba abajo
-            upAndDownLookAngle -= (PlayerInputManager.instance.cameraVerticalInput * upAndDownRotationSpeed) * Time.deltaTime;
-            //Bloqueo del angulo de camara al minimo y maximo valor
-            upAndDownLookAngle = Mathf.Clamp(upAndDownLookAngle, minimumPivot, maximumPivot);
+            else
+            {
+                //Rotar de izquierda a derecha
+                leftAndRightLookAngle += (PlayerInputManager.instance.cameraHorizontalInput * leftAndRightRotationSpeed) * Time.deltaTime;
+                //Rotar de Arriba abajo
+                upAndDownLookAngle -= (PlayerInputManager.instance.cameraVerticalInput * upAndDownRotationSpeed) * Time.deltaTime;
+                //Bloqueo del angulo de camara al minimo y maximo valor
+                upAndDownLookAngle = Mathf.Clamp(upAndDownLookAngle, minimumPivot, maximumPivot);
 
-            Vector3 camerRotation = Vector3.zero;
-            Quaternion targetRotation;
+                Vector3 camerRotation = Vector3.zero;
+                Quaternion targetRotation;
 
-            //Rotar de Izquierda a derecha
-            camerRotation.y = leftAndRightLookAngle;
-            targetRotation = Quaternion.Euler(camerRotation);
-            transform.rotation = targetRotation;
+                //Rotar de Izquierda a derecha
+                camerRotation.y = leftAndRightLookAngle;
+                targetRotation = Quaternion.Euler(camerRotation);
+                transform.rotation = targetRotation;
 
-            //Rotar hacia arriba y abajo
-            camerRotation = Vector3.zero;
-            camerRotation.x = upAndDownLookAngle;
-            targetRotation = Quaternion.Euler(camerRotation);
+                //Rotar hacia arriba y abajo
+                camerRotation = Vector3.zero;
+                camerRotation.x = upAndDownLookAngle;
+                targetRotation = Quaternion.Euler(camerRotation);
 
-            cameraPivotTransform.localRotation = targetRotation;
+                cameraPivotTransform.localRotation = targetRotation;
+            }
         }
 
         private void HandleCollision()
@@ -151,23 +177,50 @@ namespace KC
                     if (lookOnTarget.transform.root == player.transform.root)
                         continue;
 
-                    if(distanceFromTarget > maximumLookOnDistance)
-                        continue;
 
                     if (viewableAngle > minimumViewableAngle && viewableAngle< maximumViewableAngle)
                     {
                         RaycastHit hit;
-                        if (Physics.Linecast(player.playerCombatManager.lookOnTransform.position, lookOnTarget.characterCombatManager.lookOnTransform.position, out hit, WorldUtilityManager.Instance.GetEnviroLayers()))
+                        if (Physics.Linecast(player.playerCombatManager.lookOnTransform.position,
+                            lookOnTarget.characterCombatManager.lookOnTransform.position,
+                            out hit, WorldUtilityManager.Instance.GetEnviroLayers()))
                         {
                             continue;
                         }
                         else
                         {
-                            Debug.Log("Lo hicimos Bien");
+                            availanbleTargets.Add(lookOnTarget);
                         }
                     }
                 }
             }
+            //iteramos sobre toda la lista de objetivos potenciales para verificar cual es el mas cercano
+            for (int k = 0; k < availanbleTargets.Count; k++)
+            {
+                if (availanbleTargets[k] != null)
+                {
+                    float distanceFromTarget = Vector3.Distance(player.transform.position, availanbleTargets[k].transform.position);
+
+
+                    if (distanceFromTarget < shortDistance)
+                    {
+                        shortDistance = distanceFromTarget;
+                        nearestLockOnTarget = availanbleTargets[k];
+                    }
+                }
+                else
+                {
+                    ClearLockOnTargets();
+                    player.playerNetworkManager.isLokedOn.Value = false;
+
+                }
+            }
+        }
+
+        public void ClearLockOnTargets()
+        {
+            nearestLockOnTarget = null;
+            availanbleTargets.Clear();
         }
     }
 }

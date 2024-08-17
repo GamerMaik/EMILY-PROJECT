@@ -157,6 +157,8 @@ namespace KC
             if (lookOn_Input && player.playerNetworkManager.isLokedOn.Value)
             {
                 lookOn_Input = false;
+                PlayerCamera.instance.ClearLockOnTargets();
+                player.playerNetworkManager.isLokedOn.Value = false;
                 //verificamos si tenemos un objetivo
                 return;
             }
@@ -167,6 +169,12 @@ namespace KC
                 //si se usa un arma de rango largo no se sbloqueará al objetivo ya que no queremos interferir con la vista o el apuntado
                 PlayerCamera.instance.HandleLocatingLockOnTarget();
 
+
+                if(PlayerCamera.instance.nearestLockOnTarget != null)
+                {
+                    player.playerCombatManager.SetTarget(PlayerCamera.instance.nearestLockOnTarget);
+                    player.playerNetworkManager.isLokedOn.Value = true;
+                }
             }
         }
 

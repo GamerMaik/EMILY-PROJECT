@@ -1,9 +1,12 @@
 using UnityEngine;
+using Unity.Netcode;
 
 namespace KC
 {
-    public class CharacterCombatManager : MonoBehaviour
+    public class CharacterCombatManager : NetworkBehaviour
     {
+        CharacterManager character;
+
         [Header("Attack Target")] 
         public CharacterManager currentTarget;
 
@@ -16,7 +19,23 @@ namespace KC
 
         protected virtual void Awake()
         {
-            
+            character = GetComponent<CharacterManager>();
+        }
+
+        public virtual void SetTarget(CharacterManager newTarget)
+        {
+            if (character.IsOwner)
+            {
+                if(newTarget != null)
+                {
+                    currentTarget = newTarget;
+                    character.characterNetworkManager.currentTargetNetworkObjetID.Value = newTarget.GetComponent<NetworkObject>().NetworkObjectId;
+                }
+                else
+                {
+                    currentTarget= null;
+                }
+            }
         }
     }
 }

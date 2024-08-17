@@ -110,6 +110,9 @@ namespace KC {
             if (!character.IsOwner)
                 return;
 
+            if (character.isDead.Value)
+                return;
+
             poiseIsBroken = true;
 
             if(angleHitFrom >= 145 && angleHitFrom <= 180)
@@ -117,7 +120,7 @@ namespace KC {
                 damageAnimation = character.characterAnimatorManager.hit_Forward_Medium_01;
                 //Reproducir animacion de daño frontal
             }
-            else if(angleHitFrom <= -145 && angleHitFrom >= -180)
+            else if (angleHitFrom <= -145 && angleHitFrom >= -180)
             {
                 //Reproducir animacion de daño frontal
                 damageAnimation = character.characterAnimatorManager.hit_Forward_Medium_01;
