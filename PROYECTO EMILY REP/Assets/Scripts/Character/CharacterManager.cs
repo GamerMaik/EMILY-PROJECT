@@ -18,6 +18,7 @@ namespace KC
         [HideInInspector] public CharacterAnimatorManager characterAnimatorManager;
         [HideInInspector] public CharacterCombatManager characterCombatManager;
         [HideInInspector] public CharacterSoundFXManager characterSoundFXManager;
+        [HideInInspector] public CharacterLocomotionManager characterLocomotionManager;
 
 
         [Header("Flags")]
@@ -38,7 +39,7 @@ namespace KC
             characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
             characterCombatManager = GetComponent<CharacterCombatManager>();
             characterSoundFXManager = GetComponent<CharacterSoundFXManager>();
-
+            characterLocomotionManager = GetComponent<CharacterLocomotionManager>();
 
         }
 

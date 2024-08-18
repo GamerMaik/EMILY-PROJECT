@@ -422,6 +422,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Seek Left Lock On target"",
+                    ""type"": ""Button"",
+                    ""id"": ""034fa0b3-83c3-4c72-a621-71c363439ca1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Seek Right Lock On target"",
+                    ""type"": ""Button"",
+                    ""id"": ""c00ed642-4eee-4ad9-b13b-27def4a83cd4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -490,6 +508,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Look On"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""993e58b3-c45f-4f4f-8982-68b37e4bd55e"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Seek Left Lock On target"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cd8ada1c-7452-4c1c-8182-fa631f167301"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Seek Right Lock On target"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -522,6 +562,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActions_RB = m_PlayerActions.FindAction("RB", throwIfNotFound: true);
         m_PlayerActions_Sprint = m_PlayerActions.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerActions_LookOn = m_PlayerActions.FindAction("Look On", throwIfNotFound: true);
+        m_PlayerActions_SeekLeftLockOntarget = m_PlayerActions.FindAction("Seek Left Lock On target", throwIfNotFound: true);
+        m_PlayerActions_SeekRightLockOntarget = m_PlayerActions.FindAction("Seek Right Lock On target", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -814,6 +856,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_RB;
     private readonly InputAction m_PlayerActions_Sprint;
     private readonly InputAction m_PlayerActions_LookOn;
+    private readonly InputAction m_PlayerActions_SeekLeftLockOntarget;
+    private readonly InputAction m_PlayerActions_SeekRightLockOntarget;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -823,6 +867,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @RB => m_Wrapper.m_PlayerActions_RB;
         public InputAction @Sprint => m_Wrapper.m_PlayerActions_Sprint;
         public InputAction @LookOn => m_Wrapper.m_PlayerActions_LookOn;
+        public InputAction @SeekLeftLockOntarget => m_Wrapper.m_PlayerActions_SeekLeftLockOntarget;
+        public InputAction @SeekRightLockOntarget => m_Wrapper.m_PlayerActions_SeekRightLockOntarget;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -847,6 +893,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @LookOn.started += instance.OnLookOn;
             @LookOn.performed += instance.OnLookOn;
             @LookOn.canceled += instance.OnLookOn;
+            @SeekLeftLockOntarget.started += instance.OnSeekLeftLockOntarget;
+            @SeekLeftLockOntarget.performed += instance.OnSeekLeftLockOntarget;
+            @SeekLeftLockOntarget.canceled += instance.OnSeekLeftLockOntarget;
+            @SeekRightLockOntarget.started += instance.OnSeekRightLockOntarget;
+            @SeekRightLockOntarget.performed += instance.OnSeekRightLockOntarget;
+            @SeekRightLockOntarget.canceled += instance.OnSeekRightLockOntarget;
         }
 
         private void UnregisterCallbacks(IPlayerActionsActions instance)
@@ -866,6 +918,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @LookOn.started -= instance.OnLookOn;
             @LookOn.performed -= instance.OnLookOn;
             @LookOn.canceled -= instance.OnLookOn;
+            @SeekLeftLockOntarget.started -= instance.OnSeekLeftLockOntarget;
+            @SeekLeftLockOntarget.performed -= instance.OnSeekLeftLockOntarget;
+            @SeekLeftLockOntarget.canceled -= instance.OnSeekLeftLockOntarget;
+            @SeekRightLockOntarget.started -= instance.OnSeekRightLockOntarget;
+            @SeekRightLockOntarget.performed -= instance.OnSeekRightLockOntarget;
+            @SeekRightLockOntarget.canceled -= instance.OnSeekRightLockOntarget;
         }
 
         public void RemoveCallbacks(IPlayerActionsActions instance)
@@ -912,5 +970,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnRB(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnLookOn(InputAction.CallbackContext context);
+        void OnSeekLeftLockOntarget(InputAction.CallbackContext context);
+        void OnSeekRightLockOntarget(InputAction.CallbackContext context);
     }
 }

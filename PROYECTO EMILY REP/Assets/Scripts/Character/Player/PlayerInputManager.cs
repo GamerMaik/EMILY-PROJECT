@@ -16,7 +16,10 @@ namespace KC
         public float cameraVerticalInput;
 
         [Header("Look On INput")]
-        [SerializeField] bool lookOn_Input;
+        [SerializeField] bool lockOn_Input;
+        [SerializeField] bool lockOn_Left_Input;
+        [SerializeField] bool lockOn_Right_Input;
+        private Coroutine lockOnCoroutine;
 
         [Header("Player Movement Input")]
         [SerializeField] Vector2 movementInput;
@@ -93,7 +96,10 @@ namespace KC
                 playerControls.PlayerActions.Jump.performed += i => jump_Input = true;
                 playerControls.PlayerActions.RB.performed += i => RB_Input = true;
                 //Bloquar la camara a un objetivo
-                playerControls.PlayerActions.LookOn.performed += i => lookOn_Input = true;
+                playerControls.PlayerActions.LookOn.performed += i => lockOn_Input = true;
+                playerControls.PlayerActions.SeekLeftLockOntarget.performed += i => lockOn_Left_Input = true;
+                playerControls.PlayerActions.SeekRightLockOntarget.performed += i => lockOn_Right_Input = true;
+
                 //Detectar si cambia o no la entrada para saber si corre o deja de correr 
                 playerControls.PlayerActions.Sprint.performed += i => sprint_Input = true;
                 playerControls.PlayerActions.Sprint.canceled += i => sprint_Input = false;
@@ -127,7 +133,8 @@ namespace KC
         }
         private void HandleAllInputs() 
         {
-            HandleLookOnInput();
+            HandleLockOnInput();
+            HandleLockOnSwitchTargetInput();
             HandlePlayerMovementInput();
             HandleCameraMovementInput();
             HandleDodgeInput();
@@ -137,7 +144,7 @@ namespace KC
         }
 
         #region Look On
-        private void HandleLookOnInput()
+        private void HandleLockOnInput()
         {
             //si el objetivo esta muerto
             if(player.playerNetworkManager.isLokedOn.Value)
@@ -151,21 +158,25 @@ namespace KC
 
                 }
                 //Desbloquear el objetivo 
+                if (lockOnCoroutine != null)
+                    StopCoroutine(lockOnCoroutine);
+
+                lockOnCoroutine = StartCoroutine(PlayerCamera.instance.WaithThenFindNewTarget()); 
                 
             }
 
-            if (lookOn_Input && player.playerNetworkManager.isLokedOn.Value)
+            if (lockOn_Input && player.playerNetworkManager.isLokedOn.Value)
             {
-                lookOn_Input = false;
+                lockOn_Input = false;
                 PlayerCamera.instance.ClearLockOnTargets();
                 player.playerNetworkManager.isLokedOn.Value = false;
                 //verificamos si tenemos un objetivo
                 return;
             }
 
-            if (lookOn_Input && !player.playerNetworkManager.isLokedOn.Value)
+            if (lockOn_Input && !player.playerNetworkManager.isLokedOn.Value)
             {
-                lookOn_Input = false;
+                lockOn_Input = false;
                 //si se usa un arma de rango largo no se sbloqueará al objetivo ya que no queremos interferir con la vista o el apuntado
                 PlayerCamera.instance.HandleLocatingLockOnTarget();
 
@@ -174,6 +185,37 @@ namespace KC
                 {
                     player.playerCombatManager.SetTarget(PlayerCamera.instance.nearestLockOnTarget);
                     player.playerNetworkManager.isLokedOn.Value = true;
+                }
+            }
+        }
+
+        private void HandleLockOnSwitchTargetInput()
+        {
+            if (lockOn_Left_Input)
+            {
+                lockOn_Left_Input = false;
+                if (player.playerNetworkManager.isLokedOn.Value)
+                {
+                    PlayerCamera.instance.HandleLocatingLockOnTarget();
+
+                    if (PlayerCamera.instance.leftLockOnTarget != null)
+                    {
+                        player.playerCombatManager.SetTarget(PlayerCamera.instance.leftLockOnTarget);
+                    }
+                }
+            }
+
+            if (lockOn_Right_Input)
+            {
+                lockOn_Right_Input = false;
+                if (player.playerNetworkManager.isLokedOn.Value)
+                {
+                    PlayerCamera.instance.HandleLocatingLockOnTarget();
+
+                    if (PlayerCamera.instance.rightLockOnTarget != null)
+                    {
+                        player.playerCombatManager.SetTarget(PlayerCamera.instance.rightLockOnTarget);
+                    }
                 }
             }
         }
@@ -203,7 +245,15 @@ namespace KC
             //pasamos 0 ya que solo queremos que el personaje
             //esté inactivo, camine, o corra en una direccion que es al frente, ademas
             //el personaje siempre se mueve a la direccion que mira la camara
-            player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount, player.playerNetworkManager.isSprinting.Value);
+
+            if (!player.playerNetworkManager.isLokedOn.Value || player.playerNetworkManager.isSprinting.Value)
+            {
+                player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount, player.playerNetworkManager.isSprinting.Value);
+            }
+            else
+            {
+                player.playerAnimatorManager.UpdateAnimatorMovementParameters(horizontal_Input, vertical_Input, player.playerNetworkManager.isSprinting.Value);
+            }
         }
         private void HandleCameraMovementInput()
         {

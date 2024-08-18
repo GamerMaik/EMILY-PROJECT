@@ -4164,6 +4164,10 @@ PrefabInstance:
       value: Player Camera (Left & Right)
       objectReference: {fileID: 0}
     - target: {fileID: 7290819740378893617, guid: 02e0ae8bf6ca74d4e9a359cbda185a7d, type: 3}
+      propertyPath: setCameraHeightSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7290819740378893617, guid: 02e0ae8bf6ca74d4e9a359cbda185a7d, type: 3}
       propertyPath: collideWithLayers.m_Bits
       value: 1
       objectReference: {fileID: 0}

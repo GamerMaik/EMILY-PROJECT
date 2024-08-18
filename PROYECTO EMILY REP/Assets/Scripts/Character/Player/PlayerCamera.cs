@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace KC
 {
@@ -34,9 +35,15 @@ namespace KC
         [SerializeField] float lockOnRadius = 20;
         [SerializeField] float minimumViewableAngle = -50;
         [SerializeField] float maximumViewableAngle = 50;
+        [SerializeField] float LockOnTargetFollowSpeed = 0.2f;
+        [SerializeField] float setCameraHeightSpeed = 0.05f; 
+        [SerializeField] float unlockedCameraHeight = 1.65f;
+        [SerializeField] float lockedCameraHeight = 2.0f;
+        private Coroutine cameraLockOnHeightCoroutine;
         private List<CharacterManager> availanbleTargets = new List<CharacterManager>();
         public CharacterManager nearestLockOnTarget;
-        [SerializeField] float LockOnTargetFollowSpeed = 0.2f;
+        public CharacterManager leftLockOnTarget;
+        public CharacterManager rightLockOnTarget;
 
         private void Awake()
         {
@@ -207,20 +214,116 @@ namespace KC
                         shortDistance = distanceFromTarget;
                         nearestLockOnTarget = availanbleTargets[k];
                     }
+                    //Si ya estamos bloqueados cambiamos entre los objetivos disponibles
+                    if (player.playerNetworkManager.isLokedOn.Value)
+                    {
+                        Vector3 relativeEnemyPosition = player.transform.InverseTransformPoint(availanbleTargets[k].transform.position);
+                        var distanceFormLeftTarget = relativeEnemyPosition.x;
+                        var distanceFromRightTarget = relativeEnemyPosition.x;
+
+                        if (availanbleTargets[k] == player.playerCombatManager.currentTarget)
+                            continue;
+
+                        if (relativeEnemyPosition.x <= 0.00 && distanceFormLeftTarget > shortDistanceOfLeftTargert)
+                        {
+                            shortDistanceOfLeftTargert = distanceFormLeftTarget;
+                            leftLockOnTarget = availanbleTargets[k];
+                        }
+                        else if (relativeEnemyPosition.x >= 00 && distanceFromRightTarget < shortDistanceOfRightTargert)
+                        {
+                            shortDistanceOfRightTargert = distanceFromRightTarget;
+                            rightLockOnTarget = availanbleTargets[k];
+                        }
+                    }
                 }
                 else
                 {
                     ClearLockOnTargets();
                     player.playerNetworkManager.isLokedOn.Value = false;
-
                 }
             }
+        }
+
+        public void SetLockCameraHeight()
+        {
+            if (cameraLockOnHeightCoroutine != null)
+            {
+                StopCoroutine(cameraLockOnHeightCoroutine);
+            }
+            cameraLockOnHeightCoroutine = StartCoroutine(SetCameraHeight());
         }
 
         public void ClearLockOnTargets()
         {
             nearestLockOnTarget = null;
+            leftLockOnTarget = null;
+            rightLockOnTarget = null;
             availanbleTargets.Clear();
+        }
+
+        public IEnumerator WaithThenFindNewTarget()
+        {
+            while (player.isPerformingAction)
+            {
+                yield return null;
+            }
+
+            ClearLockOnTargets();
+            HandleLocatingLockOnTarget();
+
+            if (nearestLockOnTarget != null)
+            {
+                player.playerCombatManager.SetTarget(nearestLockOnTarget);
+                player.playerNetworkManager.isLokedOn.Value = true;
+            }
+
+            yield return null;
+        }
+
+        public IEnumerator SetCameraHeight()
+        {
+            float duation = 1;
+            float timer = 0;
+
+            Vector3 velocity = Vector3.zero;
+            Vector3 newLockedCameraHeight = new Vector3(cameraPivotTransform.transform.localPosition.x, lockedCameraHeight);
+            Vector3 newUnLockedCameraHeight = new Vector3(cameraPivotTransform.transform.localPosition.x, unlockedCameraHeight);
+
+            while (timer < duation)
+            {
+                timer += Time.deltaTime;
+
+                if (player != null)
+                {
+                    if (player.playerCombatManager.currentTarget !=  null)
+                    {
+                        cameraPivotTransform.transform.localPosition = 
+                            Vector3.SmoothDamp(cameraPivotTransform.transform.localPosition, newLockedCameraHeight, ref velocity, setCameraHeightSpeed);
+                        cameraPivotTransform.transform.localRotation = 
+                            Quaternion.Slerp(cameraPivotTransform.transform.localRotation, Quaternion.Euler(0, 0, 0), LockOnTargetFollowSpeed);
+                    }
+                    else
+                    {
+                        cameraPivotTransform.transform.localPosition =
+                            Vector3.SmoothDamp(cameraPivotTransform.transform.localPosition, newUnLockedCameraHeight, ref velocity, setCameraHeightSpeed);
+                    }
+                }
+                yield return null;
+            }
+
+            if (player != null)
+            {
+                if (player.playerCombatManager.currentTarget != null)
+                {
+                    cameraPivotTransform.transform.localPosition = newLockedCameraHeight;
+                    cameraPivotTransform.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
+                else
+                {
+                    cameraPivotTransform.transform.localPosition = newUnLockedCameraHeight;
+                }
+            }
+            yield return null;
         }
     }
 }
