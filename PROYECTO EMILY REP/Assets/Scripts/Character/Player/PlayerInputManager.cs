@@ -32,6 +32,8 @@ namespace KC
         [SerializeField] bool sprint_Input = false;
         [SerializeField] bool jump_Input = false;
         [SerializeField] bool RB_Input = false;
+        [SerializeField] bool hold_Shift_Input = false;
+        [SerializeField] bool hold_RT_Input = false;
 
         
 
@@ -95,6 +97,14 @@ namespace KC
                 playerControls.PlayerActions.Dodge.performed += i => dodge_Input = true;
                 playerControls.PlayerActions.Jump.performed += i => jump_Input = true;
                 playerControls.PlayerActions.RB.performed += i => RB_Input = true;
+
+                //Cargar tipos de ataque
+                playerControls.PlayerActions.HoldShift.performed += i => hold_Shift_Input = true;
+                playerControls.PlayerActions.HoldShift.canceled += i => hold_Shift_Input = false;
+
+                playerControls.PlayerActions.HoldRT.performed += i => hold_RT_Input = true;
+                playerControls.PlayerActions.HoldRT.canceled += i => hold_RT_Input = false;
+
                 //Bloquar la camara a un objetivo
                 playerControls.PlayerActions.LookOn.performed += i => lockOn_Input = true;
                 playerControls.PlayerActions.SeekLeftLockOntarget.performed += i => lockOn_Left_Input = true;
@@ -307,6 +317,18 @@ namespace KC
                 //si usamos un arma en cada mano queremos ejecutar el ataque con 2 manos
 
                 player.playerCombatManager.PerformWeaponBasedAction(player.playerInventoryManager.currentRightHandWeapon.oh_RB_Action, player.playerInventoryManager.currentRightHandWeapon);
+            }
+        }
+
+        private void HandleStrongAttack()
+        {
+            if (hold_Shift_Input && hold_RT_Input)
+            {
+                //Implementar el golpe cargado segun a la cantidad de presión
+            }
+            else
+            {
+                //Implementar el golpe normal
             }
         }
         #endregion
