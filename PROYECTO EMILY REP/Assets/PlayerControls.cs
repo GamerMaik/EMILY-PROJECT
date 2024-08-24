@@ -415,7 +415,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Hold Shift"",
+                    ""name"": ""Hold Alt"",
                     ""type"": ""PassThrough"",
                     ""id"": ""516fe2f5-489d-4a17-828c-d41e176a2197"",
                     ""expectedControlType"": ""Button"",
@@ -495,7 +495,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7db7406e-be8b-4446-9c8b-26febbdec0a6"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -506,7 +506,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d5a85d58-bf14-4511-9794-70274fb5ce7c"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -517,11 +517,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""642b3697-1f24-41ef-98e0-571f96dfac5f"",
-                    ""path"": ""<Keyboard>/shift"",
+                    ""path"": ""<Keyboard>/alt"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Hold Shift"",
+                    ""action"": ""Hold Alt"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -621,7 +621,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
         m_PlayerActions_RB = m_PlayerActions.FindAction("RB", throwIfNotFound: true);
         m_PlayerActions_RT = m_PlayerActions.FindAction("RT", throwIfNotFound: true);
-        m_PlayerActions_HoldShift = m_PlayerActions.FindAction("Hold Shift", throwIfNotFound: true);
+        m_PlayerActions_HoldAlt = m_PlayerActions.FindAction("Hold Alt", throwIfNotFound: true);
         m_PlayerActions_HoldRT = m_PlayerActions.FindAction("Hold RT", throwIfNotFound: true);
         m_PlayerActions_Sprint = m_PlayerActions.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerActions_LookOn = m_PlayerActions.FindAction("Look On", throwIfNotFound: true);
@@ -918,7 +918,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Jump;
     private readonly InputAction m_PlayerActions_RB;
     private readonly InputAction m_PlayerActions_RT;
-    private readonly InputAction m_PlayerActions_HoldShift;
+    private readonly InputAction m_PlayerActions_HoldAlt;
     private readonly InputAction m_PlayerActions_HoldRT;
     private readonly InputAction m_PlayerActions_Sprint;
     private readonly InputAction m_PlayerActions_LookOn;
@@ -932,7 +932,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
         public InputAction @RB => m_Wrapper.m_PlayerActions_RB;
         public InputAction @RT => m_Wrapper.m_PlayerActions_RT;
-        public InputAction @HoldShift => m_Wrapper.m_PlayerActions_HoldShift;
+        public InputAction @HoldAlt => m_Wrapper.m_PlayerActions_HoldAlt;
         public InputAction @HoldRT => m_Wrapper.m_PlayerActions_HoldRT;
         public InputAction @Sprint => m_Wrapper.m_PlayerActions_Sprint;
         public InputAction @LookOn => m_Wrapper.m_PlayerActions_LookOn;
@@ -959,9 +959,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @RT.started += instance.OnRT;
             @RT.performed += instance.OnRT;
             @RT.canceled += instance.OnRT;
-            @HoldShift.started += instance.OnHoldShift;
-            @HoldShift.performed += instance.OnHoldShift;
-            @HoldShift.canceled += instance.OnHoldShift;
+            @HoldAlt.started += instance.OnHoldAlt;
+            @HoldAlt.performed += instance.OnHoldAlt;
+            @HoldAlt.canceled += instance.OnHoldAlt;
             @HoldRT.started += instance.OnHoldRT;
             @HoldRT.performed += instance.OnHoldRT;
             @HoldRT.canceled += instance.OnHoldRT;
@@ -993,9 +993,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @RT.started -= instance.OnRT;
             @RT.performed -= instance.OnRT;
             @RT.canceled -= instance.OnRT;
-            @HoldShift.started -= instance.OnHoldShift;
-            @HoldShift.performed -= instance.OnHoldShift;
-            @HoldShift.canceled -= instance.OnHoldShift;
+            @HoldAlt.started -= instance.OnHoldAlt;
+            @HoldAlt.performed -= instance.OnHoldAlt;
+            @HoldAlt.canceled -= instance.OnHoldAlt;
             @HoldRT.started -= instance.OnHoldRT;
             @HoldRT.performed -= instance.OnHoldRT;
             @HoldRT.canceled -= instance.OnHoldRT;
@@ -1056,7 +1056,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnRB(InputAction.CallbackContext context);
         void OnRT(InputAction.CallbackContext context);
-        void OnHoldShift(InputAction.CallbackContext context);
+        void OnHoldAlt(InputAction.CallbackContext context);
         void OnHoldRT(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnLookOn(InputAction.CallbackContext context);

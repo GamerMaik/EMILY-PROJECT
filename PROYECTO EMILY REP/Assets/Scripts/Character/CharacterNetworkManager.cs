@@ -26,6 +26,7 @@ namespace KC
         public NetworkVariable<bool> isLokedOn = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
         public NetworkVariable<bool> isSprinting = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
         public NetworkVariable<bool> isJumping = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+        public NetworkVariable<bool> isChargingAttack = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
         [Header("Resources")]
        
@@ -75,6 +76,11 @@ namespace KC
             {
                 character.characterCombatManager.currentTarget = null;
             }
+        }
+
+        public void IsChargingAttackChanged(bool oldStatus, bool newStatus)
+        {
+            character.animator.SetBool("IsChargingAttack", isChargingAttack.Value);
         }
 
         #region Action Animation

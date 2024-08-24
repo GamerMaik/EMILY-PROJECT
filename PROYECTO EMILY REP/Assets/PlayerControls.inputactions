@@ -392,7 +392,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Hold Shift",
+                    "name": "Hold Alt",
                     "type": "PassThrough",
                     "id": "516fe2f5-489d-4a17-828c-d41e176a2197",
                     "expectedControlType": "Button",
@@ -472,7 +472,7 @@
                 {
                     "name": "",
                     "id": "7db7406e-be8b-4446-9c8b-26febbdec0a6",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -483,7 +483,7 @@
                 {
                     "name": "",
                     "id": "d5a85d58-bf14-4511-9794-70274fb5ce7c",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -494,11 +494,11 @@
                 {
                     "name": "",
                     "id": "642b3697-1f24-41ef-98e0-571f96dfac5f",
-                    "path": "<Keyboard>/shift",
+                    "path": "<Keyboard>/alt",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Hold Shift",
+                    "action": "Hold Alt",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

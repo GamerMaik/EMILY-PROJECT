@@ -45,7 +45,7 @@ namespace KC
             bool canRotate= false,
             bool canMove = false)
         {
-            Debug.Log("Reproduciendo la animacion: " + targetAnimation);
+            //Debug.Log("Reproduciendo la animacion: " + targetAnimation);
             characterManager.applyRootMotion = applyRootMotion;
             characterManager.animator.CrossFade(targetAnimation, 0.2f);
 

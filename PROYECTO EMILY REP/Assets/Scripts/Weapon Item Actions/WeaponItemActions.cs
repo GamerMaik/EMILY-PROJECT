@@ -14,7 +14,7 @@ namespace KC
                 playerPerformingAction.playerNetworkManager.currentWeaponBeingUsed.Value = weaponPerformingAction.itemID;
             }
 
-            Debug.Log("La accion se a ejecutado");
+            //Debug.Log("La accion se a ejecutado");
         }
     }
 }

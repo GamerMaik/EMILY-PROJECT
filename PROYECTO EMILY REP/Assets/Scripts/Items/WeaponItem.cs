@@ -26,7 +26,9 @@ namespace KC
         public float poiseDamage = 10;
 
         [Header("Attack Modifiers")]
-        public float light_Attack_01_Modifier = 1;
+        public float light_Attack_01_Modifier = 1.0f;
+        public float heavy_Attack_01_Modifier = 1.4f;
+        public float charged_Attack_01_Modifier = 2.0f;
         //Modificadores de armas
         //Efectos de arama para criticos
 
@@ -36,7 +38,7 @@ namespace KC
 
         [Header("Actions")]
         public WeaponItemActions oh_RB_Action;
-
+        public WeaponItemActions oh_RT_Action; //Trigguer de accion para una mano
         //Efectos de sonido de bloqueo
     }
 }

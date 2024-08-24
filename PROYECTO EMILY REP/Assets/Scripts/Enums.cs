@@ -27,8 +27,14 @@ public enum WeaponModelSlot
     //Se pueden agregar muchas mas ranuras si se desea
 }
 
+
+//Esto se usa para calcular el daño segun el tip de ataque
 public enum AttackType
 {
     LightAttack01,
+    LightAttack02,
+    HeavyAttack01,
+    ChargedAttack01,
+    ChargedAttack02,
 
 }

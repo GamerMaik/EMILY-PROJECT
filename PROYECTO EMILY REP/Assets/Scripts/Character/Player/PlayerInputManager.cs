@@ -31,12 +31,14 @@ namespace KC
         [SerializeField] bool dodge_Input = false;
         [SerializeField] bool sprint_Input = false;
         [SerializeField] bool jump_Input = false;
+
+        [Header("Bumper Inputs")]
         [SerializeField] bool RB_Input = false;
-        [SerializeField] bool hold_Shift_Input = false;
+
+        [Header("Trigguer Inputs")]
+        [SerializeField] bool RT_Input = false;
         [SerializeField] bool hold_RT_Input = false;
-
-        
-
+        [SerializeField] bool hold_Alt_Input = false;
         #endregion
 
         private void Awake()
@@ -96,14 +98,18 @@ namespace KC
                 playerControls.PlayerCamera.Movement.performed += i => cameraInput = i.ReadValue<Vector2>();
                 playerControls.PlayerActions.Dodge.performed += i => dodge_Input = true;
                 playerControls.PlayerActions.Jump.performed += i => jump_Input = true;
+
+                //Bumpers
                 playerControls.PlayerActions.RB.performed += i => RB_Input = true;
 
-                //Cargar tipos de ataque
-                playerControls.PlayerActions.HoldShift.performed += i => hold_Shift_Input = true;
-                playerControls.PlayerActions.HoldShift.canceled += i => hold_Shift_Input = false;
+                //Trigguers
+                playerControls.PlayerActions.RT.performed += i => RT_Input = true;
 
                 playerControls.PlayerActions.HoldRT.performed += i => hold_RT_Input = true;
                 playerControls.PlayerActions.HoldRT.canceled += i => hold_RT_Input = false;
+
+                playerControls.PlayerActions.HoldAlt.performed += i => hold_Alt_Input = true;
+                playerControls.PlayerActions.HoldAlt.canceled += i => hold_Alt_Input = false;
 
                 //Bloquar la camara a un objetivo
                 playerControls.PlayerActions.LookOn.performed += i => lockOn_Input = true;
@@ -150,7 +156,9 @@ namespace KC
             HandleDodgeInput();
             HandleSprintInput();
             HandleJumpInput();
-            HandRBInput();
+            HandleRBInput();
+            HandleRTInput();
+            HandleChargeRTInput();
         }
 
         #region Look On
@@ -305,7 +313,7 @@ namespace KC
             }
         }
 
-        private void HandRBInput()
+        private void HandleRBInput()
         {
             if (RB_Input)
             {
@@ -320,17 +328,39 @@ namespace KC
             }
         }
 
-        private void HandleStrongAttack()
+        private void HandleRTInput()
         {
-            if (hold_Shift_Input && hold_RT_Input)
+            if (RT_Input && !hold_Alt_Input)
             {
-                //Implementar el golpe cargado segun a la cantidad de presión
+                RT_Input = false;
+
+                // No queremos hacer nada si tenemos una ventana abierta en un futuro 
+                player.playerNetworkManager.SetCharacterActionHand(true);
+
+                // Si usamos un arma en cada mano queremos ejecutar el ataque con 2 manos
+                player.playerCombatManager.PerformWeaponBasedAction(player.playerInventoryManager.currentRightHandWeapon.oh_RT_Action, player.playerInventoryManager.currentRightHandWeapon);
+            }
+        }
+        private void HandleChargeRTInput()
+        {
+            // Solo verificamos esto cuando vamos a realizar alguna acción que se pueda cargar (hechizos de carga, alguna arma cargada, etc.)
+            if (hold_Alt_Input && hold_RT_Input)
+            {
+                if (player.isPerformingAction)
+                {
+                    if (player.playerNetworkManager.isUsingRightHand.Value)
+                    {
+                        player.playerNetworkManager.isChargingAttack.Value = (hold_Alt_Input && hold_RT_Input);
+                    }
+                }
             }
             else
             {
-                //Implementar el golpe normal
+                player.playerNetworkManager.isChargingAttack.Value = (hold_Alt_Input && hold_RT_Input);
             }
         }
+
         #endregion
     }
 }
+ 
