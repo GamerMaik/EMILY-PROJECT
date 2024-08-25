@@ -56,6 +56,11 @@ namespace KC
             WeaponItem newWeapon =Instantiate(WorldItemDatabase.Instance.GetWeaponById(newId));
             player.playerInventoryManager.currentRightHandWeapon = newWeapon;
             player.playerEquipmentManager.LoadRightWeapon();
+
+            if (player.IsOwner)
+            {
+                PlayerUIManager.instance.playerUIHudManager.SetRightWeaponQuickSlotIcon(newId);
+            }
         }
 
         public void OnCurrentLeftHandWeaponIdChange(int oldID, int newId)
@@ -63,6 +68,11 @@ namespace KC
             WeaponItem newWeapon =Instantiate(WorldItemDatabase.Instance.GetWeaponById(newId));
             player.playerInventoryManager.currentLeftHandWeapon = newWeapon;
             player.playerEquipmentManager.LoadLeftWeapon();
+
+            if (player.IsOwner)
+            {
+                PlayerUIManager.instance.playerUIHudManager.SetLeftWeaponQuickSlotIcon(newId);
+            }
         }
 
         public void OnCurrentWeaponBeingUsedIDChange(int oldID, int newId)

@@ -6,10 +6,6 @@ namespace KC
 {
     public class PlayerManager : CharacterManager
     {
-        [Header("Debug Menu")]
-        [SerializeField] bool respawnCharacter = false;
-        [SerializeField] bool switchRightWeapon = false;
-
 
         [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
         [HideInInspector] public PlayerLocomotionManager playerlocomotionManager;
@@ -45,8 +41,6 @@ namespace KC
 
             //Regeneracion de estamina
             playerStatsManager.RegenerateStamina();
-
-            DebugMenu();
         }
 
         protected override void LateUpdate()
@@ -229,21 +223,6 @@ namespace KC
             if (playerNetworkManager.isLokedOn.Value)
             {
                 playerNetworkManager.OnLockOnTargetIdChange(0, playerNetworkManager.currentTargetNetworkObjetID.Value);
-            }
-        }
-
-        private void DebugMenu()
-        {
-            if (respawnCharacter)
-            {
-                respawnCharacter = false;
-                ReviveCharacter();
-            }
-
-            if (switchRightWeapon)
-            {
-                switchRightWeapon = false;
-                playerEquipmentManager.SwitchRightWeapon();
             }
         }
     }

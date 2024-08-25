@@ -428,6 +428,24 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Switch Right Item",
+                    "type": "Button",
+                    "id": "429bdf4f-fdbd-4dfb-af88-fa6bef46bad9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Switch Left Item",
+                    "type": "Button",
+                    "id": "5bf30db4-7a69-46cb-ae37-088f0a18ec85",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Seek Left Lock On target",
                     "type": "Button",
                     "id": "034fa0b3-83c3-4c72-a621-71c363439ca1",
@@ -477,6 +495,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "RB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20026cc0-df70-447e-9c1e-15d37235ee3a",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch Right Item",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "79d93922-c3c0-445d-b01c-538a62d599e4",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch Left Item",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

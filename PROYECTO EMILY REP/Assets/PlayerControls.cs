@@ -451,6 +451,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Switch Right Item"",
+                    ""type"": ""Button"",
+                    ""id"": ""429bdf4f-fdbd-4dfb-af88-fa6bef46bad9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Switch Left Item"",
+                    ""type"": ""Button"",
+                    ""id"": ""5bf30db4-7a69-46cb-ae37-088f0a18ec85"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Seek Left Lock On target"",
                     ""type"": ""Button"",
                     ""id"": ""034fa0b3-83c3-4c72-a621-71c363439ca1"",
@@ -500,6 +518,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20026cc0-df70-447e-9c1e-15d37235ee3a"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch Right Item"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""79d93922-c3c0-445d-b01c-538a62d599e4"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch Left Item"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -625,6 +665,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActions_HoldRT = m_PlayerActions.FindAction("Hold RT", throwIfNotFound: true);
         m_PlayerActions_Sprint = m_PlayerActions.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerActions_LookOn = m_PlayerActions.FindAction("Look On", throwIfNotFound: true);
+        m_PlayerActions_SwitchRightItem = m_PlayerActions.FindAction("Switch Right Item", throwIfNotFound: true);
+        m_PlayerActions_SwitchLeftItem = m_PlayerActions.FindAction("Switch Left Item", throwIfNotFound: true);
         m_PlayerActions_SeekLeftLockOntarget = m_PlayerActions.FindAction("Seek Left Lock On target", throwIfNotFound: true);
         m_PlayerActions_SeekRightLockOntarget = m_PlayerActions.FindAction("Seek Right Lock On target", throwIfNotFound: true);
     }
@@ -922,6 +964,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_HoldRT;
     private readonly InputAction m_PlayerActions_Sprint;
     private readonly InputAction m_PlayerActions_LookOn;
+    private readonly InputAction m_PlayerActions_SwitchRightItem;
+    private readonly InputAction m_PlayerActions_SwitchLeftItem;
     private readonly InputAction m_PlayerActions_SeekLeftLockOntarget;
     private readonly InputAction m_PlayerActions_SeekRightLockOntarget;
     public struct PlayerActionsActions
@@ -936,6 +980,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @HoldRT => m_Wrapper.m_PlayerActions_HoldRT;
         public InputAction @Sprint => m_Wrapper.m_PlayerActions_Sprint;
         public InputAction @LookOn => m_Wrapper.m_PlayerActions_LookOn;
+        public InputAction @SwitchRightItem => m_Wrapper.m_PlayerActions_SwitchRightItem;
+        public InputAction @SwitchLeftItem => m_Wrapper.m_PlayerActions_SwitchLeftItem;
         public InputAction @SeekLeftLockOntarget => m_Wrapper.m_PlayerActions_SeekLeftLockOntarget;
         public InputAction @SeekRightLockOntarget => m_Wrapper.m_PlayerActions_SeekRightLockOntarget;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
@@ -971,6 +1017,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @LookOn.started += instance.OnLookOn;
             @LookOn.performed += instance.OnLookOn;
             @LookOn.canceled += instance.OnLookOn;
+            @SwitchRightItem.started += instance.OnSwitchRightItem;
+            @SwitchRightItem.performed += instance.OnSwitchRightItem;
+            @SwitchRightItem.canceled += instance.OnSwitchRightItem;
+            @SwitchLeftItem.started += instance.OnSwitchLeftItem;
+            @SwitchLeftItem.performed += instance.OnSwitchLeftItem;
+            @SwitchLeftItem.canceled += instance.OnSwitchLeftItem;
             @SeekLeftLockOntarget.started += instance.OnSeekLeftLockOntarget;
             @SeekLeftLockOntarget.performed += instance.OnSeekLeftLockOntarget;
             @SeekLeftLockOntarget.canceled += instance.OnSeekLeftLockOntarget;
@@ -1005,6 +1057,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @LookOn.started -= instance.OnLookOn;
             @LookOn.performed -= instance.OnLookOn;
             @LookOn.canceled -= instance.OnLookOn;
+            @SwitchRightItem.started -= instance.OnSwitchRightItem;
+            @SwitchRightItem.performed -= instance.OnSwitchRightItem;
+            @SwitchRightItem.canceled -= instance.OnSwitchRightItem;
+            @SwitchLeftItem.started -= instance.OnSwitchLeftItem;
+            @SwitchLeftItem.performed -= instance.OnSwitchLeftItem;
+            @SwitchLeftItem.canceled -= instance.OnSwitchLeftItem;
             @SeekLeftLockOntarget.started -= instance.OnSeekLeftLockOntarget;
             @SeekLeftLockOntarget.performed -= instance.OnSeekLeftLockOntarget;
             @SeekLeftLockOntarget.canceled -= instance.OnSeekLeftLockOntarget;
@@ -1060,6 +1118,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnHoldRT(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnLookOn(InputAction.CallbackContext context);
+        void OnSwitchRightItem(InputAction.CallbackContext context);
+        void OnSwitchLeftItem(InputAction.CallbackContext context);
         void OnSeekLeftLockOntarget(InputAction.CallbackContext context);
         void OnSeekRightLockOntarget(InputAction.CallbackContext context);
     }

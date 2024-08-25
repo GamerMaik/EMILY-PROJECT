@@ -39,6 +39,10 @@ namespace KC
         [SerializeField] bool RT_Input = false;
         [SerializeField] bool hold_RT_Input = false;
         [SerializeField] bool hold_Alt_Input = false;
+
+        [Header("Switch Armament")]
+        [SerializeField] bool switch_Right_Weapon_Input = false;
+        [SerializeField] bool switch_Left_Weapon_Input = false;
         #endregion
 
         private void Awake()
@@ -96,8 +100,13 @@ namespace KC
 
                 playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
                 playerControls.PlayerCamera.Movement.performed += i => cameraInput = i.ReadValue<Vector2>();
+
+                //Actions
                 playerControls.PlayerActions.Dodge.performed += i => dodge_Input = true;
                 playerControls.PlayerActions.Jump.performed += i => jump_Input = true;
+
+                playerControls.PlayerActions.SwitchRightItem.performed += i => switch_Right_Weapon_Input = true;
+                playerControls.PlayerActions.SwitchLeftItem.performed += i => switch_Left_Weapon_Input = true;
 
                 //Bumpers
                 playerControls.PlayerActions.RB.performed += i => RB_Input = true;
@@ -159,6 +168,8 @@ namespace KC
             HandleRBInput();
             HandleRTInput();
             HandleChargeRTInput();
+            HandleSwitchRightWeaponInput();
+            HandleSwitchLeftWeaponInput();
         }
 
         #region Look On
@@ -341,6 +352,7 @@ namespace KC
                 player.playerCombatManager.PerformWeaponBasedAction(player.playerInventoryManager.currentRightHandWeapon.oh_RT_Action, player.playerInventoryManager.currentRightHandWeapon);
             }
         }
+
         private void HandleChargeRTInput()
         {
             // Solo verificamos esto cuando vamos a realizar alguna acción que se pueda cargar (hechizos de carga, alguna arma cargada, etc.)
@@ -360,6 +372,23 @@ namespace KC
             }
         }
 
+        private void HandleSwitchRightWeaponInput()
+        {
+            if (switch_Right_Weapon_Input)
+            {
+                switch_Right_Weapon_Input = false;
+                player.playerEquipmentManager.SwitchRightWeapon();
+            }
+        }
+
+        private void HandleSwitchLeftWeaponInput()
+        {
+            if (switch_Left_Weapon_Input)
+            {
+                switch_Left_Weapon_Input = false;
+                player.playerEquipmentManager.SwitchLeftWeapon();
+            }
+        }
         #endregion
     }
 }

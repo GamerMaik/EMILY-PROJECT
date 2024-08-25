@@ -1,12 +1,19 @@
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace KC
 {
     public class PlayerUIHudManager : MonoBehaviour
     {
+        [Header("Stats Bars")]
         [SerializeField] UI_StatBar healthBar;
         [SerializeField] UI_StatBar staminaBar;
+
+
+        [Header("Quick Slots")]
+        [SerializeField] Image rightWeaponQuickSlotIcon;
+        [SerializeField] Image leftWeaponQuickSlotIcon;
 
         public void RefreshHUD()
         {
@@ -34,6 +41,49 @@ namespace KC
         public void SetMaxStaminaValue(int maxStamina)
         {
             staminaBar.SetMaxStat(maxStamina);
+        }
+
+        public void SetRightWeaponQuickSlotIcon(int weaponID)
+        {
+            WeaponItem weapon = WorldItemDatabase.Instance.GetWeaponById(weaponID);
+
+            if (weapon == null)
+            {
+                rightWeaponQuickSlotIcon.enabled = false;
+                rightWeaponQuickSlotIcon.sprite = null;
+                return;
+            }
+
+            if (weapon.itemIcon == null)
+            {
+                rightWeaponQuickSlotIcon.enabled = false;
+                rightWeaponQuickSlotIcon.sprite = null;
+                return;
+            }
+
+            rightWeaponQuickSlotIcon.sprite = weapon.itemIcon;
+            rightWeaponQuickSlotIcon.enabled = true;
+        }
+        public void SetLeftWeaponQuickSlotIcon(int weaponID)
+        {
+            WeaponItem weapon = WorldItemDatabase.Instance.GetWeaponById(weaponID);
+
+            if (weapon == null)
+            {
+                leftWeaponQuickSlotIcon.enabled = false;
+                leftWeaponQuickSlotIcon.sprite = null;
+                return;
+            }
+
+            if (weapon.itemIcon == null)
+            {
+                leftWeaponQuickSlotIcon.enabled = false;
+                leftWeaponQuickSlotIcon.sprite = null;
+                return;
+            }
+
+            leftWeaponQuickSlotIcon.sprite = weapon.itemIcon;
+            leftWeaponQuickSlotIcon.enabled = true;
         }
     }
 }
