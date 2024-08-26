@@ -8,7 +8,11 @@ namespace KC
         PlayerManager player;
         //arma que se esta usando actualmente
         public WeaponItem currentWeaponBeingUsed;
-      
+
+        [Header("Flags")]
+        public bool canComboWithMainHandWeapon = false;
+        //public bool canComboWithOffHandWeapon = false;
+
         protected override void Awake()
         {
             base.Awake();
@@ -59,6 +63,18 @@ namespace KC
             if (player.IsOwner)
             {
                 PlayerCamera.instance.SetLockCameraHeight();
+            }
+        }
+
+        public void EnableCanDoCombo()
+        {
+            if (player.playerNetworkManager.isUsingRightHand.Value)
+            {
+                canComboWithMainHandWeapon = true;
+            }
+            else
+            {
+                //Enable off hand combo
             }
         }
     }
