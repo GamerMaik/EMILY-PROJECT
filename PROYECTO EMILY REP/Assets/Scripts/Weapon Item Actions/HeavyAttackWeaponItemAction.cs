@@ -6,6 +6,7 @@ namespace KC
     public class HeavyAttackWeaponItemAction : WeaponItemActions
     {
         [SerializeField] string heavy_Attack_01 = "Main_Heavy_Attack_01";
+        [SerializeField] string heavy_Attack_02 = "Main_Heavy_Attack_02";
 
         public override void AttempToPerformAction(PlayerManager playerPerformingAction, WeaponItem weaponPerformingAction)
         {
@@ -25,15 +26,23 @@ namespace KC
 
         private void PerformHeavyAttack(PlayerManager playerPerformingAction, WeaponItem weaponPerformingAction)
         {
+            if (playerPerformingAction.playerCombatManager.canComboWithMainHandWeapon && playerPerformingAction.isPerformingAction)
+            {
+                playerPerformingAction.playerCombatManager.canComboWithMainHandWeapon = false;
 
-            if (playerPerformingAction.playerNetworkManager.isUsingRightHand.Value)
+                //Realizar un ataque en base al ataque anterior
+                if (playerPerformingAction.characterCombatManager.lastAttackAnimationPerformded == heavy_Attack_01)
+                {
+                    playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(AttackType.HeavyAttack02, heavy_Attack_02, true);
+                }
+                else
+                {
+                    playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(AttackType.HeavyAttack01, heavy_Attack_01, true);
+                }
+            }
+            else if (!playerPerformingAction.isPerformingAction)
             {
                 playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(AttackType.HeavyAttack01, heavy_Attack_01, true);
-            }
-
-            if (playerPerformingAction.playerNetworkManager.isUsingLeftHand.Value)
-            {
-
             }
         }
     }

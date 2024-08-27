@@ -52,8 +52,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.1, y: 1.23, z: 0.03}
-  m_Center: {x: 0.00015074702, y: 0.64, z: 0.00014760158}
+  m_Size: {x: 0.11192059, y: 1.2944868, z: 0.046758}
+  m_Center: {x: 0.0012505547, y: 0.6186049, z: -0.006925347}
 --- !u!114 &4610988716086409412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,6 +75,8 @@ MonoBehaviour:
   contactPoint: {x: 0, y: 0, z: 0}
   characterCausingDamage: {fileID: 0}
   light_Attack_01_Modifier: 0
+  heavy_Attack_01_Modifier: 0
+  charged_Attack_01_Modifier: 0
 --- !u!1 &2577848347743525672
 GameObject:
   m_ObjectHideFlags: 0

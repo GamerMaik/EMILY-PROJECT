@@ -74,6 +74,7 @@ namespace KC
         {
 
             characterManager.characterCombatManager.currentAttackType = attackType;
+            characterManager.characterCombatManager.lastAttackAnimationPerformded = targetAnimation;
             characterManager.applyRootMotion = applyRootMotion;
             characterManager.animator.CrossFade(targetAnimation, 0.2f);
             characterManager.isPerformingAction = isPerformingAction;
@@ -84,6 +85,15 @@ namespace KC
             characterManager.characterNetworkManager.NotifyTheServerOfAttackActionAnimationServerRpc(NetworkManager.Singleton.LocalClientId, targetAnimation, applyRootMotion);
         }
 
+        public virtual void EnableCanDoCombo()
+        {
+
+        }
+
+        public virtual void DisableCanDoCombo()
+        {
+ 
+        }
 
     }
 }

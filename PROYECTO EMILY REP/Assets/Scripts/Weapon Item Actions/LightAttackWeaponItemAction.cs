@@ -6,6 +6,7 @@ namespace KC
     public class LightAttackWeaponItemAction : WeaponItemActions
     {
         [SerializeField] string light_Attack_01 = "Main_Light_Attack_01";
+        [SerializeField] string light_Attack_02 = "Main_Light_Attack_02";
 
         public override void AttempToPerformAction(PlayerManager playerPerformingAction, WeaponItem weaponPerformingAction)
         {
@@ -25,16 +26,27 @@ namespace KC
 
         private void PerformLightAttack(PlayerManager playerPerformingAction, WeaponItem weaponPerformingAction)
         {
-
-            if (playerPerformingAction.playerNetworkManager.isUsingRightHand.Value)
+            if (playerPerformingAction.playerCombatManager.canComboWithMainHandWeapon && playerPerformingAction.isPerformingAction)
             {
-                playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(AttackType.LightAttack01,light_Attack_01,true);
+                playerPerformingAction.playerCombatManager.canComboWithMainHandWeapon = false;
+
+                //Realizar un ataque en base al ataque anterior
+                if (playerPerformingAction.characterCombatManager.lastAttackAnimationPerformded == light_Attack_01)
+                {
+                    playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(AttackType.LightAttack02, light_Attack_02, true);
+                }
+                else
+                {
+                    playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(AttackType.LightAttack01, light_Attack_01, true);
+                }
+            }
+            else if (!playerPerformingAction.isPerformingAction)
+            {
+                playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(AttackType.LightAttack01, light_Attack_01, true);
             }
 
-            if (playerPerformingAction.playerNetworkManager.isUsingLeftHand.Value)
-            {
-                 
-            }
         }
+
+
     }
 }

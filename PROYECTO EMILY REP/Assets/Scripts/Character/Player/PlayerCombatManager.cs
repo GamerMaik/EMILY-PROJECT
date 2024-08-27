@@ -65,17 +65,5 @@ namespace KC
                 PlayerCamera.instance.SetLockCameraHeight();
             }
         }
-
-        public void EnableCanDoCombo()
-        {
-            if (player.playerNetworkManager.isUsingRightHand.Value)
-            {
-                canComboWithMainHandWeapon = true;
-            }
-            else
-            {
-                //Enable off hand combo
-            }
-        }
     }
 }
