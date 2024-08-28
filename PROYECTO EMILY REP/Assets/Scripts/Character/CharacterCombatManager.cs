@@ -8,7 +8,7 @@ namespace KC
         CharacterManager character;
 
         [Header("Lats Attack Animation Performed")]
-        public string lastAttackAnimationPerformded;
+        public string lastAttackAnimationPerformed;
 
         [Header("Attack Target")] 
         public CharacterManager currentTarget;

@@ -31,7 +31,7 @@ namespace KC
                 playerPerformingAction.playerCombatManager.canComboWithMainHandWeapon = false;
 
                 //Realizar un ataque en base al ataque anterior
-                if (playerPerformingAction.characterCombatManager.lastAttackAnimationPerformded == light_Attack_01)
+                if (playerPerformingAction.characterCombatManager.lastAttackAnimationPerformed == light_Attack_01)
                 {
                     playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(AttackType.LightAttack02, light_Attack_02, true);
                 }
