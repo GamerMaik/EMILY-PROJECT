@@ -19,6 +19,12 @@ public enum CharacterSlots
     NO_SLOT
 }
 
+public enum CharacterGroup
+{
+    Team01, //Son los aliados
+    Team02, //Son los enemigos
+}
+
 public enum WeaponModelSlot
 {
     RightHand,

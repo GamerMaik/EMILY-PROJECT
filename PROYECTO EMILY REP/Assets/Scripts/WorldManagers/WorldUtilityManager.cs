@@ -31,5 +31,30 @@ namespace KC
         {
             return enviroLayers;
         }
+
+        public bool CanIDamageThisTarget(CharacterGroup attakingCharacter, CharacterGroup targetCharacter)
+        {
+            if (attakingCharacter == CharacterGroup.Team01)
+            {
+                switch (targetCharacter)
+                {
+                    case CharacterGroup.Team01: return false;
+                    case CharacterGroup.Team02: return true;
+                    default:
+                        break;
+                }
+            }
+            else if (attakingCharacter == CharacterGroup.Team02)
+            {
+                switch (targetCharacter)
+                {
+                    case CharacterGroup.Team01: return true;
+                    case CharacterGroup.Team02: return false;
+                    default:
+                        break;
+                }
+            }
+            return false;
+        }
     }
 }

@@ -5,7 +5,7 @@ namespace KC
 {
     public class CharacterCombatManager : NetworkBehaviour
     {
-        CharacterManager character;
+        protected CharacterManager character;
 
         [Header("Lats Attack Animation Performed")]
         public string lastAttackAnimationPerformed;

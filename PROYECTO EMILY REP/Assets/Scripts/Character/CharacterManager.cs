@@ -20,6 +20,8 @@ namespace KC
         [HideInInspector] public CharacterSoundFXManager characterSoundFXManager;
         [HideInInspector] public CharacterLocomotionManager characterLocomotionManager;
 
+        [Header("Character Group")]
+        public CharacterGroup characterGroup;
 
         [Header("Flags")]
         public bool isPerformingAction = false;
@@ -45,7 +47,7 @@ namespace KC
 
         protected virtual void Start()
         {
-            IgnoreMyCollider();
+            IgnoreMyOwnColliders();
         }
 
         protected virtual void Update()
@@ -71,6 +73,11 @@ namespace KC
                     characterNetworkManager.networkRotation.Value,
                     characterNetworkManager.networkRotationSmoothTime);
             }
+        }
+
+        protected virtual void FixedUpdate()
+        {
+
         }
 
         protected virtual void LateUpdate()
@@ -103,7 +110,7 @@ namespace KC
 
         }
 
-        protected virtual void IgnoreMyCollider()
+        protected virtual void IgnoreMyOwnColliders()
         {
             Collider characterControllersCollider = GetComponent<Collider>(); 
             Collider[] damageableCharacterColliders = GetComponentsInChildren<Collider>();
