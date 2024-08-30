@@ -10,13 +10,11 @@ namespace KC
         {
             if (aiCharacter.characterCombatManager.currentTarget != null)
             {
-                Debug.Log("Tenemos un objetivo");
-                return this;
+                return SwitchState(aiCharacter, aiCharacter.pursueTarget);
             }
             else
             {
                 aiCharacter.aICharacterCombatManager.FindTargetViaLineOffSight(aiCharacter);
-                Debug.Log("Buscando  un objetivo");
                 return this;
             }
 

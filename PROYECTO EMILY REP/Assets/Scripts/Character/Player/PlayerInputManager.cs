@@ -271,6 +271,15 @@ namespace KC
 
             if (player == null)
                 return;
+
+            if (moveAmount != 0)
+            {
+                player.playerNetworkManager.isMoving.Value = true;
+            }
+            else
+            {
+                player.playerNetworkManager.isMoving.Value = false;
+            }
             //pasamos 0 ya que solo queremos que el personaje
             //esté inactivo, camine, o corra en una direccion que es al frente, ademas
             //el personaje siempre se mueve a la direccion que mira la camara
