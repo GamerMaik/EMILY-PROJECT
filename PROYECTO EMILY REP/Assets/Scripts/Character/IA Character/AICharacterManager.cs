@@ -26,7 +26,8 @@ namespace KC
         {
             base.FixedUpdate();
 
-            ProcessStateMachine();
+            if(IsOwner)
+                ProcessStateMachine();
         }
 
         protected override void Awake()
@@ -58,6 +59,12 @@ namespace KC
 
             navMeshAgent.transform.localPosition = Vector3.zero;
             navMeshAgent.transform.localRotation = Quaternion.identity;
+
+            if(aICharacterCombatManager.currentTarget != null)
+            {
+                aICharacterCombatManager.targetsDirection = aICharacterCombatManager.currentTarget.transform.position - transform.position;
+                aICharacterCombatManager.viewableAngle = WorldUtilityManager.Instance.GetAngleOfTarget(transform, aICharacterCombatManager.targetsDirection);
+            }
 
             if (navMeshAgent.enabled)
             {

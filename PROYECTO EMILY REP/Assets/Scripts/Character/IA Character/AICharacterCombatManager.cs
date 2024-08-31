@@ -4,11 +4,15 @@ namespace KC
 {
     public class AICharacterCombatManager : CharacterCombatManager
     {
+        [Header("Target Information")]
+        public float viewableAngle;
+        public Vector3 targetsDirection;
+
 
         [Header("Detection")]
         [SerializeField] float detectionRadius = 15;
-        [SerializeField] float minimumDetectionAngle = -35;
-        [SerializeField] float maximumDetectionAngle = 35;
+        public float minimumFOV = -35;
+        public float maximumFOV = 35;
 
         public void FindTargetViaLineOffSight(AICharacterManager aiCharacter)
         {
@@ -35,9 +39,9 @@ namespace KC
                     //Si el objetivo encontrado esta al frente de nosotros
 
                     Vector3 targetsDirection = targetCharacter.transform.position - aiCharacter.transform.position;
-                    float viewableAngle = Vector3.Angle(targetsDirection, aiCharacter.transform.forward);
+                    float angleOfPotentialTarget = Vector3.Angle(targetsDirection, aiCharacter.transform.forward);
 
-                    if (viewableAngle > minimumDetectionAngle && viewableAngle < maximumDetectionAngle)
+                    if (angleOfPotentialTarget > minimumFOV && angleOfPotentialTarget < maximumFOV)
                     {
                         //Verificar si hay algun elemento que obstruye la vision del enemigo
                         if (Physics.Linecast(
@@ -46,15 +50,59 @@ namespace KC
                             WorldUtilityManager.Instance.GetEnviroLayers()))
                         {
                             Debug.DrawLine(aiCharacter.characterCombatManager.lookOnTransform.position, targetCharacter.characterCombatManager.lookOnTransform.position);
-                            Debug.Log("Bloqueado");
+
                         }
                         else
                         {
+                            targetsDirection = targetCharacter.transform.position - transform.position;
+                            viewableAngle = WorldUtilityManager.Instance.GetAngleOfTarget(transform, targetsDirection);
                             aiCharacter.characterCombatManager.SetTarget(targetCharacter);
+                            PivotTowardsTarget(aiCharacter);
                         }
                     }
                 }
             }
+        }
+
+        public void PivotTowardsTarget(AICharacterManager aiCharacter)
+        {
+            //Aca reproducimos la animacion de pivote dependiendo a la direccion del objetivo
+            if (aiCharacter.isPerformingAction)
+                return;
+
+            if (viewableAngle >= 20 && viewableAngle <= 60)
+            {
+                aiCharacter.characterAnimatorManager.PlayerTargetActionAnimation("Turn_R 45", true);
+            }
+            else if (viewableAngle <= -20 && viewableAngle >= -60)
+            {
+                aiCharacter.characterAnimatorManager.PlayerTargetActionAnimation("Turn_L 45", true);
+            }
+            else if (viewableAngle >= 61 && viewableAngle <= 110)
+            {
+                aiCharacter.characterAnimatorManager.PlayerTargetActionAnimation("Turn_R 90", true);
+            }
+            else if (viewableAngle <= -61 && viewableAngle >= -110)
+            {
+                aiCharacter.characterAnimatorManager.PlayerTargetActionAnimation("Turn_L 90", true);
+            }
+            else if (viewableAngle >= 110 && viewableAngle <= 145)
+            {
+                aiCharacter.characterAnimatorManager.PlayerTargetActionAnimation("Turn_R 135", true);
+            }
+            else if (viewableAngle <= -110 && viewableAngle >= -145)
+            {
+                aiCharacter.characterAnimatorManager.PlayerTargetActionAnimation("Turn_L 135", true);
+            }
+            else if (viewableAngle >= 146 && viewableAngle <= 180)
+            {
+                aiCharacter.characterAnimatorManager.PlayerTargetActionAnimation("Turn_R 180", true);
+            }
+            else if (viewableAngle <= -146 && viewableAngle >= -180)
+            {
+                aiCharacter.characterAnimatorManager.PlayerTargetActionAnimation("Turn_L 180", true);
+            }
+
         }
     }
 }

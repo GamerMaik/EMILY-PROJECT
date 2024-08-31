@@ -21,6 +21,11 @@ namespace KC
             if(!aiCharacter.navMeshAgent.enabled)
                 aiCharacter.navMeshAgent.enabled = true;
 
+            //Si el objetivo está lejos del objetivo gira hacia el para atacarlo
+            if (aiCharacter.aICharacterCombatManager.viewableAngle < aiCharacter.aICharacterCombatManager.minimumFOV
+                || aiCharacter.aICharacterCombatManager.viewableAngle > aiCharacter.aICharacterCombatManager.maximumFOV)
+                aiCharacter.aICharacterCombatManager.PivotTowardsTarget(aiCharacter);
+
             aiCharacter.aICharacterLocomotionManager.RotateTowarsAgent(aiCharacter);
 
             //Si esta dentro del area de combate de un objetivo cambiamos al estilo de postura de combate
