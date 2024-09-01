@@ -4,7 +4,11 @@ namespace KC
 {
     public class AICharacterCombatManager : CharacterCombatManager
     {
+        [Header("Action Recovery")]
+        public float actionRecoveryTimer = 0;
+
         [Header("Target Information")]
+        public float distanceFromTarget;
         public float viewableAngle;
         public Vector3 targetsDirection;
 
@@ -13,6 +17,9 @@ namespace KC
         [SerializeField] float detectionRadius = 15;
         public float minimumFOV = -35;
         public float maximumFOV = 35;
+
+        [Header("Attack Rotation Speed")]
+        public float attackRotationSpeed = 25;
 
         public void FindTargetViaLineOffSight(AICharacterManager aiCharacter)
         {
@@ -103,6 +110,47 @@ namespace KC
                 aiCharacter.characterAnimatorManager.PlayerTargetActionAnimation("Turn_L 180", true);
             }
 
+        }
+        public void RotateTowadsAgent(AICharacterManager aiCharacter)
+        {
+            if (aiCharacter.aiCharacterNetworkManager.isMoving.Value)
+            {
+                aiCharacter.transform.rotation = aiCharacter.navMeshAgent.transform.rotation;
+            }
+        }
+
+        public void RotateTowarsTargetWhillstAttacking(AICharacterManager aICharacter)
+        {
+            if (currentTarget == null)
+                return;
+
+            if (!aICharacter.canRotate)
+                return;
+
+            if (!aICharacter.isPerformingAction)
+                return;
+
+            Vector3 targetDirection = currentTarget.transform.position - aICharacter.transform.position;
+            targetDirection.y = 0;
+            targetDirection.Normalize();
+
+            if(targetDirection == Vector3.zero)
+                targetDirection = aICharacter.transform.forward;
+
+            Quaternion targetotation = Quaternion.LookRotation(targetDirection);
+
+            aICharacter.transform.rotation = Quaternion.Slerp(aICharacter.transform.rotation, targetotation, attackRotationSpeed * Time.deltaTime);
+        }
+
+        public void HandleActionRecovery(AICharacterManager aiCharacter)
+        {
+            if(actionRecoveryTimer > 0)
+            {
+                if (!aiCharacter.isPerformingAction)
+                {
+                    actionRecoveryTimer -= Time.deltaTime;
+                }
+            }
         }
     }
 }

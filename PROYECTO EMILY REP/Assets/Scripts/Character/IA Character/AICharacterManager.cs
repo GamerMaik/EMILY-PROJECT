@@ -18,17 +18,12 @@ namespace KC
         [Header("States")]
         public IdleState idle;
         public PursueTargetState pursueTarget;
+        public CombatStanceState combatStance;
+        public AttackState attack;
 
         //Estado de combate
         //Estado de ataque
 
-        protected override void FixedUpdate()
-        {
-            base.FixedUpdate();
-
-            if(IsOwner)
-                ProcessStateMachine();
-        }
 
         protected override void Awake()
         {
@@ -48,6 +43,21 @@ namespace KC
             currentState = idle;
         }
 
+        protected override void Update()
+        {
+            base.Update();
+
+            aICharacterCombatManager.HandleActionRecovery(this);
+        }
+
+        protected override void FixedUpdate()
+        {
+            base.FixedUpdate();
+
+            if(IsOwner)
+                ProcessStateMachine();
+        }
+
         private void ProcessStateMachine()
         {
             AIState nextState = currentState?.Tick(this);
@@ -64,6 +74,7 @@ namespace KC
             {
                 aICharacterCombatManager.targetsDirection = aICharacterCombatManager.currentTarget.transform.position - transform.position;
                 aICharacterCombatManager.viewableAngle = WorldUtilityManager.Instance.GetAngleOfTarget(transform, aICharacterCombatManager.targetsDirection);
+                aICharacterCombatManager.distanceFromTarget = Vector3.Distance(transform.position, aICharacterCombatManager.currentTarget.transform.position);
             }
 
             if (navMeshAgent.enabled)
