@@ -15,6 +15,7 @@ MonoBehaviour:
   aiCharacterAttacks:
   - {fileID: 11400000, guid: 30bd9cfa60bcb384ca71bf605f6cf614, type: 2}
   - {fileID: 11400000, guid: d685822aadc2a1f4f965c6e496e4e476, type: 2}
+  - {fileID: 11400000, guid: 1922ac0a56ea1a64fb29ed37eb4baafc, type: 2}
   canPerformCombo: 0
   chanceToPerformCombo: 25
   maximumEngagementDistance: 5

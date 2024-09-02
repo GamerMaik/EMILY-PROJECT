@@ -19,6 +19,9 @@ namespace KC
 
         [Header("Flags")]
         public bool isRolling = false;
+        public bool canRotate = true;
+        public bool canMove = true;
+        public bool isGrounded = true;
 
         protected virtual void Awake()
         {
@@ -30,7 +33,7 @@ namespace KC
         {
             HandleGrounCheck();
 
-            if (character.isGrounded)
+            if (character.characterLocomotionManager.isGrounded)
             {
                 //Si no intentamos saltar entra a la condicion
                 if (yVelocity.y < 0)
@@ -58,12 +61,21 @@ namespace KC
 
         protected void HandleGrounCheck()
         {
-            character.isGrounded = Physics.CheckSphere(character.transform.position, groundCheckSphereRadius, groundLayer);
+            character.characterLocomotionManager.isGrounded = Physics.CheckSphere(character.transform.position, groundCheckSphereRadius, groundLayer);
         }
 
         //private void OnDrawGizmosSelected()
         //{
         //    Gizmos.DrawSphere(character.transform.position, groundCheckSphereRadius);
         //}
+
+        public void EnableCanRotate()
+        {
+            canRotate = true;
+        }
+        public void DisableCanRotate() 
+        {
+            canRotate = false;
+        }
     }
 }

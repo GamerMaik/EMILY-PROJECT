@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace KC
 {
+    [CreateAssetMenu(menuName = "A.I/States/Attack")]
     public class AttackState : AIState
     {
         [Header("Current Attack")]
@@ -23,6 +24,8 @@ namespace KC
             if (aiCharacter.aICharacterCombatManager.currentTarget.isDead.Value)
                 return SwitchState(aiCharacter, aiCharacter.idle);
 
+            aiCharacter.aICharacterCombatManager.RotateTowarsTargetWhilstAttacking(aiCharacter);
+
             aiCharacter.characterAnimatorManager.UpdateAnimatorMovementParameters(0, 0, false);
             //Realizar un combo
 
@@ -30,18 +33,18 @@ namespace KC
             {
                 if(currentAttack.comboAction != null)
                 {
-                    hasPerformedCombo = true;
-                    currentAttack.comboAction.AttempToperformAction(aiCharacter);
+                    //hasPerformedCombo = true;
+                    //currentAttack.comboAction.AttempToperformAction(aiCharacter);
                 }
             }
+
+            if (aiCharacter.isPerformingAction)
+                return this;
 
             if (!hasPerformedAttack)
             {
 
                 if (aiCharacter.aICharacterCombatManager.actionRecoveryTimer > 0)
-                    return this;
-
-                if (aiCharacter.isPerformingAction)
                     return this;
 
                 PerformAttack(aiCharacter);
@@ -61,6 +64,14 @@ namespace KC
             hasPerformedAttack = true;
             currentAttack.AttempToperformAction(aiCharacter);
             aiCharacter.aICharacterCombatManager.actionRecoveryTimer = currentAttack.actionRecoveryTime;
+        }
+
+        protected override void ResetStateFlags(AICharacterManager aiCharacter)
+        {
+            base.ResetStateFlags(aiCharacter);
+
+            hasPerformedAttack = false;
+            hasPerformedCombo = false;
         }
     }
 }

@@ -11,6 +11,9 @@ namespace KC
         int vertical;
         int horizontal;
 
+        [Header("Flags")]
+        public bool applyRootMotion = false;
+
         [Header("Damage Animation")]
         public string hit_Forward_Medium_01 = "hit_Forward_Medium_01";
         public string hit_Backward_Medium_01 = "hit_Backward_Medium_01";
@@ -46,7 +49,7 @@ namespace KC
             bool canMove = false)
         {
             //Debug.Log("Reproduciendo la animacion: " + targetAnimation);
-            characterManager.applyRootMotion = applyRootMotion;
+            this.applyRootMotion = applyRootMotion;
             characterManager.animator.CrossFade(targetAnimation, 0.2f);
 
             ///<sumary>
@@ -58,8 +61,8 @@ namespace KC
             ///En resumen es una barrera para permitir o detectar ciertas acciones
             ///</sumary>
             characterManager.isPerformingAction = isPerformingAction;
-            characterManager.canRotate = canRotate;
-            characterManager.canMove = canMove;
+            characterManager.characterLocomotionManager.canRotate = canRotate;
+            characterManager.characterLocomotionManager.canMove = canMove;
 
             //Aca le decimos al servidor que vamos a realizar una accion
             characterManager.characterNetworkManager.NotifyTheServerOfActionAnimationServerRpc(NetworkManager.Singleton.LocalClientId, targetAnimation, applyRootMotion);
@@ -75,11 +78,11 @@ namespace KC
 
             characterManager.characterCombatManager.currentAttackType = attackType;
             characterManager.characterCombatManager.lastAttackAnimationPerformed = targetAnimation;
-            characterManager.applyRootMotion = applyRootMotion;
+            this.applyRootMotion = applyRootMotion;
             characterManager.animator.CrossFade(targetAnimation, 0.2f);
             characterManager.isPerformingAction = isPerformingAction;
-            characterManager.canRotate = canRotate;
-            characterManager.canMove = canMove;
+            characterManager.characterLocomotionManager.canRotate = canRotate;
+            characterManager.characterLocomotionManager.canMove = canMove;
 
             //Aca le decimos al servidor que vamos a realizar una accion
             characterManager.characterNetworkManager.NotifyTheServerOfAttackActionAnimationServerRpc(NetworkManager.Singleton.LocalClientId, targetAnimation, applyRootMotion);

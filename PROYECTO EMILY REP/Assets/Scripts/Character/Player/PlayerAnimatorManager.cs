@@ -13,7 +13,7 @@ namespace KC {
         private void OnAnimatorMove()
         {
           
-            if (player.applyRootMotion)
+            if (applyRootMotion)
             {
                 Vector3 velocity = player.animator.deltaPosition;
 

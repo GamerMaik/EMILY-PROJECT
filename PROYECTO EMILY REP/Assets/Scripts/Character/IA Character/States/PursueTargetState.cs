@@ -29,7 +29,8 @@ namespace KC
             aiCharacter.aICharacterLocomotionManager.RotateTowarsAgent(aiCharacter);
 
             //Si esta dentro del area de combate de un objetivo cambiamos al estilo de postura de combate
-
+            if (aiCharacter.aICharacterCombatManager.distanceFromTarget <= aiCharacter.navMeshAgent.stoppingDistance)
+                return SwitchState(aiCharacter, aiCharacter.combatStance);
             //Si el objetivo no esta dentro del area lo devolvemos a casa
 
 

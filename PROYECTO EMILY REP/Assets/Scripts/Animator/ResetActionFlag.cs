@@ -14,9 +14,9 @@ namespace KC
             }
             //Esta funcion se llama cuando se acaba la animacion y entra en este estado "EMPTY"
             character.isPerformingAction = false;
-            character.applyRootMotion = false;
-            character.canRotate = true;
-            character.canMove = true;
+            character.characterAnimatorManager.applyRootMotion = false;
+            character.characterLocomotionManager.canRotate = true;
+            character.characterLocomotionManager.canMove = true;
             character.characterLocomotionManager.isRolling = false;
             character.characterAnimatorManager.DisableCanDoCombo();
 

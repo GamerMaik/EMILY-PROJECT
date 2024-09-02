@@ -87,7 +87,7 @@ namespace KC
 
         private void HandleGroundedMovement()
         {
-            if (!player.canMove)
+            if (!player.characterLocomotionManager.canMove)
                 return;
 
             GetMovementsValues();
@@ -128,7 +128,7 @@ namespace KC
 
         private void HandleFreeFallMovement()
         {
-            if (!player.isGrounded)
+            if (!player.characterLocomotionManager.isGrounded)
             {
                 Vector3 freeFallDIrection;
                 freeFallDIrection = PlayerCamera.instance.transform.forward * PlayerInputManager.instance.vertical_Input;
@@ -148,7 +148,7 @@ namespace KC
             if (player.isDead.Value)
                 return;
 
-            if (!player.canRotate)
+            if (!player.characterLocomotionManager.canRotate)
                 return;
 
             if (player.playerNetworkManager.isLokedOn.Value)
@@ -279,7 +279,7 @@ namespace KC
             if (player.characterNetworkManager.isJumping.Value)
                 return;
 
-            if (!player.isGrounded)
+            if (!player.characterLocomotionManager.isGrounded)
                 return;
 
             player.playerAnimatorManager.PlayerTargetActionAnimation("Main_Jump_01", false);

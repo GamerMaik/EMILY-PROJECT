@@ -110,7 +110,7 @@ namespace KC
         }
         private void PerformActionAnimationFromServer(string animationID, bool apllyRootMotion)
         {
-            character.applyRootMotion = apllyRootMotion;
+            character.characterAnimatorManager.applyRootMotion = apllyRootMotion;
             character.animator.CrossFade(animationID, 0.2f);
         }
         #endregion
@@ -136,7 +136,7 @@ namespace KC
         }
         private void PerformAttackActionAnimationFromServer(string animationID, bool apllyRootMotion)
         {
-            character.applyRootMotion = apllyRootMotion;
+            character.characterAnimatorManager.applyRootMotion = apllyRootMotion;
             character.animator.CrossFade(animationID, 0.2f);
         }
 

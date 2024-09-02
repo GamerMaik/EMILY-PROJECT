@@ -21,6 +21,13 @@ namespace KC
         [Header("Attack Rotation Speed")]
         public float attackRotationSpeed = 25;
 
+        protected override void Awake()
+        {
+            base.Awake();
+
+            lookOnTransform = GetComponentInChildren<LookOnTransform>().transform;
+        }
+
         public void FindTargetViaLineOffSight(AICharacterManager aiCharacter)
         {
             if (currentTarget != null)
@@ -111,7 +118,8 @@ namespace KC
             }
 
         }
-        public void RotateTowadsAgent(AICharacterManager aiCharacter)
+
+        public void RotateTowardsAgent(AICharacterManager aiCharacter)
         {
             if (aiCharacter.aiCharacterNetworkManager.isMoving.Value)
             {
@@ -119,12 +127,12 @@ namespace KC
             }
         }
 
-        public void RotateTowarsTargetWhillstAttacking(AICharacterManager aICharacter)
+        public void RotateTowarsTargetWhilstAttacking(AICharacterManager aICharacter)
         {
             if (currentTarget == null)
-                return;
+                return; 
 
-            if (!aICharacter.canRotate)
+            if (!aICharacter.characterLocomotionManager.canRotate)
                 return;
 
             if (!aICharacter.isPerformingAction)

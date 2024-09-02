@@ -26,7 +26,7 @@ namespace KC
         protected bool hasRolledForComboChance = false;
 
         [Header("Engagement Distance")]
-        [SerializeField] protected float maximumEngagementDistance = 5; //la cantidad de distancia que debemos alejarnos para que la IA vuelva al estado de persecucion 
+        [SerializeField] public float maximumEngagementDistance = 5; //la cantidad de distancia que debemos alejarnos para que la IA vuelva al estado de persecucion 
 
         public override AIState Tick(AICharacterManager aiCharacter)
         {
@@ -42,7 +42,7 @@ namespace KC
                     aiCharacter.aICharacterCombatManager.PivotTowardsTarget(aiCharacter);
             }
 
-            aiCharacter.aICharacterCombatManager.RotateTowadsAgent(aiCharacter);
+            aiCharacter.aICharacterCombatManager.RotateTowardsAgent(aiCharacter);
 
             //Si el objetivo ya no se encuentra devolvemos a la IA al estado inactivo
             if (aiCharacter.aICharacterCombatManager.currentTarget == null)
@@ -74,7 +74,7 @@ namespace KC
         {
             potentialAttacks = new List<AICharacterAttackAction>();
 
-            foreach (var potentialAttack in potentialAttacks)
+            foreach (var potentialAttack in aiCharacterAttacks)
             {
                 if (potentialAttack.minimumAttackDistance > aiCharacter.aICharacterCombatManager.distanceFromTarget)
                     continue;
@@ -113,6 +113,7 @@ namespace KC
                     choosenAttack = attack;
                     previusAttack = choosenAttack;
                     hasAttack = true;
+                    return;
                 }
             }
 

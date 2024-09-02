@@ -3236,6 +3236,8 @@ MonoBehaviour:
   networkPositionVelocity: {x: 0, y: 0, z: 0}
   networkPositionSmoothTime: 0.1
   networkRotationSmoothTime: 0.1
+  isMoving:
+    m_InternalValue: 0
   horizontalMovement:
     m_InternalValue: 0
   verticalMovement:
@@ -3365,11 +3367,8 @@ MonoBehaviour:
   characterCombatManager: {fileID: 0}
   characterSoundFXManager: {fileID: 0}
   characterLocomotionManager: {fileID: 0}
+  characterGroup: 0
   isPerformingAction: 0
-  isGrounded: 1
-  applyRootMotion: 0
-  canRotate: 1
-  canMove: 1
   playerAnimatorManager: {fileID: 0}
   playerlocomotionManager: {fileID: 0}
   playerNetworkManager: {fileID: 0}
@@ -3389,10 +3388,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 017f9f8501bf231408be6c3329994a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastAttackAnimationPerformed: 
   currentTarget: {fileID: 0}
   currentAttackType: 0
   lookOnTransform: {fileID: 8495918239905427147}
   currentWeaponBeingUsed: {fileID: 0}
+  canComboWithMainHandWeapon: 0
 --- !u!114 &-7200672548341503885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3414,6 +3415,9 @@ MonoBehaviour:
   groundedYVelocity: -20
   fallStartYVelocity: -5
   isRolling: 0
+  canRotate: 1
+  canMove: 1
+  isGrounded: 1
   verticalMovement: 0
   horizontalMovement: 0
   moveAmount: 0
@@ -3458,7 +3462,7 @@ MonoBehaviour:
   currentLeftHandWeapon: {fileID: 11400000, guid: 953dca51d73a20447b14d575ba5fab30, type: 2}
   weaponsRightHandSlots:
   - {fileID: 11400000, guid: 953dca51d73a20447b14d575ba5fab30, type: 2}
-  - {fileID: 11400000, guid: 953dca51d73a20447b14d575ba5fab30, type: 2}
+  - {fileID: 11400000, guid: ed5d37e6e3c6ec74c881ee8799892eb5, type: 2}
   - {fileID: 11400000, guid: ed5d37e6e3c6ec74c881ee8799892eb5, type: 2}
   rightHandWeaponIndex: 0
   weaponsLeftHandSlots:
@@ -3496,6 +3500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa6450449680b074bbdc5a736f728ce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  applyRootMotion: 0
   hit_Forward_Medium_01: hit_Forward_Medium_01
   hit_Backward_Medium_01: hit_Backward_Medium_01
   hit_Left_Medium_01: hit_Left_Medium_01
