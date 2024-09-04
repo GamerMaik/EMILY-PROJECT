@@ -42,6 +42,10 @@ namespace KC
         [Header("Actions")]
         public WeaponItemActions oh_RB_Action;
         public WeaponItemActions oh_RT_Action; //Trigguer de accion para una mano
-        //Efectos de sonido de bloqueo
+
+        //Efectos de sonido armas o items
+        [Header("Whooshes")]
+        public AudioClip[] whooshes;
+
     }
 }

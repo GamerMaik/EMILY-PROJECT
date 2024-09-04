@@ -55,6 +55,10 @@ namespace KC
             if (!player.IsOwner)
                 return;
 
+            //Esto esta hecho para que no pueda cambiar de arma mientras el jugador esté muerto MMC
+            if (player.isDead.Value)
+                return;
+
             player.playerAnimatorManager.PlayerTargetActionAnimation("Swap_Right_Weapon_01", false, false, true, true);
 
             WeaponItem selectedWeapon = null;
@@ -137,6 +141,10 @@ namespace KC
         public void SwitchLeftWeapon()
         {
             if (!player.IsOwner)
+                return;
+
+            //Esto esta hecho para que no pueda cambiar de arma mientras el jugador esté muerto MMC
+            if (player.isDead.Value)
                 return;
 
             player.playerAnimatorManager.PlayerTargetActionAnimation("Swap_Left_Weapon_01", false, false, true, true);
@@ -225,11 +233,13 @@ namespace KC
             if (player.playerNetworkManager.isUsingRightHand.Value)
             {
                 rightWeaponManager.meleeDamageCollider.EnableDamageCollider();
+                player.characterSoundFXManager.PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(player.playerInventoryManager.currentRightHandWeapon.whooshes));
             }
             //Open Left Weapon damage collider
             else if (player.playerNetworkManager.isUsingLeftHand.Value)
             {
                 leftWeaponManager.meleeDamageCollider.EnableDamageCollider();
+                player.characterSoundFXManager.PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(player.playerInventoryManager.currentLeftHandWeapon.whooshes));
             }
 
             //Play whoosh Sfx

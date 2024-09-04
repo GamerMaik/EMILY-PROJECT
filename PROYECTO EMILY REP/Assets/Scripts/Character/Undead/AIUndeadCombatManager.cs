@@ -35,6 +35,7 @@ namespace KC
 
         public void OpenRightHandDamageCollider()
         {
+            aiCharacter.characterSoundFXManager.PlayAttackGrunt();
             rightHandDamageCollider.EnableDamageCollider();
         }
         public void DisableRightHandDamageCollider()
@@ -44,6 +45,7 @@ namespace KC
 
         public void OpenLeftHandDamageCollider()
         {
+            aiCharacter.characterSoundFXManager.PlayAttackGrunt();
             leftHandDamageCollider.EnableDamageCollider();
         }
         public void DisableLeftHandDamageCollider()

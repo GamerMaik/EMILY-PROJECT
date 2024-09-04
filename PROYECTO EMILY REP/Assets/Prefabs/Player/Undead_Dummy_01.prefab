@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3244276618
+  GlobalObjectIdHash: 3225830481
   InScenePlacedSourceGlobalObjectIdHash: 1808541841
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -486,6 +486,9 @@ MonoBehaviour:
   groundedYVelocity: -20
   fallStartYVelocity: -5
   isRolling: 0
+  canRotate: 1
+  canMove: 1
+  isGrounded: 1
 --- !u!114 &4661412549489092654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,10 +543,6 @@ MonoBehaviour:
   characterLocomotionManager: {fileID: 0}
   characterGroup: 1
   isPerformingAction: 0
-  isGrounded: 1
-  applyRootMotion: 0
-  canRotate: 1
-  canMove: 1
   aiCharacterNetworkManager: {fileID: 0}
   aICharacterCombatManager: {fileID: 0}
   aICharacterLocomotionManager: {fileID: 0}
@@ -565,6 +564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e0b2137cf65744695cd288aff6e2d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  applyRootMotion: 0
   hit_Forward_Medium_01: hit_Forward_Medium_01
   hit_Backward_Medium_01: hit_Backward_Medium_01
   hit_Left_Medium_01: hit_Left_Medium_01
@@ -619,6 +619,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76b8f2188a4a68428ff542e0ba77504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageGrunts:
+  - {fileID: 8300000, guid: 44699c46d86dc484daaa4767a8d864e6, type: 3}
+  - {fileID: 8300000, guid: f0ba0e6946bfc544eb641e9e35e8fc9c, type: 3}
+  - {fileID: 8300000, guid: 135516ab045af064fa53b7d3ca09ee26, type: 3}
+  - {fileID: 8300000, guid: cd864bc7362f1274f941c2a44fcede6c, type: 3}
+  attackGrunts:
+  - {fileID: 8300000, guid: e39bb1262cc38ac4aa021e9d874650bb, type: 3}
+  - {fileID: 8300000, guid: 30a80f26f9183a14dbc2a96ef45c22ae, type: 3}
+  - {fileID: 8300000, guid: 5bcc36a63bbfc934e9cb748be5910606, type: 3}
+  - {fileID: 8300000, guid: 9998f3d654f2b5547afabb125199a95d, type: 3}
+  - {fileID: 8300000, guid: 91a413ce27a9e594fa54e97c8176bf9e, type: 3}
 --- !u!114 &8964233349606413610
 MonoBehaviour:
   m_ObjectHideFlags: 0
