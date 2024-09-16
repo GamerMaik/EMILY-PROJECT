@@ -10,12 +10,8 @@ namespace KC
     {
         public static WorldAIManager instance;
 
-        [Header("Debug ")]
-        [SerializeField] bool despawnCharacters = false;
-        [SerializeField] bool respawnCharacters = false;
-
         [Header("Characters")]
-        [SerializeField] GameObject[] aiCharacters;
+        [SerializeField] List<AICharacterSpawner> aiCharacterSpawners;
         [SerializeField] List<GameObject> spawnedInCharacters; //Lista de los personajes que ya se generaron
 
         private void Awake()
@@ -30,46 +26,12 @@ namespace KC
             }
         }
 
-        private void Start()
+        public void SpawnCharacters(AICharacterSpawner aiCharacterSpawner)
         {
             if (NetworkManager.Singleton.IsServer)
             {
-                //Si es el servidor generamos todas las IA en la escena
-                StartCoroutine(WaitForSceneToLoadThenSpawnCharacters());
-            }
-        }
-        private void Update()
-        {
-            if (respawnCharacters)
-            {
-                respawnCharacters = false;
-                SpawnAllCharacters();
-            }
-
-            if (despawnCharacters)
-            {
-                despawnCharacters = false;
-                DespawnAllCharacters();
-            }
-        }
-
-        private IEnumerator WaitForSceneToLoadThenSpawnCharacters()
-        {
-            while (!SceneManager.GetActiveScene().isLoaded)
-            {
-                yield return null;
-            }
-
-            SpawnAllCharacters();
-        }
-
-        private void SpawnAllCharacters()
-        {
-            foreach (var character in aiCharacters)
-            {
-                GameObject instantiatedCharacter = Instantiate(character);
-                instantiatedCharacter.GetComponent<NetworkObject>().Spawn();
-                spawnedInCharacters.Add(instantiatedCharacter);
+                aiCharacterSpawners.Add(aiCharacterSpawner);
+                aiCharacterSpawner.AttemptToSpawnCharacter();
             }
         }
 
