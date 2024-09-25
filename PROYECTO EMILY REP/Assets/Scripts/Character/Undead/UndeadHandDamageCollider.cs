@@ -27,7 +27,6 @@ namespace KC
             damageEffect.fireDamage = fireDamage;
             damageEffect.holyDamage = holyDamage;
             damageEffect.contactPoint = contactPoint;
-            //damageEffect.lightningDamage = lightningDamage;
             damageEffect.angleHitFrom = Vector3.SignedAngle(undeadCharacter.transform.forward, damageTarget.transform.forward, Vector3.up);
 
 

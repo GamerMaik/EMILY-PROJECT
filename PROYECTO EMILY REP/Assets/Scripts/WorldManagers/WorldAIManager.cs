@@ -11,7 +11,6 @@ namespace KC
         public static WorldAIManager instance;
 
         [Header("Characters")]
-        [SerializeField] GameObject[] aiCharacters;
         [SerializeField] List<AICharacterSpawner> aiCharacterSpawners;
         [SerializeField] List<GameObject> spawnedInCharacters; //Lista de los personajes que ya se generaron
 
@@ -25,30 +24,7 @@ namespace KC
             {
                 Destroy(gameObject);
             }
-        }
-
-        //private void Start()
-        //{
-        //    if (NetworkManager.Singleton.IsServer)
-        //    {
-        //        StartCoroutine(WaitForSceneToLoadThenSpawnCharacter());
-        //    }
-        //}
-
-        private void Update()
-        {
-            
-        }
-
-        //private IEnumerator WaitForSceneToLoadThenSpawnCharacter()
-        //{
-        //    while (!SceneManager.GetActiveScene().isLoaded)
-        //    {
-        //        yield return null;
-        //    }
-
-        //    SpawnAllCharacter();
-        //}
+        } 
 
         public void SpawnCharacters(AICharacterSpawner aiCharacterSpawner)
         {

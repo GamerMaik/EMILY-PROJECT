@@ -85,6 +85,7 @@ namespace KC
         {
             base.OnNetworkSpawn();
 
+            animator.SetBool("IsMoving", characterNetworkManager.isMoving.Value);
             characterNetworkManager.isMoving.OnValueChanged += characterNetworkManager.OnIsMovingChanged;
         }
 

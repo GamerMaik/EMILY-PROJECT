@@ -63,7 +63,8 @@ namespace KC
             float viewableAngle = Vector3.Angle(characterTransform.forward, targetsDirection);
             Vector3 cross = Vector3.Cross(characterTransform.forward, targetsDirection);
 
-            if (cross.y <0) viewableAngle = -viewableAngle;
+            if (cross.y <0) 
+                viewableAngle = -viewableAngle;
             
             return viewableAngle;
         }

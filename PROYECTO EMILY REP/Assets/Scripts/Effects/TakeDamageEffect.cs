@@ -84,7 +84,7 @@ namespace KC {
                 finalDamageDealt = 1;
             }
 
-            Debug.Log("Final damage" + finalDamageDealt);
+            //Debug.Log("Final damage" + finalDamageDealt);
 
             character.characterNetworkManager.currentHealth.Value -= finalDamageDealt;
             

@@ -38,7 +38,7 @@ namespace KC
 
             if (!aiCharacter.aiCharacterNetworkManager.isMoving.Value)
             {
-                if(aiCharacter.aICharacterCombatManager.viewableAngle < -30 || aiCharacter.aICharacterCombatManager.viewableAngle > -30)
+                if(aiCharacter.aICharacterCombatManager.viewableAngle <- 30 || aiCharacter.aICharacterCombatManager.viewableAngle > -30)
                     aiCharacter.aICharacterCombatManager.PivotTowardsTarget(aiCharacter);
             }
 

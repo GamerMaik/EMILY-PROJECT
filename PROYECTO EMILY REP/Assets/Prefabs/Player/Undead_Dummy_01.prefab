@@ -335,8 +335,8 @@ GameObject:
   - component: {fileID: 244618687037664072}
   - component: {fileID: 4672690871424379051}
   - component: {fileID: 3069361277520809899}
-  - component: {fileID: 4661412549489092654}
   - component: {fileID: 3777949662992598387}
+  - component: {fileID: 4661412549489092654}
   - component: {fileID: 9059889645116409651}
   - component: {fileID: 4177275692785571413}
   - component: {fileID: 4358535851691687462}
@@ -389,7 +389,7 @@ Animator:
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
+  m_AnimatePhysics: 1
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -489,36 +489,6 @@ MonoBehaviour:
   canRotate: 1
   canMove: 1
   isGrounded: 1
---- !u!114 &4661412549489092654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 707189755431233896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 953ae31b19dd02d47931a96a5edbf395, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lastAttackAnimationPerformed: 
-  currentTarget: {fileID: 0}
-  currentAttackType: 0
-  lookOnTransform: {fileID: 0}
-  actionRecoveryTimer: 0
-  distanceFromTarget: 0
-  viewableAngle: 0
-  targetsDirection: {x: 0, y: 0, z: 0}
-  detectionRadius: 15
-  minimumFOV: -35
-  maximumFOV: 35
-  attackRotationSpeed: 25
-  rightHandDamageCollider: {fileID: 5123237438106684281}
-  leftHandDamageCollider: {fileID: 9134768055869721097}
-  baseDamage: 25
-  attack01DamageModifier: 1
-  attack02DamageModifier: 2
-  attack03DamageModifier: 1.5
 --- !u!114 &3777949662992598387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,6 +522,36 @@ MonoBehaviour:
   pursueTarget: {fileID: 11400000, guid: f630155a5fadd75468900a1a6cb7e21f, type: 2}
   combatStance: {fileID: 11400000, guid: 991239d32ca1b18479e1710cc038095a, type: 2}
   attack: {fileID: 11400000, guid: 698d40bbb2ce7a8499b96ad6be1221ff, type: 2}
+--- !u!114 &4661412549489092654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707189755431233896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953ae31b19dd02d47931a96a5edbf395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastAttackAnimationPerformed: 
+  currentTarget: {fileID: 0}
+  currentAttackType: 0
+  lookOnTransform: {fileID: 0}
+  actionRecoveryTimer: 0
+  distanceFromTarget: 0
+  viewableAngle: 0
+  targetsDirection: {x: 0, y: 0, z: 0}
+  detectionRadius: 15
+  minimumFOV: -35
+  maximumFOV: 35
+  attackRotationSpeed: 25
+  rightHandDamageCollider: {fileID: 5123237438106684281}
+  leftHandDamageCollider: {fileID: 9134768055869721097}
+  baseDamage: 25
+  attack01DamageModifier: 1
+  attack02DamageModifier: 2
+  attack03DamageModifier: 1.5
 --- !u!114 &9059889645116409651
 MonoBehaviour:
   m_ObjectHideFlags: 0

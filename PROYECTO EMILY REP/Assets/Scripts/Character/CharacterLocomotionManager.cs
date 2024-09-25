@@ -25,6 +25,7 @@ namespace KC
 
         protected virtual void Awake()
         {
+            //Debug.Log("Se tiene inicializado");
             character = GetComponent<CharacterManager>();
             HandleGrounCheck();
         }

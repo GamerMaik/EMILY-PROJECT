@@ -21,7 +21,7 @@ namespace KC
 
         public void PerformWeaponBasedAction(WeaponItemActions weaponAction, WeaponItem weaponPerformingAction)
         {
-            if (player.IsOwner)
+            if (player.IsOwner && !player.isDead.Value)
             {
                 //Realizar Accion
                 weaponAction.AttempToPerformAction(player, weaponPerformingAction);
