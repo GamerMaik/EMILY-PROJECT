@@ -6,6 +6,10 @@ namespace KC
     public class CharacterNetworkManager : NetworkBehaviour
     {
         CharacterManager character;
+
+        [Header("Active")]
+        public NetworkVariable<bool> isActive = new NetworkVariable<bool>(true, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+
         //Si eres dueño del objeto puedes cambiar su posicion y si no solo puedes verlo
         [Header("Position")]
         public NetworkVariable<Vector3> networkPosition = new NetworkVariable<Vector3>(Vector3.zero, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
@@ -87,6 +91,11 @@ namespace KC
         public void OnIsMovingChanged(bool oldStatus, bool newStatus)
         {
             character.animator.SetBool("IsMoving", isMoving.Value);
+        }
+
+        public virtual void OnIsActiveChanged(bool oldStatus, bool newStatus)
+        {
+            gameObject.SetActive(isActive.Value);
         }
 
         #region Action Animation

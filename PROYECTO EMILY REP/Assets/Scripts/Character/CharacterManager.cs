@@ -86,13 +86,17 @@ namespace KC
             base.OnNetworkSpawn();
 
             animator.SetBool("IsMoving", characterNetworkManager.isMoving.Value);
+            characterNetworkManager.OnIsActiveChanged(false, characterNetworkManager.isActive.Value);
+
             characterNetworkManager.isMoving.OnValueChanged += characterNetworkManager.OnIsMovingChanged;
+            characterNetworkManager.isActive.OnValueChanged += characterNetworkManager.OnIsActiveChanged;
         }
 
         public override void OnNetworkDespawn()
         {
             base.OnNetworkDespawn();
             characterNetworkManager.isMoving.OnValueChanged -= characterNetworkManager.OnIsMovingChanged;
+            characterNetworkManager.isActive.OnValueChanged -= characterNetworkManager.OnIsActiveChanged;
         }
 
         public virtual IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)
@@ -103,12 +107,12 @@ namespace KC
                 isDead.Value = true;
 
                 //Si no esta en el suelo podemos reproducir la animacion de muerte aerea
+                if (!manuallySelectDeathAnimation)
+                {
+                    characterAnimatorManager.PlayerTargetActionAnimation("Dead_01", true);
+                }
             }
 
-            if (!manuallySelectDeathAnimation)
-            {
-                characterAnimatorManager.PlayerTargetActionAnimation("Dead_01", true);
-            }
 
             //Si se quiere se reproduce un EFECTO DE SONIDO
 

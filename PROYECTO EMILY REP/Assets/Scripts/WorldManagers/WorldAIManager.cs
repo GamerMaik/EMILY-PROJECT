@@ -41,7 +41,7 @@ namespace KC
         //    {
         //        GameObject instantiatedCharacter = Instantiate(character);
         //        instantiatedCharacter.GetComponent<NetworkObject>().Spawn();
-        //        spawnedInCharacters.Add(instantiatedCharacter);
+        //        spawnedInObjects.Add(instantiatedCharacter);
         //    } 
         //}
 
