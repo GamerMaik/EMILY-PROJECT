@@ -39,6 +39,8 @@ namespace KC {
 
         public override void ProccessEffect(CharacterManager character)
         {
+            if (character.characterNetworkManager.isInvulnerable.Value)
+                return;
             base.ProccessEffect(character);
             //Si el presonaje está muerto no se procesa ningun efecto de daño
             if (character.isDead.Value)

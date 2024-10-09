@@ -40,5 +40,16 @@ namespace KC
                 }
             }
         }
+
+        public void EnableIsInvulnerable()
+        {
+            if (character.IsOwner)
+                character.characterNetworkManager.isInvulnerable.Value = true;
+        }
+        public void DisableIsInvulnerable()
+        {
+            if (character.IsOwner)
+                character.characterNetworkManager.isInvulnerable.Value = false;
+        }
     }
 }

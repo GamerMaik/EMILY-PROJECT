@@ -22,9 +22,13 @@ namespace KC
                 aiCharacter.navMeshAgent.enabled = true;
 
             //Si el objetivo está lejos del objetivo gira hacia el para atacarlo
-            if (aiCharacter.aICharacterCombatManager.viewableAngle < aiCharacter.aICharacterCombatManager.minimumFOV
-                || aiCharacter.aICharacterCombatManager.viewableAngle > aiCharacter.aICharacterCombatManager.maximumFOV)
-                aiCharacter.aICharacterCombatManager.PivotTowardsTarget(aiCharacter);
+            if (aiCharacter.aICharacterCombatManager.enablePivot)
+            {
+                if (aiCharacter.aICharacterCombatManager.viewableAngle < aiCharacter.aICharacterCombatManager.minimumFOV
+                    || aiCharacter.aICharacterCombatManager.viewableAngle > aiCharacter.aICharacterCombatManager.maximumFOV)
+                    aiCharacter.aICharacterCombatManager.PivotTowardsTarget(aiCharacter);
+            }
+
 
             aiCharacter.aICharacterLocomotionManager.RotateTowarsAgent(aiCharacter);
 

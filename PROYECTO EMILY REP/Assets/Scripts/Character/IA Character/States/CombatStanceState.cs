@@ -15,9 +15,9 @@ namespace KC
 
         [Header("Attacks")]
         public List<AICharacterAttackAction> aiCharacterAttacks; //lista de todos los posibles ataques
-        protected List<AICharacterAttackAction> potentialAttacks; //Lista de ataques seleccionados segun el momento
-        private AICharacterAttackAction choosenAttack;
-        private AICharacterAttackAction previusAttack;
+        [SerializeField] protected List<AICharacterAttackAction> potentialAttacks; //Lista de ataques seleccionados segun el momento
+        [SerializeField] private AICharacterAttackAction choosenAttack;
+        [SerializeField] private AICharacterAttackAction previusAttack;
         protected bool hasAttack = false;
 
         [Header("Combo")]
@@ -36,10 +36,13 @@ namespace KC
             if (!aiCharacter.navMeshAgent.enabled)
                 aiCharacter.navMeshAgent.enabled = true;
 
-            if (!aiCharacter.aiCharacterNetworkManager.isMoving.Value)
+            if (aiCharacter.aICharacterCombatManager.enablePivot)
             {
-                if(aiCharacter.aICharacterCombatManager.viewableAngle <- 30 || aiCharacter.aICharacterCombatManager.viewableAngle > -30)
-                    aiCharacter.aICharacterCombatManager.PivotTowardsTarget(aiCharacter);
+                if (!aiCharacter.aiCharacterNetworkManager.isMoving.Value)
+                {
+                    if (aiCharacter.aICharacterCombatManager.viewableAngle < -30 || aiCharacter.aICharacterCombatManager.viewableAngle > 30)
+                        aiCharacter.aICharacterCombatManager.PivotTowardsTarget(aiCharacter);
+                }
             }
 
             aiCharacter.aICharacterCombatManager.RotateTowardsAgent(aiCharacter);

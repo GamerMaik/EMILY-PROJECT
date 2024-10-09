@@ -9,6 +9,9 @@ namespace KC
         [Header("Action Recovery")]
         public float actionRecoveryTimer = 0;
 
+        [Header("Pivot")]
+        public bool enablePivot = true;
+
         [Header("Target Information")]
         public float distanceFromTarget;
         public float viewableAngle;
@@ -74,14 +77,17 @@ namespace KC
                             targetsDirection = targetCharacter.transform.position - transform.position;
                             viewableAngle = WorldUtilityManager.Instance.GetAngleOfTarget(transform, targetsDirection);
                             aiCharacter.characterCombatManager.SetTarget(targetCharacter);
-                            PivotTowardsTarget(aiCharacter);
+                            if (enablePivot)
+                            {
+                                PivotTowardsTarget(aiCharacter);
+                            }
                         }
                     }
                 }
             }
         }
 
-        public void PivotTowardsTarget(AICharacterManager aiCharacter)
+        public virtual void PivotTowardsTarget(AICharacterManager aiCharacter)
         {
             //Aca reproducimos la animacion de pivote dependiendo a la direccion del objetivo
             if (aiCharacter.isPerformingAction)
