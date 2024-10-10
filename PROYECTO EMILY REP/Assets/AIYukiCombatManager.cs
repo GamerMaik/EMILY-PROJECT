@@ -5,7 +5,7 @@ namespace KC
     public class AIYukiCombatManager : AICharacterCombatManager
     {
         [Header("Damage Collider")]
-        [SerializeField] YukiWeaponDamageCollider yukiSwordDamageCollider;
+        [SerializeField] XtremeWeaponDamageCollider yukiSwordDamageCollider;
 
         [Header("Damage")]
         [SerializeField] int baseDamage = 25;

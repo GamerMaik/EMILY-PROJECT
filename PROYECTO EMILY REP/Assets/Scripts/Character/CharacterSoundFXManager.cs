@@ -13,6 +13,9 @@ namespace KC
         [Header("Attack Grunts")]
         [SerializeField] protected AudioClip[] attackGrunts;
 
+        [Header("Foot Steps")]
+        public AudioClip[] footSteps;
+
         protected virtual void Awake()
         {
             audioSource = GetComponent<AudioSource>();
@@ -45,6 +48,12 @@ namespace KC
         {
             if(attackGrunts.Length>0)
                 PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(attackGrunts));
+        }
+
+        public virtual void PlayFootStep()
+        {
+            if (footSteps.Length > 0)
+                PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(footSteps));
         }
     }
 }
