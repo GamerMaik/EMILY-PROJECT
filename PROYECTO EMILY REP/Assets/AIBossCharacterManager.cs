@@ -8,13 +8,23 @@ namespace KC
     public class AIBossCharacterManager : AICharacterManager
     {
         public int bossID = 0;
-        [Header("Awake Status")]
-        public NetworkVariable<bool> hasBeenAwakened = new NetworkVariable<bool>(true, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-        public NetworkVariable<bool> hasBeenDefeated = new NetworkVariable<bool>(true, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+        [SerializeField] bool hasBeenDefeated = false;
+        [SerializeField] bool hasBeenAwakened = false;
         [SerializeField] List<FogWallInteractable> fogwalls;
-        [SerializeField] string sleepAnimation;
-        [SerializeField] string awakenAnimation;
 
+        [Header("Debug")]
+        [SerializeField] bool test = false;
+
+        protected override void Update()
+        {
+            base.Update();
+
+            if (test)
+            {
+                test = false;
+                WakeBoss();
+            }
+        }
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();
@@ -30,15 +40,15 @@ namespace KC
                 //Si los datos existen sobreescribimos dichos datos del jefe
                 else
                 {
-                    hasBeenDefeated.Value = WorldSaveGameManager.instance.currentCharacterData.bossesDefeated[bossID];
-                    hasBeenAwakened.Value = WorldSaveGameManager.instance.currentCharacterData.bossesAwakened[bossID];
+                    hasBeenDefeated = WorldSaveGameManager.instance.currentCharacterData.bossesDefeated[bossID];
+                    hasBeenAwakened = WorldSaveGameManager.instance.currentCharacterData.bossesAwakened[bossID];
 
                 }
 
                 StartCoroutine(GetFogWallsFromWorldObjectManager());
 
                 //Si el jefe a despertado habilitar niebla
-                if (hasBeenAwakened.Value)
+                if (hasBeenAwakened)
                 {
                     for (int i = 0; i < fogwalls.Count; i++)
                     {
@@ -47,7 +57,7 @@ namespace KC
                 }
 
                 //si el jefe a muerto desactivar la niebla 
-                if (hasBeenDefeated.Value)
+                if (hasBeenDefeated)
                 {
                     for (int i = 0; i < fogwalls.Count; i++)
                     {
@@ -87,7 +97,7 @@ namespace KC
                     characterAnimatorManager.PlayerTargetActionAnimation("Dead_01", true);
                 }
 
-                hasBeenDefeated.Value = true;
+                hasBeenDefeated = true;
 
                 //Si nuestros datos guardados no contienen informacion del jefe los agregaremos
                 if (!WorldSaveGameManager.instance.currentCharacterData.bossesAwakened.ContainsKey(bossID))
@@ -117,7 +127,7 @@ namespace KC
 
         public void WakeBoss()
         {
-            hasBeenAwakened.Value = true;
+            hasBeenAwakened = true;
 
             if (!WorldSaveGameManager.instance.currentCharacterData.bossesAwakened.ContainsKey(bossID))
             {
