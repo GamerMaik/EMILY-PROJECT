@@ -126,9 +126,8 @@ namespace KC
 
         protected virtual void IgnoreMyOwnColliders()
         {
-            Collider characterControllersCollider = GetComponent<Collider>(); 
+            Collider characterControllersCollider = GetComponent<Collider>();
             Collider[] damageableCharacterColliders = GetComponentsInChildren<Collider>();
-
             List<Collider> ignoreColliders = new List<Collider>();
 
 
