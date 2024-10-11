@@ -13,7 +13,7 @@ namespace KC
         public NavMeshAgent navMeshAgent;
 
         [Header("Current State")]
-        [SerializeField] AIState currentState;
+        [SerializeField] protected AIState currentState;
 
         [Header("States")]
         public IdleState idle;
@@ -37,10 +37,8 @@ namespace KC
             //Debug.Log(navMeshAgent != null ? "NavMeshAgent asignado correctamente" : "NavMeshAgent es null");
 
             //Se usa una copia del scriptable object, para que el original no se modifique
-            idle = Instantiate(idle);
-            pursueTarget = Instantiate(pursueTarget);
 
-            currentState = idle;
+
         }
 
         protected override void Update()
@@ -48,6 +46,18 @@ namespace KC
             base.Update();
 
             aICharacterCombatManager.HandleActionRecovery(this);
+        }
+
+        public override void OnNetworkSpawn()
+        {
+            base.OnNetworkSpawn();
+
+            if (IsOwner)
+            {
+                idle = Instantiate(idle);
+                pursueTarget = Instantiate(pursueTarget);
+                currentState = idle;
+            }
         }
 
         protected override void FixedUpdate()

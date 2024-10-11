@@ -11,6 +11,8 @@ namespace KC
         [SerializeField] XtremeWeaponDamageCollider xtremeDamageCollider;
         [SerializeField] XtremeStompCollider stompCollider;
 
+
+
         public float stompAttackRadius = 1.5f;
 
         [Header("Damage")]

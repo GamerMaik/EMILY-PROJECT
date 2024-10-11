@@ -1377,7 +1377,7 @@ MonoBehaviour:
   stompCollider: {fileID: 7818292041527705779}
   stompAttackRadius: 1.5
   baseDamage: 25
-  attack01DamageModifier: 1
+  stompAttack: 25
   attack02DamageModifier: 1.5
   attack03DamageModifier: 1.8
   attack04DamageModifier: 4
@@ -1417,10 +1417,14 @@ MonoBehaviour:
   combatStance: {fileID: 11400000, guid: 4c7da4d94a1597e419d83d76e50cfd5e, type: 2}
   attack: {fileID: 11400000, guid: 1a75d9c81af16004bac5c7c4297aab80, type: 2}
   bossID: 0
-  hasBeenDefeated: 0
-  hasBeenAwakened: 0
+  hasBeenDefeated:
+    m_InternalValue: 1
+  hasBeenAwakened:
+    m_InternalValue: 0
   fogwalls: []
-  test: 0
+  sleepAnimation: Sleep_01
+  awakenAnimation: Awaken_01
+  sleepState: {fileID: 11400000, guid: 2549359c56a7395458ed118d769fe44f, type: 2}
   xtremeSoundFXManager: {fileID: 0}
   xtremeCombatManager: {fileID: 0}
 --- !u!114 &1157405889953840281
