@@ -15,6 +15,9 @@ namespace KC
         [SerializeField] Image rightWeaponQuickSlotIcon;
         [SerializeField] Image leftWeaponQuickSlotIcon;
 
+        [Header("Boss Health Bar")]
+        public Transform bossHealthBarParent;
+        public GameObject bossHealthBarObject;
         public void RefreshHUD()
         {
             healthBar.gameObject.SetActive(false);

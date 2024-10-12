@@ -1190,7 +1190,7 @@ GameObject:
   - component: {fileID: 1301694212902521265}
   - component: {fileID: 6058146821420835564}
   - component: {fileID: 5884611023940434953}
-  - component: {fileID: 1865161670542395258}
+  - component: {fileID: -6412341876364603788}
   - component: {fileID: 5100229181370038990}
   - component: {fileID: 2186970205340145718}
   - component: {fileID: 7888538893632008914}
@@ -1271,7 +1271,7 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &1865161670542395258
+--- !u!114 &-6412341876364603788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1280,7 +1280,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3004574767744347735}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19ea8a1a0511ec4ab0d942c39577495, type: 3}
+  m_Script: {fileID: 11500000, guid: ecb8fc690939c984da42fd394e885617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isActive:
@@ -1407,6 +1407,7 @@ MonoBehaviour:
   characterLocomotionManager: {fileID: 0}
   characterGroup: 1
   isPerformingAction: 0
+  characterName: XTREME - El Destructor Iterativo
   aiCharacterNetworkManager: {fileID: 0}
   aICharacterCombatManager: {fileID: 0}
   aICharacterLocomotionManager: {fileID: 0}
@@ -1417,6 +1418,10 @@ MonoBehaviour:
   combatStance: {fileID: 11400000, guid: 4c7da4d94a1597e419d83d76e50cfd5e, type: 2}
   attack: {fileID: 11400000, guid: 1a75d9c81af16004bac5c7c4297aab80, type: 2}
   bossID: 0
+  bossIntroClip: {fileID: 8300000, guid: b231b29dc68d38f478d5adfb0e498f4b, type: 3}
+  bossBattleLoopClip: {fileID: 8300000, guid: a1e0fef46737a4548b749a46f39bbe22, type: 3}
+  bosFightIsActive:
+    m_InternalValue: 0
   hasBeenDefeated:
     m_InternalValue: 1
   hasBeenAwakened:
@@ -1424,6 +1429,9 @@ MonoBehaviour:
   fogwalls: []
   sleepAnimation: Sleep_01
   awakenAnimation: Awaken_01
+  minimumHealthPorcentageToShift: 50
+  phaseShiftAnimation: Phase_Change_01
+  phase02CombatStanceState: {fileID: 11400000, guid: 03d3439d8db0d034a873531a31a39b8d, type: 2}
   sleepState: {fileID: 11400000, guid: 2549359c56a7395458ed118d769fe44f, type: 2}
   xtremeSoundFXManager: {fileID: 0}
   xtremeCombatManager: {fileID: 0}

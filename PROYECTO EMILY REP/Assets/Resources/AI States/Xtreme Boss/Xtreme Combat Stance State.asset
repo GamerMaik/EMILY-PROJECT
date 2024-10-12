@@ -18,7 +18,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6ffe8d4025febf049b4d23cdf654d0bd, type: 2}
   - {fileID: 11400000, guid: aa7ae3dc8c25e8241819242c29fadae5, type: 2}
   - {fileID: 11400000, guid: 09e7fd64d1ceae74f95c32119d68857c, type: 2}
-  potentialAttacks: []
+  potentialAttacks:
+  - {fileID: 11400000, guid: d557a6aaf7c380e4c8c8c8320d448311, type: 2}
+  - {fileID: 11400000, guid: 09e7fd64d1ceae74f95c32119d68857c, type: 2}
   choosenAttack: {fileID: 0}
   previusAttack: {fileID: 0}
   canPerformCombo: 0

@@ -966,6 +966,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5ed176f89f549d24a83fa420c256201e, type: 3}
   - {fileID: 8300000, guid: 0e1457ebf7dc95b4db34ba2fa89929fc, type: 3}
   attackGrunts: []
+  footSteps: []
 --- !u!114 &2925123160546925792
 MonoBehaviour:
   m_ObjectHideFlags: 0

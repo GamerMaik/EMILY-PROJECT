@@ -3,6 +3,7 @@ using Unity.Netcode;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 namespace KC
 {
@@ -12,7 +13,10 @@ namespace KC
 
         [Header("Characters")]
         [SerializeField] List<AICharacterSpawner> aiCharacterSpawners;
-        [SerializeField] List<GameObject> spawnedInCharacters; //Lista de los personajes que ya se generaron
+        [SerializeField] List<AICharacterManager> spawnedInCharacters;
+
+        [Header("Bosses")]
+        [SerializeField] List<AIBossCharacterManager> spawnedInBosses;
 
         private void Awake()
         {
@@ -35,15 +39,27 @@ namespace KC
             }
         }
 
-        //private void SpawnAllCharacter()
-        //{
-        //    foreach (var character in aiCharacters)
-        //    {
-        //        GameObject instantiatedCharacter = Instantiate(character);
-        //        instantiatedCharacter.GetComponent<NetworkObject>().Spawn();
-        //        spawnedInObjects.Add(instantiatedCharacter);
-        //    } 
-        //}
+        public void AddCharacterToSpawnedCharacterList(AICharacterManager character)
+        {
+            if (spawnedInCharacters.Contains(character))
+                return;
+
+            spawnedInCharacters.Add(character);
+
+            AIBossCharacterManager bossCharacter = character as AIBossCharacterManager;
+            if (bossCharacter != null)
+            {
+                if (spawnedInBosses.Contains(bossCharacter))
+                    return;
+
+                spawnedInBosses.Add(bossCharacter);
+            }
+        }
+
+        public AIBossCharacterManager GetBossCharacterByID(int ID)
+        {
+            return spawnedInBosses.FirstOrDefault(boss => boss.bossID == ID);
+        }
 
         private void DespawnAllCharacters()
         {

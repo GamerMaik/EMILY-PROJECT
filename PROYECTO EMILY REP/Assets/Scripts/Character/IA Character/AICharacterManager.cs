@@ -5,6 +5,9 @@ namespace KC
 {
     public class AICharacterManager : CharacterManager
     {
+        [Header("Character Name")]
+        public string characterName = "";
+
         [HideInInspector] public AICharacterNetworkManager aiCharacterNetworkManager;
         [HideInInspector] public AICharacterCombatManager aICharacterCombatManager;
         [HideInInspector] public AICharacterLocomotionManager aICharacterLocomotionManager;
@@ -56,10 +59,19 @@ namespace KC
             {
                 idle = Instantiate(idle);
                 pursueTarget = Instantiate(pursueTarget);
+                combatStance = Instantiate(combatStance);
+                attack = Instantiate(attack);
                 currentState = idle;
             }
+
+            aiCharacterNetworkManager.currentHealth.OnValueChanged += aiCharacterNetworkManager.CheckHP;
         }
 
+        public override void OnNetworkDespawn()
+        {
+            base.OnNetworkDespawn();
+            aiCharacterNetworkManager.currentHealth.OnValueChanged -= aiCharacterNetworkManager.CheckHP;
+        }
         protected override void FixedUpdate()
         {
             base.FixedUpdate();

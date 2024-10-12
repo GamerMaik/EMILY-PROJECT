@@ -7,11 +7,17 @@ namespace KC
 {
     public class PlayerUIPopUpManager : MonoBehaviour
     {
-        [Header("You Died PopUP")]
+        [Header("You Died Pop UP")]
         [SerializeField] GameObject youDeadPopUpGameObject;
         [SerializeField] TextMeshProUGUI youDiedPopUpBackgroundText;
         [SerializeField] TextMeshProUGUI youDiedPopUpText;
         [SerializeField] CanvasGroup youDiedCanvasGroup; //Nos permite configurar la transparencia para que se desvanezca con el tiempo
+
+        [Header("Boss Defeated Pop UP")]
+        [SerializeField] GameObject bossDefeatedPopUpGameObject;
+        [SerializeField] TextMeshProUGUI bossDefeatedPopUpBackgroundText;
+        [SerializeField] TextMeshProUGUI bossDefeatedPopUpText;
+        [SerializeField] CanvasGroup bossDefeatedCanvasGroup;
 
         public void SendYouDiedPopUp()
         {
@@ -22,6 +28,19 @@ namespace KC
             StartCoroutine(StrechPopUpTextOverTime(youDiedPopUpBackgroundText,8 , 16f));
             StartCoroutine(FadeInPopUpTextOverTime(youDiedCanvasGroup, 5));
             StartCoroutine(WaithThenFadeOutPopUpOverTime(youDiedCanvasGroup, 2 , 5));
+
+        }
+
+        public void SendbBossDefeatedPopUp(string bossDefeatedMessage)
+        {
+            //Se puede activar un post procesado aca en un futuro
+            bossDefeatedPopUpText.text = bossDefeatedMessage;
+            bossDefeatedPopUpBackgroundText.text = bossDefeatedMessage;
+            bossDefeatedPopUpGameObject.SetActive(true);
+            bossDefeatedPopUpBackgroundText.characterSpacing = 0;
+            StartCoroutine(StrechPopUpTextOverTime(bossDefeatedPopUpText, 8, 16f));
+            StartCoroutine(FadeInPopUpTextOverTime(bossDefeatedCanvasGroup, 5));
+            StartCoroutine(WaithThenFadeOutPopUpOverTime(bossDefeatedCanvasGroup, 2, 5));
 
         }
 

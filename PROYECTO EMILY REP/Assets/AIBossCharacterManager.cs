@@ -7,14 +7,25 @@ namespace KC
 {
     public class AIBossCharacterManager : AICharacterManager
     {
-        [Header("Status")]
         public int bossID = 0;
+
+        [Header("Music")]
+        [SerializeField] AudioClip bossIntroClip;
+        [SerializeField] AudioClip bossBattleLoopClip;
+
+        [Header("Status")]
+        public NetworkVariable<bool> bosFightIsActive = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
         public NetworkVariable<bool> hasBeenDefeated = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
         public NetworkVariable<bool> hasBeenAwakened = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
         [SerializeField] List<FogWallInteractable> fogwalls;
         [SerializeField] string sleepAnimation;
         [SerializeField] string awakenAnimation;
+
+        [Header("Phase Shift")]
+        public float minimumHealthPorcentageToShift = 50; 
+        [SerializeField] string phaseShiftAnimation = "Phase_Change_01";
+        [SerializeField] CombatStanceState phase02CombatStanceState;
 
         [Header("States")]
         [SerializeField] BossSleepState sleepState;
@@ -23,16 +34,18 @@ namespace KC
         protected override void Awake()
         {
             base.Awake();
-
-           
         }
 
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();
 
+            bosFightIsActive.OnValueChanged += OnBossFightActiveChanged;
+            OnBossFightActiveChanged(false, bosFightIsActive.Value);
+
             if (IsOwner)
             {
+
                 sleepState = Instantiate(sleepState);
                 currentState = sleepState;
             }
@@ -81,6 +94,12 @@ namespace KC
             }
         }
 
+        public override void OnNetworkDespawn()
+        {
+            base.OnNetworkDespawn();
+
+            bosFightIsActive.OnValueChanged -= OnBossFightActiveChanged;
+        }
         private IEnumerator GetFogWallsFromWorldObjectManager()
         {
             while (WorldObjectManager.instance.fogWalls.Count == 0)
@@ -98,10 +117,18 @@ namespace KC
 
         public override IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)
         {
+            PlayerUIManager.instance.playerUIPopUpManager.SendbBossDefeatedPopUp("EN HORA BUENA");
+
             if (IsOwner)
             {
                 characterNetworkManager.currentHealth.Value = 0;
                 isDead.Value = true;
+                bosFightIsActive.Value = false;
+
+                foreach (var fogwall in fogwalls)
+                {
+                    fogwall.isActive.Value = false;
+                }
 
                 //Si no esta en el suelo podemos reproducir la animacion de muerte aerea
 
@@ -147,6 +174,8 @@ namespace KC
                     characterAnimatorManager.PlayerTargetActionAnimation(awakenAnimation, true);
                 }
 
+                bosFightIsActive.Value = true;
+
                 hasBeenAwakened.Value = true;
                 currentState = idle;
                 if (!WorldSaveGameManager.instance.currentCharacterData.bossesAwakened.ContainsKey(bossID))
@@ -164,6 +193,32 @@ namespace KC
                     fogwalls[i].isActive.Value = true;
                 }               
             }
+        }
+
+        private void OnBossFightActiveChanged(bool oldStatus, bool newStatus)
+        {
+            if (bosFightIsActive.Value)
+            {
+                WorldSoundFXManager.instance.PlayBossTrack(bossIntroClip, bossBattleLoopClip);
+
+                GameObject bossHealthBar =
+                Instantiate(PlayerUIManager.instance.playerUIHudManager.bossHealthBarObject, PlayerUIManager.instance.playerUIHudManager.bossHealthBarParent);
+
+                UI_Boss_HP_Bar bossHPBar = bossHealthBar.GetComponentInChildren<UI_Boss_HP_Bar>();
+                bossHPBar.EnableBossHPBar(this);
+            }
+            else
+            {
+                WorldSoundFXManager.instance.StopBossMusic();
+            }
+            
+        }
+
+        public void PhaseShift()
+        {
+            characterAnimatorManager.PlayerTargetActionAnimation(phaseShiftAnimation, true);
+            combatStance = Instantiate(phase02CombatStanceState);
+            currentState = combatStance;
         }
     }
 }
