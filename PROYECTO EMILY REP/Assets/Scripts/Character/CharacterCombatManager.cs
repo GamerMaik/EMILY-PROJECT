@@ -18,7 +18,10 @@ namespace KC
 
         [Header("Look On Transform")]
         public Transform lookOnTransform;
-        
+
+        [Header("Attack Flags")]
+        public bool canPerformRollingAttack = false;
+        public bool canPerformBackStepAttack = false;
 
         protected virtual void Awake()
         {
@@ -50,6 +53,35 @@ namespace KC
         {
             if (character.IsOwner)
                 character.characterNetworkManager.isInvulnerable.Value = false;
+        }
+        public void EnableCanDoRollingAttack()
+        {
+            if (character.IsOwner)
+                canPerformRollingAttack = true;
+        }
+        public void DisableCanDoRollingAttack()
+        {
+            if (character.IsOwner)
+                canPerformRollingAttack = false;
+        }
+        public void EnableCanDoBackstepAttack()
+        {
+            if (character.IsOwner)
+                canPerformBackStepAttack = true;
+        }
+        public void DisableCanDoBackstepAttack()
+        {
+            if (character.IsOwner)
+                canPerformBackStepAttack = false;
+        }
+        public virtual void EnableCanDoCombo()
+        {
+
+        }
+
+        public virtual void DisableCanDoCombo()
+        {
+
         }
     }
 }

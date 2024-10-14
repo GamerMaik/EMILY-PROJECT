@@ -406,9 +406,27 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""que RB"",
+                    ""type"": ""Button"",
+                    ""id"": ""4d6ab796-1510-4efc-a6d3-82702a2b512f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""RT"",
                     ""type"": ""Button"",
                     ""id"": ""106fe4a8-7ddd-41fd-89f8-f2900a614921"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""queRT"",
+                    ""type"": ""Button"",
+                    ""id"": ""6d66b88b-5b16-47f9-a9dc-1fcc57426ac4"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -523,6 +541,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""82b24c6e-bf92-40c6-8e7c-53adedc364a2"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""que RB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""20026cc0-df70-447e-9c1e-15d37235ee3a"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
@@ -551,6 +580,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RT"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b373f090-876e-47d9-89ea-d4556b008587"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""queRT"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -660,7 +700,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActions_Dodge = m_PlayerActions.FindAction("Dodge", throwIfNotFound: true);
         m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
         m_PlayerActions_RB = m_PlayerActions.FindAction("RB", throwIfNotFound: true);
+        m_PlayerActions_queRB = m_PlayerActions.FindAction("que RB", throwIfNotFound: true);
         m_PlayerActions_RT = m_PlayerActions.FindAction("RT", throwIfNotFound: true);
+        m_PlayerActions_queRT = m_PlayerActions.FindAction("queRT", throwIfNotFound: true);
         m_PlayerActions_HoldAlt = m_PlayerActions.FindAction("Hold Alt", throwIfNotFound: true);
         m_PlayerActions_HoldRT = m_PlayerActions.FindAction("Hold RT", throwIfNotFound: true);
         m_PlayerActions_Sprint = m_PlayerActions.FindAction("Sprint", throwIfNotFound: true);
@@ -959,7 +1001,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Dodge;
     private readonly InputAction m_PlayerActions_Jump;
     private readonly InputAction m_PlayerActions_RB;
+    private readonly InputAction m_PlayerActions_queRB;
     private readonly InputAction m_PlayerActions_RT;
+    private readonly InputAction m_PlayerActions_queRT;
     private readonly InputAction m_PlayerActions_HoldAlt;
     private readonly InputAction m_PlayerActions_HoldRT;
     private readonly InputAction m_PlayerActions_Sprint;
@@ -975,7 +1019,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Dodge => m_Wrapper.m_PlayerActions_Dodge;
         public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
         public InputAction @RB => m_Wrapper.m_PlayerActions_RB;
+        public InputAction @queRB => m_Wrapper.m_PlayerActions_queRB;
         public InputAction @RT => m_Wrapper.m_PlayerActions_RT;
+        public InputAction @queRT => m_Wrapper.m_PlayerActions_queRT;
         public InputAction @HoldAlt => m_Wrapper.m_PlayerActions_HoldAlt;
         public InputAction @HoldRT => m_Wrapper.m_PlayerActions_HoldRT;
         public InputAction @Sprint => m_Wrapper.m_PlayerActions_Sprint;
@@ -1002,9 +1048,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @RB.started += instance.OnRB;
             @RB.performed += instance.OnRB;
             @RB.canceled += instance.OnRB;
+            @queRB.started += instance.OnQueRB;
+            @queRB.performed += instance.OnQueRB;
+            @queRB.canceled += instance.OnQueRB;
             @RT.started += instance.OnRT;
             @RT.performed += instance.OnRT;
             @RT.canceled += instance.OnRT;
+            @queRT.started += instance.OnQueRT;
+            @queRT.performed += instance.OnQueRT;
+            @queRT.canceled += instance.OnQueRT;
             @HoldAlt.started += instance.OnHoldAlt;
             @HoldAlt.performed += instance.OnHoldAlt;
             @HoldAlt.canceled += instance.OnHoldAlt;
@@ -1042,9 +1094,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @RB.started -= instance.OnRB;
             @RB.performed -= instance.OnRB;
             @RB.canceled -= instance.OnRB;
+            @queRB.started -= instance.OnQueRB;
+            @queRB.performed -= instance.OnQueRB;
+            @queRB.canceled -= instance.OnQueRB;
             @RT.started -= instance.OnRT;
             @RT.performed -= instance.OnRT;
             @RT.canceled -= instance.OnRT;
+            @queRT.started -= instance.OnQueRT;
+            @queRT.performed -= instance.OnQueRT;
+            @queRT.canceled -= instance.OnQueRT;
             @HoldAlt.started -= instance.OnHoldAlt;
             @HoldAlt.performed -= instance.OnHoldAlt;
             @HoldAlt.canceled -= instance.OnHoldAlt;
@@ -1113,7 +1171,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnDodge(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnRB(InputAction.CallbackContext context);
+        void OnQueRB(InputAction.CallbackContext context);
         void OnRT(InputAction.CallbackContext context);
+        void OnQueRT(InputAction.CallbackContext context);
         void OnHoldAlt(InputAction.CallbackContext context);
         void OnHoldRT(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);

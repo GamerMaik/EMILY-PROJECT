@@ -87,12 +87,15 @@ namespace KC
 
         private void HandleGroundedMovement()
         {
+            if (player.characterLocomotionManager.canMove || player.playerlocomotionManager.canRotate)
+            {
+                GetMovementsValues();
+            }
+
             if (!player.characterLocomotionManager.canMove)
                 return;
 
-            GetMovementsValues();
-            
-            //El movimiento se basa en la perspectiva de la camara y nuestras entradas de movimiento
+                //El movimiento se basa en la perspectiva de la camara y nuestras entradas de movimiento
             moveDirection = PlayerCamera.instance.transform.forward *  verticalMovement;
             moveDirection = moveDirection + PlayerCamera.instance.transform.right * horizontalMovement;
 

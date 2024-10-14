@@ -2998,7 +2998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 168637014554487918, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 193.5
       objectReference: {fileID: 0}
     - target: {fileID: 1154500672111344805, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3186,7 +3186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5293469708132041538, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 193.5
       objectReference: {fileID: 0}
     - target: {fileID: 5469865378797995319, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
       propertyPath: m_Pivot.x
@@ -4448,6 +4448,10 @@ PrefabInstance:
     - target: {fileID: 6347419530937948505, guid: 02e0ae8bf6ca74d4e9a359cbda185a7d, type: 3}
       propertyPath: m_Name
       value: Player Camera (Left & Right)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7290819740378893617, guid: 02e0ae8bf6ca74d4e9a359cbda185a7d, type: 3}
+      propertyPath: cameraSmoothSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7290819740378893617, guid: 02e0ae8bf6ca74d4e9a359cbda185a7d, type: 3}
       propertyPath: setCameraHeightSpeed

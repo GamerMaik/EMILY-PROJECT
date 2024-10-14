@@ -14,7 +14,7 @@ namespace KC
 
         [Header("Camera Settings")]
         [Tooltip("Mientras mayor sea el numero, más tiempo le toma a la camara alcanzar al personaje")]
-        private float cameraSmoothSpeed = 1; //Mientras mayor sea el numero, más tiempo le toma a la camara alcanzar al personaje
+        [SerializeField] float cameraSmoothSpeed = 1; //Mientras mayor sea el numero, más tiempo le toma a la camara alcanzar al personaje
         [SerializeField] float leftAndRightRotationSpeed = 30;
         [SerializeField] float upAndDownRotationSpeed = 30;
         [SerializeField] float minimumPivot = -30; //El punto más bajo que puedes mirar

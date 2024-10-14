@@ -32,12 +32,20 @@ namespace KC
         public float heavy_Attack_02_Modifier = 1.6f;
         public float charged_Attack_01_Modifier = 2.0f;
         public float charged_Attack_02_Modifier = 2.2f;
+        public float running_Attack_01_Modifier = 1.1f;
+        public float rolling_Attack_01_Modifier = 1.2f;
+        public float backstep_Attack_01_Modifier = 1.1f;
         //Modificadores de armas
         //Efectos de arama para criticos
 
         [Header("Stamina Costs Modifiers")]
         public int baseStaminaCost = 20;
-        public float lightAttackStaminaCostMultiplier = 1;
+        public float lightAttackStaminaCostMultiplier = 1.0f;
+        public float heavyAttackStaminaCostMultiplier = 1.3f;
+        public float chargedAttackStaminaCostMultiplier = 1.5f;
+        public float runningAttackStaminaCostMultiplier = 1.1f;
+        public float rollingAttackStaminaCostMultiplier = 1.2f;
+        public float backstepAttackStaminaCostMultiplier = 1.1f;
 
         [Header("Actions")]
         public WeaponItemActions oh_RB_Action;

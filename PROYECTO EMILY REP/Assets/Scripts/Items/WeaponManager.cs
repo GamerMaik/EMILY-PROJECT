@@ -29,6 +29,10 @@ namespace KC
 
             meleeDamageCollider.charged_Attack_01_Modifier = weapon.charged_Attack_01_Modifier;
             meleeDamageCollider.charged_Attack_02_Modifier = weapon.charged_Attack_02_Modifier;
+
+            meleeDamageCollider.running_Attack_01_Modifier = weapon.running_Attack_01_Modifier;
+            meleeDamageCollider.rolling_Attack_01_Modifier = weapon.rolling_Attack_01_Modifier;
+            meleeDamageCollider.backstep_Attack_01_Modifier = weapon.backstep_Attack_01_Modifier;
         }
     }
 }

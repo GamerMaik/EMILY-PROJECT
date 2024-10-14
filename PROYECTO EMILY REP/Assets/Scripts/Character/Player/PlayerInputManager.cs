@@ -43,6 +43,13 @@ namespace KC
         [Header("Switch Armament")]
         [SerializeField] bool switch_Right_Weapon_Input = false;
         [SerializeField] bool switch_Left_Weapon_Input = false;
+
+        [Header("Qued Inputs")]
+        [SerializeField] bool input_Que_Is_Active = false;
+        [SerializeField] float default_Que_Input_Time = 0.35f;
+        [SerializeField] float que_Input_Timer = 0;
+        [SerializeField] bool que_RB_Input = false;
+        [SerializeField] bool que_RT_Input = false;
         #endregion
 
         private void Awake()
@@ -129,7 +136,10 @@ namespace KC
                 playerControls.PlayerActions.Sprint.performed += i => sprint_Input = true;
                 playerControls.PlayerActions.Sprint.canceled += i => sprint_Input = false;
 
-                
+                //Qued inputs
+                playerControls.PlayerActions.queRB.performed += i => QueInput(ref que_RB_Input);
+                playerControls.PlayerActions.queRT.performed += i => QueInput(ref que_RT_Input);
+
             }
             playerControls.Enable();
         }
@@ -170,6 +180,7 @@ namespace KC
             HandleChargeRTInput();
             HandleSwitchRightWeaponInput();
             HandleSwitchLeftWeaponInput();
+            HandleQuedInputs();
         }
 
         #region Look On
@@ -399,6 +410,55 @@ namespace KC
             }
         }
         #endregion
+
+        private void QueInput(ref bool quedInput)
+        {
+            que_RB_Input = false;
+            que_RT_Input = false;
+
+            //Realizamos una comprobacion para saber si tenemos una pantalla abierta
+
+            if(player.isPerformingAction || player.playerNetworkManager.isJumping.Value)
+            {
+                quedInput = true;
+                que_Input_Timer = default_Que_Input_Time;
+                input_Que_Is_Active = true;
+
+            }
+        }
+
+        private void ProcessQuedInputs()
+        {
+            if (player.isDead.Value)
+                return;
+
+            if (que_RB_Input)
+                RB_Input = true;
+
+            if (que_RT_Input)
+                RT_Input = true;
+        }
+
+        private void HandleQuedInputs()
+        {
+            if (input_Que_Is_Active)
+            {
+
+                if (que_Input_Timer > 0)
+                {
+                    que_Input_Timer -= Time.deltaTime;
+                    ProcessQuedInputs();
+                }
+                else
+                {
+                    que_RB_Input = false;
+                    que_RT_Input = false;
+
+                    input_Que_Is_Active = false;
+                    que_Input_Timer = 0;
+                }
+            }
+        }
     }
 }
  

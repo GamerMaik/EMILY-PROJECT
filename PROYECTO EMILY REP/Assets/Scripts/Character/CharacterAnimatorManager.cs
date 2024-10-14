@@ -87,16 +87,5 @@ namespace KC
             //Aca le decimos al servidor que vamos a realizar una accion
             characterManager.characterNetworkManager.NotifyTheServerOfAttackActionAnimationServerRpc(NetworkManager.Singleton.LocalClientId, targetAnimation, applyRootMotion);
         }
-
-        public virtual void EnableCanDoCombo()
-        {
-
-        }
-
-        public virtual void DisableCanDoCombo()
-        {
- 
-        }
-
     }
 }
