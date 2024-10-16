@@ -25,12 +25,16 @@ namespace KC
         public int vitality;
         public int endurance;
 
+        [Header("Sites of Grace")]
+        public SerializableDictionary<int, bool> sitesOfGrace;
+
         [Header("Bosses")]
         public SerializableDictionary<int, bool> bossesAwakened; //El int representa al Id del jefe  y el bool si los jefes estan despiertos
         public SerializableDictionary<int, bool> bossesDefeated; //El int representa al Id del jefe  y el bool si los jefes estan muertos
 
         public CharacterSaveData()
         {
+            sitesOfGrace = new SerializableDictionary<int, bool>();
             bossesAwakened = new SerializableDictionary<int, bool>();
             bossesDefeated = new SerializableDictionary<int, bool>();
         }

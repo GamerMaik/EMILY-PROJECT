@@ -406,6 +406,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Interaction"",
+                    ""type"": ""Button"",
+                    ""id"": ""3c28f4bd-993d-44eb-bf57-b5353e01be3f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""que RB"",
                     ""type"": ""Button"",
                     ""id"": ""4d6ab796-1510-4efc-a6d3-82702a2b512f"",
@@ -424,7 +433,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""queRT"",
+                    ""name"": ""que RT"",
                     ""type"": ""Button"",
                     ""id"": ""6d66b88b-5b16-47f9-a9dc-1fcc57426ac4"",
                     ""expectedControlType"": """",
@@ -541,6 +550,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""c691b251-f998-4b8b-82b8-2360eca29a6f"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""82b24c6e-bf92-40c6-8e7c-53adedc364a2"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -590,7 +610,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""queRT"",
+                    ""action"": ""que RT"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -700,9 +720,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActions_Dodge = m_PlayerActions.FindAction("Dodge", throwIfNotFound: true);
         m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
         m_PlayerActions_RB = m_PlayerActions.FindAction("RB", throwIfNotFound: true);
+        m_PlayerActions_Interaction = m_PlayerActions.FindAction("Interaction", throwIfNotFound: true);
         m_PlayerActions_queRB = m_PlayerActions.FindAction("que RB", throwIfNotFound: true);
         m_PlayerActions_RT = m_PlayerActions.FindAction("RT", throwIfNotFound: true);
-        m_PlayerActions_queRT = m_PlayerActions.FindAction("queRT", throwIfNotFound: true);
+        m_PlayerActions_queRT = m_PlayerActions.FindAction("que RT", throwIfNotFound: true);
         m_PlayerActions_HoldAlt = m_PlayerActions.FindAction("Hold Alt", throwIfNotFound: true);
         m_PlayerActions_HoldRT = m_PlayerActions.FindAction("Hold RT", throwIfNotFound: true);
         m_PlayerActions_Sprint = m_PlayerActions.FindAction("Sprint", throwIfNotFound: true);
@@ -1001,6 +1022,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Dodge;
     private readonly InputAction m_PlayerActions_Jump;
     private readonly InputAction m_PlayerActions_RB;
+    private readonly InputAction m_PlayerActions_Interaction;
     private readonly InputAction m_PlayerActions_queRB;
     private readonly InputAction m_PlayerActions_RT;
     private readonly InputAction m_PlayerActions_queRT;
@@ -1019,6 +1041,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Dodge => m_Wrapper.m_PlayerActions_Dodge;
         public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
         public InputAction @RB => m_Wrapper.m_PlayerActions_RB;
+        public InputAction @Interaction => m_Wrapper.m_PlayerActions_Interaction;
         public InputAction @queRB => m_Wrapper.m_PlayerActions_queRB;
         public InputAction @RT => m_Wrapper.m_PlayerActions_RT;
         public InputAction @queRT => m_Wrapper.m_PlayerActions_queRT;
@@ -1048,6 +1071,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @RB.started += instance.OnRB;
             @RB.performed += instance.OnRB;
             @RB.canceled += instance.OnRB;
+            @Interaction.started += instance.OnInteraction;
+            @Interaction.performed += instance.OnInteraction;
+            @Interaction.canceled += instance.OnInteraction;
             @queRB.started += instance.OnQueRB;
             @queRB.performed += instance.OnQueRB;
             @queRB.canceled += instance.OnQueRB;
@@ -1094,6 +1120,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @RB.started -= instance.OnRB;
             @RB.performed -= instance.OnRB;
             @RB.canceled -= instance.OnRB;
+            @Interaction.started -= instance.OnInteraction;
+            @Interaction.performed -= instance.OnInteraction;
+            @Interaction.canceled -= instance.OnInteraction;
             @queRB.started -= instance.OnQueRB;
             @queRB.performed -= instance.OnQueRB;
             @queRB.canceled -= instance.OnQueRB;
@@ -1171,6 +1200,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnDodge(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnRB(InputAction.CallbackContext context);
+        void OnInteraction(InputAction.CallbackContext context);
         void OnQueRB(InputAction.CallbackContext context);
         void OnRT(InputAction.CallbackContext context);
         void OnQueRT(InputAction.CallbackContext context);

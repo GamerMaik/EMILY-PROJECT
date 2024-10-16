@@ -50,6 +50,9 @@ namespace KC
         [SerializeField] float que_Input_Timer = 0;
         [SerializeField] bool que_RB_Input = false;
         [SerializeField] bool que_RT_Input = false;
+
+        [Header("Interactions")]
+        [SerializeField] bool interaction_Input = false;
         #endregion
 
         private void Awake()
@@ -140,6 +143,9 @@ namespace KC
                 playerControls.PlayerActions.queRB.performed += i => QueInput(ref que_RB_Input);
                 playerControls.PlayerActions.queRT.performed += i => QueInput(ref que_RT_Input);
 
+                //Interactions
+                playerControls.PlayerActions.Interaction.performed += i => interaction_Input = true;
+
             }
             playerControls.Enable();
         }
@@ -181,6 +187,7 @@ namespace KC
             HandleSwitchRightWeaponInput();
             HandleSwitchLeftWeaponInput();
             HandleQuedInputs();
+            HandleInteractionInput();
         }
 
         #region Look On
@@ -407,6 +414,16 @@ namespace KC
             {
                 switch_Left_Weapon_Input = false;
                 player.playerEquipmentManager.SwitchLeftWeapon();
+            }
+        }
+
+        private void HandleInteractionInput()
+        {
+            if (interaction_Input)
+            {
+                interaction_Input = false;
+
+                player.playerInteractionManager.Interact();
             }
         }
         #endregion

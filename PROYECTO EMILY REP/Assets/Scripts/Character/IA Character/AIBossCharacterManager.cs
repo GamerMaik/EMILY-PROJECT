@@ -90,7 +90,7 @@ namespace KC
 
             if (!hasBeenAwakened.Value)
             {
-                characterAnimatorManager.PlayerTargetActionAnimation(sleepAnimation, true);
+                animator.Play(sleepAnimation);
             }
         }
 

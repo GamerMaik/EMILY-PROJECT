@@ -14,6 +14,7 @@ namespace KC
         [HideInInspector] public PlayerInventoryManager playerInventoryManager;
         [HideInInspector] public PlayerEquipmentManager playerEquipmentManager;
         [HideInInspector] public PlayerCombatManager playerCombatManager;
+        [HideInInspector] public PlayerInteractionManager playerInteractionManager;
 
         protected override void Awake()
         {
@@ -28,6 +29,7 @@ namespace KC
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
             playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerCombatManager = GetComponent<PlayerCombatManager>();
+            playerInteractionManager = GetComponent<PlayerInteractionManager>();
         }
 
         protected override void Update()
@@ -53,6 +55,17 @@ namespace KC
             PlayerCamera.instance.HandleAllCameraActions();
         }
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+        }
+
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();
@@ -73,7 +86,8 @@ namespace KC
                 playerNetworkManager.currentStamina.OnValueChanged += playerStatsManager.ResetStaminaRegenrationTimer;
 
             }
-
+            if (!IsOwner)
+                characterNetworkManager.currentHealth.OnValueChanged += characterUIManager.OnHPChanged;
             //Estadisticas
             playerNetworkManager.currentHealth.OnValueChanged += playerNetworkManager.CheckHP;
 
@@ -119,7 +133,8 @@ namespace KC
                 playerNetworkManager.currentStamina.OnValueChanged -= playerStatsManager.ResetStaminaRegenrationTimer;
 
             }
-
+            if (!IsOwner)
+                characterNetworkManager.currentHealth.OnValueChanged -= characterUIManager.OnHPChanged;
             //Estadisticas
             playerNetworkManager.currentHealth.OnValueChanged -= playerNetworkManager.CheckHP;
 

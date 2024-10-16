@@ -67,10 +67,27 @@ namespace KC
             aiCharacterNetworkManager.currentHealth.OnValueChanged += aiCharacterNetworkManager.CheckHP;
         }
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+
+            if (characterUIManager.hasFloatingHPBar)
+                characterNetworkManager.currentHealth.OnValueChanged += characterUIManager.OnHPChanged;
+        }
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+
+            if (characterUIManager.hasFloatingHPBar)
+                characterNetworkManager.currentHealth.OnValueChanged -= characterUIManager.OnHPChanged;
+        }
+
         public override void OnNetworkDespawn()
         {
             base.OnNetworkDespawn();
-            aiCharacterNetworkManager.currentHealth.OnValueChanged -= aiCharacterNetworkManager.CheckHP;
+
+            if (characterUIManager.hasFloatingHPBar)
+                aiCharacterNetworkManager.currentHealth.OnValueChanged -= aiCharacterNetworkManager.CheckHP;
         }
         protected override void FixedUpdate()
         {

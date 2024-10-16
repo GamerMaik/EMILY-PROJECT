@@ -7,6 +7,10 @@ namespace KC
 {
     public class PlayerUIPopUpManager : MonoBehaviour
     {
+        [Header("Message Pop Up")]
+        [SerializeField] TextMeshProUGUI popUpMessageText;
+        [SerializeField] GameObject popUpMessageGameObject;
+
         [Header("You Died Pop UP")]
         [SerializeField] GameObject youDeadPopUpGameObject;
         [SerializeField] TextMeshProUGUI youDiedPopUpBackgroundText;
@@ -18,6 +22,27 @@ namespace KC
         [SerializeField] TextMeshProUGUI bossDefeatedPopUpBackgroundText;
         [SerializeField] TextMeshProUGUI bossDefeatedPopUpText;
         [SerializeField] CanvasGroup bossDefeatedCanvasGroup;
+
+        [Header("Site Of Grace Pop UP")]
+        [SerializeField] GameObject siteOfGracePopUpGameObject;
+        [SerializeField] TextMeshProUGUI siteOfGracePopUpBackgroundText;
+        [SerializeField] TextMeshProUGUI siteOfGracePopUpText;
+        [SerializeField] CanvasGroup siteOfGraceCanvasGroup;
+
+
+        public void closeAllPopUpWindows()
+        {
+           popUpMessageGameObject.SetActive(false);
+
+            PlayerUIManager.instance.popUpWindowIsOpen = false;
+        }
+
+        public void SendPlayerMessagePopUp(string messageText)
+        {
+            PlayerUIManager.instance.popUpWindowIsOpen = true;
+            popUpMessageText.text = messageText;
+            popUpMessageGameObject.SetActive(true);
+        }
 
         public void SendYouDiedPopUp()
         {
@@ -41,6 +66,18 @@ namespace KC
             StartCoroutine(StrechPopUpTextOverTime(bossDefeatedPopUpText, 8, 16f));
             StartCoroutine(FadeInPopUpTextOverTime(bossDefeatedCanvasGroup, 5));
             StartCoroutine(WaithThenFadeOutPopUpOverTime(bossDefeatedCanvasGroup, 2, 5));
+
+        }
+
+        public void SendbGraceRestoredPopUp(string graceRestoredMessage)
+        {
+            siteOfGracePopUpText.text = graceRestoredMessage;
+            siteOfGracePopUpBackgroundText.text = graceRestoredMessage;
+            siteOfGracePopUpGameObject.SetActive(true);
+            siteOfGracePopUpBackgroundText.characterSpacing = 0;
+            StartCoroutine(StrechPopUpTextOverTime(siteOfGracePopUpText, 8, 16f));
+            StartCoroutine(FadeInPopUpTextOverTime(siteOfGraceCanvasGroup, 5));
+            StartCoroutine(WaithThenFadeOutPopUpOverTime(siteOfGraceCanvasGroup, 2, 5));
 
         }
 

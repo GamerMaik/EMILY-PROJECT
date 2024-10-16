@@ -5,8 +5,8 @@ namespace KC
 {
     public class UI_StatBar : MonoBehaviour
     {
-        private Slider slider;
-        private RectTransform rectTransform;
+        protected Slider slider;
+        protected RectTransform rectTransform;
 
         [Header("Bar Options")]
         [SerializeField] protected bool scaleBarLengthWithStats = true;
@@ -17,6 +17,11 @@ namespace KC
         {
             slider = GetComponent<Slider>();
             rectTransform = GetComponent<RectTransform>();
+        }
+
+        protected virtual void Start()
+        {
+            
         }
 
         public virtual void SetStat(int newValue)
@@ -36,5 +41,7 @@ namespace KC
                 PlayerUIManager.instance.playerUIHudManager.RefreshHUD();
             }
         }
+
+
     }
 }

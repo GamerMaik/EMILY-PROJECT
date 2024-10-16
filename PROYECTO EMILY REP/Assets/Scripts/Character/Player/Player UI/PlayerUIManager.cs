@@ -12,8 +12,9 @@ namespace KC
         [HideInInspector] public PlayerUIHudManager playerUIHudManager;
         [HideInInspector] public PlayerUIPopUpManager playerUIPopUpManager;
 
-        
-
+        [Header("UI Flags")]
+        public bool menuWindowIsOpen = false; //Inventario, equipo, otros menus
+        public bool popUpWindowIsOpen = false; //Mensajes aleatorios, dialogos etc.
 
         private void Awake()
         {
