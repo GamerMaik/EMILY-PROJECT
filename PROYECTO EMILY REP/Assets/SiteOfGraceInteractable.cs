@@ -33,7 +33,14 @@ namespace KC
                     isActivated.Value = false;
                 }
             }
-
+            if (isActivated.Value)
+            {
+                interactableText = activatedInteractionText;
+            }
+            else
+            {
+                interactableText = unactivatedInteractionText;
+            }
         }
 
         public override void OnNetworkSpawn()

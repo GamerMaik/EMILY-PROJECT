@@ -68,5 +68,29 @@ namespace KC
             
             return viewableAngle;
         }
+
+        public DamageIntensity GetDamageIntensityBasedOnPoiseDamage(float poiseDamage)
+        {
+            //Largas dagas o items pequeños
+            DamageIntensity damageIntensity = DamageIntensity.Ping;
+
+            //Dagas
+            if (poiseDamage >= 10)
+                damageIntensity = DamageIntensity.Light;
+            
+            //Armas estandar
+            if (poiseDamage >= 30)
+                damageIntensity = DamageIntensity.Medium;
+
+            //Armas pesadas
+            if (poiseDamage >= 70)
+                damageIntensity = DamageIntensity.Heavy;
+
+            //Armas Ultra
+            if (poiseDamage >= 120)
+                damageIntensity = DamageIntensity.Colosal;
+
+            return damageIntensity;
+        }
     }
 }

@@ -4,6 +4,10 @@ namespace KC
 {
     public class WeaponItem : Item
     {
+        [Header("Aniamtions")]
+        public AnimatorOverrideController weaponAnimator;
+
+
         [Header("Weapon Model")]
         public GameObject weaponModel;
 

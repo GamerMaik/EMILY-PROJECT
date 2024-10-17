@@ -59,16 +59,16 @@ namespace KC
                 //Realizar un ataque en base al ataque anterior
                 if (playerPerformingAction.characterCombatManager.lastAttackAnimationPerformed == light_Attack_01)
                 {
-                    playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(AttackType.LightAttack02, light_Attack_02, true);
+                    playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(weaponPerformingAction,AttackType.LightAttack02, light_Attack_02, true);
                 }
                 else
                 {
-                    playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(AttackType.LightAttack01, light_Attack_01, true);
+                    playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(weaponPerformingAction,AttackType.LightAttack01, light_Attack_01, true);
                 }
             }
             else if (!playerPerformingAction.isPerformingAction)
             {
-                playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(AttackType.LightAttack01, light_Attack_01, true);
+                playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(weaponPerformingAction,AttackType.LightAttack01, light_Attack_01, true);
             }
 
         }
@@ -77,7 +77,7 @@ namespace KC
         {
             //Si tenemos el ataqu de dos manos reproducimos el ataque de dos manos
             // Y si no, realizamos el ataque ligero
-            playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(AttackType.RunningAttack01, run_Attack_01, true);
+            playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(weaponPerformingAction,AttackType.RunningAttack01, run_Attack_01, true);
 
 
         }
@@ -87,7 +87,7 @@ namespace KC
             //Si tenemos el ataqu de dos manos reproducimos el ataque de dos manos
             // Y si no, realizamos el ataque ligero
             playerPerformingAction.playerCombatManager.canPerformRollingAttack = false;
-            playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(AttackType.RollingAttack01, roll_Attack_01, true);
+            playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(weaponPerformingAction,AttackType.RollingAttack01, roll_Attack_01, true);
         }
 
         private void PerformBackStepAttack(PlayerManager playerPerformingAction, WeaponItem weaponPerformingAction)
@@ -95,7 +95,7 @@ namespace KC
             //Si tenemos el ataqu de dos manos reproducimos el ataque de dos manos
             // Y si no, realizamos el ataque ligero
             playerPerformingAction.playerCombatManager.canPerformBackStepAttack = false;
-            playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(AttackType.BackstepAttack01, backstep_Attack_01, true);
+            playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(weaponPerformingAction,AttackType.BackstepAttack01, backstep_Attack_01, true);
         }
     }
 }

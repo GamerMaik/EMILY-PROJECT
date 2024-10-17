@@ -68,7 +68,8 @@ namespace KC
             characterManager.characterNetworkManager.NotifyTheServerOfActionAnimationServerRpc(NetworkManager.Singleton.LocalClientId, targetAnimation, applyRootMotion);
         }
 
-        public virtual void PlayerTargetAttackActionAnimation(AttackType attackType,
+        public virtual void PlayerTargetAttackActionAnimation(WeaponItem weapon,
+            AttackType attackType,
             string targetAnimation,
             bool isPerformingAction,
             bool applyRootMotion = true,
@@ -78,6 +79,7 @@ namespace KC
 
             characterManager.characterCombatManager.currentAttackType = attackType;
             characterManager.characterCombatManager.lastAttackAnimationPerformed = targetAnimation;
+            updateAnimatorController(weapon.weaponAnimator);
             this.applyRootMotion = applyRootMotion;
             characterManager.animator.CrossFade(targetAnimation, 0.2f);
             characterManager.isPerformingAction = isPerformingAction;
@@ -86,6 +88,11 @@ namespace KC
 
             //Aca le decimos al servidor que vamos a realizar una accion
             characterManager.characterNetworkManager.NotifyTheServerOfAttackActionAnimationServerRpc(NetworkManager.Singleton.LocalClientId, targetAnimation, applyRootMotion);
+        }
+
+        public void updateAnimatorController(AnimatorOverrideController weaponController)
+        {
+            characterManager.animator.runtimeAnimatorController = weaponController;
         }
     }
 }

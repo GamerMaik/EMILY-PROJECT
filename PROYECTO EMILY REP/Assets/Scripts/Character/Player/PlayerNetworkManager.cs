@@ -79,6 +79,12 @@ namespace KC
         {
             WeaponItem newWeapon = Instantiate(WorldItemDatabase.Instance.GetWeaponById(newId));
             player.playerCombatManager.currentWeaponBeingUsed = newWeapon;
+
+            if (player.IsOwner)
+                return;
+
+            if (player.playerCombatManager.currentWeaponBeingUsed != null)
+                player.playerAnimatorManager.updateAnimatorController(player.playerCombatManager.currentWeaponBeingUsed.weaponAnimator);
         }
 
         [ServerRpc]

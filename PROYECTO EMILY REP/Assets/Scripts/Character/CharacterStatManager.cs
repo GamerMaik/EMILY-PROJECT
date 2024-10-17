@@ -10,7 +10,15 @@ namespace KC
         private float staminaRegenerationTimer = 0;
         private float staminaTickTimer = 0;
         [SerializeField] float staminaRegenerationDelay = 2;
-        [SerializeField] float staminaRegenerationAmount = 0.5f;
+        [SerializeField] float staminaRegenerationAmount = 2;
+
+        [Header("Absorcion de bloqueo")]
+        public float blockingPhysicalAbsorption;
+        public float blockingFireAbsorption;
+        public float blockingMagicAbsorption;
+        public float blockingLightningAbsorption;
+        public float blockingHolyAbsorption;
+
         protected virtual void Awake()
         {
             character = GetComponent<CharacterManager>();

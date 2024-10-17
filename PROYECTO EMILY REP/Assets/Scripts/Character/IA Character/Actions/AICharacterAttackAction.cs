@@ -22,7 +22,7 @@ namespace KC
 
         public void AttempToperformAction(AICharacterManager aiCharacter)
         {
-            aiCharacter.characterAnimatorManager.PlayerTargetAttackActionAnimation(attackType,attackAnimation, true);
+            aiCharacter.characterAnimatorManager.PlayerTargetActionAnimation(attackAnimation, true);
         }
     }
 }

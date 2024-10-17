@@ -135,6 +135,7 @@ namespace KC
                 rightHandSlot.LoadWeapon(rightHandWeaponModel);
                 rightWeaponManager = rightHandWeaponModel.GetComponent<WeaponManager>();
                 rightWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentRightHandWeapon);
+                player.playerAnimatorManager.updateAnimatorController(player.playerInventoryManager.currentRightHandWeapon.weaponAnimator);
             }
         }
 

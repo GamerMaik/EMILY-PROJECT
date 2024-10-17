@@ -23,6 +23,9 @@ namespace KC
         [Header("Character Damaged")]
         protected List<CharacterManager> charactersDamaged = new List<CharacterManager>();
 
+        [Header("Block")]
+        protected Vector3 directionFromAttackToDamageTarget;
+        protected float dotValueFromAttackToDamageTarget;
         protected virtual void Awake()
         {
             
@@ -40,11 +43,39 @@ namespace KC
 
                 //Se verificará si el objetivo esta cubriendoses o bloqueando el daño y se procesará un efecto de bloqueo
 
-                //Verificar si el objeto es invulnerable o inmortal 
-
+                CheckForBlock(damageTarget);
                 //Si se pasa todo lo anterios se realiza daño al objetivo
                 DamageTarget(damageTarget); 
             }
+        }
+
+        protected virtual void CheckForBlock(CharacterManager damageTarget)
+        {
+            if (charactersDamaged.Contains(damageTarget))
+                return;
+
+            GetBlockingDotValues(damageTarget);
+
+            if (damageTarget.characterNetworkManager.isBlocking.Value && dotValueFromAttackToDamageTarget > 0.3f)
+            {
+                charactersDamaged.Add(damageTarget);
+
+                TakeBlockedDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeBlockedDamageEffect);
+
+                damageEffect.physicalDamage = physicalDamage;
+                damageEffect.magicDamage = magicDamage;
+                damageEffect.fireDamage = fireDamage;
+                damageEffect.holyDamage = holyDamage;
+                damageEffect.contactPoint = contactPoint;
+
+                damageTarget.characterEffectsManager.ProccessInstantEffect(damageEffect);
+            }
+        }
+
+        protected virtual void GetBlockingDotValues(CharacterManager damageTarget)
+        {
+            directionFromAttackToDamageTarget = transform.position - damageTarget.transform.position;
+            dotValueFromAttackToDamageTarget = Vector3.Dot(directionFromAttackToDamageTarget, damageTarget.transform.forward);
         }
 
         //virtual por que cuando tengamos más planeadores de daño como cuerpo a cuerpo o hechizos se anula esto para darle su propio comportamento
@@ -65,7 +96,6 @@ namespace KC
 
             damageTarget.characterEffectsManager.ProccessInstantEffect(damageEffect);
         }
-
         public virtual void EnableDamageCollider()
         {
             damageCollider.enabled = true;

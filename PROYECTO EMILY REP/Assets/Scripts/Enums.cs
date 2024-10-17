@@ -47,5 +47,14 @@ public enum AttackType
     RollingAttack01,
     BackstepAttack01,
 
+}
 
+//Esto se usa para calcular la intensidad de daño para el bloqueo
+public enum DamageIntensity
+{
+    Ping,
+    Light,
+    Medium,
+    Heavy,
+    Colosal
 }

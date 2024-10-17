@@ -16,6 +16,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: f3f0e7e0a7c784444823a2ca4b63ac66, type: 3}
   itemDescription: Esta es una espada o eso creo
   itemID: 1
+  weaponAnimator: {fileID: 22100000, guid: f545347e2b1767347906c291f38a5592, type: 2}
   weaponModel: {fileID: 2577848347743525672, guid: 8a3423cd57157c447951c67095528ab4, type: 3}
   strengthREQ: 10
   dexREQ: 10
@@ -33,8 +34,16 @@ MonoBehaviour:
   heavy_Attack_02_Modifier: 1.6
   charged_Attack_01_Modifier: 2
   charged_Attack_02_Modifier: 2.2
+  running_Attack_01_Modifier: 1.1
+  rolling_Attack_01_Modifier: 1.2
+  backstep_Attack_01_Modifier: 1.1
   baseStaminaCost: 20
   lightAttackStaminaCostMultiplier: 1
+  heavyAttackStaminaCostMultiplier: 1.3
+  chargedAttackStaminaCostMultiplier: 1.5
+  runningAttackStaminaCostMultiplier: 1.1
+  rollingAttackStaminaCostMultiplier: 1.2
+  backstepAttackStaminaCostMultiplier: 1.1
   oh_RB_Action: {fileID: 11400000, guid: e56e7543e8eaeec40a5630b9f575e15e, type: 2}
   oh_RT_Action: {fileID: 11400000, guid: 58e9b454e6f07404f93d4fe65e1b83c4, type: 2}
   whooshes:
