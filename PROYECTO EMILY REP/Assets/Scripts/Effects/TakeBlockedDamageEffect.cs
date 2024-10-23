@@ -22,6 +22,10 @@ namespace KC
         public float poiseDamage = 0;
         public bool poiseIsBroken = false;
 
+        [Header("Stamina")]
+        public float staminaDamage = 0;
+        public float finalStaminaDamage = 0;
+
         [Header("Animation")]
         public bool playerDamageAnimations = true;
         public bool manuallySelectDamageAnimation = false;
@@ -52,6 +56,7 @@ namespace KC
 
             //Calcular el daño
             CalculateDamage(character);
+            CalculateStaminaDamage(character);
             //Verificar de donde vino el daño
             //Determinar la animacion que se reproducirá
             PlayDirectionalBaseBlockingAnimation(character);
@@ -61,6 +66,7 @@ namespace KC
             //Reproducir algun efecto de sangre
             PlayDamageVFX(character);
             //Comprobar si el personaje es IA, Verificar (Esta en fase beta aun XD)
+            CheckForGuardBreak(character);
         }
 
         private void CalculateDamage(CharacterManager character)
@@ -102,20 +108,46 @@ namespace KC
             //Calcular Pise damage 
         }
 
+        private void CalculateStaminaDamage(CharacterManager character)
+        {
+            if (!character.IsOwner)
+                return;
+
+            finalStaminaDamage = staminaDamage;
+
+            float staminaDamageAbsorption = finalStaminaDamage * (character.characterStatManager.blockingStability / 100);
+            float staminaDamageAfterAbsorption = finalStaminaDamage - staminaDamageAbsorption;
+
+            character.characterNetworkManager.currentStamina.Value -= staminaDamageAfterAbsorption;
+        }
+
+        private void CheckForGuardBreak(CharacterManager character)
+        {
+            if (!character.IsOwner)
+                return;
+
+            if(character.characterNetworkManager.currentStamina.Value <= 0)
+            {
+                character.characterAnimatorManager.PlayerTargetActionAnimation("Guard_Break_01", true);
+                character.characterNetworkManager.isBlocking.Value = false;
+            }
+        }
+
         private void PlayDamageVFX(CharacterManager character)
         {
             //si en un futuro aplicamos daño por fuego se reproduce las particulas de fuego
 
             //OBTENER EFECTOS SEGUN AL ARMA
-            //character.characterEffectsManager.PlayBloodSplatterVFX(contactPoint);
+            //player.characterEffectsManager.PlayBloodSplatterVFX(contactPoint);
         }
 
         private void PlayDamageSFX(CharacterManager character)
         {
             //AudioClip physicalDamageSFX = WorldSoundFXManager.instance.ChooseRandomSFXFromArray(WorldSoundFXManager.instance.physicalDamageSFX);
 
-            //character.characterSoundFXManager.PlaySoundFX(physicalDamageSFX);
-            //character.characterSoundFXManager.PlayDamageGrunt();
+            //player.characterSoundFXManager.PlaySoundFX(physicalDamageSFX);
+            //player.characterSoundFXManager.PlayDamageGrunt();
+            character.characterSoundFXManager.PlayBlockSoundFX();
         }
 
         private void PlayDirectionalBaseBlockingAnimation(CharacterManager character)

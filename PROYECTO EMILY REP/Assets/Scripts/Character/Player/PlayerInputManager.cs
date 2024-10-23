@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +27,7 @@ namespace KC
         public float horizontal_Input; 
         public float vertical_Input;
         public float moveAmount;
+        public bool switchMovement_Input = false;
 
         [Header("Player Actions input")]
         [SerializeField] bool dodge_Input = false;
@@ -34,9 +36,11 @@ namespace KC
 
         [Header("Bumper Inputs")]
         [SerializeField] bool RB_Input = false;
+        [SerializeField] bool LB_Input = false;
+
 
         [Header("Trigguer Inputs")]
-        [SerializeField] bool RT_Input = false;
+        //[SerializeField] bool RT_Input = false;
         [SerializeField] bool hold_RT_Input = false;
         [SerializeField] bool hold_Alt_Input = false;
 
@@ -110,6 +114,7 @@ namespace KC
 
                 playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
                 playerControls.PlayerCamera.Movement.performed += i => cameraInput = i.ReadValue<Vector2>();
+                playerControls.PlayerMovement.SwitchMovement.performed += i => switchMovement_Input = !switchMovement_Input;
 
                 //Actions
                 playerControls.PlayerActions.Dodge.performed += i => dodge_Input = true;
@@ -120,9 +125,11 @@ namespace KC
 
                 //Bumpers
                 playerControls.PlayerActions.RB.performed += i => RB_Input = true;
+                playerControls.PlayerActions.LB.performed += i => LB_Input = !LB_Input;
+                playerControls.PlayerActions.LB.canceled += i => player.playerNetworkManager.isBlocking.Value = false;
 
                 //Trigguers
-                playerControls.PlayerActions.RT.performed += i => RT_Input = true;
+                //playerControls.PlayerActions.RT.performed += i => RT_Input = true;
 
                 playerControls.PlayerActions.HoldRT.performed += i => hold_RT_Input = true;
                 playerControls.PlayerActions.HoldRT.canceled += i => hold_RT_Input = false;
@@ -182,6 +189,7 @@ namespace KC
             HandleSprintInput();
             HandleJumpInput();
             HandleRBInput();
+            HandleLBInput();
             HandleRTInput();
             HandleChargeRTInput();
             HandleSwitchRightWeaponInput();
@@ -278,13 +286,13 @@ namespace KC
             //Regresa un numer absoluto(para moverse en horizontal)
             moveAmount = Mathf.Clamp01(Mathf.Abs(vertical_Input) + Mathf.Abs(horizontal_Input));
 
-            if (moveAmount <= 0.5 && moveAmount > 0)
+            if (!switchMovement_Input) // Si está en modo caminar
             {
-                moveAmount = 0.5f;
+                moveAmount = Mathf.Min(moveAmount, 0.5f); // Limita a un máximo de 0.5 (caminar)
             }
-            else if (moveAmount >0.5 && moveAmount <= 1)
+            else // Si está en modo trotar
             {
-                moveAmount = 1;
+                moveAmount = Mathf.Clamp(moveAmount, 0f, 1f); // Permite hasta 1 (trotar)
             }
 
             if (player == null)
@@ -366,13 +374,31 @@ namespace KC
             }
         }
 
+        private void HandleLBInput()
+        {
+            if (LB_Input)
+            {
+                //LB_Input = false;
+                //Debug.Log("Entra al click");
+                //RT_Input = false;
+
+                //No queremos hacer nada si tenemos una ventana abierta en un futuro 
+                player.playerNetworkManager.SetCharacterActionHand(false);
+
+                //si usamos un arma en cada mano queremos ejecutar el ataque con 2 manos
+
+                player.playerCombatManager.PerformWeaponBasedAction(player.playerInventoryManager.currentLeftHandWeapon.oh_LB_Action, player.playerInventoryManager.currentLeftHandWeapon);
+            }
+        }
+
         private void HandleRTInput()
         {
-            if (RT_Input && !hold_Alt_Input)
+            if (hold_RT_Input && !hold_Alt_Input)
             {
-                RT_Input = false;
+                //RT_Input = false;
+                LB_Input = false;
 
-                // No queremos hacer nada si tenemos una ventana abierta en un futuro 
+                // No queremos hacer nada si tenemos una ventana abierta en un futuro
                 player.playerNetworkManager.SetCharacterActionHand(true);
 
                 // Si usamos un arma en cada mano queremos ejecutar el ataque con 2 manos
@@ -385,10 +411,14 @@ namespace KC
             // Solo verificamos esto cuando vamos a realizar alguna acción que se pueda cargar (hechizos de carga, alguna arma cargada, etc.)
             if (hold_Alt_Input && hold_RT_Input)
             {
+                //RT_Input = false;
+                LB_Input = false;
+               
                 if (player.isPerformingAction)
                 {
                     if (player.playerNetworkManager.isUsingRightHand.Value)
                     {
+                        
                         player.playerNetworkManager.isChargingAttack.Value = (hold_Alt_Input && hold_RT_Input);
                     }
                 }
@@ -453,7 +483,7 @@ namespace KC
                 RB_Input = true;
 
             if (que_RT_Input)
-                RT_Input = true;
+                LB_Input = true;
         }
 
         private void HandleQuedInputs()

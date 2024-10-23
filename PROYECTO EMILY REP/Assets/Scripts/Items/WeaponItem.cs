@@ -1,4 +1,4 @@
-using UnityEngine;
+ using UnityEngine;
 
 namespace KC
 {
@@ -7,6 +7,8 @@ namespace KC
         [Header("Aniamtions")]
         public AnimatorOverrideController weaponAnimator;
 
+        [Header("Model Instantiation")]
+        public WeaponModelType weaponModelType;
 
         [Header("Weapon Model")]
         public GameObject weaponModel;
@@ -40,6 +42,7 @@ namespace KC
         public float rolling_Attack_01_Modifier = 1.2f;
         public float backstep_Attack_01_Modifier = 1.1f;
         //Modificadores de armas
+
         //Efectos de arama para criticos
 
         [Header("Stamina Costs Modifiers")]
@@ -51,13 +54,23 @@ namespace KC
         public float rollingAttackStaminaCostMultiplier = 1.2f;
         public float backstepAttackStaminaCostMultiplier = 1.1f;
 
+        [Header("Weapon Blocking Absorption")]
+        public float physicalBaseDamagedAbsorption = 50;
+        public float magicBaseDamagedAbsorption = 50;
+        public float fireBaseDamagedAbsorption = 50;
+        public float holyBaseDamagedAbsorption = 50;
+        public float lightningBaseDamagedAbsorption = 50;
+        public float stability = 50; //Esto reduce la perdida de estamina para el bloqueo
+
+
         [Header("Actions")]
         public WeaponItemActions oh_RB_Action;
         public WeaponItemActions oh_RT_Action; //Trigguer de accion para una mano
+        public WeaponItemActions oh_LB_Action;
 
         //Efectos de sonido armas o items
-        [Header("Whooshes")]
+        [Header("SFX")]
         public AudioClip[] whooshes;
-
+        public AudioClip[] blocking;
     }
 }

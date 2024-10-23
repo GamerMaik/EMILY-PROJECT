@@ -409,7 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3244276618
+  GlobalObjectIdHash: 3225830481
   InScenePlacedSourceGlobalObjectIdHash: 1808541841
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -448,6 +448,10 @@ MonoBehaviour:
   moveAmount:
     m_InternalValue: 0
   currentTargetNetworkObjetID:
+    m_InternalValue: 0
+  isBlocking:
+    m_InternalValue: 0
+  isAttacking:
     m_InternalValue: 0
   isInvulnerable:
     m_InternalValue: 0
@@ -515,6 +519,7 @@ MonoBehaviour:
   characterEffectsManager: {fileID: 0}
   characterAnimatorManager: {fileID: 0}
   characterCombatManager: {fileID: 0}
+  characterStatManager: {fileID: 0}
   characterSoundFXManager: {fileID: 0}
   characterLocomotionManager: {fileID: 0}
   characterUIManager: {fileID: 0}
@@ -548,6 +553,7 @@ MonoBehaviour:
   lookOnTransform: {fileID: 0}
   canPerformRollingAttack: 0
   canPerformBackStepAttack: 0
+  canBlock: 1
   actionRecoveryTimer: 0
   enablePivot: 1
   distanceFromTarget: 0
@@ -560,6 +566,7 @@ MonoBehaviour:
   rightHandDamageCollider: {fileID: 5123237438106684281}
   leftHandDamageCollider: {fileID: 9134768055869721097}
   baseDamage: 25
+  basePoiseDamage: 25
   attack01DamageModifier: 1
   attack02DamageModifier: 2
   attack03DamageModifier: 1.5
@@ -594,6 +601,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staminaRegenerationDelay: 2
   staminaRegenerationAmount: 2
+  blockingPhysicalAbsorption: 0
+  blockingFireAbsorption: 0
+  blockingMagicAbsorption: 0
+  blockingLightningAbsorption: 0
+  blockingHolyAbsorption: 0
+  blockingStability: 0
+  totalPoiseDamage: 0
+  offensivePoiseBinus: 0
+  basePoiseDefense: 0
+  defaultPoiseResetTime: 8
+  poiseResetTimer: 0
 --- !u!114 &4358535851691687462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3817,6 +3835,7 @@ MonoBehaviour:
   fireDamage: 0
   lightningDamage: 0
   holyDamage: 0
+  poiseDamage: 0
   contactPoint: {x: 0, y: 0, z: 0}
   undeadCharacter: {fileID: 0}
 --- !u!135 &7619866291033873050
@@ -3892,6 +3911,7 @@ MonoBehaviour:
   fireDamage: 0
   lightningDamage: 0
   holyDamage: 0
+  poiseDamage: 0
   contactPoint: {x: 0, y: 0, z: 0}
   undeadCharacter: {fileID: 0}
 --- !u!135 &8729185531061511960

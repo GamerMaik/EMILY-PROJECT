@@ -27,6 +27,10 @@ namespace KC
             if (!playerPerformingAction.characterLocomotionManager.isGrounded)
                 return;
 
+            if (playerPerformingAction.IsOwner)
+                playerPerformingAction.playerNetworkManager.isAttacking.Value = true;
+            
+
             //Si está corriendo realice un ataque con carrera
             if (playerPerformingAction.characterNetworkManager.isSprinting.Value)
             {

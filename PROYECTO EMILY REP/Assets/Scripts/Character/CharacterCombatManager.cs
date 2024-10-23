@@ -22,6 +22,7 @@ namespace KC
         [Header("Attack Flags")]
         public bool canPerformRollingAttack = false;
         public bool canPerformBackStepAttack = false;
+        public bool canBlock = true;
 
         protected virtual void Awake()
         {

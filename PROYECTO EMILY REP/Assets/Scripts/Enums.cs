@@ -27,13 +27,18 @@ public enum CharacterGroup
 
 public enum WeaponModelSlot
 {
-    RightHand,
-    LeftHand,
-
+    RightHandWeaponSlot,
+    RightHandShieldSlot,
+    LeftHandWeaponSlot,
+    LeftHandShieldSlot,
     //Se pueden agregar muchas mas ranuras si se desea
 }
 
-
+public enum WeaponModelType
+{
+    Weapon,
+    Shield
+}
 //Esto se usa para calcular el daño segun el tip de ataque
 public enum AttackType
 {

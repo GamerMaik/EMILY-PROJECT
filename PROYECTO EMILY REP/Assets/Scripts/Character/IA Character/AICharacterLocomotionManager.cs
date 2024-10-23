@@ -5,12 +5,12 @@ namespace KC
 {
     public class AICharacterLocomotionManager : CharacterLocomotionManager
     {
-        //[HideInInspector] CharacterManager character;
+        //[HideInInspector] CharacterManager player;
         //protected override void Awake()
         //{
         //    base.Awake();
-        //    character = GetComponent<CharacterManager>();
-        //    if (character == null)
+        //    player = GetComponent<CharacterManager>();
+        //    if (player == null)
         //    {
         //        Debug.LogError("CharacterManager no está asignado");
         //    }

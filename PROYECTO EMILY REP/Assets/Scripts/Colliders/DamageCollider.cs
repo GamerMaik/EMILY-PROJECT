@@ -17,6 +17,9 @@ namespace KC
         public float lightningDamage = 0;
         public float holyDamage = 0;
 
+        [Header("Poise")]
+        public float poiseDamage = 0;
+
         [Header("Contact Point")]
         public Vector3 contactPoint;
 
@@ -66,6 +69,8 @@ namespace KC
                 damageEffect.magicDamage = magicDamage;
                 damageEffect.fireDamage = fireDamage;
                 damageEffect.holyDamage = holyDamage;
+                damageEffect.poiseDamage = poiseDamage;
+                damageEffect.staminaDamage = poiseDamage;
                 damageEffect.contactPoint = contactPoint;
 
                 damageTarget.characterEffectsManager.ProccessInstantEffect(damageEffect);
@@ -91,6 +96,7 @@ namespace KC
             damageEffect.magicDamage = magicDamage;
             damageEffect.fireDamage = fireDamage;
             damageEffect.holyDamage = holyDamage;
+            damageEffect.poiseDamage = poiseDamage;
             damageEffect.contactPoint = contactPoint;
             //damageEffect.lightningDamage = lightningDamage;
 

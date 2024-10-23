@@ -89,8 +89,20 @@ namespace KC {
             //Debug.Log("Final damage" + finalDamageDealt);
 
             character.characterNetworkManager.currentHealth.Value -= finalDamageDealt;
-            
-            //Calcular Pise damage 
+
+            //Calcular Poise Damage
+            character.characterStatManager.totalPoiseDamage -= poiseDamage;
+
+
+            float remainingPoise = character.characterStatManager.basePoiseDefense +
+                character.characterStatManager.offensivePoiseBinus +
+                character.characterStatManager.totalPoiseDamage;
+
+            if (remainingPoise <= 0)
+                poiseIsBroken = true;
+
+            //Si el personaje ah sido golpeado reiniciamos el temporizador
+            character.characterStatManager.poiseResetTimer = character.characterStatManager.defaultPoiseResetTime;
         }
 
         private void PlayDamageVFX(CharacterManager character)
@@ -116,37 +128,72 @@ namespace KC {
             if (character.isDead.Value)
                 return;
 
-            poiseIsBroken = true;
-
-            if(angleHitFrom >= 145 && angleHitFrom <= 180)
+            if (poiseIsBroken)
             {
-                damageAnimation = character.characterAnimatorManager.hit_Forward_Medium_01;
-                //Reproducir animacion de daño frontal
+                if (angleHitFrom >= 145 && angleHitFrom <= 180)
+                {
+                    damageAnimation = character.characterAnimatorManager.hit_Forward_Medium_01;
+                    //Reproducir animacion de daño frontal
+                }
+                else if (angleHitFrom <= -145 && angleHitFrom >= -180)
+                {
+                    //Reproducir animacion de daño frontal
+                    damageAnimation = character.characterAnimatorManager.hit_Forward_Medium_01;
+                }
+                else if (angleHitFrom >= -45 && angleHitFrom <= 45)
+                {
+                    //Reproducir animacion de daño espalda
+                    damageAnimation = character.characterAnimatorManager.hit_Backward_Medium_01;
+                }
+                else if (angleHitFrom >= -144 && angleHitFrom <= -45)
+                {
+                    //Reproducir animacion de daño Izquierda
+                    damageAnimation = character.characterAnimatorManager.hit_Left_Medium_01;
+                }
+                else if (angleHitFrom >= 45 && angleHitFrom <= 144)
+                {
+                    //Reproducir animacion de daño Derecha
+                    damageAnimation = character.characterAnimatorManager.hit_Right_Medium_01;
+                }
             }
-            else if (angleHitFrom <= -145 && angleHitFrom >= -180)
+            else
             {
-                //Reproducir animacion de daño frontal
-                damageAnimation = character.characterAnimatorManager.hit_Forward_Medium_01;
-            }
-            else if (angleHitFrom >= -45 && angleHitFrom <= 45)
-            {
-                //Reproducir animacion de daño espalda
-                damageAnimation = character.characterAnimatorManager.hit_Backward_Medium_01;
-            }
-            else if (angleHitFrom >= -144  && angleHitFrom <= -45)
-            {
-                //Reproducir animacion de daño Izquierda
-                damageAnimation = character.characterAnimatorManager.hit_Left_Medium_01;
-            }
-            else if (angleHitFrom >= 45 && angleHitFrom <=144)
-            {
-                //Reproducir animacion de daño Derecha
-                damageAnimation = character.characterAnimatorManager.hit_Right_Medium_01;
+                if (angleHitFrom >= 145 && angleHitFrom <= 180)
+                {
+                    damageAnimation = character.characterAnimatorManager.hit_Forward_Ping_01;
+                    //Reproducir animacion de daño frontal
+                }
+                else if (angleHitFrom <= -145 && angleHitFrom >= -180)
+                {
+                    //Reproducir animacion de daño frontal
+                    damageAnimation = character.characterAnimatorManager.hit_Forward_Ping_01;
+                }
+                else if (angleHitFrom >= -45 && angleHitFrom <= 45)
+                {
+                    //Reproducir animacion de daño espalda
+                    damageAnimation = character.characterAnimatorManager.hit_Backward_Ping_01;
+                }
+                else if (angleHitFrom >= -144 && angleHitFrom <= -45)
+                {
+                    //Reproducir animacion de daño Izquierda
+                    damageAnimation = character.characterAnimatorManager.hit_Left_Ping_01;
+                }
+                else if (angleHitFrom >= 45 && angleHitFrom <= 144)
+                {
+                    //Reproducir animacion de daño Derecha
+                    damageAnimation = character.characterAnimatorManager.hit_Right_Ping_01;
+                }
             }
 
             if (poiseIsBroken)
             {
+                //Si estamos aturdidos no permitimos movimiento ni acciones
                 character.characterAnimatorManager.PlayerTargetActionAnimation(damageAnimation, true);  
+            }
+            else
+            {
+                //Si no estamos aturdidos permitimos movimiento y acciones
+                character.characterAnimatorManager.PlayerTargetActionAnimation(damageAnimation, false, false, true, true);
             }
         }
 

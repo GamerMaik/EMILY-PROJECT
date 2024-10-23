@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8188850883120833824}
   - component: {fileID: 7992784215872497971}
   - component: {fileID: 4989478419344571149}
+  - component: {fileID: 7319860979495652128}
   m_Layer: 0
   m_Name: World Network Manager
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189548544187596819}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -48,7 +49,7 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 4989478419344571149}
-    PlayerPrefab: {fileID: 7022014195878208636, guid: 550224a2ba31a5242a7686c995a8431e, type: 3}
+    PlayerPrefab: {fileID: 1437028162541690283, guid: e9c04c2b915535b42b647fb58ce05cd3, type: 3}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: ee792b5167921924fb3f0147c00de978, type: 2}
@@ -99,3 +100,16 @@ MonoBehaviour:
     PacketDelayMS: 0
     PacketJitterMS: 0
     PacketDropRate: 0
+--- !u!114 &7319860979495652128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189548544187596819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00da1da6db6202e4d89a8b5ef9ebd294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: []

@@ -20,6 +20,12 @@ namespace KC
         public string hit_Left_Medium_01 = "hit_Left_Medium_01";
         public string hit_Right_Medium_01 = "hit_Right_Medium_01";
 
+        [Header("Ping Animations")]
+        public string hit_Forward_Ping_01 = "hit_Forward_Ping_01";
+        public string hit_Backward_Ping_01 = "hit_Backward_Ping_01";
+        public string hit_Left_Ping_01 = "hit_Left_Ping_01";
+        public string hit_Right_Ping_01 = "hit_Right_Ping_01";
+
         protected virtual void Awake()
         {
             characterManager = GetComponent<CharacterManager>();

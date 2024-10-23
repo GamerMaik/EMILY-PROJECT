@@ -18,6 +18,7 @@ namespace KC
         [Header("Damage")]
         [SerializeField] int baseDamage = 25;
         public float stompAttack = 25f; // Pisotón
+        [SerializeField] int basePoiseDamage = 25;
         [SerializeField] float attack02DamageModifier = 1.1f;
         [SerializeField] float attack03DamageModifier = 2.0f;
         [SerializeField] float attack04DamageModifier = 3.0f;
@@ -41,22 +42,26 @@ namespace KC
         {
             aiCharacter.characterSoundFXManager.PlayAttackGrunt();
             xtremeDamageCollider.physicalDamage = baseDamage * attack02DamageModifier;
+            xtremeDamageCollider.poiseDamage = basePoiseDamage * attack02DamageModifier;
         }
 
         public void SettAttack03Damage()
         {
             aiCharacter.characterSoundFXManager.PlayAttackGrunt();
             xtremeDamageCollider.physicalDamage = baseDamage * attack03DamageModifier;
+            xtremeDamageCollider.poiseDamage = basePoiseDamage * attack03DamageModifier;
         }
         public void SettAttack04Damage()
         {
             aiCharacter.characterSoundFXManager.PlayAttackGrunt();
             xtremeDamageCollider.physicalDamage = baseDamage * attack04DamageModifier;
+            xtremeDamageCollider.poiseDamage = basePoiseDamage * attack04DamageModifier;
         }
         public void SettAttack05Damage()
         {
             aiCharacter.characterSoundFXManager.PlayAttackGrunt();
             xtremeDamageCollider.physicalDamage = baseDamage * attack05DamageModifier;
+            xtremeDamageCollider.poiseDamage = basePoiseDamage * attack05DamageModifier;
         }
 
         public void OpenSwordDamageCollider()

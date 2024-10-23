@@ -57,7 +57,7 @@ namespace KC
                 yVelocity.y += gravityForce * Time.deltaTime;
             }
             character.characterController.Move(yVelocity * Time.deltaTime);
-            //Debug.Log("Posición del personaje: " + character.transform.position);
+            //Debug.Log("Posición del personaje: " + player.transform.position);
         }
 
         protected void HandleGrounCheck()
@@ -67,7 +67,7 @@ namespace KC
 
         //private void OnDrawGizmosSelected()
         //{
-        //    Gizmos.DrawSphere(character.transform.position, groundCheckSphereRadius);
+        //    Gizmos.DrawSphere(player.transform.position, groundCheckSphereRadius);
         //}
 
         public void EnableCanRotate()

@@ -45,49 +45,216 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: -1081207925726029658, guid: 550224a2ba31a5242a7686c995a8431e, type: 3}
-  saveGame: 1
+  saveGame: 0
   loadGame: 0
   worldSceneIndex: 1
-  currentCharacterSlotsBeingUsed: 5
+  currentCharacterSlotsBeingUsed: 0
   currentCharacterData:
     characterName: 
     secondPlayed: 0
     xPosition: 0
     yPosition: 0
     zPosition: 0
+    currentHealth: 0
+    currentStamina: 0
+    vitality: 0
+    endurance: 0
+    sitesOfGrace:
+      keys: 
+      values: 
+    bossesAwakened:
+      keys: 
+      values: 
+    bossesDefeated:
+      keys: 
+      values: 
   characterSlot01:
     characterName: 
     secondPlayed: 0
     xPosition: 0
     yPosition: 0
     zPosition: 0
+    currentHealth: 0
+    currentStamina: 0
+    vitality: 0
+    endurance: 0
+    sitesOfGrace:
+      keys: 
+      values: 
+    bossesAwakened:
+      keys: 
+      values: 
+    bossesDefeated:
+      keys: 
+      values: 
   characterSlot02:
     characterName: 
     secondPlayed: 0
     xPosition: 0
     yPosition: 0
     zPosition: 0
+    currentHealth: 0
+    currentStamina: 0
+    vitality: 0
+    endurance: 0
+    sitesOfGrace:
+      keys: 
+      values: 
+    bossesAwakened:
+      keys: 
+      values: 
+    bossesDefeated:
+      keys: 
+      values: 
   characterSlot03:
     characterName: 
     secondPlayed: 0
     xPosition: 0
     yPosition: 0
     zPosition: 0
+    currentHealth: 0
+    currentStamina: 0
+    vitality: 0
+    endurance: 0
+    sitesOfGrace:
+      keys: 
+      values: 
+    bossesAwakened:
+      keys: 
+      values: 
+    bossesDefeated:
+      keys: 
+      values: 
   characterSlot04:
     characterName: 
     secondPlayed: 0
     xPosition: 0
     yPosition: 0
     zPosition: 0
+    currentHealth: 0
+    currentStamina: 0
+    vitality: 0
+    endurance: 0
+    sitesOfGrace:
+      keys: 
+      values: 
+    bossesAwakened:
+      keys: 
+      values: 
+    bossesDefeated:
+      keys: 
+      values: 
   characterSlot05:
     characterName: 
     secondPlayed: 0
     xPosition: 0
     yPosition: 0
     zPosition: 0
+    currentHealth: 0
+    currentStamina: 0
+    vitality: 0
+    endurance: 0
+    sitesOfGrace:
+      keys: 
+      values: 
+    bossesAwakened:
+      keys: 
+      values: 
+    bossesDefeated:
+      keys: 
+      values: 
   characterSlot06:
     characterName: 
     secondPlayed: 0
     xPosition: 0
     yPosition: 0
     zPosition: 0
+    currentHealth: 0
+    currentStamina: 0
+    vitality: 0
+    endurance: 0
+    sitesOfGrace:
+      keys: 
+      values: 
+    bossesAwakened:
+      keys: 
+      values: 
+    bossesDefeated:
+      keys: 
+      values: 
+  characterSlot07:
+    characterName: Character
+    secondPlayed: 0
+    xPosition: 0
+    yPosition: 0
+    zPosition: 0
+    currentHealth: 0
+    currentStamina: 0
+    vitality: 0
+    endurance: 0
+    sitesOfGrace:
+      keys: 
+      values: 
+    bossesAwakened:
+      keys: 
+      values: 
+    bossesDefeated:
+      keys: 
+      values: 
+  characterSlot08:
+    characterName: Character
+    secondPlayed: 0
+    xPosition: 0
+    yPosition: 0
+    zPosition: 0
+    currentHealth: 0
+    currentStamina: 0
+    vitality: 0
+    endurance: 0
+    sitesOfGrace:
+      keys: 
+      values: 
+    bossesAwakened:
+      keys: 
+      values: 
+    bossesDefeated:
+      keys: 
+      values: 
+  characterSlot09:
+    characterName: Character
+    secondPlayed: 0
+    xPosition: 0
+    yPosition: 0
+    zPosition: 0
+    currentHealth: 0
+    currentStamina: 0
+    vitality: 0
+    endurance: 0
+    sitesOfGrace:
+      keys: 
+      values: 
+    bossesAwakened:
+      keys: 
+      values: 
+    bossesDefeated:
+      keys: 
+      values: 
+  characterSlot10:
+    characterName: Character
+    secondPlayed: 0
+    xPosition: 0
+    yPosition: 0
+    zPosition: 0
+    currentHealth: 0
+    currentStamina: 0
+    vitality: 0
+    endurance: 0
+    sitesOfGrace:
+      keys: 
+      values: 
+    bossesAwakened:
+      keys: 
+      values: 
+    bossesDefeated:
+      keys: 
+      values: 

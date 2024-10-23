@@ -5,8 +5,10 @@ namespace KC
     public class PlayerEquipmentManager : CharacterEquipmentManager
     {
         PlayerManager player;
-        public WeaponModelInstantiationSlot rightHandSlot;
-        public WeaponModelInstantiationSlot leftHandSlot;
+        public WeaponModelInstantiationSlot rightHandWeaponSlot;
+        public WeaponModelInstantiationSlot rightHandShieldSlot;
+        public WeaponModelInstantiationSlot leftHandWeaponSlot;
+        public WeaponModelInstantiationSlot leftHandShieldSlot;
 
         [SerializeField] WeaponManager rightWeaponManager;
         [SerializeField] WeaponManager leftWeaponManager;
@@ -34,13 +36,21 @@ namespace KC
             WeaponModelInstantiationSlot[] weaponSlots = GetComponentsInChildren<WeaponModelInstantiationSlot>();
             foreach (var weaponSlot in weaponSlots)
             {
-                if (weaponSlot.weaponSlot  == WeaponModelSlot.RightHand)
+                if (weaponSlot.weaponSlot  == WeaponModelSlot.RightHandWeaponSlot)
                 {
-                    rightHandSlot = weaponSlot;
-
-                }else if (weaponSlot.weaponSlot == WeaponModelSlot.LeftHand)
+                    rightHandWeaponSlot = weaponSlot;
+                }
+                else if (weaponSlot.weaponSlot == WeaponModelSlot.RightHandShieldSlot)
                 {
-                    leftHandSlot = weaponSlot;
+                    rightHandShieldSlot = weaponSlot;
+                }
+                else if (weaponSlot.weaponSlot == WeaponModelSlot.LeftHandWeaponSlot)
+                {
+                    leftHandWeaponSlot = weaponSlot;
+                }
+                else if (weaponSlot.weaponSlot == WeaponModelSlot.LeftHandShieldSlot)
+                {
+                    leftHandShieldSlot = weaponSlot;
                 }
             }
         }
@@ -128,11 +138,28 @@ namespace KC
             if (player.playerInventoryManager.currentRightHandWeapon != null)
             {
                 //Removemos el arma antigua
-                rightHandSlot.UnloadWeapon();
+                if (rightHandWeaponSlot.currentWeaponModel != null)
+                    rightHandWeaponSlot.UnloadWeapon();
+
+                if (rightHandShieldSlot.currentWeaponModel != null)
+                    rightHandShieldSlot.UnloadWeapon();
 
                 //Trae la nueva arma
                 rightHandWeaponModel = Instantiate(player.playerInventoryManager.currentRightHandWeapon.weaponModel);
-                rightHandSlot.LoadWeapon(rightHandWeaponModel);
+
+                switch (player.playerInventoryManager.currentRightHandWeapon.weaponModelType)
+                {
+                    case WeaponModelType.Weapon:
+                        rightHandWeaponSlot.LoadWeapon(rightHandWeaponModel);
+                        break;
+                    case WeaponModelType.Shield:
+                        rightHandShieldSlot.LoadWeapon(rightHandWeaponModel);
+                        break;
+                    default:
+                        break;
+                }
+
+                
                 rightWeaponManager = rightHandWeaponModel.GetComponent<WeaponManager>();
                 rightWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentRightHandWeapon);
                 player.playerAnimatorManager.updateAnimatorController(player.playerInventoryManager.currentRightHandWeapon.weaponAnimator);
@@ -217,11 +244,27 @@ namespace KC
             if (player.playerInventoryManager.currentLeftHandWeapon != null)
             {
                 //Removemos el arma antigua
-                leftHandSlot.UnloadWeapon();
+                if (leftHandWeaponSlot.currentWeaponModel != null)
+                    leftHandWeaponSlot.UnloadWeapon();
+
+                if (leftHandShieldSlot.currentWeaponModel != null)
+                    leftHandShieldSlot.UnloadWeapon();
 
                 //Trae la nueva arma
                 leftHandWeaponModel = Instantiate(player.playerInventoryManager.currentLeftHandWeapon.weaponModel);
-                leftHandSlot.LoadWeapon(leftHandWeaponModel);
+
+                switch (player.playerInventoryManager.currentLeftHandWeapon.weaponModelType)
+                {
+                    case WeaponModelType.Weapon:
+                        leftHandWeaponSlot.LoadWeapon(leftHandWeaponModel);
+                        break;
+                    case WeaponModelType.Shield:
+                        leftHandShieldSlot.LoadWeapon(leftHandWeaponModel);
+                        break;
+                    default:
+                        break;
+                }
+
                 leftWeaponManager = leftHandWeaponModel.GetComponent<WeaponManager>();
                 leftWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentLeftHandWeapon);
             }
