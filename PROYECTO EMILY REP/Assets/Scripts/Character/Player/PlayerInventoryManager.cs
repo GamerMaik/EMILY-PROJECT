@@ -6,6 +6,7 @@ namespace KC
     {
         public WeaponItem currentRightHandWeapon;
         public WeaponItem currentLeftHandWeapon;
+        public WeaponItem currentTwoHandWeapon;
 
         [Header("QuickSlots")]
         public WeaponItem[] weaponsRightHandSlots = new WeaponItem[3];

@@ -13,6 +13,9 @@ namespace KC
         [Header("Weapon Model")]
         public GameObject weaponModel;
 
+        [Header("Weapon Class")]
+        public WeaponClass weaponClass;
+
         [Header("Weapon Requirements")]
         public int strengthREQ = 0;
         public int dexREQ = 0;

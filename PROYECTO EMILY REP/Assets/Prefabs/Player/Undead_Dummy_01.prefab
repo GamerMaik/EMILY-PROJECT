@@ -587,6 +587,10 @@ MonoBehaviour:
   hit_Backward_Medium_01: hit_Backward_Medium_01
   hit_Left_Medium_01: hit_Left_Medium_01
   hit_Right_Medium_01: hit_Right_Medium_01
+  hit_Forward_Ping_01: hit_Forward_Ping_01
+  hit_Backward_Ping_01: hit_Backward_Ping_01
+  hit_Left_Ping_01: hit_Left_Ping_01
+  hit_Right_Ping_01: hit_Right_Ping_01
 --- !u!114 &4177275692785571413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,7 +613,7 @@ MonoBehaviour:
   blockingStability: 0
   totalPoiseDamage: 0
   offensivePoiseBinus: 0
-  basePoiseDefense: 0
+  basePoiseDefense: 100
   defaultPoiseResetTime: 8
   poiseResetTimer: 0
 --- !u!114 &4358535851691687462

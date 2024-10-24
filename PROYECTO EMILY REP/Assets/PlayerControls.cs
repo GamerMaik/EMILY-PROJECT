@@ -444,6 +444,33 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Two Hand Weapon"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""3df9114f-a071-4d2f-9767-fced06eb0f4e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=0.15,pressPoint=0.5)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Two Hand Right Weapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""76c08a39-46c3-4b98-8589-b30cac0dd064"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Two Hand Left Weapom"",
+                    ""type"": ""Button"",
+                    ""id"": ""bca51818-c269-46e1-9490-405ec296e01b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""que RB"",
                     ""type"": ""Button"",
                     ""id"": ""4d6ab796-1510-4efc-a6d3-82702a2b512f"",
@@ -579,6 +606,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""345e4c7b-ca1a-439d-a2ae-69bfe7c45e3c"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Two Hand Right Weapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""adcdff19-3f19-40f6-8f47-fa68f3d21a5e"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
@@ -590,12 +628,34 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""ea3f6d0b-e640-4559-a88d-8be28b50b6fc"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Two Hand Left Weapom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""c691b251-f998-4b8b-82b8-2360eca29a6f"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ed513d73-7fc1-448d-ac47-bd06887412b8"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Two Hand Weapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -763,6 +823,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActions_RB = m_PlayerActions.FindAction("RB", throwIfNotFound: true);
         m_PlayerActions_LB = m_PlayerActions.FindAction("LB", throwIfNotFound: true);
         m_PlayerActions_Interaction = m_PlayerActions.FindAction("Interaction", throwIfNotFound: true);
+        m_PlayerActions_TwoHandWeapon = m_PlayerActions.FindAction("Two Hand Weapon", throwIfNotFound: true);
+        m_PlayerActions_TwoHandRightWeapon = m_PlayerActions.FindAction("Two Hand Right Weapon", throwIfNotFound: true);
+        m_PlayerActions_TwoHandLeftWeapom = m_PlayerActions.FindAction("Two Hand Left Weapom", throwIfNotFound: true);
         m_PlayerActions_queRB = m_PlayerActions.FindAction("que RB", throwIfNotFound: true);
         m_PlayerActions_RT = m_PlayerActions.FindAction("RT", throwIfNotFound: true);
         m_PlayerActions_queRT = m_PlayerActions.FindAction("que RT", throwIfNotFound: true);
@@ -1074,6 +1137,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_RB;
     private readonly InputAction m_PlayerActions_LB;
     private readonly InputAction m_PlayerActions_Interaction;
+    private readonly InputAction m_PlayerActions_TwoHandWeapon;
+    private readonly InputAction m_PlayerActions_TwoHandRightWeapon;
+    private readonly InputAction m_PlayerActions_TwoHandLeftWeapom;
     private readonly InputAction m_PlayerActions_queRB;
     private readonly InputAction m_PlayerActions_RT;
     private readonly InputAction m_PlayerActions_queRT;
@@ -1094,6 +1160,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @RB => m_Wrapper.m_PlayerActions_RB;
         public InputAction @LB => m_Wrapper.m_PlayerActions_LB;
         public InputAction @Interaction => m_Wrapper.m_PlayerActions_Interaction;
+        public InputAction @TwoHandWeapon => m_Wrapper.m_PlayerActions_TwoHandWeapon;
+        public InputAction @TwoHandRightWeapon => m_Wrapper.m_PlayerActions_TwoHandRightWeapon;
+        public InputAction @TwoHandLeftWeapom => m_Wrapper.m_PlayerActions_TwoHandLeftWeapom;
         public InputAction @queRB => m_Wrapper.m_PlayerActions_queRB;
         public InputAction @RT => m_Wrapper.m_PlayerActions_RT;
         public InputAction @queRT => m_Wrapper.m_PlayerActions_queRT;
@@ -1129,6 +1198,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Interaction.started += instance.OnInteraction;
             @Interaction.performed += instance.OnInteraction;
             @Interaction.canceled += instance.OnInteraction;
+            @TwoHandWeapon.started += instance.OnTwoHandWeapon;
+            @TwoHandWeapon.performed += instance.OnTwoHandWeapon;
+            @TwoHandWeapon.canceled += instance.OnTwoHandWeapon;
+            @TwoHandRightWeapon.started += instance.OnTwoHandRightWeapon;
+            @TwoHandRightWeapon.performed += instance.OnTwoHandRightWeapon;
+            @TwoHandRightWeapon.canceled += instance.OnTwoHandRightWeapon;
+            @TwoHandLeftWeapom.started += instance.OnTwoHandLeftWeapom;
+            @TwoHandLeftWeapom.performed += instance.OnTwoHandLeftWeapom;
+            @TwoHandLeftWeapom.canceled += instance.OnTwoHandLeftWeapom;
             @queRB.started += instance.OnQueRB;
             @queRB.performed += instance.OnQueRB;
             @queRB.canceled += instance.OnQueRB;
@@ -1181,6 +1259,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Interaction.started -= instance.OnInteraction;
             @Interaction.performed -= instance.OnInteraction;
             @Interaction.canceled -= instance.OnInteraction;
+            @TwoHandWeapon.started -= instance.OnTwoHandWeapon;
+            @TwoHandWeapon.performed -= instance.OnTwoHandWeapon;
+            @TwoHandWeapon.canceled -= instance.OnTwoHandWeapon;
+            @TwoHandRightWeapon.started -= instance.OnTwoHandRightWeapon;
+            @TwoHandRightWeapon.performed -= instance.OnTwoHandRightWeapon;
+            @TwoHandRightWeapon.canceled -= instance.OnTwoHandRightWeapon;
+            @TwoHandLeftWeapom.started -= instance.OnTwoHandLeftWeapom;
+            @TwoHandLeftWeapom.performed -= instance.OnTwoHandLeftWeapom;
+            @TwoHandLeftWeapom.canceled -= instance.OnTwoHandLeftWeapom;
             @queRB.started -= instance.OnQueRB;
             @queRB.performed -= instance.OnQueRB;
             @queRB.canceled -= instance.OnQueRB;
@@ -1261,6 +1348,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnRB(InputAction.CallbackContext context);
         void OnLB(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
+        void OnTwoHandWeapon(InputAction.CallbackContext context);
+        void OnTwoHandRightWeapon(InputAction.CallbackContext context);
+        void OnTwoHandLeftWeapom(InputAction.CallbackContext context);
         void OnQueRB(InputAction.CallbackContext context);
         void OnRT(InputAction.CallbackContext context);
         void OnQueRT(InputAction.CallbackContext context);

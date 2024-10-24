@@ -16,7 +16,7 @@ namespace KC
             }
         }
 
-        public void LoadWeapon(GameObject weaponModel)
+        public void PlaceWeaponModelIntoSlot(GameObject weaponModel)
         {
             currentWeaponModel = weaponModel;
             weaponModel.transform.parent = transform;
@@ -25,6 +25,30 @@ namespace KC
             weaponModel.transform.localRotation = Quaternion.identity;
             weaponModel.transform.localScale = Vector3.one;
 
+        }
+
+        public void PlaceWeaponModelInUnequipedSlot(GameObject weaponModel, WeaponClass weaponClass, PlayerManager player)
+        {
+            currentWeaponModel = weaponModel;
+            weaponModel.transform.parent = transform;
+
+            switch (weaponClass)
+            {
+                case WeaponClass.StraightSword:
+                    weaponModel.transform.localPosition = new Vector3(-0.255f, 0.056f, -0.2f);
+                    weaponModel.transform.localRotation = Quaternion.Euler(-168.3f, -108f, 32.4f);
+                    break;
+                case WeaponClass.Spear:
+                    weaponModel.transform.localPosition = new Vector3(0.064f, 0f, -0.06f);
+                    weaponModel.transform.localRotation = Quaternion.Euler(194, 90, -0.22f);
+                    break;
+                case WeaponClass.MediumShield:
+                    weaponModel.transform.localPosition = new Vector3(0.063f, 0.015f, 0.002f);
+                    weaponModel.transform.localRotation = Quaternion.Euler(-271.5f, 183.6f, 279.5f);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

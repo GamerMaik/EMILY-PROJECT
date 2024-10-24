@@ -421,6 +421,33 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Two Hand Weapon",
+                    "type": "PassThrough",
+                    "id": "3df9114f-a071-4d2f-9767-fced06eb0f4e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.15,pressPoint=0.5)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Two Hand Right Weapon",
+                    "type": "Button",
+                    "id": "76c08a39-46c3-4b98-8589-b30cac0dd064",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Two Hand Left Weapom",
+                    "type": "Button",
+                    "id": "bca51818-c269-46e1-9490-405ec296e01b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "que RB",
                     "type": "Button",
                     "id": "4d6ab796-1510-4efc-a6d3-82702a2b512f",
@@ -556,6 +583,17 @@
                 },
                 {
                     "name": "",
+                    "id": "345e4c7b-ca1a-439d-a2ae-69bfe7c45e3c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Two Hand Right Weapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "adcdff19-3f19-40f6-8f47-fa68f3d21a5e",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
@@ -567,12 +605,34 @@
                 },
                 {
                     "name": "",
+                    "id": "ea3f6d0b-e640-4559-a88d-8be28b50b6fc",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Two Hand Left Weapom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c691b251-f998-4b8b-82b8-2360eca29a6f",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Interaction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ed513d73-7fc1-448d-ac47-bd06887412b8",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Two Hand Weapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

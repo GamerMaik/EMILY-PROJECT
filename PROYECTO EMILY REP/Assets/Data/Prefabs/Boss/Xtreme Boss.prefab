@@ -1304,6 +1304,10 @@ MonoBehaviour:
     m_InternalValue: 0
   currentTargetNetworkObjetID:
     m_InternalValue: 0
+  isBlocking:
+    m_InternalValue: 0
+  isAttacking:
+    m_InternalValue: 0
   isInvulnerable:
     m_InternalValue: 0
   isLokedOn:
@@ -1315,9 +1319,9 @@ MonoBehaviour:
   isChargingAttack:
     m_InternalValue: 0
   currentHealth:
-    m_InternalValue: 400
+    m_InternalValue: 1000
   maxHealth:
-    m_InternalValue: 400
+    m_InternalValue: 1000
   currentStamina:
     m_InternalValue: 0
   maxStamina:
@@ -1368,6 +1372,7 @@ MonoBehaviour:
   lookOnTransform: {fileID: 3195157219755632216}
   canPerformRollingAttack: 0
   canPerformBackStepAttack: 0
+  canBlock: 1
   actionRecoveryTimer: 0
   enablePivot: 1
   distanceFromTarget: 0
@@ -1381,7 +1386,8 @@ MonoBehaviour:
   stompCollider: {fileID: 7818292041527705779}
   stompAttackRadius: 1.5
   baseDamage: 25
-  stompAttack: 25
+  stompAttack: 70
+  basePoiseDamage: 25
   attack02DamageModifier: 1.5
   attack03DamageModifier: 1.8
   attack04DamageModifier: 4
@@ -1407,6 +1413,7 @@ MonoBehaviour:
   characterEffectsManager: {fileID: 0}
   characterAnimatorManager: {fileID: 0}
   characterCombatManager: {fileID: 0}
+  characterStatManager: {fileID: 0}
   characterSoundFXManager: {fileID: 0}
   characterLocomotionManager: {fileID: 0}
   characterUIManager: {fileID: 0}
@@ -1457,6 +1464,10 @@ MonoBehaviour:
   hit_Backward_Medium_01: hit_Backward_Medium_01
   hit_Left_Medium_01: hit_Left_Medium_01
   hit_Right_Medium_01: hit_Right_Medium_01
+  hit_Forward_Ping_01: hit_Forward_Ping_01
+  hit_Backward_Ping_01: hit_Backward_Ping_01
+  hit_Left_Ping_01: hit_Left_Ping_01
+  hit_Right_Ping_01: hit_Right_Ping_01
 --- !u!114 &6005682629940065577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1471,6 +1482,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staminaRegenerationDelay: 2
   staminaRegenerationAmount: 2
+  blockingPhysicalAbsorption: 0
+  blockingFireAbsorption: 0
+  blockingMagicAbsorption: 0
+  blockingLightningAbsorption: 0
+  blockingHolyAbsorption: 0
+  blockingStability: 0
+  totalPoiseDamage: 0
+  offensivePoiseBinus: 0
+  basePoiseDefense: 500
+  defaultPoiseResetTime: 8
+  poiseResetTimer: 0
 --- !u!114 &2367514173344921966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3332,6 +3354,7 @@ MonoBehaviour:
   fireDamage: 0
   lightningDamage: 0
   holyDamage: 0
+  poiseDamage: 0
   contactPoint: {x: 0, y: 0, z: 0}
   bossCharacter: {fileID: 0}
 --- !u!1 &5264252445422439515
@@ -4718,6 +4741,7 @@ MonoBehaviour:
   fireDamage: 0
   lightningDamage: 0
   holyDamage: 0
+  poiseDamage: 0
   contactPoint: {x: 0, y: 0, z: 0}
   xtremeCharacterManager: {fileID: 0}
 --- !u!82 &2210675937431734490

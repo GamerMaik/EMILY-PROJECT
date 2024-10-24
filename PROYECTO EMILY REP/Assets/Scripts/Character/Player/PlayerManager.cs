@@ -101,6 +101,11 @@ namespace KC
             playerNetworkManager.currentWeaponBeingUsed.OnValueChanged += playerNetworkManager.OnCurrentWeaponBeingUsedIDChange;
             playerNetworkManager.isBlocking.OnValueChanged += playerNetworkManager.OnIsBlockingChanged;
 
+            //Two Hand
+            playerNetworkManager.isTwoHandingWeapon.OnValueChanged += playerNetworkManager.OnIsTwoHandingWeaponChanged;
+            playerNetworkManager.isTwoHandingRightWeapon.OnValueChanged += playerNetworkManager.OnIsTwoHandingRightWeaponChanged;
+            playerNetworkManager.isTwoHandingLeftWeapon.OnValueChanged += playerNetworkManager.OnIsTwoHandingLeftWeaponChanged;
+
             //Flags
             playerNetworkManager.isChargingAttack.OnValueChanged += playerNetworkManager.IsChargingAttackChanged;
 
@@ -148,7 +153,10 @@ namespace KC
             playerNetworkManager.currentLeftHandWeaponID.OnValueChanged -= playerNetworkManager.OnCurrentLeftHandWeaponIdChange;
             playerNetworkManager.currentWeaponBeingUsed.OnValueChanged -= playerNetworkManager.OnCurrentWeaponBeingUsedIDChange;
 
-
+            //Two Hand
+            playerNetworkManager.isTwoHandingWeapon.OnValueChanged -= playerNetworkManager.OnIsTwoHandingWeaponChanged;
+            playerNetworkManager.isTwoHandingRightWeapon.OnValueChanged -= playerNetworkManager.OnIsTwoHandingRightWeaponChanged;
+            playerNetworkManager.isTwoHandingLeftWeapon.OnValueChanged -= playerNetworkManager.OnIsTwoHandingLeftWeaponChanged;
             //Flags
             playerNetworkManager.isChargingAttack.OnValueChanged -= playerNetworkManager.IsChargingAttackChanged;
         }
@@ -237,6 +245,9 @@ namespace KC
             playerNetworkManager.OnCurrentRightHandWeaponIdChange(0, playerNetworkManager.currentRightHandWeaponID.Value);
             playerNetworkManager.OnCurrentLeftHandWeaponIdChange(0, playerNetworkManager.currentLeftHandWeaponID.Value);
 
+            //Sincronizar estado de dos manos
+            playerNetworkManager.OnIsTwoHandingRightWeaponChanged(false, playerNetworkManager.isTwoHandingRightWeapon.Value);
+            playerNetworkManager.OnIsTwoHandingLeftWeaponChanged(false, playerNetworkManager.isTwoHandingLeftWeapon.Value);
             //Sync estado de bloqueo
             playerNetworkManager.OnIsBlockingChanged(false, playerNetworkManager.isBlocking.Value);
 

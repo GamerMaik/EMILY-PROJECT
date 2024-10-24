@@ -31,6 +31,7 @@ public enum WeaponModelSlot
     RightHandShieldSlot,
     LeftHandWeaponSlot,
     LeftHandShieldSlot,
+    BackSlot,
     //Se pueden agregar muchas mas ranuras si se desea
 }
 
@@ -39,6 +40,14 @@ public enum WeaponModelType
     Weapon,
     Shield
 }
+
+public enum WeaponClass
+{
+    StraightSword,
+    Spear,
+    MediumShield
+}
+
 //Esto se usa para calcular el daño segun el tip de ataque
 public enum AttackType
 {

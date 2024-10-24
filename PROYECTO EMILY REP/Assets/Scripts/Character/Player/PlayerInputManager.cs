@@ -44,6 +44,12 @@ namespace KC
         [SerializeField] bool hold_RT_Input = false;
         [SerializeField] bool hold_Alt_Input = false;
 
+
+        [Header("Two Hand Inputs")]
+        [SerializeField] bool two_Hand_Input = false;
+        [SerializeField] bool two_Hand_Right_Weapon_Input = false;
+        [SerializeField] bool two_Hand_Left_Weapon_Input = false;
+
         [Header("Switch Armament")]
         [SerializeField] bool switch_Right_Weapon_Input = false;
         [SerializeField] bool switch_Left_Weapon_Input = false;
@@ -129,14 +135,19 @@ namespace KC
                 playerControls.PlayerActions.LB.canceled += i => player.playerNetworkManager.isBlocking.Value = false;
 
                 //Trigguers
-                //playerControls.PlayerActions.RT.performed += i => RT_Input = true;
-
                 playerControls.PlayerActions.HoldRT.performed += i => hold_RT_Input = true;
                 playerControls.PlayerActions.HoldRT.canceled += i => hold_RT_Input = false;
 
                 playerControls.PlayerActions.HoldAlt.performed += i => hold_Alt_Input = true;
                 playerControls.PlayerActions.HoldAlt.canceled += i => hold_Alt_Input = false;
 
+                //Two hand
+                playerControls.PlayerActions.TwoHandWeapon.performed += i => two_Hand_Input = true;
+                playerControls.PlayerActions.TwoHandWeapon.canceled += i => two_Hand_Input = false;
+                playerControls.PlayerActions.TwoHandRightWeapon.performed += i => two_Hand_Right_Weapon_Input = true;
+                playerControls.PlayerActions.TwoHandRightWeapon.canceled += i => two_Hand_Right_Weapon_Input = false;
+                playerControls.PlayerActions.TwoHandLeftWeapom.performed += i => two_Hand_Left_Weapon_Input = true;
+                playerControls.PlayerActions.TwoHandLeftWeapom.canceled += i => two_Hand_Left_Weapon_Input = false;
                 //Bloquar la camara a un objetivo
                 playerControls.PlayerActions.LookOn.performed += i => lockOn_Input = true;
                 playerControls.PlayerActions.SeekLeftLockOntarget.performed += i => lockOn_Left_Input = true;
@@ -181,6 +192,7 @@ namespace KC
         }
         private void HandleAllInputs() 
         {
+            HandleTwoHandInput();
             HandleLockOnInput();
             HandleLockOnSwitchTargetInput();
             HandlePlayerMovementInput();
@@ -196,6 +208,53 @@ namespace KC
             HandleSwitchLeftWeaponInput();
             HandleQuedInputs();
             HandleInteractionInput();
+        }
+
+        //Two hand 
+        private void HandleTwoHandInput()
+        {
+            if (!two_Hand_Input)
+                return;
+
+            if (two_Hand_Right_Weapon_Input)
+            {
+                RB_Input = false;
+                two_Hand_Right_Weapon_Input = false;
+                player.playerNetworkManager.isBlocking.Value = false;
+
+                if (player.playerNetworkManager.isTwoHandingWeapon.Value)
+                {
+
+                    player.playerNetworkManager.isTwoHandingWeapon.Value = false;
+                    return;
+                }
+                else
+                {
+
+                    player.playerNetworkManager.isTwoHandingRightWeapon.Value = true;
+                    return;
+                }
+            }
+            else if (two_Hand_Left_Weapon_Input)
+            {
+                LB_Input = false;
+                two_Hand_Left_Weapon_Input = false;
+                player.playerNetworkManager.isBlocking.Value = false;
+
+                if (player.playerNetworkManager.isTwoHandingWeapon.Value)
+                {
+
+                    player.playerNetworkManager.isTwoHandingWeapon.Value = false;
+                    return;
+                }
+                else
+                {
+
+                    player.playerNetworkManager.isTwoHandingLeftWeapon.Value = true;
+                    return;
+                }
+            }
+
         }
 
         #region Look On
@@ -361,6 +420,9 @@ namespace KC
 
         private void HandleRBInput()
         {
+            if (two_Hand_Input)
+                return;
+
             if (RB_Input)
             {
                 RB_Input = false;
@@ -376,6 +438,9 @@ namespace KC
 
         private void HandleLBInput()
         {
+            if (two_Hand_Input)
+                return;
+
             if (LB_Input)
             {
                 //LB_Input = false;
