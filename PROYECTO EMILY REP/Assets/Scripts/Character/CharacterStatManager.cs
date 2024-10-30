@@ -20,6 +20,20 @@ namespace KC
         public float blockingHolyAbsorption;
         public float blockingStability;
 
+        [Header("Armor Absorption")]
+        public float armorPhysicalDamageAbsroption;
+        public float armorMagicDamageAbsorption;
+        public float armorFireDamageAbsorption;
+        public float armorLightningDamageAbsorption;
+        public float armorHolyDamageAbsorption;
+
+        [Header("Armor Resistance")]
+        public float armorImmunity; //Resistencia contra el veneno
+        public float armorRobustness; //Resistencia al sangrado
+        public float armorFocus; //Resistencia a la locura y al sueño
+        public float armorVitality; //Resistencia a la acumulacion de muerte
+
+
         [Header("Poise")]
         public float totalPoiseDamage;
         public float offensivePoiseBinus;

@@ -15,6 +15,7 @@ namespace KC
         [HideInInspector] public PlayerEquipmentManager playerEquipmentManager;
         [HideInInspector] public PlayerCombatManager playerCombatManager;
         [HideInInspector] public PlayerInteractionManager playerInteractionManager;
+        [HideInInspector] public PlayerEffectsManager playerEffectsManager;
 
         protected override void Awake()
         {
@@ -30,6 +31,7 @@ namespace KC
             playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerCombatManager = GetComponent<PlayerCombatManager>();
             playerInteractionManager = GetComponent<PlayerInteractionManager>();
+            playerEffectsManager = GetComponent<PlayerEffectsManager>();
         }
 
         protected override void Update()
@@ -101,6 +103,11 @@ namespace KC
             playerNetworkManager.currentWeaponBeingUsed.OnValueChanged += playerNetworkManager.OnCurrentWeaponBeingUsedIDChange;
             playerNetworkManager.isBlocking.OnValueChanged += playerNetworkManager.OnIsBlockingChanged;
 
+            playerNetworkManager.headEquipmentID.OnValueChanged += playerNetworkManager.OnHeadEquipmentChanged;
+            playerNetworkManager.bodyEquipmentID.OnValueChanged += playerNetworkManager.OnBodyEquipmentChanged;
+            playerNetworkManager.legEquipmentID.OnValueChanged += playerNetworkManager.OnLegEquipmentChanged;
+            playerNetworkManager.handEquipmentID.OnValueChanged += playerNetworkManager.OnHandEquipmentChanged;
+
             //Two Hand
             playerNetworkManager.isTwoHandingWeapon.OnValueChanged += playerNetworkManager.OnIsTwoHandingWeaponChanged;
             playerNetworkManager.isTwoHandingRightWeapon.OnValueChanged += playerNetworkManager.OnIsTwoHandingRightWeaponChanged;
@@ -152,6 +159,11 @@ namespace KC
             playerNetworkManager.currentRightHandWeaponID.OnValueChanged -= playerNetworkManager.OnCurrentRightHandWeaponIdChange;
             playerNetworkManager.currentLeftHandWeaponID.OnValueChanged -= playerNetworkManager.OnCurrentLeftHandWeaponIdChange;
             playerNetworkManager.currentWeaponBeingUsed.OnValueChanged -= playerNetworkManager.OnCurrentWeaponBeingUsedIDChange;
+
+            playerNetworkManager.headEquipmentID.OnValueChanged -= playerNetworkManager.OnHeadEquipmentChanged;
+            playerNetworkManager.bodyEquipmentID.OnValueChanged -= playerNetworkManager.OnBodyEquipmentChanged;
+            playerNetworkManager.legEquipmentID.OnValueChanged -= playerNetworkManager.OnLegEquipmentChanged;
+            playerNetworkManager.handEquipmentID.OnValueChanged -= playerNetworkManager.OnHandEquipmentChanged;
 
             //Two Hand
             playerNetworkManager.isTwoHandingWeapon.OnValueChanged -= playerNetworkManager.OnIsTwoHandingWeaponChanged;
@@ -244,6 +256,12 @@ namespace KC
             //sincronizar armas
             playerNetworkManager.OnCurrentRightHandWeaponIdChange(0, playerNetworkManager.currentRightHandWeaponID.Value);
             playerNetworkManager.OnCurrentLeftHandWeaponIdChange(0, playerNetworkManager.currentLeftHandWeaponID.Value);
+
+            //Sync Armors
+            playerNetworkManager.OnHeadEquipmentChanged(0, playerNetworkManager.headEquipmentID.Value);
+            playerNetworkManager.OnBodyEquipmentChanged(0, playerNetworkManager.bodyEquipmentID.Value);
+            playerNetworkManager.OnLegEquipmentChanged(0, playerNetworkManager.legEquipmentID.Value);
+            playerNetworkManager.OnHandEquipmentChanged(0, playerNetworkManager.handEquipmentID.Value);
 
             //Sincronizar estado de dos manos
             playerNetworkManager.OnIsTwoHandingRightWeaponChanged(false, playerNetworkManager.isTwoHandingRightWeapon.Value);

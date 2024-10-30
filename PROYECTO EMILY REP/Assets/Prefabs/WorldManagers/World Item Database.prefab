@@ -50,3 +50,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ed5d37e6e3c6ec74c881ee8799892eb5, type: 2}
   - {fileID: 11400000, guid: a12da03749dbb8343b4085a8416305b8, type: 2}
   - {fileID: 11400000, guid: d8c707316c705e44983020b8c31584e7, type: 2}
+  headEquipment:
+  - {fileID: 11400000, guid: a240dc4e057f1f940896782a19b7f33d, type: 2}
+  - {fileID: 11400000, guid: 1c0d0c6c17a8200418817e878eddacc0, type: 2}
+  bodyEquipment:
+  - {fileID: 11400000, guid: 23fa23c9ce4ac9240b10e37bebb66d93, type: 2}
+  legEquipment:
+  - {fileID: 11400000, guid: 55ab6dd736ed1c74d9230cefafae81bf, type: 2}
+  handEquipment:
+  - {fileID: 11400000, guid: f93df752c5304df48a0ecfd7ee2cfbd0, type: 2}

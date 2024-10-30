@@ -139,11 +139,13 @@ namespace KC
             //Si tenemos el ataqu de dos manos reproducimos el ataque de dos manos
             if (playerPerformingAction.playerNetworkManager.isTwoHandingWeapon.Value)
             {
+                Debug.Log("Entra dos manos");
                 playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(weaponPerformingAction, AttackType.RollingAttack01, th_roll_Attack_01, true);
             }
             // Y si no, realizamos el ataque ligero
             else
             {
+                Debug.Log("Entra una mano");
                 playerPerformingAction.playerAnimatorManager.PlayerTargetAttackActionAnimation(weaponPerformingAction, AttackType.RollingAttack01, roll_Attack_01, true);
             }
           

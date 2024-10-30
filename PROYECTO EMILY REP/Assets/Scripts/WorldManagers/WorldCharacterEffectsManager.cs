@@ -14,7 +14,14 @@ namespace KC
         public TakeDamageEffect takeDamageEffect;
         public TakeBlockedDamageEffect takeBlockedDamageEffect;
 
+        [Header("Two Hand")]
+        public TwoHandingEffects twoHandingEffects;
+
+        [Header("Instant Effect")]
         [SerializeField] List<InstantCharacterEffect> instantEffects;
+
+        [Header("Static Effect")]
+        [SerializeField] List<StaticCharacterEffects> staticEffects;
         private void Awake()
         {
             if (instance == null)
@@ -34,6 +41,11 @@ namespace KC
             for (int i = 0; i < instantEffects.Count; ++i)
             {
                 instantEffects[i].instantEffectID = i;
+            }
+
+            for (int i = 0; i < staticEffects.Count; i++)
+            {
+                staticEffects[i].staticEffectID = i;
             }
         }
     }

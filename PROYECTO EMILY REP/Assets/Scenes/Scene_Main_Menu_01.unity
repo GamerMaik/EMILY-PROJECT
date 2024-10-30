@@ -5004,6 +5004,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 520493694292076300, guid: 133c045a371aba544bc2d60cec3bdad3, type: 3}
+      propertyPath: twoHandingEffects
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d28d00ae1e09864b842c28cc682c373, type: 2}
+    - target: {fileID: 520493694292076300, guid: 133c045a371aba544bc2d60cec3bdad3, type: 3}
+      propertyPath: staticEffects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 520493694292076300, guid: 133c045a371aba544bc2d60cec3bdad3, type: 3}
+      propertyPath: 'staticEffects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d28d00ae1e09864b842c28cc682c373, type: 2}
     - target: {fileID: 996382144276478809, guid: 133c045a371aba544bc2d60cec3bdad3, type: 3}
       propertyPath: m_Name
       value: World Character Effects Manager

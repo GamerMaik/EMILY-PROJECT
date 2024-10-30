@@ -261,7 +261,7 @@ namespace KC
         private void HandleLockOnInput()
         {
             //si el objetivo esta muerto
-            if(player.playerNetworkManager.isLokedOn.Value)
+            if (player.playerNetworkManager.isLokedOn.Value)
             {
                 if(player.playerCombatManager.currentTarget == null)
                     return;
@@ -282,6 +282,7 @@ namespace KC
             if (lockOn_Input && player.playerNetworkManager.isLokedOn.Value)
             {
                 lockOn_Input = false;
+                switchMovement_Input = false;
                 PlayerCamera.instance.ClearLockOnTargets();
                 player.playerNetworkManager.isLokedOn.Value = false;
                 //verificamos si tenemos un objetivo
@@ -291,6 +292,7 @@ namespace KC
             if (lockOn_Input && !player.playerNetworkManager.isLokedOn.Value)
             {
                 lockOn_Input = false;
+                switchMovement_Input = true;
                 //si se usa un arma de rango largo no se sbloqueará al objetivo ya que no queremos interferir con la vista o el apuntado
                 PlayerCamera.instance.HandleLocatingLockOnTarget();
 

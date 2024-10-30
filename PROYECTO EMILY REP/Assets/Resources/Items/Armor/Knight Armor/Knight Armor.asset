@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a457a5f0ee828944a621f82b1e7878e, type: 3}
+  m_Name: Knight Armor
+  m_EditorClassIdentifier: 
+  itemName: Knight Armor
+  itemIcon: {fileID: 0}
+  itemDescription: 
+  itemID: 0
+  itemWeight: 10.6
+  physicalDamageAbsroption: 12.4
+  magicDamageAbsorption: 10.9
+  fireDamageAbsorption: 10.9
+  lightningDamageAbsorption: 9.5
+  holyDamageAbsorption: 8.8
+  immunity: 28
+  robustness: 50
+  focus: 18
+  vitality: 18
+  poise: 25

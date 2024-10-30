@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 namespace KC
 {
     public class PlayerEquipmentManager : CharacterEquipmentManager
@@ -21,6 +21,13 @@ namespace KC
         [SerializeField] WeaponManager rightWeaponManager;
         [SerializeField] WeaponManager leftWeaponManager;
 
+        [Header("Debug delete later")]
+        [SerializeField] bool equipNewItems = false;
+
+        [Header("Male Equipment Models")]
+        public GameObject maleFullHelmetObject;
+        public GameObject[] maleHeadFullHelmets;
+
         protected override void Awake()
         {
             base.Awake();
@@ -28,7 +35,87 @@ namespace KC
             player = GetComponent<PlayerManager>();
 
             InitializeWeaponSlot();
+
+            List<GameObject> maleFullHelmetsList = new List<GameObject>();
+
+            foreach (Transform child in maleFullHelmetObject.transform)
+            {
+                maleFullHelmetsList.Add(child.gameObject);
+            }
+
+            maleHeadFullHelmets = maleFullHelmetsList.ToArray();
         }
+
+        private void Update()
+        {
+            if (equipNewItems)
+            {
+                equipNewItems = false;
+                DebugEquipmentNewItems();
+            }
+        }
+
+        private void DebugEquipmentNewItems()
+        {
+            Debug.Log("Equipping New Items");
+
+            LoadHeadEquipment(player.playerInventoryManager.headEquipmentItem);
+
+            if (player.playerInventoryManager.bodyEquipmentItem != null)
+                LoadBodyEquipment(player.playerInventoryManager.bodyEquipmentItem);
+
+            if (player.playerInventoryManager.legEquipmentItem != null)
+                LoadLegEquipment(player.playerInventoryManager.legEquipmentItem);
+
+            if (player.playerInventoryManager.handEquipmentItem != null)
+                LoadHandEquipment(player.playerInventoryManager.handEquipmentItem);
+        }
+
+        public void LoadHeadEquipment(HeadEquipmentItem equipment)
+        {
+            UnloadHeadEquipmentModels();
+
+            if(equipment == null)
+            {
+                if (player.IsOwner)
+                    player.playerNetworkManager.headEquipmentID.Value = -1;
+
+                player.playerInventoryManager.headEquipmentItem = null;
+                return;
+            }
+
+            player.playerInventoryManager.headEquipmentItem = equipment;
+
+            foreach (var model in equipment.equipmentModels)
+            {
+                model.LoadModel(player, true);
+            }
+
+            player.playerStatsManager.CalculateTotalArmorAbsorption();
+
+            if (player.IsOwner)
+                player.playerNetworkManager.headEquipmentID.Value = equipment.itemID;
+        }
+        private void UnloadHeadEquipmentModels()
+        {
+            foreach (var model in maleHeadFullHelmets)
+            {
+                model.SetActive(false);
+            }
+        }
+        public void LoadBodyEquipment(BodyEquipmentItem equipment)
+        {
+            player.playerStatsManager.CalculateTotalArmorAbsorption();
+        }
+        public void LoadLegEquipment(LegEquipmentItem equipment)
+        {
+            player.playerStatsManager.CalculateTotalArmorAbsorption();
+        }
+        public void LoadHandEquipment(HandEquipmentItem equipment)
+        {
+            player.playerStatsManager.CalculateTotalArmorAbsorption();
+        }
+
         protected override void Start()
         {
             base.Start();

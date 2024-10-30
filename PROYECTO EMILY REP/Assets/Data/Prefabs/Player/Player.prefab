@@ -158,6 +158,114 @@ Transform:
   - {fileID: 3988546474186173216}
   m_Father: {fileID: 47171009680805872}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &442825794303104611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6579119107603765736}
+  - component: {fileID: 5828332072774538066}
+  - component: {fileID: 6344152422896094644}
+  - component: {fileID: 5525769540607525978}
+  m_Layer: 8
+  m_Name: Sphere Helmet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6579119107603765736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442825794303104611}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.137, y: 0, z: 0}
+  m_LocalScale: {x: 0.45196426, y: 0.45196426, z: 0.45196426}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 216477666210491004}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &5828332072774538066
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442825794303104611}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &6344152422896094644
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442825794303104611}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &5525769540607525978
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442825794303104611}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &491757499742672793
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,6 +820,10 @@ MonoBehaviour:
     m_InternalValue: 1
   endurance:
     m_InternalValue: 1
+  strength:
+    m_InternalValue: 1
+  strengthModifier:
+    m_InternalValue: 1
   characterName:
     m_InternalValue:
       utf8LengthInBytes: 9
@@ -833,6 +945,7 @@ MonoBehaviour:
   playerEquipmentManager: {fileID: 0}
   playerCombatManager: {fileID: 0}
   playerInteractionManager: {fileID: 0}
+  playerEffectsManager: {fileID: 0}
 --- !u!114 &-8087553909397062534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -874,6 +987,15 @@ MonoBehaviour:
   blockingLightningAbsorption: 0
   blockingHolyAbsorption: 0
   blockingStability: 0
+  armorPhysicalDamageAbsroption: 0
+  armorMagicDamageAbsorption: 0
+  armorFireDamageAbsorption: 0
+  armorLightningDamageAbsorption: 0
+  armorHolyDamageAbsorption: 0
+  armorImmunity: 0
+  armorRobustness: 0
+  armorFocus: 0
+  armorVitality: 0
   totalPoiseDamage: 0
   offensivePoiseBinus: 0
   basePoiseDefense: 125
@@ -942,6 +1064,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d8c707316c705e44983020b8c31584e7, type: 2}
   - {fileID: 11400000, guid: 953dca51d73a20447b14d575ba5fab30, type: 2}
   leftHandWeaponIndex: 0
+  headEquipmentItem: {fileID: 0}
+  bodyEquipmentItem: {fileID: 0}
+  legEquipmentItem: {fileID: 0}
+  handEquipmentItem: {fileID: 0}
 --- !u!114 &1587032233186400945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -963,6 +1089,9 @@ MonoBehaviour:
   leftHandWeaponModel: {fileID: 0}
   rightWeaponManager: {fileID: 0}
   leftWeaponManager: {fileID: 0}
+  equipNewItems: 0
+  maleFullHelmetObject: {fileID: 5812451565607060651}
+  maleHeadFullHelmets: []
 --- !u!114 &8782298519224766173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1020,6 +1149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodSplatterVFX: {fileID: 0}
+  staticEffects: []
   effectToTest: {fileID: 11400000, guid: 7ed727dfa4410d94894ee1393c9af62b, type: 2}
   proccessEffect: 0
 --- !u!114 &-8208000062997824693
@@ -1716,6 +1846,114 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3664544645411757396}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2855001647873484881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7438318923742970211}
+  - component: {fileID: 7530712077230571037}
+  - component: {fileID: 3144635273296162320}
+  - component: {fileID: 5167766933107111128}
+  m_Layer: 8
+  m_Name: Cube Helmet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7438318923742970211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855001647873484881}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.133, y: -0, z: 0}
+  m_LocalScale: {x: 0.37121093, y: 0.42656252, z: 0.29546875}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 216477666210491004}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7530712077230571037
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855001647873484881}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &3144635273296162320
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855001647873484881}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5167766933107111128
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855001647873484881}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2991699036812472589
 GameObject:
   m_ObjectHideFlags: 0
@@ -2668,6 +2906,7 @@ Transform:
   - {fileID: 2775554505057480054}
   - {fileID: 2258056205534951720}
   - {fileID: 1373492467225952653}
+  - {fileID: 216477666210491004}
   m_Father: {fileID: 7164973018107478727}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &8695066923556907581
@@ -3852,6 +4091,39 @@ CapsuleCollider:
   m_Height: 0.4
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &5812451565607060651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 216477666210491004}
+  m_Layer: 8
+  m_Name: Helmet Objects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &216477666210491004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5812451565607060651}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7438318923742970211}
+  - {fileID: 6579119107603765736}
+  m_Father: {fileID: 4455109759538438143}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5816987157727955465
 GameObject:
   m_ObjectHideFlags: 0

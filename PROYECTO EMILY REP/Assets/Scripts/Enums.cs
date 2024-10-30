@@ -48,6 +48,32 @@ public enum WeaponClass
     MediumShield
 }
 
+public enum EquipmentModelType
+{
+    FullHelmet,
+    OpenHelmet,
+    Hood,
+    HelmetAccesory,
+    FaceCover,
+    Torso,
+    Back,
+    RightShoulder,
+    RightUpperArm,
+    RightLowerArm,
+    RightHand,
+    LeftShoulder,
+    LeftUpperArm,
+    LeftLowerArm,
+    LeftHand,
+    Hips,
+    RightLeg,
+    RightKnee,
+    RightFoot,
+    LeftLeg,
+    LeftKnee,
+    LeftFoot,
+}
+
 //Esto se usa para calcular el daño segun el tip de ataque
 public enum AttackType
 {
