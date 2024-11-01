@@ -51,7 +51,7 @@ public enum WeaponClass
 public enum EquipmentModelType
 {
     FullHelmet,
-    OpenHelmet,
+    Hat,
     Hood,
     HelmetAccesory,
     FaceCover,
@@ -59,7 +59,9 @@ public enum EquipmentModelType
     Back,
     RightShoulder,
     RightUpperArm,
+    RightElbow,
     RightLowerArm,
+    LeftElbow,
     RightHand,
     LeftShoulder,
     LeftUpperArm,
@@ -72,6 +74,14 @@ public enum EquipmentModelType
     LeftLeg,
     LeftKnee,
     LeftFoot,
+}
+
+public enum HeadEquipmentType
+{
+    FullHelmet,
+    Hat,
+    Hood,
+    FaceCover
 }
 
 //Esto se usa para calcular el daño segun el tip de ataque

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36afcd2060e325a43b8d704a50c4202f, type: 3}
-  m_Name: Knight Helm Model
+  m_Name: Knight Upper Left Elbow
   m_EditorClassIdentifier: 
-  equipmentModelType: 0
-  maleEquipmentName: Cube Helmet
-  femaleEquipmentName: Cube Helmet
+  equipmentModelType: 11
+  maleEquipmentName: Chr_ElbowAttachLeft_01
+  femaleEquipmentName: Chr_ElbowAttachLeft_01

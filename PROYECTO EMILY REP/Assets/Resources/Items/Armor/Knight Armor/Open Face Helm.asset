@@ -10,22 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d14bdc1c03e8c1246b6a6212cf2ccf58, type: 3}
-  m_Name: Knight Helm II
+  m_Name: Open Face Helm
   m_EditorClassIdentifier: 
-  itemName: Knight Helm
+  itemName: 
   itemIcon: {fileID: 0}
   itemDescription: 
   itemID: 0
-  itemWeight: 4.6
-  physicalDamageAbsroption: 4.4
-  magicDamageAbsorption: 3.8
-  fireDamageAbsorption: 3.8
-  lightningDamageAbsorption: 3.4
-  holyDamageAbsorption: 3.1
-  immunity: 12
-  robustness: 22
-  focus: 8
-  vitality: 8
-  poise: 8
+  itemWeight: 0
+  physicalDamageAbsroption: 0
+  magicDamageAbsorption: 0
+  fireDamageAbsorption: 0
+  lightningDamageAbsorption: 0
+  holyDamageAbsorption: 0
+  immunity: 0
+  robustness: 0
+  focus: 0
+  vitality: 0
+  poise: 0
   equipmentModels:
   - {fileID: 11400000, guid: cee34675dc1be6e4abd3939096d2075c, type: 2}
+  headEquipmentType: 2
