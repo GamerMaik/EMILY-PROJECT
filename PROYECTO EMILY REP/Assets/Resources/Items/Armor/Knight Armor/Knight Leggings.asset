@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Knight Greaves
   itemIcon: {fileID: 0}
   itemDescription: 
-  itemID: 0
+  itemID: 7
   itemWeight: 6.6
   physicalDamageAbsroption: 7.1
   magicDamageAbsorption: 6.2
@@ -27,3 +27,10 @@ MonoBehaviour:
   focus: 11
   vitality: 11
   poise: 14
+  equipmentModels:
+  - {fileID: 11400000, guid: 1eaf55ba64ee571409d89f121b5e2ba6, type: 2}
+  - {fileID: 11400000, guid: 687b5d3b28606df46aa019b7c8e4ba31, type: 2}
+  - {fileID: 11400000, guid: dd3d8458e0cc59b4ab40753532de2234, type: 2}
+  - {fileID: 11400000, guid: 22a341603968bbb489d033be3b437dd5, type: 2}
+  - {fileID: 11400000, guid: b7a8c5dc914732e48889d07339b54267, type: 2}
+  - {fileID: 11400000, guid: 6320886f513c4a14e95c832d5441b263, type: 2}

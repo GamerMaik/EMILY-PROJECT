@@ -30936,7 +30936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8063694406531755181
 Transform:
   m_ObjectHideFlags: 0
@@ -55992,7 +55992,7 @@ GameObject:
   - component: {fileID: 4491966044667156889}
   - component: {fileID: 4140445576975600825}
   - component: {fileID: 4103049350891695987}
-  - component: {fileID: -8703436924131285234}
+  - component: {fileID: -6531935044653974274}
   - component: {fileID: 7664809826894878114}
   - component: {fileID: 4097129310773131786}
   - component: {fileID: 1388302478262233456}
@@ -56076,7 +56076,7 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &-8703436924131285234
+--- !u!114 &-6531935044653974274
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56227,13 +56227,13 @@ MonoBehaviour:
   isMale:
     m_InternalValue: 1
   headEquipmentID:
-    m_InternalValue: 0
+    m_InternalValue: -1
   bodyEquipmentID:
-    m_InternalValue: 0
+    m_InternalValue: -1
   legEquipmentID:
-    m_InternalValue: 0
+    m_InternalValue: -1
   handEquipmentID:
-    m_InternalValue: 0
+    m_InternalValue: -1
 --- !u!114 &7664809826894878114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56538,6 +56538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hair: {fileID: 9175548633464597446}
   facialHair: {fileID: 3659342195001053762}
+  maleObject: {fileID: 5257046477232493624}
   maleHead: {fileID: 2097273297207076021}
   maleBody:
   - {fileID: 5691081513344998110}
@@ -56554,6 +56555,7 @@ MonoBehaviour:
   - {fileID: 7459362565598680362}
   maleEyebrows: {fileID: 8087618334788511275}
   maleFacialhair: {fileID: 3659342195001053762}
+  femaleObject: {fileID: 4204340712644875358}
   femaleHead: {fileID: 766819076276672678}
   femaleBody:
   - {fileID: 6708470592441995851}

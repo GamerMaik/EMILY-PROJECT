@@ -71,6 +71,9 @@ namespace KC
         }
         public void Interact()
         {
+            //Si se presiona el boton de interactuar con o sin una interaccion se borraran las ventanas emergentes
+            PlayerUIManager.instance.playerUIPopUpManager.closeAllPopUpWindows();
+
             if (currentInteractableActions.Count == 0)
                 return;
 

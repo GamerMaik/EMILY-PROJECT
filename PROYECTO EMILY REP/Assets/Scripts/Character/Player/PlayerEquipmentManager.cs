@@ -24,6 +24,7 @@ namespace KC
         [Header("Debug delete later")]
         [SerializeField] bool equipNewItems = false;
 
+        #region General Equipment
         [Header("General Equipments Models")]
         public GameObject hatsObject;
         [HideInInspector] public GameObject[] hats;
@@ -49,8 +50,9 @@ namespace KC
         [HideInInspector] public GameObject[] leftElbow;
         public GameObject leftKneeObject;
         [HideInInspector] public GameObject[] leftKnee;
+        #endregion
 
-
+        #region Male Equipments
         [Header("Male Equipment Models")]
         public GameObject maleFullHelmetObject;
         [HideInInspector] public GameObject[] maleHeadFullHelmets;
@@ -74,7 +76,9 @@ namespace KC
         [HideInInspector] public GameObject[] maleRightLegs;
         public GameObject maleLeftLegObject;
         [HideInInspector] public GameObject[] maleLeftLegs;
+        #endregion
 
+        #region Female Equipments
         [Header("Female Equipment Models")]
         public GameObject femaleFullHelmetObject;
         [HideInInspector] public GameObject[] femaleHeadFullHelmets;
@@ -98,7 +102,7 @@ namespace KC
         [HideInInspector] public GameObject[] femaleRightLegs;
         public GameObject femaleLeftLegObject;
         [HideInInspector] public GameObject[] femaleLeftLegs;
-
+        #endregion
         protected override void Awake()
         {
             base.Awake();
@@ -302,8 +306,16 @@ namespace KC
             {
                 maleRightLegsList.Add(child.gameObject);
             }
-
             maleRightLegs = maleRightLegsList.ToArray();
+
+            //MALE RIGHT LEG
+            List<GameObject> maleLeftLegsList = new List<GameObject>();
+            foreach (Transform child in maleLeftLegObject.transform)
+            {
+                maleLeftLegsList.Add(child.gameObject);
+            }
+
+            maleLeftLegs = maleLeftLegsList.ToArray();
 
             //FEMALE FULL HELMETS
             List<GameObject> femaleHeadFullHelmetsList = new List<GameObject>();
@@ -313,6 +325,95 @@ namespace KC
             }
 
             femaleHeadFullHelmets = femaleHeadFullHelmetsList.ToArray();
+            //FEMALE FULL BODY
+            List<GameObject> femaleBodiesList = new List<GameObject>();
+            foreach (Transform child in femaleFullBodyObjects.transform)
+            {
+                femaleBodiesList.Add(child.gameObject);
+            }
+
+            femaleBodies = femaleBodiesList.ToArray();
+
+            //FEMALE RIGHT UPPER ARM
+            List<GameObject> femaleRightUpperArmsList = new List<GameObject>();
+            foreach (Transform child in femaleRightUpperArmObject.transform)
+            {
+                femaleRightUpperArmsList.Add(child.gameObject);
+            }
+
+            femaleRightUpperArms = femaleRightUpperArmsList.ToArray();
+
+            //FEMALE RIGHT LOWER
+            List<GameObject> femaleRightLowerArmsList = new List<GameObject>();
+            foreach (Transform child in femaleRightLowerArmObject.transform)
+            {
+                femaleRightLowerArmsList.Add(child.gameObject);
+            }
+
+            femaleRightLowerArms = femaleRightLowerArmsList.ToArray();
+
+            //FEMALE RIGHT HANDS
+            List<GameObject> femaleRightHandsList = new List<GameObject>();
+            foreach (Transform child in femaleRightHandObject.transform)
+            {
+                femaleRightHandsList.Add(child.gameObject);
+            }
+
+            femaleRightHands = femaleRightHandsList.ToArray();
+
+            //FEMALE LEFT UPPER ARM
+            List<GameObject> femaleLeftUpperArmsList = new List<GameObject>();
+            foreach (Transform child in femaleLeftUpperArmObject.transform)
+            {
+                femaleLeftUpperArmsList.Add(child.gameObject);
+            }
+
+            femaleLeftUpperArms = femaleLeftUpperArmsList.ToArray();
+
+            //FEMALE LEFT LOWER ARM
+            List<GameObject> femaleLefttLowerArmsList = new List<GameObject>();
+            foreach (Transform child in femaleLeftLowerArmObject.transform)
+            {
+                femaleLefttLowerArmsList.Add(child.gameObject);
+            }
+
+            femaleLefttLowerArms = femaleLefttLowerArmsList.ToArray();
+
+            //FEMALE LEFT HANDS
+            List<GameObject> femaleLefttHandsList = new List<GameObject>();
+            foreach (Transform child in femaleLeftHandObject.transform)
+            {
+                femaleLefttHandsList.Add(child.gameObject);
+            }
+
+            femaleLefttHands = femaleLefttHandsList.ToArray();
+
+            //FEMALE LEFT HIPS
+            List<GameObject> femalehipsList = new List<GameObject>();
+            foreach (Transform child in femaleHipsObect.transform)
+            {
+                femalehipsList.Add(child.gameObject);
+            }
+
+            femalehips = femalehipsList.ToArray();
+
+            //FEMALE RIGHT LEG
+            List<GameObject> femaleRightLegsList = new List<GameObject>();
+            foreach (Transform child in femaleRightLegObject.transform)
+            {
+                femaleRightLegsList.Add(child.gameObject);
+            }
+
+            femaleRightLegs = femaleRightLegsList.ToArray();
+
+            //FEMALE LEFT LEG
+            List<GameObject> femaleLeftLegsList = new List<GameObject>();
+            foreach (Transform child in femaleLeftLegObject.transform)
+            {
+                femaleLeftLegsList.Add(child.gameObject);
+            }
+
+            femaleLeftLegs = femaleLeftLegsList.ToArray();
         }
 
         private void Update()
@@ -320,25 +421,24 @@ namespace KC
             if (equipNewItems)
             {
                 equipNewItems = false;
-                DebugEquipmentNewItems();
+                EquipArmor();
             }
         }
 
-        private void DebugEquipmentNewItems()
+        public void EquipArmor()
         {
-            Debug.Log("Equipping New Items");
-
             LoadHeadEquipment(player.playerInventoryManager.headEquipmentItem);
 
             LoadBodyEquipment(player.playerInventoryManager.bodyEquipmentItem);
 
-            if (player.playerInventoryManager.legEquipmentItem != null)
-                LoadLegEquipment(player.playerInventoryManager.legEquipmentItem);
+            LoadLegEquipment(player.playerInventoryManager.legEquipmentItem);
 
-            if (player.playerInventoryManager.handEquipmentItem != null)
-                LoadHandEquipment(player.playerInventoryManager.handEquipmentItem);
+            LoadHandEquipment(player.playerInventoryManager.handEquipmentItem);
         }
+        public void InitializeArmorModels()
+        {
 
+        }
         public void LoadHeadEquipment(HeadEquipmentItem equipment)
         {
             UnloadHeadEquipmentModels();
@@ -374,7 +474,7 @@ namespace KC
 
             foreach (var model in equipment.equipmentModels)
             {
-                model.LoadModel(player, true);
+                model.LoadModel(player, player.playerNetworkManager.isMale.Value);
             }
 
             player.playerStatsManager.CalculateTotalArmorAbsorption();
@@ -426,10 +526,10 @@ namespace KC
             }
 
             player.playerInventoryManager.bodyEquipmentItem = equipment;
-
+            player.playerBodyManager.DisableBody();
             foreach (var model in equipment.equipmentModels)
             {
-                model.LoadModel(player, true);
+                model.LoadModel(player, player.playerNetworkManager.isMale.Value);
             }
 
             player.playerStatsManager.CalculateTotalArmorAbsorption();
@@ -493,11 +593,132 @@ namespace KC
         }
         public void LoadLegEquipment(LegEquipmentItem equipment)
         {
+            UnloadLegEquipmentModels();
+
+            if (equipment == null)
+            {
+                if (player.IsOwner)
+                    player.playerNetworkManager.legEquipmentID.Value = -1;
+
+                player.playerInventoryManager.legEquipmentItem = null;
+                return;
+            }
+
+            player.playerInventoryManager.legEquipmentItem = equipment;
+            player.playerBodyManager.DisableLegs();
+            foreach (var model in equipment.equipmentModels)
+            {
+                model.LoadModel(player, player.playerNetworkManager.isMale.Value);
+            }
+
             player.playerStatsManager.CalculateTotalArmorAbsorption();
+
+            if (player.IsOwner)
+                player.playerNetworkManager.legEquipmentID.Value = equipment.itemID;
+        }
+        private void UnloadLegEquipmentModels()
+        {
+            foreach (var model in hipAccesories)
+            {
+                model.SetActive(false);
+            }
+            foreach (var model in rightKnee)
+            {
+                model.SetActive(false);
+            }
+            foreach (var model in leftKnee)
+            {
+                model.SetActive(false);
+            }
+            foreach (var model in malehips)
+            {
+                model.SetActive(false);
+            }
+            foreach (var model in maleRightLegs)
+            {
+                model.SetActive(false);
+            }
+            foreach (var model in maleLeftLegs)
+            {
+                model.SetActive(false);
+            }
+            foreach (var model in femalehips)
+            {
+                model.SetActive(false);
+            }
+            foreach (var model in femaleRightLegs)
+            {
+                model.SetActive(false);
+            }
+            foreach (var model in femaleLeftLegs)
+            {
+                model.SetActive(false);
+            }
+
+            player.playerBodyManager.EnableLegs();
         }
         public void LoadHandEquipment(HandEquipmentItem equipment)
         {
+            UnloadHandEquipmentModels();
+
+            if (equipment == null)
+            {
+                if (player.IsOwner)
+                    player.playerNetworkManager.handEquipmentID.Value = -1;
+
+                player.playerInventoryManager.handEquipmentItem = null;
+                return;
+            }
+
+            player.playerInventoryManager.handEquipmentItem = equipment;
+            player.playerBodyManager.DisableHands();
+            foreach (var model in equipment.equipmentModels)
+            {
+                
+                model.LoadModel(player, player.playerNetworkManager.isMale.Value);
+            }
+
             player.playerStatsManager.CalculateTotalArmorAbsorption();
+
+            if (player.IsOwner)
+                player.playerNetworkManager.handEquipmentID.Value = equipment.itemID;
+        }
+        private void UnloadHandEquipmentModels()
+        {
+            foreach (var model in maleRightLowerArms)
+            {
+                model.SetActive(false);
+            }
+            foreach (var model in maleRightHands)
+            {
+                model.SetActive(false);
+            }
+            foreach (var model in maleLefttLowerArms)
+            {
+                model.SetActive(false);
+            }
+            foreach (var model in maleLefttHands)
+            {
+                model.SetActive(false);
+            }
+            foreach (var model in femaleRightLowerArms)
+            {
+                model.SetActive(false);
+            }
+            foreach (var model in femaleRightHands)
+            {
+                model.SetActive(false);
+            }
+            foreach (var model in femaleLefttLowerArms)
+            {
+                model.SetActive(false);
+            }
+            foreach (var model in femaleLefttHands)
+            {
+                model.SetActive(false);
+            }
+
+            player.playerBodyManager.EnableHands();
         }
 
         protected override void Start()

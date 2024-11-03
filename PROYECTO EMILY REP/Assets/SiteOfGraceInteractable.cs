@@ -48,7 +48,20 @@ namespace KC
             base.OnNetworkSpawn();
             if (!IsOwner)
                 OnIsActivatedChanged(false, isActivated.Value);
-            isActivated.OnValueChanged += OnIsActivatedChanged;
+
+            if (IsOwner)
+            {
+                if (!WorldSaveGameManager.instance.currentCharacterData.sitesOfGrace.ContainsKey(siteOfGraceID))
+                {
+                    WorldSaveGameManager.instance.currentCharacterData.sitesOfGrace.Add(siteOfGraceID, isActivated.Value);
+                    isActivated.OnValueChanged += OnIsActivatedChanged;
+                }
+                else
+                {
+                    isActivated.Value = WorldSaveGameManager.instance.currentCharacterData.sitesOfGrace[siteOfGraceID];
+                    isActivated.OnValueChanged += OnIsActivatedChanged;
+                }
+            }
         }
         public override void OnNetworkDespawn()
         {
@@ -84,7 +97,7 @@ namespace KC
 
         private IEnumerator WaitForAnimationAndPopUpThenRestoreCollider()
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(3);
 
             interactableCollider.enabled =true;
         }

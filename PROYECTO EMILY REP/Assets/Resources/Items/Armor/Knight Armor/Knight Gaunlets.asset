@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Knight Gaunlets
   itemIcon: {fileID: 0}
   itemDescription: 
-  itemID: 0
+  itemID: 8
   itemWeight: 3.5
   physicalDamageAbsroption: 3.1
   magicDamageAbsorption: 2.7
@@ -27,3 +27,8 @@ MonoBehaviour:
   focus: 6
   vitality: 6
   poise: 5
+  equipmentModels:
+  - {fileID: 11400000, guid: 4a9279367ddc1fe4b9450841badc98db, type: 2}
+  - {fileID: 11400000, guid: 01093956715af594e8d56b42206706e6, type: 2}
+  - {fileID: 11400000, guid: 7db866efeaca7244dacbb32cb1de0bcc, type: 2}
+  - {fileID: 11400000, guid: e0e786424e1bdc944b2acfc5ccb50732, type: 2}

@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 namespace KC
 {
     public class PlayerInventoryManager : CharacterInventoryManager
@@ -21,5 +21,21 @@ namespace KC
         public BodyEquipmentItem bodyEquipmentItem;
         public LegEquipmentItem legEquipmentItem;
         public HandEquipmentItem handEquipmentItem;
+
+        [Header("Inventory")]
+        public List<Item> itemsInventory;
+
+        public void AddItemsToInventory(Item item, int amount)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                itemsInventory.Add(item); 
+            }
+        }
+
+        public void RemoveItemsFromInventory()
+        {
+
+        }
     }
 }

@@ -68,6 +68,7 @@ public enum EquipmentModelType
     LeftLowerArm,
     LeftHand,
     Hips,
+    HipsAccesories,
     RightLeg,
     RightKnee,
     RightFoot,
@@ -107,4 +108,12 @@ public enum DamageIntensity
     Medium,
     Heavy,
     Colosal
+}
+
+//Esto se usa para determinar el tipo de item recogible
+public enum ItemPickUpType
+{
+    WorldSpawn,
+    CharacterDrop,
+    ChestDrop
 }

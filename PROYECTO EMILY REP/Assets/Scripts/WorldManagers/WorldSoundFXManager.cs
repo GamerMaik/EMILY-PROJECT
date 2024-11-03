@@ -15,6 +15,7 @@ namespace KC
         public AudioClip[] physicalDamageSFX;
 
         [Header("Action SounFX")]
+        public AudioClip pickUpItemSFX;
         public AudioClip rollsFX;
         private void Awake()
         {
