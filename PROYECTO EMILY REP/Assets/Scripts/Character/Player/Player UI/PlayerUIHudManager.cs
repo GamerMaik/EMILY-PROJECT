@@ -6,6 +6,8 @@ namespace KC
 {
     public class PlayerUIHudManager : MonoBehaviour
     {
+        [SerializeField] CanvasGroup[] canvasGroup;
+
         [Header("Stats Bars")]
         [SerializeField] UI_StatBar healthBar;
         [SerializeField] UI_StatBar staminaBar;
@@ -18,6 +20,24 @@ namespace KC
         [Header("Boss Health Bar")]
         public Transform bossHealthBarParent;
         public GameObject bossHealthBarObject;
+
+        public void ToggleHUD(bool status)
+        {
+            if (status)
+            {
+                foreach (var canvas in canvasGroup)
+                {
+                    canvas.alpha = 1.0f;
+                }
+            }
+            else
+            {
+                foreach (var canvas in canvasGroup)
+                {
+                    canvas.alpha = 0f;
+                }
+            }
+        }
         public void RefreshHUD()
         {
             healthBar.gameObject.SetActive(false);

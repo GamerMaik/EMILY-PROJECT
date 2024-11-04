@@ -56392,6 +56392,7 @@ MonoBehaviour:
   bodyEquipmentItem: {fileID: 0}
   legEquipmentItem: {fileID: 0}
   handEquipmentItem: {fileID: 0}
+  itemsInventory: []
 --- !u!114 &6251457930582299927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69102,7 +69103,7 @@ Transform:
   m_GameObject: {fileID: 8809506519028718269}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.007, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
