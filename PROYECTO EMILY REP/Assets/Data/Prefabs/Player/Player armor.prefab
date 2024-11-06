@@ -56067,7 +56067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3840607598
+  GlobalObjectIdHash: 385770517
   InScenePlacedSourceGlobalObjectIdHash: 385770517
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -56380,8 +56380,8 @@ MonoBehaviour:
   currentTwoHandWeapon: {fileID: 11400000, guid: 953dca51d73a20447b14d575ba5fab30, type: 2}
   weaponsRightHandSlots:
   - {fileID: 11400000, guid: 953dca51d73a20447b14d575ba5fab30, type: 2}
+  - {fileID: 11400000, guid: a7f50bcc342e31045aa21ab60b1bf80a, type: 2}
   - {fileID: 11400000, guid: ed5d37e6e3c6ec74c881ee8799892eb5, type: 2}
-  - {fileID: 11400000, guid: 953dca51d73a20447b14d575ba5fab30, type: 2}
   rightHandWeaponIndex: 0
   weaponsLeftHandSlots:
   - {fileID: 11400000, guid: 953dca51d73a20447b14d575ba5fab30, type: 2}

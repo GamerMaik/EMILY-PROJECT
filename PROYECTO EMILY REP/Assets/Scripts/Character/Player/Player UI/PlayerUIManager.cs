@@ -11,6 +11,8 @@ namespace KC
         [SerializeField] private bool startGameAsClient;
         [HideInInspector] public PlayerUIHudManager playerUIHudManager;
         [HideInInspector] public PlayerUIPopUpManager playerUIPopUpManager;
+        [HideInInspector] public PlayerUICharacterMenuManager playerUICharacterMenuManager;
+        [HideInInspector] public PlayerUIEquipmentManager playerUIEquipmentManager;
 
         [Header("UI Flags")]
         public bool menuWindowIsOpen = false; //Inventario, equipo, otros menus
@@ -29,6 +31,8 @@ namespace KC
 
             playerUIHudManager = GetComponentInChildren<PlayerUIHudManager>();
             playerUIPopUpManager = GetComponentInChildren<PlayerUIPopUpManager>();
+            playerUICharacterMenuManager = GetComponentInChildren<PlayerUICharacterMenuManager>();
+            playerUIEquipmentManager = GetComponentInChildren<PlayerUIEquipmentManager>();
         }
 
         private void Start()
@@ -46,6 +50,12 @@ namespace KC
                 //Luego se reinicia, como cliente
                 NetworkManager.Singleton.StartClient();
             }
+        }
+
+        public void CloseAllMenuWindows()
+        {
+            playerUICharacterMenuManager.CloseCharacterMenu();
+            playerUIEquipmentManager.CloseEquipmentManagerMenu();
         }
     }
 }

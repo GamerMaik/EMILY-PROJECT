@@ -63,6 +63,10 @@ namespace KC
 
         [Header("Interactions")]
         [SerializeField] bool interaction_Input = false;
+
+        [Header("UI Inputs")]
+        [SerializeField] bool openCharacterMenuInput = false;
+        [SerializeField] bool closeMenuInput = false;
         #endregion
 
         private void Awake()
@@ -164,6 +168,10 @@ namespace KC
                 //Interactions
                 playerControls.PlayerActions.Interaction.performed += i => interaction_Input = true;
 
+                //UI Character Menu
+                playerControls.PlayerActions.CloseMenu.performed += i => closeMenuInput = true;
+                playerControls.PlayerActions.OpenMenu.performed += i => openCharacterMenuInput = true;
+
             }
             playerControls.Enable();
         }
@@ -208,6 +216,8 @@ namespace KC
             HandleSwitchLeftWeaponInput();
             HandleQuedInputs();
             HandleInteractionInput();
+            HandleCloseUIInput();
+            HandleOpenCharacterMenuInput();
         }
 
         //Two hand 
@@ -341,6 +351,14 @@ namespace KC
         #region Movimiento
         private void HandlePlayerMovementInput()
         {
+            // Verifica si el inventario está abierto
+            if (PlayerUIManager.instance.menuWindowIsOpen)
+            {
+                moveAmount = 0;
+                player.playerNetworkManager.isMoving.Value = false;
+                return;
+            }
+
             vertical_Input = movementInput.y;
             horizontal_Input = movementInput.x;
 
@@ -394,6 +412,9 @@ namespace KC
             {
                 dodge_Input = false;
                 //En un futuro cuando tengamos un menu o interfaz activa no queremos realizar una accion si dicha ventana está abierta
+                if (PlayerUIManager.instance.menuWindowIsOpen)
+                    return;
+
                 player.playerlocomotionManager.AttempToPerformDodge();
             }
         }
@@ -498,6 +519,8 @@ namespace KC
 
         private void HandleSwitchRightWeaponInput()
         {
+            if (PlayerUIManager.instance.menuWindowIsOpen)
+                return;
             if (switch_Right_Weapon_Input)
             {
                 switch_Right_Weapon_Input = false;
@@ -507,6 +530,8 @@ namespace KC
 
         private void HandleSwitchLeftWeaponInput()
         {
+            if (PlayerUIManager.instance.menuWindowIsOpen)
+                return;
             if (switch_Left_Weapon_Input)
             {
                 switch_Left_Weapon_Input = false;
@@ -570,6 +595,30 @@ namespace KC
 
                     input_Que_Is_Active = false;
                     que_Input_Timer = 0;
+                }
+            }
+        }
+
+        private void HandleOpenCharacterMenuInput()
+        {
+            if (openCharacterMenuInput)
+            {
+                openCharacterMenuInput = false;
+
+                PlayerUIManager.instance.playerUIPopUpManager.closeAllPopUpWindows();
+                PlayerUIManager.instance.CloseAllMenuWindows();
+                PlayerUIManager.instance.playerUICharacterMenuManager.OpenCharacterMenu();
+            }
+        }
+
+        private void HandleCloseUIInput()
+        {
+            if (closeMenuInput)
+            {
+                closeMenuInput = false;
+                if (PlayerUIManager.instance.menuWindowIsOpen)
+                {
+                    PlayerUIManager.instance.CloseAllMenuWindows();
                 }
             }
         }
