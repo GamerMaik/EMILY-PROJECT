@@ -107,7 +107,10 @@ namespace KC
 
         public virtual void OnIsBlockingChanged(bool oldStatus, bool newStatus)
         {
-            character.animator.SetBool("isBlocking", isBlocking.Value);
+            if (isBlocking != null)
+            {
+                character.animator.SetBool("isBlocking", isBlocking.Value);
+            }
         }
 
         #region Action Animation
