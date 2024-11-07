@@ -32,10 +32,22 @@ namespace KC
                 itemsInventory.Add(item); 
             }
         }
-
-        public void RemoveItemsFromInventory()
+        public void AddItemsToInventory(Item item)
         {
+            itemsInventory.Add(item);
+        }
 
+        public void RemoveItemsFromInventory(Item item)
+        {
+            itemsInventory.Remove(item);
+
+            for (int i = itemsInventory.Count - 1 ; i > -1; i--)
+            {
+                if (itemsInventory[i] == null)
+                {
+                    itemsInventory.RemoveAt(i);
+                }
+            }
         }
     }
 }

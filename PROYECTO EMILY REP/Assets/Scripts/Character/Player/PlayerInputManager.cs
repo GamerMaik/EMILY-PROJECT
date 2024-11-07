@@ -519,21 +519,23 @@ namespace KC
 
         private void HandleSwitchRightWeaponInput()
         {
-            if (PlayerUIManager.instance.menuWindowIsOpen)
-                return;
+            
             if (switch_Right_Weapon_Input)
             {
                 switch_Right_Weapon_Input = false;
+                if (PlayerUIManager.instance.menuWindowIsOpen)
+                    return;
                 player.playerEquipmentManager.SwitchRightWeapon();
             }
         }
 
         private void HandleSwitchLeftWeaponInput()
         {
-            if (PlayerUIManager.instance.menuWindowIsOpen)
-                return;
+            
             if (switch_Left_Weapon_Input)
             {
+                if (PlayerUIManager.instance.menuWindowIsOpen)
+                    return;
                 switch_Left_Weapon_Input = false;
                 player.playerEquipmentManager.SwitchLeftWeapon();
             }

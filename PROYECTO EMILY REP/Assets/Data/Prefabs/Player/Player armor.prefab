@@ -56379,20 +56379,22 @@ MonoBehaviour:
   currentLeftHandWeapon: {fileID: 11400000, guid: 953dca51d73a20447b14d575ba5fab30, type: 2}
   currentTwoHandWeapon: {fileID: 11400000, guid: 953dca51d73a20447b14d575ba5fab30, type: 2}
   weaponsRightHandSlots:
+  - {fileID: 11400000, guid: d8c707316c705e44983020b8c31584e7, type: 2}
   - {fileID: 11400000, guid: 953dca51d73a20447b14d575ba5fab30, type: 2}
-  - {fileID: 11400000, guid: a7f50bcc342e31045aa21ab60b1bf80a, type: 2}
-  - {fileID: 11400000, guid: ed5d37e6e3c6ec74c881ee8799892eb5, type: 2}
+  - {fileID: 11400000, guid: 953dca51d73a20447b14d575ba5fab30, type: 2}
   rightHandWeaponIndex: 0
   weaponsLeftHandSlots:
   - {fileID: 11400000, guid: 953dca51d73a20447b14d575ba5fab30, type: 2}
-  - {fileID: 11400000, guid: d8c707316c705e44983020b8c31584e7, type: 2}
+  - {fileID: 11400000, guid: 953dca51d73a20447b14d575ba5fab30, type: 2}
   - {fileID: 11400000, guid: 953dca51d73a20447b14d575ba5fab30, type: 2}
   leftHandWeaponIndex: 0
   headEquipmentItem: {fileID: 0}
   bodyEquipmentItem: {fileID: 0}
   legEquipmentItem: {fileID: 0}
   handEquipmentItem: {fileID: 0}
-  itemsInventory: []
+  itemsInventory:
+  - {fileID: 11400000, guid: ed5d37e6e3c6ec74c881ee8799892eb5, type: 2}
+  - {fileID: 11400000, guid: ed5d37e6e3c6ec74c881ee8799892eb5, type: 2}
 --- !u!114 &6251457930582299927
 MonoBehaviour:
   m_ObjectHideFlags: 0

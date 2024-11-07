@@ -44,7 +44,6 @@ public enum WeaponModelType
 public enum WeaponClass
 {
     StraightSword,
-    Spear,
     MediumShield
 }
 
@@ -75,6 +74,16 @@ public enum EquipmentModelType
     LeftLeg,
     LeftKnee,
     LeftFoot,
+}
+
+public enum EquipmentType
+{
+     RightWeapon01,
+     RightWeapon02,
+     RightWeapon03,
+     LeftWeapon01,
+     LeftWeapon02,
+     LeftWeapon03,
 }
 
 public enum HeadEquipmentType

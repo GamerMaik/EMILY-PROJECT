@@ -19,10 +19,19 @@ namespace KC
         [SerializeField] Image leftHandSlot02;
         [SerializeField] Image leftHandSlot03;
 
+        [Header("Equip Inventory")]
+        public EquipmentType currentSelectedEquipmentSlot;
+        [SerializeField] GameObject equipmentInventoryWindow;
+        [SerializeField] GameObject equipmentInventorySlotPrefab;
+        [SerializeField] Transform equipmentInventoryContentWindow;
+        [SerializeField] Item currentSelectedItem;
+
         public void OpenEquipmentManagerMenu()
         {
             PlayerUIManager.instance.menuWindowIsOpen = true;
             menu.SetActive(true);
+            equipmentInventoryWindow.SetActive(false);
+            ClearEquipmentInventry();
             RefreshWeaponSlotIcons();
         }
         public void CloseEquipmentManagerMenu()
@@ -105,6 +114,84 @@ namespace KC
             else
             {
                 leftHandSlot03.enabled = false;
+            }
+        }
+
+        private void ClearEquipmentInventry()
+        {
+            foreach (Transform item in equipmentInventoryContentWindow)
+            {
+                Destroy(item.gameObject);
+            }
+        }
+
+        public void LoadEquipmentInventory()
+        {
+            equipmentInventoryWindow.SetActive(true);
+
+            switch (currentSelectedEquipmentSlot)
+            {
+                case EquipmentType.RightWeapon01:
+                    LoadWeaponInventory();
+                    break;
+                case EquipmentType.RightWeapon02:
+                    LoadWeaponInventory();
+                    break;
+                case EquipmentType.RightWeapon03:
+                    LoadWeaponInventory();
+                    break;
+                case EquipmentType.LeftWeapon01:
+                    LoadWeaponInventory();
+                    break;
+                case EquipmentType.LeftWeapon02:
+                    LoadWeaponInventory();
+                    break;
+                case EquipmentType.LeftWeapon03:
+                    LoadWeaponInventory();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public void LoadWeaponInventory()
+        {
+            PlayerManager player =  NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerManager>();
+            List<WeaponItem> weaponsInInventory = new List<WeaponItem>();
+
+
+            //Buscamos entre todas nuestros objetos en el inventario y si es un arama lo agregamos a nuestra lista de armas
+            for (int i = 0; i < player.playerInventoryManager.itemsInventory.Count; i++)
+            {
+                WeaponItem weapon = player.playerInventoryManager.itemsInventory[i] as WeaponItem;
+                
+                if(weapon != null)
+                    weaponsInInventory.Add(weapon); 
+            }
+
+            if(weaponsInInventory.Count <= 0)
+            {
+                OpenEquipmentManagerMenu();
+                return;
+            }
+
+            bool hasSelectedFirstInventorySlot = false;
+
+            for (int i = 0; i < weaponsInInventory.Count; i++)
+            {
+                GameObject inventorySlotGameObject = Instantiate(equipmentInventorySlotPrefab, equipmentInventoryContentWindow);
+                UI_EquipmentInventorySlot equipmentInventorySlot = inventorySlotGameObject.GetComponent<UI_EquipmentInventorySlot>();
+                equipmentInventorySlot.AddItem(weaponsInInventory[i]);
+
+
+                //Seleccionará el primer boton en la lista
+                if (!hasSelectedFirstInventorySlot)
+                {
+                    hasSelectedFirstInventorySlot = true;
+                    Button inventorySlotButton = inventorySlotGameObject.GetComponent<Button>();
+                    inventorySlotButton.Select();
+                    inventorySlotButton.OnSelect(null);
+                }
             }
         }
     }
