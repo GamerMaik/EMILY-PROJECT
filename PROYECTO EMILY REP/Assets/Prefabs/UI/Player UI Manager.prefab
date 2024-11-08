@@ -1916,6 +1916,7 @@ GameObject:
   - component: {fileID: 6585042745268799645}
   - component: {fileID: 8982968802279233462}
   - component: {fileID: 2298733653762673359}
+  - component: {fileID: 8836822742575105291}
   m_Layer: 0
   m_Name: Menu
   m_TagString: Untagged
@@ -1982,6 +1983,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &8836822742575105291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3135070379838983353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661c7d8930c21a04aa1f12f5fc9ba3df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unequipItemInput: 0
 --- !u!1 &3248254306950733428
 GameObject:
   m_ObjectHideFlags: 0
@@ -6440,7 +6454,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5846039628864595496, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6353575625536062636}
   m_SourcePrefab: {fileID: 100100000, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
 --- !u!114 &1184943850350929223 stripped
 MonoBehaviour:
@@ -6453,6 +6470,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1492190083176811225 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5846039628864595496, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
+  m_PrefabInstance: {fileID: 5013664068335693041}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6353575625536062636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492190083176811225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8253982576933138793}
+          m_TargetAssemblyTypeName: KC.PlayerUIEquipmentManager, Assembly-CSharp
+          m_MethodName: SelectEquipmentSlot
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!224 &6697687016277330830 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1830407802896328575, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
@@ -6698,8 +6749,45 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5846039628864595496, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9016547198892737483}
   m_SourcePrefab: {fileID: 100100000, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
+--- !u!1 &743934513409711126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5846039628864595496, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
+  m_PrefabInstance: {fileID: 6589806865467898430}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9016547198892737483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743934513409711126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8253982576933138793}
+          m_TargetAssemblyTypeName: KC.PlayerUIEquipmentManager, Assembly-CSharp
+          m_MethodName: SelectEquipmentSlot
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 4
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1051144804036932488 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6189591647647074742, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
@@ -6839,7 +6927,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5846039628864595496, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7943015726816013209}
   m_SourcePrefab: {fileID: 100100000, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
 --- !u!114 &4189881187704483404 stripped
 MonoBehaviour:
@@ -6852,6 +6943,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4531153814498673106 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5846039628864595496, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
+  m_PrefabInstance: {fileID: 8052623542531729402}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7943015726816013209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4531153814498673106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8253982576933138793}
+          m_TargetAssemblyTypeName: KC.PlayerUIEquipmentManager, Assembly-CSharp
+          m_MethodName: SelectEquipmentSlot
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!224 &8549591587962749061 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1830407802896328575, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
@@ -6980,8 +7105,45 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5846039628864595496, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2080231219308790573}
   m_SourcePrefab: {fileID: 100100000, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
+--- !u!1 &2526810355732954067 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5846039628864595496, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
+  m_PrefabInstance: {fileID: 8228154241360403963}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2080231219308790573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2526810355732954067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8253982576933138793}
+          m_TargetAssemblyTypeName: KC.PlayerUIEquipmentManager, Assembly-CSharp
+          m_MethodName: SelectEquipmentSlot
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 5
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &2870374607424296013 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6189591647647074742, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
@@ -7227,8 +7389,45 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5846039628864595496, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5670496586509373484}
   m_SourcePrefab: {fileID: 100100000, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
+--- !u!1 &2906663610607883883 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5846039628864595496, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
+  m_PrefabInstance: {fileID: 8752681239934332995}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5670496586509373484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906663610607883883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8253982576933138793}
+          m_TargetAssemblyTypeName: KC.PlayerUIEquipmentManager, Assembly-CSharp
+          m_MethodName: SelectEquipmentSlot
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &3211662441905158645 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6189591647647074742, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
@@ -7368,7 +7567,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5846039628864595496, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5850989706070521087}
   m_SourcePrefab: {fileID: 100100000, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
 --- !u!114 &2997965433048202702 stripped
 MonoBehaviour:
@@ -7381,6 +7583,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3269190514474406480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5846039628864595496, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}
+  m_PrefabInstance: {fileID: 8970943280443716728}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5850989706070521087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3269190514474406480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8253982576933138793}
+          m_TargetAssemblyTypeName: KC.PlayerUIEquipmentManager, Assembly-CSharp
+          m_MethodName: SelectEquipmentSlot
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 3
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!224 &7285095012360737543 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1830407802896328575, guid: 0d8d98fe131099941a6613ed3c43b0f1, type: 3}

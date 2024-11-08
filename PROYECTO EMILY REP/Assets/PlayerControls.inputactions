@@ -465,6 +465,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Use Item",
+                    "type": "Button",
+                    "id": "a5cba19d-6e82-431a-801c-27541dae1543",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "LB",
                     "type": "Button",
                     "id": "ed0aebfc-08b6-44a9-b2a5-851f8a543c7d",
@@ -673,6 +682,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "RB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b90f223d-3f2e-48b7-af4c-7d55b9ef4a5e",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Use Item",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

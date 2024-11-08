@@ -56067,7 +56067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 385770517
+  GlobalObjectIdHash: 3840607598
   InScenePlacedSourceGlobalObjectIdHash: 385770517
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -56393,7 +56393,6 @@ MonoBehaviour:
   legEquipmentItem: {fileID: 0}
   handEquipmentItem: {fileID: 0}
   itemsInventory:
-  - {fileID: 11400000, guid: ed5d37e6e3c6ec74c881ee8799892eb5, type: 2}
   - {fileID: 11400000, guid: ed5d37e6e3c6ec74c881ee8799892eb5, type: 2}
 --- !u!114 &6251457930582299927
 MonoBehaviour:
