@@ -66,10 +66,10 @@ namespace KC
 
         public void OpenSwordDamageCollider()
         {
-            
+
             xtremeDamageCollider.EnableDamageCollider();
             aiXtremeManager.characterSoundFXManager.PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(aiXtremeManager.xtremeSoundFXManager.xtremeSwordWhooshes));
-
+        
         }
 
         public void CloseSwordDamageCollider()

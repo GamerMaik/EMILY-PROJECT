@@ -508,7 +508,7 @@ namespace KC
             {
                 model.SetActive(false);
             }
-
+            player.playerStatsManager.CalculateTotalArmorAbsorption();
             player.playerBodyManager.EnableHead();
             player.playerBodyManager.EnableHair();
         }
@@ -588,7 +588,7 @@ namespace KC
             {
                 model.SetActive(false);
             }
-
+            player.playerStatsManager.CalculateTotalArmorAbsorption();
             player.playerBodyManager.EnableBody();
         }
         public void LoadLegEquipment(LegEquipmentItem equipment)
@@ -654,7 +654,7 @@ namespace KC
             {
                 model.SetActive(false);
             }
-
+            player.playerStatsManager.CalculateTotalArmorAbsorption();
             player.playerBodyManager.EnableLegs();
         }
         public void LoadHandEquipment(HandEquipmentItem equipment)
@@ -717,7 +717,7 @@ namespace KC
             {
                 model.SetActive(false);
             }
-
+            player.playerStatsManager.CalculateTotalArmorAbsorption();
             player.playerBodyManager.EnableHands();
         }
 

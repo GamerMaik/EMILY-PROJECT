@@ -35,8 +35,6 @@ namespace KC {
         public Vector3 contactPoint;  //Usado para determinar donde reproducir los efectos de sangrado 
 
 
-
-
         public override void ProccessEffect(CharacterManager character)
         {
             if (character.characterNetworkManager.isInvulnerable.Value)
@@ -45,13 +43,8 @@ namespace KC {
             //Si el presonaje está muerto no se procesa ningun efecto de daño
             if (character.isDead.Value)
                 return;
-
-            //Si el personaje tiene invulerabilidad
-
             //Calcular el daño
             CalculateDamage(character);
-
-
             //Verificar de donde vino el daño
             //Determinar la animacion que se reproducirá
             PlayDirectionalBaseDamgeAnimation(character);
@@ -63,36 +56,43 @@ namespace KC {
             //Comprobar si el personaje es IA, Verificar (Esta en fase beta aun XD)
         }
 
-        private void CalculateDamage(CharacterManager character) 
+        private void CalculateDamage(CharacterManager character)
         {
             if (!character.IsOwner)
                 return;
 
             if (characterCausingDamage != null)
             {
-                //Verificar si hay modificadores de daño en ese personaje
+                // Verificar si hay modificadores de daño en ese personaje
+                Debug.Log("Hay modificadores");
             }
 
-            //Verificar si el personaje tienen una reduccion de vida fija
+            // Verificar si el personaje tienen una reduccion de vida fija
+            Debug.Log("Daño Original: " + physicalDamage);
 
-            //Verificar si el personaje está equipado con alguna armadura o algo que redusca el daño 
+            // Aplicar la absorción de daño como reducción proporcional
+            physicalDamage *= (1 - character.characterStatManager.armorPhysicalDamageAbsroption / 100f);
+            magicDamage *= (1 - character.characterStatManager.armorMagicDamageAbsorption / 100f);
+            fireDamage *= (1 - character.characterStatManager.armorFireDamageAbsorption / 100f);
+            lightningDamage *= (1 - character.characterStatManager.armorLightningDamageAbsorption / 100f);
+            holyDamage *= (1 - character.characterStatManager.armorHolyDamageAbsorption / 100f);
 
-            //Por ultimo se procesa todo el daño total y se aplica el daño final 
+            Debug.Log("Daño con armadura: " + physicalDamage);
 
+            // Calcular el daño total y redondearlo
             finalDamageDealt = Mathf.RoundToInt(physicalDamage + magicDamage + fireDamage + lightningDamage + holyDamage);
+            Debug.Log("Daño final: " + finalDamageDealt);
 
             if (finalDamageDealt <= 0)
             {
                 finalDamageDealt = 1;
             }
 
-            //Debug.Log("Final damage" + finalDamageDealt);
-
+            // Aplicar el daño a la salud del personaje
             character.characterNetworkManager.currentHealth.Value -= finalDamageDealt;
 
             //Calcular Poise Damage
             character.characterStatManager.totalPoiseDamage -= poiseDamage;
-
 
             float remainingPoise = character.characterStatManager.basePoiseDefense +
                 character.characterStatManager.offensivePoiseBinus +

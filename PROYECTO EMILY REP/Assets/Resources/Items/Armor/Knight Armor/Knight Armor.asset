@@ -17,7 +17,7 @@ MonoBehaviour:
   itemDescription: "Pechera de Plata... Parece que pertenec\xEDa a una Legenda"
   itemID: 6
   itemWeight: 10.6
-  physicalDamageAbsroption: 12.4
+  physicalDamageAbsroption: 10
   magicDamageAbsorption: 10.9
   fireDamageAbsorption: 10.9
   lightningDamageAbsorption: 9.5

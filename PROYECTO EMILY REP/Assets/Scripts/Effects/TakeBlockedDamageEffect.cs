@@ -82,8 +82,7 @@ namespace KC
             //Verificar si el personaje tienen una reduccion de vida fija
 
             //Verificar si el personaje está equipado con alguna armadura o algo que redusca el daño 
-
-            //Por ultimo se procesa todo el daño total y se aplica el daño final 
+            //Debug.Log("Original Physical damage" + physicalDamage);
 
             Debug.Log("Original Physical damage" + physicalDamage);
 

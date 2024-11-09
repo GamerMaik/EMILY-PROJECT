@@ -99,7 +99,6 @@ namespace KC
             damageEffect.poiseDamage = poiseDamage;
             damageEffect.contactPoint = contactPoint;
             //damageEffect.lightningDamage = lightningDamage;
-
             damageTarget.characterEffectsManager.ProccessInstantEffect(damageEffect);
         }
         public virtual void EnableDamageCollider()
