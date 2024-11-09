@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace KC
@@ -38,6 +39,9 @@ namespace KC
         [Header("Items")]
         public SerializableDictionary<int, bool> worldItemsLooted;
 
+        [Header("Inventory")]
+        public SerializableDictionary<int, int> inventoryItems;
+
         [Header("Equipmnet")]
         public int headEquipment;
         public int bodyEquipment;
@@ -60,6 +64,7 @@ namespace KC
             bossesAwakened = new SerializableDictionary<int, bool>();
             bossesDefeated = new SerializableDictionary<int, bool>();
             worldItemsLooted = new SerializableDictionary<int, bool>();
+            inventoryItems = new SerializableDictionary<int, int>();
         }
     }
 }

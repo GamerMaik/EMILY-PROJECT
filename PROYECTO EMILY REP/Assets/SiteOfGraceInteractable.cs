@@ -77,7 +77,7 @@ namespace KC
                 WorldSaveGameManager.instance.currentCharacterData.sitesOfGrace.Remove(siteOfGraceID);
 
             WorldSaveGameManager.instance.currentCharacterData.sitesOfGrace.Add(siteOfGraceID, true);
-
+            WorldSaveGameManager.instance.SaveGame();
             player.playerAnimatorManager.PlayerTargetActionAnimation("Activate_Site_Of_Grace_01",true);
 
             PlayerUIManager.instance.playerUIPopUpManager.SendbGraceRestoredPopUp("SITIO DE GRACIA RESTAURADO");

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace KC
@@ -5,7 +6,7 @@ namespace KC
     public class WorldUtilityManager : MonoBehaviour
     {
         public static WorldUtilityManager Instance;
-
+    
         [Header("Layers")]
         [SerializeField] LayerMask characterLayers;
         [SerializeField] LayerMask enviroLayers;

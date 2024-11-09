@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Knight Armor
   m_EditorClassIdentifier: 
   itemName: Knight Armor
-  itemIcon: {fileID: 0}
-  itemDescription: 
+  itemIcon: {fileID: 21300000, guid: 236fe8debe9f1454582c85eb08fae042, type: 3}
+  itemDescription: "Pechera de Plata... Parece que pertenec\xEDa a una Legenda"
   itemID: 6
   itemWeight: 10.6
   physicalDamageAbsroption: 12.4

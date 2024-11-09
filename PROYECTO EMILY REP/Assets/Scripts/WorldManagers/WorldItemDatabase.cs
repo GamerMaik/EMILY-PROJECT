@@ -89,5 +89,9 @@ namespace KC
         {
             return handEquipment.FirstOrDefault(equipment => equipment.itemID == ID);
         }
+        public Item GetItemById(int ID)
+        {
+            return items.FirstOrDefault(item => item.itemID == ID);
+        }
     }
 }

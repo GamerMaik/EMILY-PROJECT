@@ -18,6 +18,10 @@ namespace KC
         [SerializeField] Image leftHandSlot01;
         [SerializeField] Image leftHandSlot02;
         [SerializeField] Image leftHandSlot03;
+        [SerializeField] Image headEquipmentSlot;
+        [SerializeField] Image bodyEquipmentSlot;
+        [SerializeField] Image legsEquipmentSlot;
+        [SerializeField] Image handsEquipmentSlot;
 
         [Header("Equip Inventory")]
         public EquipmentType currentSelectedEquipmentSlot;
@@ -30,14 +34,19 @@ namespace KC
         {
             PlayerUIManager.instance.menuWindowIsOpen = true;
             menu.SetActive(true);
+            RefreshMenu();
             equipmentInventoryWindow.SetActive(false);
-            
         }
 
         public void RefreshMenu()
         {
             ClearEquipmentInventry();
-            RefreshWeaponSlotIcons();
+            RefreshEquipmentSlotIcons();
+        }
+        public void CloseEquipmentInventoryWindow()
+        {
+            ClearEquipmentInventry();
+            equipmentInventoryWindow.SetActive(false);
         }
 
         public void SelectLastSelectedEquipmentSlot()
@@ -63,6 +72,18 @@ namespace KC
                 case EquipmentType.LeftWeapon03:
                     lastSelectedButton = leftHandSlot03.GetComponentInParent<Button>();
                     break;
+                case EquipmentType.head:
+                    lastSelectedButton = headEquipmentSlot.GetComponentInParent<Button>();
+                    break;
+                case EquipmentType.Body:
+                    lastSelectedButton = bodyEquipmentSlot.GetComponentInParent<Button>();
+                    break;
+                case EquipmentType.Legs:
+                    lastSelectedButton = legsEquipmentSlot.GetComponentInParent<Button>();
+                    break;
+                case EquipmentType.Hands:
+                    lastSelectedButton = handsEquipmentSlot.GetComponentInParent<Button>();
+                    break;
                 default:
                     break;
             }
@@ -79,7 +100,7 @@ namespace KC
             menu.SetActive(false);
         }
 
-        private void RefreshWeaponSlotIcons()
+        private void RefreshEquipmentSlotIcons()
         {
             PlayerManager player = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerManager>();
 
@@ -154,6 +175,54 @@ namespace KC
             {
                 leftHandSlot03.enabled = false;
             }
+
+            // HEAD EQUIPMENT
+            HeadEquipmentItem headEquipment = player.playerInventoryManager.headEquipmentItem;
+            if (headEquipment != null)
+            {
+                headEquipmentSlot.enabled = true;
+                headEquipmentSlot.sprite = headEquipment.itemIcon;
+            }
+            else
+            {
+                headEquipmentSlot.enabled = false;
+            }
+
+            // BODY EQUIPMENT
+            BodyEquipmentItem bodyEquipment = player.playerInventoryManager.bodyEquipmentItem;
+            if (bodyEquipment != null)
+            {
+                bodyEquipmentSlot.enabled = true;
+                bodyEquipmentSlot.sprite = bodyEquipment.itemIcon;
+            }
+            else
+            {
+                bodyEquipmentSlot.enabled = false;
+            }
+
+            // LEGS EQUIPMENT
+            LegEquipmentItem legsEquipment = player.playerInventoryManager.legEquipmentItem;
+            if (legsEquipment != null)
+            {
+                legsEquipmentSlot.enabled = true;
+                legsEquipmentSlot.sprite = legsEquipment.itemIcon;
+            }
+            else
+            {
+                legsEquipmentSlot.enabled = false;
+            }
+
+            // HANDS EQUIPMENT
+            HandEquipmentItem handsEquipment = player.playerInventoryManager.handEquipmentItem;
+            if (handsEquipment != null)
+            {
+                handsEquipmentSlot.enabled = true;
+                handsEquipmentSlot.sprite = handsEquipment.itemIcon;
+            }
+            else
+            {
+                handsEquipmentSlot.enabled = false;
+            }
         }
 
         private void ClearEquipmentInventry()
@@ -188,6 +257,18 @@ namespace KC
                 case EquipmentType.LeftWeapon03:
                     LoadWeaponInventory();
                     break;
+                case EquipmentType.head:
+                    LoadHeadEquipmentInventory();
+                    break;
+                case EquipmentType.Body:
+                    LoadBodyEquipmentInventory();
+                    break;
+                case EquipmentType.Legs:
+                    LoadLegsEquipmentInventory();
+                    break;
+                case EquipmentType.Hands:
+                    LoadHandsEquipmentInventory();
+                    break;
                 default:
                     break;
             }
@@ -198,14 +279,16 @@ namespace KC
             PlayerManager player =  NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerManager>();
             List<WeaponItem> weaponsInInventory = new List<WeaponItem>();
 
-
             //Buscamos entre todas nuestros objetos en el inventario y si es un arama lo agregamos a nuestra lista de armas
             for (int i = 0; i < player.playerInventoryManager.itemsInventory.Count; i++)
             {
                 WeaponItem weapon = player.playerInventoryManager.itemsInventory[i] as WeaponItem;
                 
                 if(weapon != null)
-                    weaponsInInventory.Add(weapon); 
+                {
+                    ClearEquipmentInventry();
+                    weaponsInInventory.Add(weapon);
+                }
             }
 
             if(weaponsInInventory.Count <= 0)
@@ -222,6 +305,170 @@ namespace KC
                 UI_EquipmentInventorySlot equipmentInventorySlot = inventorySlotGameObject.GetComponent<UI_EquipmentInventorySlot>();
                 equipmentInventorySlot.AddItem(weaponsInInventory[i]);
 
+                //Seleccionará el primer boton en la lista
+                if (!hasSelectedFirstInventorySlot)
+                {
+                    hasSelectedFirstInventorySlot = true;
+                    Button inventorySlotButton = inventorySlotGameObject.GetComponent<Button>();
+                    inventorySlotButton.Select();
+                    inventorySlotButton.OnSelect(null);
+                }
+            }
+        }
+
+        public void LoadHeadEquipmentInventory()
+        {
+            PlayerManager player = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerManager>();
+            List<HeadEquipmentItem> headEquipmentInInventory = new List<HeadEquipmentItem>();
+
+            //Buscamos entre todas nuestros objetos en el inventario y si es un arama lo agregamos a nuestra lista de armas
+            for (int i = 0; i < player.playerInventoryManager.itemsInventory.Count; i++)
+            {
+                HeadEquipmentItem equipment = player.playerInventoryManager.itemsInventory[i] as HeadEquipmentItem;
+
+                if (equipment != null)
+                {
+                    ClearEquipmentInventry();
+                    headEquipmentInInventory.Add(equipment);
+                }
+            }
+
+            if (headEquipmentInInventory.Count <= 0)
+            {
+                RefreshMenu();
+                return;
+            }
+
+            bool hasSelectedFirstInventorySlot = false;
+
+            for (int i = 0; i < headEquipmentInInventory.Count; i++)
+            {
+                GameObject inventorySlotGameObject = Instantiate(equipmentInventorySlotPrefab, equipmentInventoryContentWindow);
+                UI_EquipmentInventorySlot equipmentInventorySlot = inventorySlotGameObject.GetComponent<UI_EquipmentInventorySlot>();
+                equipmentInventorySlot.AddItem(headEquipmentInInventory[i]);
+
+                //Seleccionará el primer boton en la lista
+                if (!hasSelectedFirstInventorySlot)
+                {
+                    hasSelectedFirstInventorySlot = true;
+                    Button inventorySlotButton = inventorySlotGameObject.GetComponent<Button>();
+                    inventorySlotButton.Select();
+                    inventorySlotButton.OnSelect(null);
+                }
+            }
+        }
+        public void LoadBodyEquipmentInventory()
+        {
+            PlayerManager player = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerManager>();
+            List<BodyEquipmentItem> bodyEquipmentInInventory = new List<BodyEquipmentItem>();
+
+            //Buscamos entre todas nuestros objetos en el inventario y si es un arama lo agregamos a nuestra lista de armas
+            for (int i = 0; i < player.playerInventoryManager.itemsInventory.Count; i++)
+            {
+                BodyEquipmentItem equipment = player.playerInventoryManager.itemsInventory[i] as BodyEquipmentItem;
+
+                if (equipment != null)
+                {
+                    ClearEquipmentInventry();
+                    bodyEquipmentInInventory.Add(equipment);
+                }
+            }
+
+            if (bodyEquipmentInInventory.Count <= 0)
+            {
+                RefreshMenu();
+                return;
+            }
+
+            bool hasSelectedFirstInventorySlot = false;
+
+            for (int i = 0; i < bodyEquipmentInInventory.Count; i++)
+            {
+                GameObject inventorySlotGameObject = Instantiate(equipmentInventorySlotPrefab, equipmentInventoryContentWindow);
+                UI_EquipmentInventorySlot equipmentInventorySlot = inventorySlotGameObject.GetComponent<UI_EquipmentInventorySlot>();
+                equipmentInventorySlot.AddItem(bodyEquipmentInInventory[i]);
+
+                //Seleccionará el primer boton en la lista
+                if (!hasSelectedFirstInventorySlot)
+                {
+                    hasSelectedFirstInventorySlot = true;
+                    Button inventorySlotButton = inventorySlotGameObject.GetComponent<Button>();
+                    inventorySlotButton.Select();
+                    inventorySlotButton.OnSelect(null);
+                }
+            }
+        }
+        public void LoadLegsEquipmentInventory()
+        {
+            PlayerManager player = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerManager>();
+            List<LegEquipmentItem> legEquipmentInInventory = new List<LegEquipmentItem>();
+
+            //Buscamos entre todas nuestros objetos en el inventario y si es un arama lo agregamos a nuestra lista de armas
+            for (int i = 0; i < player.playerInventoryManager.itemsInventory.Count; i++)
+            {
+                LegEquipmentItem equipment = player.playerInventoryManager.itemsInventory[i] as LegEquipmentItem;
+
+                if (equipment != null)
+                {
+                    ClearEquipmentInventry();
+                    legEquipmentInInventory.Add(equipment);
+                }
+            }
+
+            if (legEquipmentInInventory.Count <= 0)
+            {
+                RefreshMenu();
+                return;
+            }
+
+            bool hasSelectedFirstInventorySlot = false;
+
+            for (int i = 0; i < legEquipmentInInventory.Count; i++)
+            {
+                GameObject inventorySlotGameObject = Instantiate(equipmentInventorySlotPrefab, equipmentInventoryContentWindow);
+                UI_EquipmentInventorySlot equipmentInventorySlot = inventorySlotGameObject.GetComponent<UI_EquipmentInventorySlot>();
+                equipmentInventorySlot.AddItem(legEquipmentInInventory[i]);
+
+                //Seleccionará el primer boton en la lista
+                if (!hasSelectedFirstInventorySlot)
+                {
+                    hasSelectedFirstInventorySlot = true;
+                    Button inventorySlotButton = inventorySlotGameObject.GetComponent<Button>();
+                    inventorySlotButton.Select();
+                    inventorySlotButton.OnSelect(null);
+                }
+            }
+        }
+        public void LoadHandsEquipmentInventory()
+        {
+            PlayerManager player = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerManager>();
+            List<HandEquipmentItem> handEquipmentInInventory = new List<HandEquipmentItem>();
+
+            //Buscamos entre todas nuestros objetos en el inventario y si es un arama lo agregamos a nuestra lista de armas
+            for (int i = 0; i < player.playerInventoryManager.itemsInventory.Count; i++)
+            {
+                HandEquipmentItem equipment = player.playerInventoryManager.itemsInventory[i] as HandEquipmentItem;
+
+                if (equipment != null)
+                {
+                    ClearEquipmentInventry();
+                    handEquipmentInInventory.Add(equipment);
+                }
+            }
+
+            if (handEquipmentInInventory.Count <= 0)
+            {
+                RefreshMenu();
+                return;
+            }
+
+            bool hasSelectedFirstInventorySlot = false;
+
+            for (int i = 0; i < handEquipmentInInventory.Count; i++)
+            {
+                GameObject inventorySlotGameObject = Instantiate(equipmentInventorySlotPrefab, equipmentInventoryContentWindow);
+                UI_EquipmentInventorySlot equipmentInventorySlot = inventorySlotGameObject.GetComponent<UI_EquipmentInventorySlot>();
+                equipmentInventorySlot.AddItem(handEquipmentInInventory[i]);
 
                 //Seleccionará el primer boton en la lista
                 if (!hasSelectedFirstInventorySlot)
@@ -327,11 +574,46 @@ namespace KC
                     if (player.playerInventoryManager.leftHandWeaponIndex == 2)
                         player.playerNetworkManager.currentLeftHandWeaponID.Value = WorldItemDatabase.Instance.unarmedWeapon.itemID;
                     break;
+                case EquipmentType.head:
+                    unequippedItem = player.playerInventoryManager.headEquipmentItem;
+
+                    if (unequippedItem != null)
+                        player.playerInventoryManager.AddItemsToInventory(unequippedItem);
+
+                    player.playerInventoryManager.headEquipmentItem = null;
+                    player.playerEquipmentManager.LoadHeadEquipment(player.playerInventoryManager.headEquipmentItem);
+                    break;
+                case EquipmentType.Body:
+                    unequippedItem = player.playerInventoryManager.bodyEquipmentItem;
+
+                    if (unequippedItem != null)
+                        player.playerInventoryManager.AddItemsToInventory(unequippedItem);
+
+                    player.playerInventoryManager.bodyEquipmentItem = null;
+                    player.playerEquipmentManager.LoadBodyEquipment(player.playerInventoryManager.bodyEquipmentItem);
+                    break;
+                case EquipmentType.Legs:
+                    unequippedItem = player.playerInventoryManager.legEquipmentItem;
+
+                    if (unequippedItem != null)
+                        player.playerInventoryManager.AddItemsToInventory(unequippedItem);
+
+                    player.playerInventoryManager.legEquipmentItem = null;
+                    player.playerEquipmentManager.LoadLegEquipment(player.playerInventoryManager.legEquipmentItem);
+                    break;
+                case EquipmentType.Hands:
+                    unequippedItem = player.playerInventoryManager.handEquipmentItem;
+
+                    if (unequippedItem != null)
+                        player.playerInventoryManager.AddItemsToInventory(unequippedItem);
+
+                    player.playerInventoryManager.handEquipmentItem = null;
+                    player.playerEquipmentManager.LoadHandEquipment(player.playerInventoryManager.handEquipmentItem);
+                    break;
                 default:
                     break;
             }
-
-            //Refrescar Interfaz de Usuario
+            CloseEquipmentInventoryWindow();
             RefreshMenu();
         }
     }

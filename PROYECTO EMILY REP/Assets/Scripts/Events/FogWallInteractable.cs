@@ -1,6 +1,7 @@
 using UnityEngine;
 using Unity.Netcode;
 using System.Collections;
+using Unity.VisualScripting;
 
 namespace KC
 {
@@ -8,7 +9,7 @@ namespace KC
     {
         [Header("Fog")]
         [SerializeField] GameObject[] fogGameObjects;
-        //[SerializeField] GameObject trigguerObject;
+        [SerializeField] GameObject trigguerObject;
 
         [Header("Collision")]
         [SerializeField] Collider fogWallCollider;
@@ -62,7 +63,7 @@ namespace KC
         {
             if (isActive.Value)
             {
-                //trigguerObject.SetActive(true);
+                trigguerObject.SetActive(true);
                 foreach (var fogObject in fogGameObjects)
                 {
                     fogObject.SetActive(true);
@@ -70,7 +71,7 @@ namespace KC
             }
             else
             {
-                //trigguerObject.SetActive(false);
+                trigguerObject.SetActive(false);
                 foreach (var fogObject in fogGameObjects)
                 {
                     fogObject.SetActive(false);

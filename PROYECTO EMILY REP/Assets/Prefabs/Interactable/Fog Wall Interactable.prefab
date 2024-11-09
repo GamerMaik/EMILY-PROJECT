@@ -5085,6 +5085,7 @@ Transform:
   - {fileID: 5581336528897245641}
   - {fileID: 4929250664775304533}
   - {fileID: 5833283719133287476}
+  - {fileID: 1959549358562593894}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &373483040357260158
@@ -5099,7 +5100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2303002271
+  GlobalObjectIdHash: 1172635797
   InScenePlacedSourceGlobalObjectIdHash: 592421261
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -5127,6 +5128,7 @@ MonoBehaviour:
   - {fileID: 4848861969771075129}
   - {fileID: 6561922372338563922}
   - {fileID: 988029530213110236}
+  trigguerObject: {fileID: 5717991436072336983}
   fogWallCollider: {fileID: 8730276250415978673}
   fogWallId: 0
   fogWallSFX: {fileID: 8300000, guid: 2fa46921d9309de45b65eae6a3b6441d, type: 3}
@@ -5256,3 +5258,70 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &2297608097073631936
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8742675229463359243}
+    m_Modifications:
+    - target: {fileID: 347632206817353382, guid: f7d78c6d4cebfef4692016520c84e3e4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 347632206817353382, guid: f7d78c6d4cebfef4692016520c84e3e4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 347632206817353382, guid: f7d78c6d4cebfef4692016520c84e3e4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 347632206817353382, guid: f7d78c6d4cebfef4692016520c84e3e4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 347632206817353382, guid: f7d78c6d4cebfef4692016520c84e3e4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 347632206817353382, guid: f7d78c6d4cebfef4692016520c84e3e4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 347632206817353382, guid: f7d78c6d4cebfef4692016520c84e3e4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 347632206817353382, guid: f7d78c6d4cebfef4692016520c84e3e4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 347632206817353382, guid: f7d78c6d4cebfef4692016520c84e3e4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 347632206817353382, guid: f7d78c6d4cebfef4692016520c84e3e4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339824568974471300, guid: f7d78c6d4cebfef4692016520c84e3e4, type: 3}
+      propertyPath: m_Name
+      value: Event_Trigger_Wake_Xtreme_01
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f7d78c6d4cebfef4692016520c84e3e4, type: 3}
+--- !u!4 &1959549358562593894 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 347632206817353382, guid: f7d78c6d4cebfef4692016520c84e3e4, type: 3}
+  m_PrefabInstance: {fileID: 2297608097073631936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5717991436072336983 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 5816641423020371095, guid: f7d78c6d4cebfef4692016520c84e3e4, type: 3}
+  m_PrefabInstance: {fileID: 2297608097073631936}
+  m_PrefabAsset: {fileID: 0}

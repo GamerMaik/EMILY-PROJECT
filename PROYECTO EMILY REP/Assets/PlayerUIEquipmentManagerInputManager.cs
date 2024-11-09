@@ -6,14 +6,14 @@ namespace KC
     {
         PlayerControls playerControls;
 
-        PlayerUIEquipmentManager PlayerUIEquipmentManager;
+        PlayerUIEquipmentManager playerUIEquipmentManager;
 
         [Header("Inputs")]
         [SerializeField] bool unequipItemInput;
 
         private void Awake()
         {
-            PlayerUIEquipmentManager = GetComponentInParent<PlayerUIEquipmentManager>();
+            playerUIEquipmentManager = GetComponentInParent<PlayerUIEquipmentManager>();
         }
 
         private void OnEnable()
@@ -42,7 +42,8 @@ namespace KC
             if (unequipItemInput)
             {
                 unequipItemInput = false;
-                PlayerUIEquipmentManager.UnEquipSelectedItem();
+                playerUIEquipmentManager.UnEquipSelectedItem();
+                playerUIEquipmentManager.CloseEquipmentInventoryWindow();
             }
         }
     }
