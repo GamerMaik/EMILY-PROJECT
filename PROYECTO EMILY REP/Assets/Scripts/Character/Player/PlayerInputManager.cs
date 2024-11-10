@@ -67,6 +67,9 @@ namespace KC
         [Header("UI Inputs")]
         [SerializeField] bool openCharacterMenuInput = false;
         [SerializeField] bool closeMenuInput = false;
+
+        [Header("Debug")]
+        [SerializeField] bool openQuestionPanelManager = false;
         #endregion
 
         private void Awake()
@@ -172,6 +175,9 @@ namespace KC
                 playerControls.PlayerActions.CloseMenu.performed += i => closeMenuInput = true;
                 playerControls.PlayerActions.OpenMenu.performed += i => openCharacterMenuInput = true;
 
+                //Player Debug Menu
+                playerControls.PlayerActions.openQuestionDebug.performed += i => openQuestionPanelManager = true;
+
             }
             playerControls.Enable();
         }
@@ -218,6 +224,7 @@ namespace KC
             HandleInteractionInput();
             HandleCloseUIInput();
             HandleOpenCharacterMenuInput();
+            HandleOpenQuestionMenuInput();
         }
 
         //Two hand 
@@ -351,17 +358,17 @@ namespace KC
         #region Movimiento
         private void HandlePlayerMovementInput()
         {
-            // Verifica si el inventario está abierto
-            if (PlayerUIManager.instance.menuWindowIsOpen)
-            {
-                moveAmount = 0;
-                player.playerNetworkManager.isMoving.Value = false;
-                return;
-            }
 
             vertical_Input = movementInput.y;
             horizontal_Input = movementInput.x;
 
+            if (PlayerUIManager.instance.menuWindowIsOpen)
+            {
+                horizontal_Input = 0;
+                vertical_Input = 0;
+                player.playerNetworkManager.isMoving.Value = false;
+                return;
+            }
             //Regresa un numer absoluto(para moverse en horizontal)
             moveAmount = Mathf.Clamp01(Mathf.Abs(vertical_Input) + Mathf.Abs(horizontal_Input));
 
@@ -391,10 +398,17 @@ namespace KC
 
             if (!player.playerNetworkManager.isLokedOn.Value || player.playerNetworkManager.isSprinting.Value)
             {
+
                 player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount, player.playerNetworkManager.isSprinting.Value);
             }
             else
             {
+                if (PlayerUIManager.instance.menuWindowIsOpen)
+                {
+                    horizontal_Input = 0;
+                    vertical_Input = 0;
+                    player.playerNetworkManager.isMoving.Value = false;
+                }
                 player.playerAnimatorManager.UpdateAnimatorMovementParameters(horizontal_Input, vertical_Input, player.playerNetworkManager.isSprinting.Value);
             }
         }
@@ -545,6 +559,8 @@ namespace KC
         {
             if (interaction_Input)
             {
+                if (PlayerUIManager.instance.menuWindowIsOpen)
+                    return;
                 interaction_Input = false;
 
                 player.playerInteractionManager.Interact();
@@ -610,6 +626,17 @@ namespace KC
                 PlayerUIManager.instance.playerUIPopUpManager.closeAllPopUpWindows();
                 PlayerUIManager.instance.CloseAllMenuWindows();
                 PlayerUIManager.instance.playerUICharacterMenuManager.OpenCharacterMenu();
+            }
+        }
+
+        private void HandleOpenQuestionMenuInput()
+        {
+            if (openQuestionPanelManager)
+            {
+                openQuestionPanelManager = false;
+                PlayerUIManager.instance.playerUIPopUpManager.closeAllPopUpWindows();
+                PlayerUIManager.instance.CloseAllMenuWindows();
+                ShowRandomQuestionsManager.instance.LoadRandomQuestion();
             }
         }
 

@@ -255,6 +255,17 @@
                 },
                 {
                     "name": "",
+                    "id": "c50c6207-77f6-41e8-868f-460240e07dbd",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d54dc035-6785-47cc-a55f-1cb2378822d5",
                     "path": "<Keyboard>/delete",
                     "interactions": "",
@@ -441,6 +452,15 @@
                     "name": "OpenMenu",
                     "type": "Button",
                     "id": "e205cba2-b182-4203-9c2e-9e2aa3d351a1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "openQuestionDebug",
+                    "type": "Button",
+                    "id": "d12efaaf-e0a0-49c3-aa18-f6dba6712891",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Tap",
@@ -660,6 +680,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "OpenMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "53278262-e574-4ea4-b174-a2e2e57c7c02",
+                    "path": "<Keyboard>/numpadEnter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "openQuestionDebug",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

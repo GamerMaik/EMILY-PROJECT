@@ -24,7 +24,7 @@ namespace KC
         
         public virtual void Interact(PlayerManager player)
         {
-            Debug.Log("Boton precionado");
+            Debug.Log("Interaccion Realizada");
 
             if (!player.IsOwner)
                 return;

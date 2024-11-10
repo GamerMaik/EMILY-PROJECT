@@ -13,6 +13,7 @@ namespace KC
         [HideInInspector] public PlayerUIPopUpManager playerUIPopUpManager;
         [HideInInspector] public PlayerUICharacterMenuManager playerUICharacterMenuManager;
         [HideInInspector] public PlayerUIEquipmentManager playerUIEquipmentManager;
+        [HideInInspector] public PlayerUIQuestionPanelManager playerUIQuestionPanelManager;
 
         [Header("UI Flags")]
         public bool menuWindowIsOpen = false; //Inventario, equipo, otros menus
@@ -33,6 +34,7 @@ namespace KC
             playerUIPopUpManager = GetComponentInChildren<PlayerUIPopUpManager>();
             playerUICharacterMenuManager = GetComponentInChildren<PlayerUICharacterMenuManager>();
             playerUIEquipmentManager = GetComponentInChildren<PlayerUIEquipmentManager>();
+            playerUIQuestionPanelManager = GetComponentInChildren<PlayerUIQuestionPanelManager>();
         }
 
         private void Start()
@@ -56,6 +58,7 @@ namespace KC
         {
             playerUICharacterMenuManager.CloseCharacterMenu();
             playerUIEquipmentManager.CloseEquipmentManagerMenu();
+            playerUIQuestionPanelManager.CloseQuestionPanel();
         }
     }
 }

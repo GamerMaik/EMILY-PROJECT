@@ -3,8 +3,25 @@ using UnityEngine.SceneManagement;
 
 public class CursorManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] bool activeCursor = false;
+
+    private void Update()
+    {
+        if (activeCursor)
+        {
+            ShowCursor();
+        }
+        else
+        {
+            HideCursor();
+        }
+    }
+    public void ShowCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void HideCursor()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }

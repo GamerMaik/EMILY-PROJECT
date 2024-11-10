@@ -278,6 +278,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""c50c6207-77f6-41e8-868f-460240e07dbd"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""d54dc035-6785-47cc-a55f-1cb2378822d5"",
                     ""path"": ""<Keyboard>/delete"",
                     ""interactions"": """",
@@ -464,6 +475,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": ""OpenMenu"",
                     ""type"": ""Button"",
                     ""id"": ""e205cba2-b182-4203-9c2e-9e2aa3d351a1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Tap"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""openQuestionDebug"",
+                    ""type"": ""Button"",
+                    ""id"": ""d12efaaf-e0a0-49c3-aa18-f6dba6712891"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Tap"",
@@ -683,6 +703,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""OpenMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""53278262-e574-4ea4-b174-a2e2e57c7c02"",
+                    ""path"": ""<Keyboard>/numpadEnter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""openQuestionDebug"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -936,6 +967,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActions_Dodge = m_PlayerActions.FindAction("Dodge", throwIfNotFound: true);
         m_PlayerActions_CloseMenu = m_PlayerActions.FindAction("CloseMenu", throwIfNotFound: true);
         m_PlayerActions_OpenMenu = m_PlayerActions.FindAction("OpenMenu", throwIfNotFound: true);
+        m_PlayerActions_openQuestionDebug = m_PlayerActions.FindAction("openQuestionDebug", throwIfNotFound: true);
         m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
         m_PlayerActions_RB = m_PlayerActions.FindAction("RB", throwIfNotFound: true);
         m_PlayerActions_UseItem = m_PlayerActions.FindAction("Use Item", throwIfNotFound: true);
@@ -1253,6 +1285,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Dodge;
     private readonly InputAction m_PlayerActions_CloseMenu;
     private readonly InputAction m_PlayerActions_OpenMenu;
+    private readonly InputAction m_PlayerActions_openQuestionDebug;
     private readonly InputAction m_PlayerActions_Jump;
     private readonly InputAction m_PlayerActions_RB;
     private readonly InputAction m_PlayerActions_UseItem;
@@ -1279,6 +1312,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Dodge => m_Wrapper.m_PlayerActions_Dodge;
         public InputAction @CloseMenu => m_Wrapper.m_PlayerActions_CloseMenu;
         public InputAction @OpenMenu => m_Wrapper.m_PlayerActions_OpenMenu;
+        public InputAction @openQuestionDebug => m_Wrapper.m_PlayerActions_openQuestionDebug;
         public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
         public InputAction @RB => m_Wrapper.m_PlayerActions_RB;
         public InputAction @UseItem => m_Wrapper.m_PlayerActions_UseItem;
@@ -1316,6 +1350,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @OpenMenu.started += instance.OnOpenMenu;
             @OpenMenu.performed += instance.OnOpenMenu;
             @OpenMenu.canceled += instance.OnOpenMenu;
+            @openQuestionDebug.started += instance.OnOpenQuestionDebug;
+            @openQuestionDebug.performed += instance.OnOpenQuestionDebug;
+            @openQuestionDebug.canceled += instance.OnOpenQuestionDebug;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
@@ -1386,6 +1423,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @OpenMenu.started -= instance.OnOpenMenu;
             @OpenMenu.performed -= instance.OnOpenMenu;
             @OpenMenu.canceled -= instance.OnOpenMenu;
+            @openQuestionDebug.started -= instance.OnOpenQuestionDebug;
+            @openQuestionDebug.performed -= instance.OnOpenQuestionDebug;
+            @openQuestionDebug.canceled -= instance.OnOpenQuestionDebug;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
@@ -1488,6 +1528,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnDodge(InputAction.CallbackContext context);
         void OnCloseMenu(InputAction.CallbackContext context);
         void OnOpenMenu(InputAction.CallbackContext context);
+        void OnOpenQuestionDebug(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnRB(InputAction.CallbackContext context);
         void OnUseItem(InputAction.CallbackContext context);
