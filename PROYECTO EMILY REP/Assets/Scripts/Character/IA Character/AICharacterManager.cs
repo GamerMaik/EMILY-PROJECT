@@ -11,6 +11,7 @@ namespace KC
         [HideInInspector] public AICharacterNetworkManager aiCharacterNetworkManager;
         [HideInInspector] public AICharacterCombatManager aICharacterCombatManager;
         [HideInInspector] public AICharacterLocomotionManager aICharacterLocomotionManager;
+        [HideInInspector] public AICharacterInventoryManager aICharacterInventoryManager;
 
         [Header("NavMesh Agent")]
         public NavMeshAgent navMeshAgent;
@@ -35,6 +36,7 @@ namespace KC
             aiCharacterNetworkManager = GetComponent<AICharacterNetworkManager>();
             aICharacterCombatManager = GetComponent<AICharacterCombatManager>();
             aICharacterLocomotionManager = GetComponent<AICharacterLocomotionManager>();
+            aICharacterInventoryManager = GetComponent<AICharacterInventoryManager>();
 
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();
             //Debug.Log(navMeshAgent != null ? "NavMeshAgent asignado correctamente" : "NavMeshAgent es null");

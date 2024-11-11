@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Question02
   m_EditorClassIdentifier: 
   questionText: "\xBFEsta es una segunda pregunta?"
+  timeLimit: 6
   answerOptions:
   - answerText: Primera
     isCorrect: 0
   - answerText: Segunda
-    isCorrect: 0
+    isCorrect: 1
   - answerText: Tercera
     isCorrect: 0
   - answerText: Cuarta
-    isCorrect: 1
+    isCorrect: 0

@@ -100,6 +100,7 @@ namespace KC
             animator.SetBool("IsMoving", characterNetworkManager.isMoving.Value);
             characterNetworkManager.OnIsActiveChanged(false, characterNetworkManager.isActive.Value);
 
+            isDead.OnValueChanged += characterNetworkManager.OnIsDeadChange;
             characterNetworkManager.isMoving.OnValueChanged += characterNetworkManager.OnIsMovingChanged;
             characterNetworkManager.isActive.OnValueChanged += characterNetworkManager.OnIsActiveChanged;
         }
@@ -107,6 +108,8 @@ namespace KC
         public override void OnNetworkDespawn()
         {
             base.OnNetworkDespawn();
+
+            isDead.OnValueChanged -= characterNetworkManager.OnIsDeadChange;
             characterNetworkManager.isMoving.OnValueChanged -= characterNetworkManager.OnIsMovingChanged;
             characterNetworkManager.isActive.OnValueChanged -= characterNetworkManager.OnIsActiveChanged;
         }
@@ -133,7 +136,7 @@ namespace KC
 
         public virtual void ReviveCharacter()
         {
-
+                
         }
 
         protected virtual void IgnoreMyOwnColliders()

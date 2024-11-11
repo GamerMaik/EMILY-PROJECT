@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Question03
   m_EditorClassIdentifier: 
   questionText: "\xBFEsta es una tercera pregunta?"
+  timeLimit: 9
   answerOptions:
   - answerText: Primera
     isCorrect: 0

@@ -7,6 +7,7 @@ namespace KC
     public class Question : ScriptableObject
     {
         public string questionText;
+        public float timeLimit;
         public List<AnswerOption> answerOptions = new List<AnswerOption>();
     }
 }

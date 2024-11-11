@@ -73,6 +73,10 @@ namespace KC
             }
         }
 
+        public virtual void OnIsDeadChange(bool oldStatus, bool newStatus)
+        {
+            character.animator.SetBool("isDead", character.isDead.Value);
+        } 
         public void OnLockOnTargetIdChange(ulong oldId, ulong newId)
         {
             if (!IsOwner)

@@ -338,6 +338,7 @@ GameObject:
   - component: {fileID: 3777949662992598387}
   - component: {fileID: 4661412549489092654}
   - component: {fileID: 9059889645116409651}
+  - component: {fileID: -2074613751471652794}
   - component: {fileID: 4177275692785571413}
   - component: {fileID: 4358535851691687462}
   - component: {fileID: 4663420157291861137}
@@ -475,6 +476,10 @@ MonoBehaviour:
     m_InternalValue: 1
   endurance:
     m_InternalValue: 1
+  strength:
+    m_InternalValue: 1
+  strengthModifier:
+    m_InternalValue: 1
 --- !u!114 &3069361277520809899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -529,6 +534,7 @@ MonoBehaviour:
   aiCharacterNetworkManager: {fileID: 0}
   aICharacterCombatManager: {fileID: 0}
   aICharacterLocomotionManager: {fileID: 0}
+  aICharacterInventoryManager: {fileID: 0}
   navMeshAgent: {fileID: 0}
   currentState: {fileID: 11400000, guid: 3244432122333074684422fabad3af2d, type: 2}
   idle: {fileID: 11400000, guid: 3244432122333074684422fabad3af2d, type: 2}
@@ -591,6 +597,23 @@ MonoBehaviour:
   hit_Backward_Ping_01: hit_Backward_Ping_01
   hit_Left_Ping_01: hit_Left_Ping_01
   hit_Right_Ping_01: hit_Right_Ping_01
+--- !u!114 &-2074613751471652794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707189755431233896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29c8fad76ae6b224fa26349ee125d3d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItemChance: 100
+  droppableItems:
+  - {fileID: 11400000, guid: d8c707316c705e44983020b8c31584e7, type: 2}
+  - {fileID: 11400000, guid: f93df752c5304df48a0ecfd7ee2cfbd0, type: 2}
+  - {fileID: 11400000, guid: a240dc4e057f1f940896782a19b7f33d, type: 2}
 --- !u!114 &4177275692785571413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,6 +634,15 @@ MonoBehaviour:
   blockingLightningAbsorption: 0
   blockingHolyAbsorption: 0
   blockingStability: 0
+  armorPhysicalDamageAbsroption: 0
+  armorMagicDamageAbsorption: 0
+  armorFireDamageAbsorption: 0
+  armorLightningDamageAbsorption: 0
+  armorHolyDamageAbsorption: 0
+  armorImmunity: 0
+  armorRobustness: 0
+  armorFocus: 0
+  armorVitality: 0
   totalPoiseDamage: 0
   offensivePoiseBinus: 0
   basePoiseDefense: 100
@@ -677,6 +709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodSplatterVFX: {fileID: 0}
+  staticEffects: []
 --- !u!114 &5820257199812337605
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -43,8 +43,9 @@ namespace KC
             string answerText02 = currentQuestion.answerOptions[1].answerText;
             string answerText03 = currentQuestion.answerOptions[2].answerText;
             string answerText04 = currentQuestion.answerOptions[3].answerText;
+            float timeLimit = currentQuestion.timeLimit;
 
-            PlayerUIManager.instance.playerUIQuestionPanelManager.OpenQuestionPanel(questionText, answerText01, answerText02, answerText03, answerText04);
+            PlayerUIManager.instance.playerUIQuestionPanelManager.OpenQuestionPanel(questionText, answerText01, answerText02, answerText03, answerText04, timeLimit);
         }
 
         // Método para verificar si la respuesta seleccionada es correcta

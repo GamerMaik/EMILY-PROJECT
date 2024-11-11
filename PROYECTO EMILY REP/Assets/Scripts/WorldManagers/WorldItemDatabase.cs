@@ -10,6 +10,8 @@ namespace KC
 
         public WeaponItem unarmedWeapon;
 
+        public GameObject pickUpItemsPrefab;
+
         [Header("Weapons")]
         [SerializeField] List<WeaponItem> weapons = new List<WeaponItem>();
 

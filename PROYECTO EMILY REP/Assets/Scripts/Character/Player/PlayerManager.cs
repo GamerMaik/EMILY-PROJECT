@@ -271,12 +271,12 @@ namespace KC
 
                 if (currentCharacterData.inventoryItems.ContainsKey(itemID))
                 {
-                    // Incrementa la cantidad si ya existe el itemID
+                    // Incrementa la cantidad si ya existe el worldSpawnIteractableID
                     currentCharacterData.inventoryItems[itemID]++;
                 }
                 else
                 {
-                    // Agrega el itemID con una cantidad inicial de 1 si no existe aún
+                    // Agrega el worldSpawnIteractableID con una cantidad inicial de 1 si no existe aún
                     currentCharacterData.inventoryItems[itemID] = 1;
                 }
             }
