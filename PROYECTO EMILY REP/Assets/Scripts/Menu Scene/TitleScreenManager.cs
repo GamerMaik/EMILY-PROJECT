@@ -1,5 +1,8 @@
+using System;
+using TMPro;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.InputSystem.Layouts;
 using UnityEngine.UI;
 
 namespace KC
@@ -7,17 +10,24 @@ namespace KC
     public class TitleScreenManager : MonoBehaviour
     {
         public static TitleScreenManager Instance;
+        [Header("Title Screens")]
         [SerializeField] GameObject titleScreenMainMenu;
         [SerializeField] GameObject titleScreenLoadMenu;
 
         [Header("Pop Ups")]
         [SerializeField] GameObject noCharacterSlotsPopUp;
         [SerializeField] GameObject deleteCharacterSlotPopUp;
+        [SerializeField] GameObject nameAlertErrorPopUp;
 
         [Header("Buttons")]
         [SerializeField] Button noCharacterSlotsOkButton;
         [SerializeField] Button deleteCharacterSlotPopUpOkButton;
         [SerializeField] Button cancelDeleteCharacterButton;
+
+        [Header("Inputs")]
+        [SerializeField] TMP_InputField characterName;
+        [SerializeField] TextMeshProUGUI genderText;
+        [SerializeField] bool isMale = true;
 
         [Header("Character Slots")]
         public CharacterSlots currentSelectedSlot = CharacterSlots.NO_SLOT;
@@ -39,7 +49,15 @@ namespace KC
         }
         public void StartNewGame()
         {
-            WorldSaveGameManager.instance.AttempToCreateNewGame();
+            bool validText = ValidateInputText(characterName.text);
+            if (validText)
+            {
+                WorldSaveGameManager.instance.AttempToCreateNewGame(characterName.text.ToUpper(), isMale);
+            }
+            else
+            {
+                ShowNameAlerPopUp();
+            }
         }
         public void OpenLoadGameMenu()
         {
@@ -66,7 +84,14 @@ namespace KC
         {
             noCharacterSlotsPopUp.SetActive(false);
         }
-
+        public void ShowNameAlerPopUp()
+        {
+            nameAlertErrorPopUp.SetActive(true);
+        }
+        public void CloseNameAlerPopUp()
+        {
+            nameAlertErrorPopUp.SetActive(false);
+        }
         //CHARACTER SLOT
         public void SelectedCharacterSlot(CharacterSlots characterSlot)
         {
@@ -76,7 +101,6 @@ namespace KC
         {
             currentSelectedSlot = CharacterSlots.NO_SLOT;
         }
-
         public void AttemptToDeleteCharacterSlot()
         {
             if (currentSelectedSlot != CharacterSlots.NO_SLOT)
@@ -95,11 +119,33 @@ namespace KC
             titleScreenLoadMenu.SetActive(true);
             cancelDeleteCharacterButton.Select();
         }
-
         public void CloseDeleteCharacterPopUp()
         {
             deleteCharacterSlotPopUp.SetActive(false);
             cancelDeleteCharacterButton.Select();
+        }
+        //Validations
+        private bool ValidateInputText(string characterName)
+        {
+            if (characterName.Length > 10 || characterName.Length == 0)
+                return false;
+
+            return true;
+        }
+        public void ToggleGender()
+        {
+            PlayerManager player = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerManager>();
+            isMale = !isMale;
+            if (isMale)
+            {
+                genderText.text = "MASCULINO";
+                player.playerNetworkManager.isMale.Value = true;
+            }
+            else
+            {
+                genderText.text = "FEMENINO";
+                player.playerNetworkManager.isMale.Value = false;
+            }
         }
     }
 }

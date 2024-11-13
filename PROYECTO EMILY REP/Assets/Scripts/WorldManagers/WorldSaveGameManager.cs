@@ -110,7 +110,7 @@ namespace KC
 
             return filename;
         }
-        public void AttempToCreateNewGame()
+        public void AttempToCreateNewGame(string nameCharacter, bool gender)
         {
             saveFileDataWriter = new SaveFileDataWriter();
             saveFileDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
@@ -121,7 +121,7 @@ namespace KC
                 //Comprobamos si este espacio está disponible
                 currentCharacterSlotsBeingUsed = CharacterSlots.CharacterSlot_01;
                 currentCharacterData = new CharacterSaveData();
-                NewGame();
+                NewGame(nameCharacter, gender);
                 return;
             }
             //Creamos el archivo con el nombre de Slot que se seleccionó
@@ -130,7 +130,7 @@ namespace KC
             {
                 currentCharacterSlotsBeingUsed = CharacterSlots.CharacterSlot_02;
                 currentCharacterData = new CharacterSaveData();
-                NewGame();
+                NewGame(nameCharacter, gender);
                 return;
             }
 
@@ -139,7 +139,7 @@ namespace KC
             {
                 currentCharacterSlotsBeingUsed = CharacterSlots.CharacterSlot_03;
                 currentCharacterData = new CharacterSaveData();
-                NewGame();
+                NewGame(nameCharacter, gender);
                 return;
             }
 
@@ -148,7 +148,7 @@ namespace KC
             {
                 currentCharacterSlotsBeingUsed = CharacterSlots.CharacterSlot_04;
                 currentCharacterData = new CharacterSaveData();
-                NewGame();
+                NewGame(nameCharacter, gender);
                 return;
             }
 
@@ -157,7 +157,7 @@ namespace KC
             {
                 currentCharacterSlotsBeingUsed = CharacterSlots.CharacterSlot_05;
                 currentCharacterData = new CharacterSaveData();
-                NewGame();
+                NewGame(nameCharacter, gender);
                 return;
             }
 
@@ -166,7 +166,7 @@ namespace KC
             {
                 currentCharacterSlotsBeingUsed = CharacterSlots.CharacterSlot_06;
                 currentCharacterData = new CharacterSaveData();
-                NewGame();
+                NewGame(nameCharacter, gender);
                 return;
             }
 
@@ -175,7 +175,7 @@ namespace KC
             {
                 currentCharacterSlotsBeingUsed = CharacterSlots.CharacterSlot_07;
                 currentCharacterData = new CharacterSaveData();
-                NewGame();
+                NewGame(nameCharacter, gender);
                 return;
             }
 
@@ -184,7 +184,7 @@ namespace KC
             {
                 currentCharacterSlotsBeingUsed = CharacterSlots.CharacterSlot_08;
                 currentCharacterData = new CharacterSaveData();
-                NewGame();
+                NewGame(nameCharacter, gender);
                 return;
             }
 
@@ -193,7 +193,7 @@ namespace KC
             {
                 currentCharacterSlotsBeingUsed = CharacterSlots.CharacterSlot_09;
                 currentCharacterData = new CharacterSaveData();
-                NewGame();
+                NewGame(nameCharacter, gender);
                 return;
             }
 
@@ -202,19 +202,20 @@ namespace KC
             {
                 currentCharacterSlotsBeingUsed = CharacterSlots.CharacterSlot_10;
                 currentCharacterData = new CharacterSaveData();
-                NewGame();
+                NewGame(nameCharacter, gender);
                 return;
             }
 
             TitleScreenManager.Instance.DisplayNoFreeCharactersSlotsPopUp();
         }
 
-        private void NewGame()
+        private void NewGame(string nameCharacter, bool gender)
         {
             //Temporal para probar el daño
             player.playerNetworkManager.vitality.Value = 15;
             player.playerNetworkManager.endurance.Value = 10;
-
+            player.playerNetworkManager.characterName.Value = nameCharacter;
+            player.playerNetworkManager.isMale.Value = gender;
 
             SaveGame();
             LoadWorldScene(worldSceneIndex);
