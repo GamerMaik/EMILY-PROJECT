@@ -7361,6 +7361,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2692549602404390685, guid: 74335e8fa9b41134a870248bfaf5b743, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 7664809826894878114, guid: 15ee77f902391ce4ab120ea3246c5bd5, type: 3}
+    - target: {fileID: 2692549602404390685, guid: 74335e8fa9b41134a870248bfaf5b743, type: 3}
       propertyPath: saveGame
       value: 0
       objectReference: {fileID: 0}
@@ -7640,6 +7644,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1808876210836022380, guid: f32817f383adfe849a9976feb4c03450, type: 3}
+      propertyPath: characterLayers.m_Bits
+      value: 320
+      objectReference: {fileID: 0}
     - target: {fileID: 2619516331315360680, guid: f32817f383adfe849a9976feb4c03450, type: 3}
       propertyPath: m_Name
       value: World Utility Manager
