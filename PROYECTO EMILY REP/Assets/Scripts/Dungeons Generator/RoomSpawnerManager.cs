@@ -6,7 +6,7 @@ namespace KC
     {
         public static RoomSpawnerManager instance;
         [Header("Rooms Configuration")]
-        [SerializeField] int openSide;
+        [SerializeField] public int openSide;
         private DungeonsGeneratorTemplates templates;
         private int randomRoom;
         private bool spawnedComplete = false;
@@ -19,7 +19,7 @@ namespace KC
 
         public void SpawnRooms()
         {
-            if (spawnedComplete == false)
+            if (!spawnedComplete)
             {
                 if (openSide == 1)
                 {
@@ -52,12 +52,12 @@ namespace KC
         {
             if (other.CompareTag("SpawnPoint"))
             {
-                if (other.GetComponent<RoomSpawnerManager>().spawnedComplete == false && spawnedComplete == false)
+                RoomSpawnerManager otherSpawner = other.GetComponent<RoomSpawnerManager>();
+                if (otherSpawner != null && otherSpawner.spawnedComplete == false && spawnedComplete == false)
                 {
-                    //Instantiate(templates.closedRooms, transform.position, Quaternion.identity);
+                    Instantiate(templates.closedRoom, transform.position, Quaternion.identity);
                     Destroy(gameObject);
                 }
-
                 spawnedComplete = true;
             }
 

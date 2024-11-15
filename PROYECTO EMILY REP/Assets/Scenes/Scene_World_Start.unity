@@ -1192,7 +1192,12 @@ MonoBehaviour:
   - {fileID: 7563605856272704440, guid: 16685e2de33face41a10cca4934bd9b4, type: 3}
   - {fileID: 702794258590797410, guid: 76d5a6d892a79c84e8e8f4a8384a63f5, type: 3}
   - {fileID: 457677880055531643, guid: cffbde60c95984d49a8d793a3910a961, type: 3}
-  closedRooms: {fileID: 1349785780899605118, guid: 0cff53b9f27984449974994e466b935e, type: 3}
+  closedRoom: {fileID: 408551261939023328, guid: 0cff53b9f27984449974994e466b935e, type: 3}
+  rooms: []
+  finalEnemy: {fileID: 1710435582}
+  simpleEnemy: {fileID: 9167775071992488525, guid: e6c031a6a01edbc45aff0b69be072ccf, type: 3}
+  treasure: {fileID: 70634057}
+  key: {fileID: 70634057}
 --- !u!4 &269929812
 Transform:
   m_ObjectHideFlags: 0
@@ -5480,6 +5485,10 @@ PrefabInstance:
     - target: {fileID: 4946733340826484133, guid: f471a9ca419c3df4dbc0769f9b985351, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799488276805671878, guid: f471a9ca419c3df4dbc0769f9b985351, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

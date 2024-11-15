@@ -6,10 +6,10 @@ namespace KC
     {
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.tag == "ClosedRoom")
-            {
-                Destroy(other.gameObject);
-            }
+            if (!other.gameObject.CompareTag("ClosedRoom"))
+                return;
+
+            Destroy(other.gameObject);
         }
     }
 }
