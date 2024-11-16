@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine.AI;
 
 namespace KC
 {
@@ -12,11 +13,11 @@ namespace KC
         public static WorldAIManager instance;
 
         [Header("Characters")]
-        [SerializeField] List<AICharacterSpawner> aiCharacterSpawners;
-        [SerializeField] List<AICharacterManager> spawnedInCharacters;
+        [SerializeField] private List<AICharacterSpawner> aiCharacterSpawners = new List<AICharacterSpawner>();
+        [SerializeField] private List<AICharacterManager> spawnedInCharacters = new List<AICharacterManager>();
 
         [Header("Bosses")]
-        [SerializeField] List<AIBossCharacterManager> spawnedInBosses;
+        [SerializeField] private List<AIBossCharacterManager> spawnedInBosses = new List<AIBossCharacterManager>();
 
         private void Awake()
         {
@@ -28,16 +29,16 @@ namespace KC
             {
                 Destroy(gameObject);
             }
-        } 
+        }
 
         public void SpawnCharacters(AICharacterSpawner aiCharacterSpawner)
         {
             if (NetworkManager.Singleton.IsServer)
             {
-                aiCharacterSpawners.Add(aiCharacterSpawner);
-                aiCharacterSpawner.AttemptToSpawnCharacter();
-            }
-        }
+                    aiCharacterSpawners.Add(aiCharacterSpawner);
+                    aiCharacterSpawner.AttemptToSpawnCharacter();
+                }
+                }
 
         public void AddCharacterToSpawnedCharacterList(AICharacterManager character)
         {
@@ -83,9 +84,10 @@ namespace KC
 
         private void DisableAllCharacters()
         {
-            //Usar la tecnica de object pulling para evitar la carga de memoria o de caida de FPS activando o desactivando objetos a cargados
-
-
+            foreach (var character in spawnedInCharacters)
+            {
+                character.gameObject.SetActive(false);
+            }
         }
     }
 }

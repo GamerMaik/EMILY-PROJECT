@@ -410,7 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3225830481
+  GlobalObjectIdHash: 3244276618
   InScenePlacedSourceGlobalObjectIdHash: 1808541841
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -4888,6 +4888,10 @@ PrefabInstance:
     - target: {fileID: 1277199991258874197, guid: 4e29e5d7637ec03449403dea6f253c45, type: 3}
       propertyPath: m_Name
       value: Character UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1286901319349700012, guid: 4e29e5d7637ec03449403dea6f253c45, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8019897236699390856, guid: 4e29e5d7637ec03449403dea6f253c45, type: 3}
       propertyPath: m_AnchorMax.y

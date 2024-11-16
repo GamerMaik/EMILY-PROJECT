@@ -17,6 +17,7 @@ namespace KC
 
         [Header("World Scene Index")]
         [SerializeField] int worldSceneIndex = 1;
+        [SerializeField] int DungeonsSceneIndex = 2;
 
         [Header("Save Data Writer")]
         private SaveFileDataWriter saveFileDataWriter;
@@ -306,6 +307,10 @@ namespace KC
         public int GetWorldSceneIndex()
         {
             return worldSceneIndex;
+        }
+        public int GetDungeonSceneIndex()
+        {
+            return DungeonsSceneIndex;
         }
     }
 }

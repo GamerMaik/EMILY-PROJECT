@@ -14,22 +14,52 @@ namespace KC
         [SerializeField] public GameObject[] leftRooms;
         [SerializeField] public GameObject closedRoom;
 
+        [Header("List Rooms")]
         public List<GameObject> rooms;
 
+        [Header("Generation Elements Room")]
         public GameObject finalEnemy;
         public GameObject simpleEnemy;
         public GameObject treasure;  // Agrega la referencia al objeto del tesoro
         public GameObject key;       // Agrega la referencia al objeto de la llave
+        public GameObject fogWall;
+
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
 
         private void Start()
         {
-            Invoke("SpawnObjects", 3f);
+            //Invoke("SpawnObjects", 3f);
         }
 
-        void SpawnObjects()
+        public void SpawnObjects()
         {
-            // Instanciar el jefe final en la última habitación
-            Instantiate(finalEnemy, rooms[rooms.Count - 1].transform.position, Quaternion.identity);
+            GameObject lastRoom = rooms[rooms.Count - 1];
+            Transform fogWallGenerationTransform = lastRoom.transform.Find("Fog Wall Generation");
+
+            if (fogWallGenerationTransform != null)
+            {
+                Vector3 positionFogwall = fogWallGenerationTransform.position;
+                Debug.Log($"Fog Wall Position - X: {positionFogwall.x}, Y: {positionFogwall.y}, Z: {positionFogwall.z}");
+
+                // Instanciar tu prefab de pared de niebla en esa posición
+                Instantiate(fogWall, positionFogwall, Quaternion.identity);
+                Instantiate(finalEnemy, lastRoom.transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Debug.LogWarning("Fog Wall Generation no encontrado en la última habitación.");
+            }
 
             // Instanciar enemigos en todas las salas excepto la última
             for (int i = 0; i < rooms.Count - 1; i++)
@@ -38,11 +68,14 @@ namespace KC
             }
 
             // Instanciar tesoros en dos habitaciones aleatorias
-            for (int i = 0; i < 3; i++)
-            {
-                int randIndex = Random.Range(0, rooms.Count - 1);
-                Instantiate(treasure, rooms[randIndex].transform.position, Quaternion.identity);
-            }
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    int randIndex = Random.Range(0, rooms.Count - 1);
+            //    if (treasure != null)
+            //    {
+            //        Instantiate(treasure, rooms[randIndex].transform.position, Quaternion.identity);
+            //    }
+            //}
 
             // Instanciar la llave en una habitación aleatoria, lejos de la última habitación
             int keyRoomIndex;

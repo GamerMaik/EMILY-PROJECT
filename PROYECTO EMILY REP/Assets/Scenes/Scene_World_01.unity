@@ -28622,6 +28622,30 @@ PrefabInstance:
       propertyPath: trigguerObject
       value: 
       objectReference: {fileID: 1155880053}
+    - target: {fileID: 5581336528897245641, guid: de2830d175eafea4ab768bb88d154cef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.00000058114523
+      objectReference: {fileID: 0}
+    - target: {fileID: 5581336528897245641, guid: de2830d175eafea4ab768bb88d154cef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5581336528897245641, guid: de2830d175eafea4ab768bb88d154cef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5581336528897245641, guid: de2830d175eafea4ab768bb88d154cef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5581336528897245641, guid: de2830d175eafea4ab768bb88d154cef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5581336528897245641, guid: de2830d175eafea4ab768bb88d154cef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 8742675229463359243, guid: de2830d175eafea4ab768bb88d154cef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -28810,7 +28834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5908227475644205888, guid: e6c031a6a01edbc45aff0b69be072ccf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5908227475644205888, guid: e6c031a6a01edbc45aff0b69be072ccf, type: 3}
       propertyPath: m_LocalRotation.w

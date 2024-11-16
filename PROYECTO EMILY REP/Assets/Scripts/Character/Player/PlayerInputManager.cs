@@ -98,7 +98,7 @@ namespace KC
         private void OnSceneChange(Scene oldScene, Scene newScene)
         {
             //Si se carga la Escena del Mundo principal se habilitan los controles del jugador
-            if (newScene.buildIndex== WorldSaveGameManager.instance.GetWorldSceneIndex())
+            if (newScene.buildIndex== WorldSaveGameManager.instance.GetWorldSceneIndex() || newScene.buildIndex == WorldSaveGameManager.instance.GetDungeonSceneIndex())
             {
                 instance.enabled = true;
 
