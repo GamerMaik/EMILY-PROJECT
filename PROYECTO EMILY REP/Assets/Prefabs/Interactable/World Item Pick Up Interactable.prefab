@@ -14688,7 +14688,7 @@ MonoBehaviour:
   trackDroppingCreaturesPosition: 1
   worldSpawnIteractableID: 0
   hasBeenLooted: 0
-  itemDropSFX: {fileID: 8300000, guid: 3b0f3c89a9f64154aa265d98f500dd18, type: 3}
+  itemDropSFX: {fileID: 0}
 --- !u!135 &7059084364472275771
 SphereCollider:
   m_ObjectHideFlags: 0

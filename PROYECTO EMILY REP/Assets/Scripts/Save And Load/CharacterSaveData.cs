@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace KC
 {
@@ -7,6 +8,9 @@ namespace KC
     //Esta será una referencia de archivo como platilla para ver que cosas queremos guardar o cargar
     public class CharacterSaveData
     {
+        [Header("Session Data")]
+        public string accountName = "";
+
         [Header("Character Name")]
         public string characterName = "";
 

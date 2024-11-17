@@ -51,7 +51,7 @@ namespace KC
         }
         public AudioClip ChooseRandomSFXFromArray(AudioClip[] array)
         {
-            int index = Random.Range(0, array.Length);
+            int index = Random.Range(0, array.Length-1);
 
             return array[index];
         }

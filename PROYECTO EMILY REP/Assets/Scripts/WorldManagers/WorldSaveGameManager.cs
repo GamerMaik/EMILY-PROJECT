@@ -122,6 +122,7 @@ namespace KC
                 //Comprobamos si este espacio está disponible
                 currentCharacterSlotsBeingUsed = CharacterSlots.CharacterSlot_01;
                 currentCharacterData = new CharacterSaveData();
+                currentCharacterData.accountName = WorldSessionManager.Instance.nameUserSesion;
                 NewGame(nameCharacter, gender);
                 return;
             }

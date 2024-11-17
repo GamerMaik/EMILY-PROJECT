@@ -1,3 +1,4 @@
+using PlayFab.PfEditor.EditorModels;
 using System;
 using TMPro;
 using Unity.Netcode;
@@ -15,7 +16,7 @@ namespace KC
         [SerializeField] GameObject titleScreenLoadMenu;
 
         [Header("Pop Ups")]
-        [SerializeField] GameObject noCharacterSlotsPopUp;
+        [SerializeField] GameObject alertPopUpOk;
         [SerializeField] GameObject deleteCharacterSlotPopUp;
         [SerializeField] GameObject nameAlertErrorPopUp;
 
@@ -28,6 +29,12 @@ namespace KC
         [SerializeField] TMP_InputField characterName;
         [SerializeField] TextMeshProUGUI genderText;
         [SerializeField] bool isMale = true;
+
+        [Header("Alert Pop Up")]
+        [SerializeField] GameObject PopUpMessageAlert;
+        [SerializeField] TextMeshProUGUI titleAlertPopUp;
+        [SerializeField] TextMeshProUGUI textAlertPopUp;
+        [SerializeField] Button OkButtonPopUpAlert;
 
         [Header("Character Slots")]
         public CharacterSlots currentSelectedSlot = CharacterSlots.NO_SLOT;
@@ -77,12 +84,12 @@ namespace KC
         }
         public void DisplayNoFreeCharactersSlotsPopUp()
         {
-            noCharacterSlotsPopUp.SetActive(true);
+            alertPopUpOk.SetActive(true);
             noCharacterSlotsOkButton.Select();
         }
         public void CloseNoFreeCharactersSlotsPopUp()
         {
-            noCharacterSlotsPopUp.SetActive(false);
+            alertPopUpOk.SetActive(false);
         }
         public void ShowNameAlerPopUp()
         {
@@ -146,6 +153,21 @@ namespace KC
                 genderText.text = "FEMENINO";
                 player.playerNetworkManager.isMale.Value = false;
             }
+        }
+
+        //Alert Globalers
+        public void ShowAlertPopUp(string title, string message)
+        {
+            titleAlertPopUp.text = title;
+            textAlertPopUp.text = message;
+            PopUpMessageAlert.SetActive(true);
+        }
+
+        public void CloseAlerPopUp()
+        {
+            titleAlertPopUp.text = "";
+            textAlertPopUp.text = "";
+            PopUpMessageAlert.SetActive(false);
         }
     }
 }
