@@ -1330,6 +1330,10 @@ MonoBehaviour:
     m_InternalValue: 1
   endurance:
     m_InternalValue: 1
+  strength:
+    m_InternalValue: 1
+  strengthModifier:
+    m_InternalValue: 1
 --- !u!114 &5100229181370038990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1372,7 +1376,7 @@ MonoBehaviour:
   lookOnTransform: {fileID: 3195157219755632216}
   canPerformRollingAttack: 0
   canPerformBackStepAttack: 0
-  canBlock: 1
+  canBlock: 0
   actionRecoveryTimer: 0
   enablePivot: 1
   distanceFromTarget: 0
@@ -1423,6 +1427,7 @@ MonoBehaviour:
   aiCharacterNetworkManager: {fileID: 0}
   aICharacterCombatManager: {fileID: 0}
   aICharacterLocomotionManager: {fileID: 0}
+  aICharacterInventoryManager: {fileID: 0}
   navMeshAgent: {fileID: 0}
   currentState: {fileID: 0}
   idle: {fileID: 11400000, guid: 0760cb179eee4924499d58afdf145e36, type: 2}
@@ -1488,6 +1493,15 @@ MonoBehaviour:
   blockingLightningAbsorption: 0
   blockingHolyAbsorption: 0
   blockingStability: 0
+  armorPhysicalDamageAbsroption: 0
+  armorMagicDamageAbsorption: 0
+  armorFireDamageAbsorption: 0
+  armorLightningDamageAbsorption: 0
+  armorHolyDamageAbsorption: 0
+  armorImmunity: 0
+  armorRobustness: 0
+  armorFocus: 0
+  armorVitality: 0
   totalPoiseDamage: 0
   offensivePoiseBinus: 0
   basePoiseDefense: 500
@@ -1518,6 +1532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodSplatterVFX: {fileID: 4373696711657133365, guid: ade8490d028c75f44aa7f97b51215a47, type: 3}
+  staticEffects: []
 --- !u!114 &890117114525071968
 MonoBehaviour:
   m_ObjectHideFlags: 0

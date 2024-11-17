@@ -565,7 +565,7 @@ MonoBehaviour:
   distanceFromTarget: 0
   viewableAngle: 0
   targetsDirection: {x: 0, y: 0, z: 0}
-  detectionRadius: 15
+  detectionRadius: 50
   minimumFOV: -35
   maximumFOV: 35
   attackRotationSpeed: 25
