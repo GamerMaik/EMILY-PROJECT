@@ -60,7 +60,7 @@ namespace KC
 
                 totalRoomsGenerated++;
                 spawnedComplete = true;
-                WorldDungeonManager.instance.GenerateNavmesh();
+                //WorldDungeonManager.instance.GenerateNavmesh();
 
                 // Si se alcanzó el número mínimo de habitaciones, cierra el proceso de generación
                 if (totalRoomsGenerated >= minimumRooms)

@@ -32,20 +32,5 @@ namespace KC
             navMeshSurface.BuildNavMesh();
             navMeshGenerated = true;
         }
-
-        public bool IsNavMeshGenerate()
-        {
-            return navMeshGenerated;
-        }
-
-        public void IncializeDungeonNavMesh()
-        {
-            if (navMeshGenerated)
-            {
-                Debug.Log("se generó Nav mesh"+ navMeshGenerated);
-                DungeonsGeneratorTemplates.instance.SpawnObjects();
-                Debug.Log("se generaron las entidades" + navMeshGenerated);
-            }
-        }
     }
 }

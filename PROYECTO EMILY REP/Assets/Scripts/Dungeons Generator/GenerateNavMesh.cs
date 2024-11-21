@@ -5,23 +5,27 @@ namespace KC
 {
     public class GenerateNavMesh : MonoBehaviour
     {
-        public static GenerateNavMesh instance;
+        //public static GenerateNavMesh instance;
         [Header("Rooms Configuration")]
         [SerializeField] private NavMeshSurface navMeshSurface;
 
         public bool navMeshGenerated = false;
 
-        private void Awake()
+        private void Start()
         {
-            if (instance == null)
-            {
-                instance = this;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            GenerateNavmesh();
         }
+        //private void Awake()
+        //{
+        //    if (instance == null)
+        //    {
+        //        instance = this;
+        //    }
+        //    else
+        //    {
+        //        Destroy(gameObject);
+        //    }
+        //}
 
         public void GenerateNavmesh()
         {

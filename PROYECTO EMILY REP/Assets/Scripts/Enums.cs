@@ -130,3 +130,13 @@ public enum ItemPickUpType
     CharacterDrop,
     ChestDrop
 }
+
+public enum LevelType
+{
+    SCRUM,
+    XP,
+    FDD,
+    DSDM,
+    CRYSTAL,
+    LEANDEV
+}

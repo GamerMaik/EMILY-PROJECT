@@ -4,6 +4,10 @@ namespace KC
 {
     public class SpawnAllEntities : Interactable
     {
+        [Header("Colliders Doors Initial")]
+        [SerializeField] Collider Door1;
+        [SerializeField] Collider Door2;
+        [SerializeField] Collider Door3;
         protected override void Start()
         {
             base.Start();
@@ -13,7 +17,11 @@ namespace KC
         {
             base.Interact(player);
 
-            WorldDungeonManager.instance.IncializeDungeonNavMesh();
+            WorldDungeonManager.instance.GenerateNavmesh();
+            Door1.enabled = true;
+            Door2.enabled = true;
+            Door3.enabled = true;
+
         }
     }
 }

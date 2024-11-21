@@ -23,7 +23,10 @@ namespace KC
                 Destroy(gameObject);
             }
         }
-
+        private void Start()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
         // Método para cargar una pregunta aleatoria
         public void LoadRandomQuestion()
         {

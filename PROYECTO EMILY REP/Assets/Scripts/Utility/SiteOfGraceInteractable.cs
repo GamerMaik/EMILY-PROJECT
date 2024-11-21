@@ -92,7 +92,7 @@ namespace KC
             player.playerNetworkManager.currentHealth.Value = player.playerNetworkManager.maxHealth.Value;
             player.playerNetworkManager.currentStamina.Value = player.playerNetworkManager.maxStamina.Value;
 
-            WorldAIManager.instance.ResetAllCharacters();
+            //WorldAIManager.instance.ResetAllCharacters();
         }
 
         private IEnumerator WaitForAnimationAndPopUpThenRestoreCollider()

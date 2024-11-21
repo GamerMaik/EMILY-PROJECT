@@ -3,6 +3,7 @@ using TMPro;
 using PlayFab;
 using PlayFab.ClientModels;
 using System;
+using System.Collections.Generic;
 
 namespace KC
 {
@@ -35,6 +36,7 @@ namespace KC
         [Space]
         [Header("PLAYER SESION DATA")]
         [SerializeField] public string nameUserSesion = "";
+        [SerializeField] public string idUserSession = "";
         private void Awake()
         {
             if (Instance == null)
@@ -117,6 +119,7 @@ namespace KC
             resetPaswordPanel.SetActive(false);
             loginUserPanel.SetActive(false);
             nameUserSesion = result.InfoResultPayload.PlayerProfile.DisplayName;
+            idUserSession = result.InfoResultPayload.PlayerProfile.PlayerId;
             nameText.text = "|Usuario: " + result.InfoResultPayload.PlayerProfile.DisplayName+"|";
             StartGameBeforeLogin();
 
@@ -157,5 +160,93 @@ namespace KC
             loginUserPanel.SetActive(true);
         }
         #endregion
+
+        #region SaveDataPlayer
+        public void SaveGameSlotsPlayer(CharacterSlots slot, CharacterSaveData characterData)
+        {
+            // Generar el JSON de los datos actuales del personaje
+            string saveDataJson = JsonUtility.ToJson(characterData);
+
+            // Crear una clave única para el slot
+            string key = $"CharacterSaveData_{slot}";
+
+            var request = new UpdateUserDataRequest
+            {
+                Data = new Dictionary<string, string>
+                {
+                    { key, saveDataJson}
+                }
+            };
+            PlayFabClientAPI.UpdateUserData(request, OnDataSendSucces, OnErrorDataSend);
+        }
+
+        private void OnErrorDataSend(PlayFabError error)
+        {
+            Debug.Log("Error al enviar los datos" + error.ErrorMessage);
+        }
+
+        private void OnDataSendSucces(UpdateUserDataResult result)
+        {
+            Debug.Log("Se enviaron los datos correctamente");
+        }
+        #endregion
+
+        #region GetGameSlotPlayer
+        public void GetSaveGamesForCharacterSlotKey(CharacterSlots slot, System.Action<CharacterSaveData> onDataRetrieved)
+        {
+            string key = $"CharacterSaveData_{slot}";
+            PlayFabClientAPI.GetUserData(new GetUserDataRequest(),
+                result =>
+                {
+                    if (result.Data != null && result.Data.ContainsKey(key))
+                    {
+                        // Obtener el JSON almacenado
+                        string saveDataJson = result.Data[key].Value;
+
+                        // Convertir el JSON a un objeto de tipo CharacterSaveData
+                        CharacterSaveData characterData = JsonUtility.FromJson<CharacterSaveData>(saveDataJson);
+                        Debug.Log($"Datos cargados para el slot {key} exitosamente.");
+                        onDataRetrieved?.Invoke(characterData); // Llamar al callback con los datos cargados
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"No se encontraron datos para el slot {key}.");
+                        onDataRetrieved?.Invoke(null); // Indicar que no se encontraron datos
+                    }
+                },
+                error =>
+                {
+                    Debug.LogError("Error al cargar datos de PlayFab: " + error.GenerateErrorReport());
+                    onDataRetrieved?.Invoke(null); // Indicar que hubo un error
+                });
+        }
+        #endregion
+
+        #region DeleteGameSlotPlayer
+        public void DeleteSlot(CharacterSlots slot)
+        {
+            string key = $"CharacterSaveData_{slot}";
+
+            PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest
+            {
+                KeysToRemove = new List<string> { key }
+            },
+            result =>
+            {
+                Debug.Log($"Datos eliminados para el slot {key}");
+                gameObject.SetActive(false); // Oculta el slot en el UI
+            },
+            error =>
+            {
+                Debug.LogError($"Error al eliminar datos del slot {key}: {error.GenerateErrorReport()}");
+            });
+        }
+        #endregion
+
+        public void GetQuestionsLevleBasedType(LevelType levelType)
+        {
+
+        }
+
     }
 }

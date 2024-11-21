@@ -231,9 +231,20 @@ namespace KC
             saveFileDataWriter = new SaveFileDataWriter();
             saveFileDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
             saveFileDataWriter.saveFileName = saveFileName;
-            currentCharacterData = saveFileDataWriter.LoadSaveGameData();
-
-            LoadWorldScene(worldSceneIndex);
+            //currentCharacterData = saveFileDataWriter.LoadSaveGameData();
+            WorldSessionManager.Instance.GetSaveGamesForCharacterSlotKey(currentCharacterSlotsBeingUsed, characterData =>
+            {
+                if (characterData != null)
+                {
+                    currentCharacterData = characterData;
+                    LoadWorldScene(worldSceneIndex);
+                }
+                else
+                {
+                    Debug.LogWarning("No se pudieron cargar los datos del personaje.");
+                }
+            });
+            //LoadWorldScene(worldSceneIndex);
         }
         public void SaveGame()
         {
@@ -248,6 +259,8 @@ namespace KC
             player.SaveGameDataCurrentCharacterData(ref currentCharacterData);
 
             saveFileDataWriter.CreateNewCharacterSaveFile(currentCharacterData);
+
+            WorldSessionManager.Instance.SaveGameSlotsPlayer(currentCharacterSlotsBeingUsed, currentCharacterData);
         }
 
         public void DeleteGame(CharacterSlots characterSlot)
@@ -256,7 +269,7 @@ namespace KC
             saveFileDataWriter = new SaveFileDataWriter();
             saveFileDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
             saveFileDataWriter.saveFileName = DecideCharacterFileNameBasedOnCharacterSlotBeingUsed(characterSlot);
-
+            WorldSessionManager.Instance.DeleteSlot(characterSlot);
             saveFileDataWriter.DeleteSaveFile();
         }
         //CARGAR TODOS LOS PERFILES EN EL DISPOSITIVO AL CARGAR EL JUEGO
@@ -297,13 +310,15 @@ namespace KC
         }
         public void LoadWorldScene(int buildIndex)
         {
-
+            Vector3 newLocation = new Vector3(0f, 1f, 0f);
+            
             string worldScene = SceneUtility.GetScenePathByBuildIndex(buildIndex);
+            player.LoadGameDataFromCurrentCharacterData(ref currentCharacterData);
+            player.transform.position = newLocation;
             NetworkManager.Singleton.SceneManager.LoadScene(worldScene, LoadSceneMode.Single);
 
             //AsyncOperation loadOperation = SceneManager.LoadSceneAsync(worldSceneIndex);
 
-            player.LoadGameDataFromCurrentCharacterData(ref currentCharacterData);
         }
         public int GetWorldSceneIndex()
         {

@@ -29,12 +29,5 @@ namespace KC
             playerTransform.position = newLocation;
 
         }
-
-        private IEnumerator SpawnObjectsWithDelay()
-        {
-            yield return new WaitForSeconds(3f); // Asegúrate de que el NavMesh esté listo
-            DungeonsGeneratorTemplates.instance.SpawnObjects();
-
-        }
     }
 }

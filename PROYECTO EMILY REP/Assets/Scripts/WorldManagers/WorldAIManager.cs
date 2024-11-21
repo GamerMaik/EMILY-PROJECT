@@ -37,8 +37,8 @@ namespace KC
             {
                     aiCharacterSpawners.Add(aiCharacterSpawner);
                     aiCharacterSpawner.AttemptToSpawnCharacter();
-                }
-                }
+            }
+        }
 
         public void AddCharacterToSpawnedCharacterList(AICharacterManager character)
         {
