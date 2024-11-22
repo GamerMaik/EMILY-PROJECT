@@ -17,7 +17,7 @@ namespace KC
         {
             base.Interact(player);
 
-            WorldDungeonManager.instance.GenerateNavmesh();
+            //WorldDungeonManager.instance.GenerateNavmesh();
             Door1.enabled = true;
             Door2.enabled = true;
             Door3.enabled = true;

@@ -245,7 +245,28 @@ namespace KC
 
         public void GetQuestionsLevleBasedType(LevelType levelType)
         {
+            string key = $"{levelType}Questions";
 
+            PlayFabClientAPI.GetTitleData(new GetTitleDataRequest(),
+                result =>
+                {
+                    if (result.Data != null && result.Data.ContainsKey(key))
+                    {
+                        string jsonData = result.Data[key];
+                        PlayFabQuestionData questionData = JsonUtility.FromJson<PlayFabQuestionData>(jsonData);
+
+                        ShowRandomQuestionsManager.instance.LoadQuestionsFromPlayFabData(questionData);
+                        Debug.Log($"Preguntas cargadas para {levelType}");
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"No se encontraron preguntas para {levelType}");
+                    }
+                },
+                error =>
+                {
+                    Debug.LogError($"Error al cargar preguntas de {levelType}: {error.GenerateErrorReport()}");
+                });
         }
 
     }

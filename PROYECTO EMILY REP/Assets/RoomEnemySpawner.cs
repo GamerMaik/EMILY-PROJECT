@@ -18,9 +18,9 @@ namespace KC
             if (other.CompareTag("Player") && !spawnersActivated)
             {
                 Debug.Log("Jugador detectado en la habitación.");
-                WorldDungeonManager.instance.GenerateNavmesh();
+                //WorldDungeonManager.instance.GenerateNavmesh();
                 //spawnersActivated = true;
-                //StartCoroutine(ActivateSpawners());
+                StartCoroutine(ActivateSpawners());
             }
         }
 

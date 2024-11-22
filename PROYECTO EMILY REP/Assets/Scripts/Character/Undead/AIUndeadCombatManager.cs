@@ -16,6 +16,10 @@ namespace KC
         [SerializeField] float attack02DamageModifier = 2.0f;
         [SerializeField] float attack03DamageModifier = 1.5f;
 
+        [Header("Question Configuration")]
+        [Range(0, 100)]
+        [SerializeField] private int questionChancePercentage = 20; // Probabilidad de mostrar pregunta (0 a 100)
+
         public void SettAttack01Damage()
         {
             rightHandDamageCollider.physicalDamage = baseDamage * attack01DamageModifier;
@@ -44,7 +48,9 @@ namespace KC
         {
             aiCharacter.characterSoundFXManager.PlayAttackGrunt();
             rightHandDamageCollider.EnableDamageCollider();
+            TryShowQuestion(); // Intentar mostrar una pregunta
         }
+
         public void DisableRightHandDamageCollider()
         {
             rightHandDamageCollider.DisableDamageCollider();
@@ -54,10 +60,26 @@ namespace KC
         {
             aiCharacter.characterSoundFXManager.PlayAttackGrunt();
             leftHandDamageCollider.EnableDamageCollider();
+            TryShowQuestion(); // Intentar mostrar una pregunta
         }
+
         public void DisableLeftHandDamageCollider()
         {
             leftHandDamageCollider.DisableDamageCollider();
+        }
+
+        private void TryShowQuestion()
+        {
+            int randomValue = Random.Range(0, 100); // Generar un número aleatorio entre 0 y 99
+            if (randomValue < questionChancePercentage)
+            {
+                Debug.Log("Mostrando pregunta aleatoria.");
+                ShowRandomQuestionsManager.instance.LoadRandomQuestion();
+            }
+            else
+            {
+                Debug.Log("No se muestra pregunta esta vez.");
+            }
         }
     }
 }

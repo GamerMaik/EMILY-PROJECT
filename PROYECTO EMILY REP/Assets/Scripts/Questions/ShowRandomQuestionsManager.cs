@@ -50,7 +50,22 @@ namespace KC
 
             PlayerUIManager.instance.playerUIQuestionPanelManager.OpenQuestionPanel(questionText, answerText01, answerText02, answerText03, answerText04, timeLimit);
         }
+        public void LoadQuestionsFromPlayFabData(PlayFabQuestionData questionData)
+        {
+            questions.Clear();
 
+            foreach (var playFabQuestion in questionData.questions)
+            {
+                Question newQuestion = ScriptableObject.CreateInstance<Question>();
+                newQuestion.questionText = playFabQuestion.questionText;
+                newQuestion.timeLimit = playFabQuestion.timeLimit;
+                newQuestion.answerOptions = new List<AnswerOption>(playFabQuestion.answers);
+
+                questions.Add(newQuestion);
+            }
+
+            Debug.Log($"{questions.Count} preguntas cargadas en WorldQuestionManager.");
+        }
         // Método para verificar si la respuesta seleccionada es correcta
         public bool CheckAnswer(int answerIndex)
         {

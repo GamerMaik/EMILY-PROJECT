@@ -23,7 +23,7 @@ namespace KC
 
         public void LoadQuestionLevel(LevelType typeLoadLevel, PlayerManager player)
         {
-            //WorldSessionManager.Instance.GetQuestionsLevleBasedType(typeLoadLevel);
+            WorldSessionManager.Instance.GetQuestionsLevleBasedType(typeLoadLevel);
             Debug.Log("Se cargaron las preguntas de: " + typeLoadLevel);
             player.playerAnimatorManager.PlayerTargetActionAnimation("Level_Selector_01", true);
 
