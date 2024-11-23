@@ -652,17 +652,6 @@
                 },
                 {
                     "name": "",
-                    "id": "a5398799-f279-42a3-8e7b-089ce1121f69",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "CloseMenu",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "c2bde676-3bdf-4e38-a460-7391fbd2e1f8",
                     "path": "<Keyboard>/escape",
                     "interactions": "",

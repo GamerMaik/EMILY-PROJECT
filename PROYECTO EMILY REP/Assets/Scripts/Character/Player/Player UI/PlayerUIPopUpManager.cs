@@ -17,7 +17,7 @@ namespace KC
         [SerializeField] Image itemIcon;
         [SerializeField] TextMeshProUGUI itemName;
         [SerializeField] TextMeshProUGUI itemAmount;
-        [SerializeField] TextMeshProUGUI itemDescripction;
+
 
         [Header("You Died Pop UP")]
         [SerializeField] GameObject youDeadPopUpGameObject;
@@ -57,8 +57,7 @@ namespace KC
         {
             itemAmount.enabled = false;
             itemIcon.sprite = item.itemIcon;
-            itemDescripction.text = item.itemDescription;
-            itemName.text = "Adquiriste el Item: " + item.itemName;
+            itemName.text = item.itemName;
 
             if (amount > 0)
             {
