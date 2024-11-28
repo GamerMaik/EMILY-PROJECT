@@ -37,6 +37,11 @@ namespace KC
         [SerializeField] TextMeshProUGUI siteOfGracePopUpText;
         [SerializeField] CanvasGroup siteOfGraceCanvasGroup;
 
+        [Header("Entering Pop Up")]
+        [SerializeField] GameObject enteringPopUpGameObject;
+        [SerializeField] TextMeshProUGUI enteringPopUpBackgroundText;
+        [SerializeField] TextMeshProUGUI enteringPopUpText;
+        [SerializeField] CanvasGroup enteringCanvasGroup;
 
         public void closeAllPopUpWindows()
         {
@@ -104,6 +109,17 @@ namespace KC
             StartCoroutine(FadeInPopUpTextOverTime(siteOfGraceCanvasGroup, 5));
             StartCoroutine(WaithThenFadeOutPopUpOverTime(siteOfGraceCanvasGroup, 2, 5));
 
+        }
+
+        public void EnteringPopUp(string enteringMessage)
+        {
+            enteringPopUpText.text = enteringMessage;
+            enteringPopUpBackgroundText.text = enteringMessage;
+            enteringPopUpGameObject.SetActive(true);
+            enteringPopUpBackgroundText.characterSpacing = 0;
+            StartCoroutine(StrechPopUpTextOverTime(enteringPopUpText, 8, 16f));
+            StartCoroutine(FadeInPopUpTextOverTime(enteringCanvasGroup, 5));
+            StartCoroutine(WaithThenFadeOutPopUpOverTime(enteringCanvasGroup, 2, 5));
         }
 
         private IEnumerator StrechPopUpTextOverTime(TextMeshProUGUI text, float duration, float strechAmount)

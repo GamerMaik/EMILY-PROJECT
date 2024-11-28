@@ -58,4 +58,5 @@ MonoBehaviour:
   oh_LB_Action: {fileID: 11400000, guid: 22d971ff09db56e47a91a26af46ed96d, type: 2}
   whooshes:
   - {fileID: 8300000, guid: c6b63b3a2c2222d4e8a5730393fd5e38, type: 3}
-  blocking: []
+  blocking:
+  - {fileID: 0}
