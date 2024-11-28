@@ -30,8 +30,8 @@ namespace KC
         public float currentStamina;
 
         [Header("Stats")]
-        public float vitality;
-        public float endurance;
+        public int vitality;
+        public int endurance;
 
         [Header("Sites of Grace")]
         public SerializableDictionary<int, bool> sitesOfGrace;

@@ -29,7 +29,7 @@ namespace KC
             slider.value = newValue;
         }
 
-        public virtual void SetMaxStat(float maxValue)
+        public virtual void SetMaxStat(int maxValue)
         {
             slider.maxValue = maxValue;
             slider.value = maxValue;

@@ -1579,10 +1579,10 @@ MonoBehaviour:
   siteOfGracePopUpBackgroundText: {fileID: 6021590424331673271}
   siteOfGracePopUpText: {fileID: 3008465024932012700}
   siteOfGraceCanvasGroup: {fileID: 1442553135893072962}
-  EnteringPopUpGameObject: {fileID: 189838458895014294}
-  EnteringPopUpBackgroundText: {fileID: 686322520193410477}
-  EnteringPopUpText: {fileID: 5265631959248048578}
-  EnteringCanvasGroup: {fileID: 6068850164052437417}
+  enteringPopUpGameObject: {fileID: 0}
+  enteringPopUpBackgroundText: {fileID: 0}
+  enteringPopUpText: {fileID: 0}
+  enteringCanvasGroup: {fileID: 0}
 --- !u!1 &2277171625171841898
 GameObject:
   m_ObjectHideFlags: 0
@@ -3864,7 +3864,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 30}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8886643383570680886
 MonoBehaviour:
@@ -6612,7 +6612,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 30}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5700889043061167950
 MonoBehaviour:

@@ -297,8 +297,7 @@ namespace KC
             playerNetworkManager.maxHealth.Value = playerStatsManager.CalculateHealthBasedOnVitalityLevel(playerNetworkManager.vitality.Value);
             playerNetworkManager.maxStamina.Value = playerStatsManager.CalculateStaminaBasedOnEnduranceLevel(playerNetworkManager.endurance.Value);
             playerNetworkManager.currentHealth.Value = currentCharacterData.currentHealth;
-            playerNetworkManager.currentStamina.Value = currentCharacterData.currentStamina;
-
+            playerNetworkManager.currentStamina.Value = currentCharacterData.currentStamina; 
             PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(playerNetworkManager.maxStamina.Value);
 
             //Equipment

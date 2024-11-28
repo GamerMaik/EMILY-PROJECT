@@ -55991,8 +55991,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4491966044667156889}
   - component: {fileID: 4140445576975600825}
-  - component: {fileID: 4103049350891695987}
-  - component: {fileID: 555528324551804424}
+  - component: {fileID: 7355404586735409113}
+  - component: {fileID: 4788228466101073741}
   - component: {fileID: 7664809826894878114}
   - component: {fileID: 4097129310773131786}
   - component: {fileID: 1388302478262233456}
@@ -56055,7 +56055,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4103049350891695987
+--- !u!114 &7355404586735409113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56068,7 +56068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlobalObjectIdHash: 3840607598
-  InScenePlacedSourceGlobalObjectIdHash: 385770517
+  InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -56076,7 +56076,7 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &555528324551804424
+--- !u!114 &4788228466101073741
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56586,7 +56586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bloodSplatterVFX: {fileID: 0}
   staticEffects: []
-  effectToTest: {fileID: 11400000, guid: 7ed727dfa4410d94894ee1393c9af62b, type: 2}
+  effectToTest: {fileID: 11400000, guid: a815611d90d61064697b7992bd75ada3, type: 2}
   proccessEffect: 0
 --- !u!114 &5738274309450489839
 MonoBehaviour:

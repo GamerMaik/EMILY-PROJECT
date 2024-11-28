@@ -39,7 +39,7 @@ namespace KC
 
         private void Start()
         {
-            //Invoke("SpawnObjects", 3f);
+            Invoke("SpawnObjects", 3f);
         }
 
         public void SpawnObjects()
@@ -62,10 +62,10 @@ namespace KC
             }
 
             // Instanciar enemigos en todas las salas excepto la última
-            for (int i = 0; i < rooms.Count - 1; i++)
-            {
-                Instantiate(simpleEnemy, rooms[i].transform.position, Quaternion.identity);
-            }
+            //for (int i = 0; i < rooms.Count - 1; i++)
+            //{
+            //    Instantiate(simpleEnemy, rooms[i].transform.position, Quaternion.identity);
+            //}
 
             // Instanciar tesoros en dos habitaciones aleatorias
             //for (int i = 0; i < 3; i++)

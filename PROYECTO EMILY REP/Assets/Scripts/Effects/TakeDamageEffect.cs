@@ -77,17 +77,15 @@ namespace KC {
             lightningDamage *= (1 - character.characterStatManager.armorLightningDamageAbsorption / 100f);
             holyDamage *= (1 - character.characterStatManager.armorHolyDamageAbsorption / 100f);
 
-            Debug.Log("Daño con armadura: " + physicalDamage);
-
             // Calcular el daño total y redondearlo
             finalDamageDealt = Mathf.RoundToInt(physicalDamage + magicDamage + fireDamage + lightningDamage + holyDamage);
-            Debug.Log("Daño final: " + finalDamageDealt);
+
 
             if (finalDamageDealt <= 0)
             {
                 finalDamageDealt = 1;
             }
-
+            Debug.Log("Daño final: " + finalDamageDealt);
             // Aplicar el daño a la salud del personaje
             character.characterNetworkManager.currentHealth.Value -= finalDamageDealt;
 
