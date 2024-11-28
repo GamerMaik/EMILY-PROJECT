@@ -576,6 +576,7 @@ MonoBehaviour:
   attack01DamageModifier: 1
   attack02DamageModifier: 2
   attack03DamageModifier: 1.5
+  questionChancePercentage: 20
 --- !u!114 &9059889645116409651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2114,7 +2115,7 @@ NavMeshAgent:
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 1
-  m_AutoTraverseOffMeshLink: 0
+  m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2

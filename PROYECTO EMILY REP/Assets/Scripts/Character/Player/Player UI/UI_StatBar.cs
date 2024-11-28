@@ -24,12 +24,12 @@ namespace KC
             
         }
 
-        public virtual void SetStat(int newValue)
+        public virtual void SetStat(float newValue)
         {
             slider.value = newValue;
         }
 
-        public virtual void SetMaxStat(int maxValue)
+        public virtual void SetMaxStat(float maxValue)
         {
             slider.maxValue = maxValue;
             slider.value = maxValue;

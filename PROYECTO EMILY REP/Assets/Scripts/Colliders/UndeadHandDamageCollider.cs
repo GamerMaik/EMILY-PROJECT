@@ -54,7 +54,8 @@ namespace KC
                     damageEffect.contactPoint.z);
             }
 
-            //damageTarget.characterEffectsManager.ProccessInstantEffect(damageEffect);
+            Debug.Log("TE METIO DAÑO DE: " + physicalDamage);
+
         }
 
     }

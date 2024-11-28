@@ -55,17 +55,17 @@ namespace KC
             HandlePoiseResetTimer();
         }
 
-        public int CalculateHealthBasedOnVitalityLevel(int vitality)
+        public int CalculateHealthBasedOnVitalityLevel(float vitality)
         {
             float helath = 0;
-            helath = vitality * 15;
+            helath = vitality * 100f;
             return Mathf.RoundToInt(helath);
         }
 
-        public int CalculateStaminaBasedOnEnduranceLevel(int endurance)
+        public int CalculateStaminaBasedOnEnduranceLevel(float endurance)
         {
             float stamina = 0;
-            stamina = endurance * 10;
+            stamina = endurance * 100f;
             return Mathf.RoundToInt(stamina);
         }
 

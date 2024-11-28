@@ -1017,7 +1017,8 @@
 				// avoid artifacts when vertex are pushed too much
 				ringWidth = min(particleSize, ringWidth);
 
-				// constants calculated per vertex
+				// constants 
+				ed per vertex
 				o.ringData.x = pow(1 - ringWidth / particleSize, 2);
 				o.ringData.y = 1 - _RingTopOffset;
 				o.ringData.z = ringSmooth / particleSize; // smoothing depends on particle size

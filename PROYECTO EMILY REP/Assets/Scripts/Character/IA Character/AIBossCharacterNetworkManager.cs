@@ -13,7 +13,7 @@ namespace KC
 
             aiBossCharacter = GetComponent<AIBossCharacterManager>();
         }
-        public override void CheckHP(int oldValue, int newValue)
+        public override void CheckHP(float oldValue, float newValue)
         {
             base.CheckHP(oldValue, newValue);
 

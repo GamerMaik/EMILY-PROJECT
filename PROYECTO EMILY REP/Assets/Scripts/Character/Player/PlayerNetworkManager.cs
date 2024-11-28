@@ -50,13 +50,13 @@ namespace KC
             }
         }
 
-        public void SetNewMaxHealthValue(int oldVitality, int newVitality)
+        public void SetNewMaxHealthValue(float oldVitality, float newVitality)
         {
             maxHealth.Value = player.playerStatsManager.CalculateHealthBasedOnVitalityLevel(newVitality);
             PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(maxHealth.Value);
             currentHealth.Value = maxHealth.Value;
         }
-        public void SetNewMaxStaminaValue(int oldEndurance, int newEndurance)
+        public void SetNewMaxStaminaValue(float oldEndurance, float newEndurance)
         {
             maxStamina.Value = player.playerStatsManager.CalculateStaminaBasedOnEnduranceLevel(newEndurance);
             PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(maxStamina.Value);

@@ -18,7 +18,7 @@ namespace KC
         {
             bossCharacter.aiCharacterNetworkManager.currentHealth.OnValueChanged -= OnBossChanged;
         }
-        private void OnBossChanged(int oldValue, int newValue)
+        private void OnBossChanged(float oldValue, float newValue)
         {
             SetStat(newValue);
 

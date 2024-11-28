@@ -8,7 +8,7 @@ namespace KC
         public bool hasFloatingHPBar= true;
         public UI_Character_HP_Bar characterHpBar;
 
-        public void OnHPChanged(int oldValue, int newValue)
+        public void OnHPChanged(float oldValue, float newValue)
         {
             characterHpBar.oldHealthValue = oldValue;
             characterHpBar.SetStat(newValue);

@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace KC
 {
@@ -9,7 +12,7 @@ namespace KC
 
         [Header("Questions List")]
         [SerializeField] private List<Question> questions = new List<Question>();
-
+        public event Action<bool> OnQuestionAnswered;
         private Question currentQuestion;
 
         private void Awake()
@@ -30,9 +33,16 @@ namespace KC
         // Método para cargar una pregunta aleatoria
         public void LoadRandomQuestion()
         {
+            PlayerManager player = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerManager>();
+            if (player == null)
+                return;
+
+            if (player.isDead.Value)
+                return;
+
             if (questions.Count == 0)
             {
-                Debug.LogWarning("No hay preguntas disponibles en la lista.");
+                Debug.LogWarning("No hay preguntas disponibles en la lista");
                 return;
             }
 
@@ -69,13 +79,9 @@ namespace KC
         // Método para verificar si la respuesta seleccionada es correcta
         public bool CheckAnswer(int answerIndex)
         {
-            if (currentQuestion == null || answerIndex < 0 || answerIndex >= currentQuestion.answerOptions.Count)
-            {
-                Debug.LogWarning("Respuesta seleccionada no válida.");
-                return false;
-            }
-
-            return currentQuestion.answerOptions[answerIndex].isCorrect;
+            bool isCorrect = currentQuestion.answerOptions[answerIndex].isCorrect;
+            OnQuestionAnswered?.Invoke(isCorrect);
+            return isCorrect;
         }
     }
 }

@@ -47,9 +47,9 @@ namespace KC
             staminaBar.gameObject.SetActive(true);
         }
 
-        public void SetNewHealthValue(int oldValue, int newValue)
+        public void SetNewHealthValue(float oldValue, float newValue)
         {
-            healthBar.SetStat(newValue);
+            healthBar.SetStat(Mathf.RoundToInt(newValue));
         }
 
         public void SetMaxHealthValue(int maxhealth)

@@ -55992,7 +55992,7 @@ GameObject:
   - component: {fileID: 4491966044667156889}
   - component: {fileID: 4140445576975600825}
   - component: {fileID: 4103049350891695987}
-  - component: {fileID: -6531935044653974274}
+  - component: {fileID: 555528324551804424}
   - component: {fileID: 7664809826894878114}
   - component: {fileID: 4097129310773131786}
   - component: {fileID: 1388302478262233456}
@@ -56067,7 +56067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 385770517
+  GlobalObjectIdHash: 3840607598
   InScenePlacedSourceGlobalObjectIdHash: 385770517
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -56076,7 +56076,7 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &-6531935044653974274
+--- !u!114 &555528324551804424
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56122,9 +56122,9 @@ MonoBehaviour:
   isChargingAttack:
     m_InternalValue: 0
   currentHealth:
-    m_InternalValue: 400
+    m_InternalValue: 0
   maxHealth:
-    m_InternalValue: 400
+    m_InternalValue: 0
   currentStamina:
     m_InternalValue: 0
   maxStamina:

@@ -15,7 +15,7 @@ namespace KC
         [SerializeField] int currentDamageTaken = 0;
         [SerializeField] TextMeshProUGUI characterName;
         [SerializeField] TextMeshProUGUI characterDamage;
-        [HideInInspector] public int oldHealthValue = 0;
+        [HideInInspector] public float oldHealthValue = 0;
 
         protected override void Awake()
         {
@@ -37,7 +37,7 @@ namespace KC
             gameObject.SetActive(false);
         }
 
-        public override void SetStat(int newValue)
+        public override void SetStat(float newValue)
         {
             if (displayCharacterNameOnDamage)
             {
