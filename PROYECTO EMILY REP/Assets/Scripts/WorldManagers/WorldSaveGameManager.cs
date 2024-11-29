@@ -310,7 +310,7 @@ namespace KC
         }
         public void LoadWorldScene(int buildIndex)
         {
-            Vector3 newLocation = new Vector3(0f, 1f, 0f);
+            Vector3 newLocation = new Vector3(0f, 0.1f, 0f);
             
             string worldScene = SceneUtility.GetScenePathByBuildIndex(buildIndex);
             player.LoadGameDataFromCurrentCharacterData(ref currentCharacterData);

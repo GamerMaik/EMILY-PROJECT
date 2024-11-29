@@ -25,7 +25,7 @@ namespace KC
         {
             if (characterGameObject != null)
             {
-                instantiateGameObject = Instantiate(characterGameObject);
+                instantiateGameObject = Instantiate(characterGameObject, transform.position, Quaternion.identity);
                 instantiateGameObject.transform.position = transform.position;
                 instantiateGameObject.transform.rotation = transform.rotation;
                 instantiateGameObject.GetComponent<NetworkObject>().Spawn();

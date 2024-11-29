@@ -36,6 +36,31 @@ namespace KC
             if (!aiCharacter.navMeshAgent.enabled)
                 aiCharacter.navMeshAgent.enabled = true;
 
+            if (!NavMesh.SamplePosition(aiCharacter.transform.position, out var agentHit, 2.0f, NavMesh.AllAreas))
+            {
+                //Debug.LogError("El NavMeshAgent no está sobre el NavMesh.");
+                return SwitchState(aiCharacter, aiCharacter.idle);
+            }
+
+            if (!NavMesh.SamplePosition(aiCharacter.aICharacterCombatManager.currentTarget.transform.position, out var targetHit, 2.0f, NavMesh.AllAreas))
+            {
+                //Debug.LogWarning("El objetivo no está sobre el NavMesh.");
+                return SwitchState(aiCharacter, aiCharacter.idle);
+            }
+
+            aiCharacter.navMeshAgent.Warp(agentHit.position);
+
+            NavMeshPath path = new NavMeshPath();
+            bool pathFound = aiCharacter.navMeshAgent.CalculatePath(targetHit.position, path);
+
+            if (!pathFound || path.status != NavMeshPathStatus.PathComplete)
+            {
+                //Debug.LogWarning("No se pudo calcular un camino válido.");
+                return SwitchState(aiCharacter, aiCharacter.pursueTarget); // Intentar perseguir
+            }
+
+            aiCharacter.navMeshAgent.SetPath(path);
+
             if (aiCharacter.aICharacterCombatManager.enablePivot)
             {
                 if (!aiCharacter.aiCharacterNetworkManager.isMoving.Value)
@@ -47,11 +72,12 @@ namespace KC
 
             aiCharacter.aICharacterCombatManager.RotateTowardsAgent(aiCharacter);
 
-            //Si el objetivo ya no se encuentra devolvemos a la IA al estado inactivo
             if (aiCharacter.aICharacterCombatManager.currentTarget == null)
                 return SwitchState(aiCharacter, aiCharacter.idle);
 
-            //Si no hay nigun ataque posible
+            if (aiCharacter.aICharacterCombatManager.distanceFromTarget > maximumEngagementDistance)
+                return SwitchState(aiCharacter, aiCharacter.pursueTarget);
+
             if (!hasAttack)
             {
                 GetNewAttack(aiCharacter);
@@ -60,15 +86,7 @@ namespace KC
             {
                 aiCharacter.attack.currentAttack = choosenAttack;
                 return SwitchState(aiCharacter, aiCharacter.attack);
-                //Se ará algo
             }
-
-            if (aiCharacter.aICharacterCombatManager.distanceFromTarget > maximumEngagementDistance)
-                return SwitchState(aiCharacter, aiCharacter.pursueTarget);
-
-            NavMeshPath path = new NavMeshPath();
-            aiCharacter.navMeshAgent.CalculatePath(aiCharacter.aICharacterCombatManager.currentTarget.transform.position, path);
-            aiCharacter.navMeshAgent.SetPath(path);
 
             return this;
         }

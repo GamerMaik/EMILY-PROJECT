@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 27fba1d6ea168a14da8fa8337e70d4ba
+  m_OcclusionCullingData: {fileID: 36300000, guid: d08090fc538312145bb4402a5b2c172b, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -240,6 +240,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 903303651976326280, guid: f471a9ca419c3df4dbc0769f9b985351, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 903303651976326280, guid: f471a9ca419c3df4dbc0769f9b985351, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: adf2bc46dd72d954e9175bab053056c4, type: 2}
     - target: {fileID: 3883858200380220243, guid: f471a9ca419c3df4dbc0769f9b985351, type: 3}
       propertyPath: m_Name
       value: Central Room
@@ -288,68 +296,34 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 147338056
       objectReference: {fileID: 0}
+    - target: {fileID: 6295406268533905990, guid: f471a9ca419c3df4dbc0769f9b985351, type: 3}
+      propertyPath: navMesh
+      value: 
+      objectReference: {fileID: 326213043}
+    - target: {fileID: 7639620575102532719, guid: f471a9ca419c3df4dbc0769f9b985351, type: 3}
+      propertyPath: navMesh
+      value: 
+      objectReference: {fileID: 326213043}
+    - target: {fileID: 7716733429271706770, guid: f471a9ca419c3df4dbc0769f9b985351, type: 3}
+      propertyPath: navMesh
+      value: 
+      objectReference: {fileID: 326213043}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 5423726070352795027, guid: f471a9ca419c3df4dbc0769f9b985351, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3883858200380220243, guid: f471a9ca419c3df4dbc0769f9b985351, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 326213045}
-    - targetCorrespondingSourceObject: {fileID: 3883858200380220243, guid: f471a9ca419c3df4dbc0769f9b985351, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 326213044}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f471a9ca419c3df4dbc0769f9b985351, type: 3}
---- !u!1 &326213043 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3883858200380220243, guid: f471a9ca419c3df4dbc0769f9b985351, type: 3}
+--- !u!114 &326213043 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 903303651976326280, guid: f471a9ca419c3df4dbc0769f9b985351, type: 3}
   m_PrefabInstance: {fileID: 326213042}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &326213044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326213043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4975b6db21fe5054f92d6dcaf582cc00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  navMeshSurface: {fileID: 326213045}
-  navMeshGenerated: 0
---- !u!114 &326213045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326213043}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 1
-  m_Size: {x: 20, y: 10, z: 20}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
-  m_BuildHeightMesh: 0
 --- !u!1001 &378291125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -424,7 +398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &541982614
 Light:
   m_ObjectHideFlags: 0
@@ -536,6 +510,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 672673561119554141, guid: 92d0af77de5b42d429b2c805c60dd811, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1562333213543017641, guid: 92d0af77de5b42d429b2c805c60dd811, type: 3}
       propertyPath: m_Name
       value: AI Spawner Skeleton
@@ -685,11 +663,11 @@ MonoBehaviour:
   - {fileID: 457677880055531643, guid: cffbde60c95984d49a8d793a3910a961, type: 3}
   closedRoom: {fileID: 408551261939023328, guid: 0cff53b9f27984449974994e466b935e, type: 3}
   rooms: []
-  finalEnemy: {fileID: 9167775071992488525, guid: 84f92232db24a1a48be8ea2a7a8ef160, type: 3}
+  finalEnemy: {fileID: 8473457815301147489, guid: 5dd3f798454c40145bde4807c01b7463, type: 3}
   simpleEnemy: {fileID: 8473457815301147489, guid: 5dd3f798454c40145bde4807c01b7463, type: 3}
   treasure: {fileID: 8473457815301147489, guid: 5dd3f798454c40145bde4807c01b7463, type: 3}
-  key: {fileID: 9167775071992488525, guid: e6c031a6a01edbc45aff0b69be072ccf, type: 3}
-  fogWall: {fileID: 9174565100400879181, guid: de2830d175eafea4ab768bb88d154cef, type: 3}
+  key: {fileID: 8473457815301147489, guid: 5dd3f798454c40145bde4807c01b7463, type: 3}
+  fogWall: {fileID: 8473457815301147489, guid: 5dd3f798454c40145bde4807c01b7463, type: 3}
 --- !u!4 &2109701575
 Transform:
   m_ObjectHideFlags: 0
