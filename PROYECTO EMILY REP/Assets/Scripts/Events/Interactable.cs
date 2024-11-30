@@ -9,7 +9,8 @@ namespace KC
 
         public string interactableText; //Este es el texto que aparece cuando interactuas con el objeto
         [SerializeField] protected Collider interactableCollider;
-        [SerializeField] protected bool hostOnlyInteractable = true; //Solo el jugador host puede interactuar y no los jugadores que se unieron
+        [Tooltip("Solo el jugador (host) puede interactuar")]
+        [SerializeField] protected bool hostOnlyInteractable = true; //Solo el jugador (host) puede interactuar y no los jugadores que se unieron
 
         protected virtual void Awake()
         {
@@ -24,8 +25,6 @@ namespace KC
         
         public virtual void Interact(PlayerManager player)
         {
-            Debug.Log("Interaccion Realizada");
-
             if (!player.IsOwner)
                 return;
 

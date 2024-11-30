@@ -56067,7 +56067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3840607598
+  GlobalObjectIdHash: 705131192
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -56337,12 +56337,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b9fcd306366a64499adb5c59d0c431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityForce: -9.18
+  gravityForce: -25
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
-  groundCheckSphereRadius: 1
-  yVelocity: {x: 0, y: 0, z: 0}
+  groundCheckSphereRadius: 0.3
+  yVelocity: {x: 0, y: -20, z: 0}
   groundedYVelocity: -20
   fallStartYVelocity: -5
   isRolling: 0
@@ -56358,7 +56358,7 @@ MonoBehaviour:
   rotationSpeed: 15
   sprintingStaminaCost: 5
   jumpStaminaCost: 20
-  jumpHeight: 0.5
+  jumpHeight: 1.5
   jumpForwardSpeed: 5
   freeFallSpeed: 2
   rollDirection: {x: 0, y: 0, z: 0}
@@ -56638,7 +56638,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: 0, y: 0.96, z: 0}
 --- !u!54 &6922853808036313466
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -73066,6 +73066,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8019897236699390856, guid: 4e29e5d7637ec03449403dea6f253c45, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8413244055717173730, guid: 4e29e5d7637ec03449403dea6f253c45, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -73148,6 +73152,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8964556155285536502, guid: 4e29e5d7637ec03449403dea6f253c45, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964556155285536502, guid: 4e29e5d7637ec03449403dea6f253c45, type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

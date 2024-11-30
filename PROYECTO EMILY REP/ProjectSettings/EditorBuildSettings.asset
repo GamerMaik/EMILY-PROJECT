@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene_Dungeon.unity
     guid: 27fba1d6ea168a14da8fa8337e70d4ba
   - enabled: 1
-    path: Assets/Scenes/Scene_World_Start.unity
-    guid: 888777812acf14e479ddf03df57449eb
-  - enabled: 1
     path: Assets/Scenes/Scene_World_01.unity
     guid: 2c412dba5dc06d049af194404088a6d3
+  - enabled: 1
+    path: Assets/Scenes/Scene_World_Start.unity
+    guid: 888777812acf14e479ddf03df57449eb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 063b2603656718a469dbaa44d60374d3, type: 3}
   m_UseUCBPForAssetBundles: 0
