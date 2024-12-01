@@ -14,6 +14,7 @@ namespace KC
         public TakeDamageEffect takeDamageEffect;
         public TakeBlockedDamageEffect takeBlockedDamageEffect;
         public TakeDamageQuestionIncorrectEffect takeDamageQuestionIncorrectEffect;
+        public TakeEffectAddXP takeEffectAddXP;
 
         [Header("Two Hand")]
         public TwoHandingEffects twoHandingEffects;

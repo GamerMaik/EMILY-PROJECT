@@ -214,7 +214,7 @@ namespace KC
         private void NewGame(string nameCharacter, bool gender)
         {
             //Temporal para probar el daño
-            player.playerNetworkManager.vitality.Value = 15;
+            player.playerNetworkManager.vitality.Value = 10;
             player.playerNetworkManager.endurance.Value = 10;
             player.playerNetworkManager.characterName.Value = nameCharacter;
             player.playerNetworkManager.isMale.Value = gender;

@@ -15079,6 +15079,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 520493694292076300, guid: 133c045a371aba544bc2d60cec3bdad3, type: 3}
+      propertyPath: takeEffectAddXP
+      value: 
+      objectReference: {fileID: 11400000, guid: 610c9c22fe0df9340884d4dcf4bc9f55, type: 2}
+    - target: {fileID: 520493694292076300, guid: 133c045a371aba544bc2d60cec3bdad3, type: 3}
       propertyPath: twoHandingEffects
       value: 
       objectReference: {fileID: 11400000, guid: 9d28d00ae1e09864b842c28cc682c373, type: 2}
@@ -15088,7 +15092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 520493694292076300, guid: 133c045a371aba544bc2d60cec3bdad3, type: 3}
       propertyPath: instantEffects.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 520493694292076300, guid: 133c045a371aba544bc2d60cec3bdad3, type: 3}
       propertyPath: 'staticEffects.Array.data[0]'
@@ -15098,6 +15102,10 @@ PrefabInstance:
       propertyPath: 'instantEffects.Array.data[3]'
       value: 
       objectReference: {fileID: 11400000, guid: a815611d90d61064697b7992bd75ada3, type: 2}
+    - target: {fileID: 520493694292076300, guid: 133c045a371aba544bc2d60cec3bdad3, type: 3}
+      propertyPath: 'instantEffects.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 610c9c22fe0df9340884d4dcf4bc9f55, type: 2}
     - target: {fileID: 520493694292076300, guid: 133c045a371aba544bc2d60cec3bdad3, type: 3}
       propertyPath: takeDamageQuestionIncorrectEffect
       value: 
