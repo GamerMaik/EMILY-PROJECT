@@ -61,21 +61,17 @@ namespace KC
                 Debug.LogWarning("Fog Wall Generation no encontrado en la última habitación.");
             }
 
-            // Instanciar enemigos en todas las salas excepto la última
-            //for (int i = 0; i < rooms.Count - 1; i++)
-            //{
-            //    Instantiate(simpleEnemy, rooms[i].transform.position, Quaternion.identity);
-            //}
-
-            // Instanciar tesoros en dos habitaciones aleatorias
-            //for (int i = 0; i < 3; i++)
-            //{
-            //    int randIndex = Random.Range(0, rooms.Count - 1);
-            //    if (treasure != null)
-            //    {
-            //        Instantiate(treasure, rooms[randIndex].transform.position, Quaternion.identity);
-            //    }
-            //}
+            // Desactivar "Area IA Spawner" en la última habitación
+            Transform areaIASpawner = lastRoom.transform.Find("Area IA Spawner");
+            if (areaIASpawner != null)
+            {
+                areaIASpawner.gameObject.SetActive(false);
+                Debug.Log("Area IA Spawner desactivado en la última habitación.");
+            }
+            else
+            {
+                Debug.LogWarning("Area IA Spawner no encontrado en la última habitación.");
+            }
 
             // Instanciar la llave en una habitación aleatoria, lejos de la última habitación
             int keyRoomIndex;

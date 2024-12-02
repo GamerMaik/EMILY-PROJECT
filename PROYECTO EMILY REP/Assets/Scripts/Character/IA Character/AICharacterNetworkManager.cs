@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -18,6 +20,13 @@ namespace KC
 
             aiCharacter.aICharacterInventoryManager.DropItem();
 
+            StartCoroutine(ActivateSpawners());
+        }
+
+        public IEnumerator ActivateSpawners()
+        {
+            yield return new WaitForSeconds(5);
+            Destroy(this.gameObject);
         }
     }
 }

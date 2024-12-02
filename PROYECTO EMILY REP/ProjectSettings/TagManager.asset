@@ -8,6 +8,7 @@ TagManager:
   - SpawnPoint
   - Rooms
   - ClosedRoom
+  - Boss
   layers:
   - Default
   - TransparentFX

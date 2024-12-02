@@ -56392,7 +56392,8 @@ MonoBehaviour:
   bodyEquipmentItem: {fileID: 0}
   legEquipmentItem: {fileID: 0}
   handEquipmentItem: {fileID: 0}
-  itemsInventory: []
+  itemsInventory:
+  - {fileID: 11400000, guid: ed5d37e6e3c6ec74c881ee8799892eb5, type: 2}
 --- !u!114 &6251457930582299927
 MonoBehaviour:
   m_ObjectHideFlags: 0

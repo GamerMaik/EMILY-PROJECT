@@ -12,7 +12,7 @@ namespace KC
         [SerializeField] private List<GameObject> spawners;
 
         [Header("Room Configure")]
-        [SerializeField] bool spawnersActivated = false;
+        [SerializeField] public bool spawnersActivated = false;
 
         private void OnTriggerEnter(Collider other)
         {
