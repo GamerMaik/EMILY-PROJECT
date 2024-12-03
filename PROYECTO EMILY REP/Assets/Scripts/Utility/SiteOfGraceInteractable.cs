@@ -20,9 +20,9 @@ namespace KC
         [Header("Dialog Settings")]
         [SerializeField] DialogObjectText initialDialog;
         [SerializeField] DialogObjectText activatedDialog;
-        private int currentDialogIndex = 0;
+
         private bool isShowingDialog = false;
-        private DialogObjectText currentDialog;
+
 
         protected override void Start()
         {
@@ -30,7 +30,6 @@ namespace KC
 
             if (IsOwner)
             {
-
                 if (WorldSaveGameManager.instance.currentCharacterData.sitesOfGrace.ContainsKey(siteOfGraceID))
                 {
                     isActivated.Value = WorldSaveGameManager.instance.currentCharacterData.sitesOfGrace[siteOfGraceID];
@@ -44,83 +43,58 @@ namespace KC
             interactableText = isActivated.Value ? activatedInteractionText : unactivatedInteractionText;
         }
 
-        private void ShowNextDialog(PlayerManager player)
-        {
-            // Si se han mostrado todas las líneas del diálogo, finaliza.
-            if (currentDialog == null || currentDialogIndex >= currentDialog.dialogLines.Count)
-            {
-                EndDialog(player);
-                return;
-            }
-
-            // Muestra la línea de diálogo actual.
-            PlayerUIManager.instance.playerUIPopUpManager.SendDialogPopUp(currentDialog.dialogLines[currentDialogIndex]);
-
-            // Detén cualquier audio en curso antes de reproducir el siguiente.
-            player.characterSoundFXManager.audioSource.Stop();
-
-            // Reproduce el audio correspondiente a esta línea, si existe.
-            if (currentDialog.dialogAudioClips != null &&
-                currentDialog.dialogAudioClips.Count > currentDialogIndex &&
-                currentDialog.dialogAudioClips[currentDialogIndex] != null)
-            {
-                player.characterSoundFXManager.PlaySoundFX(
-                    currentDialog.dialogAudioClips[currentDialogIndex]);
-            }
-
-            // Avanza al siguiente índice para la próxima interacción.
-            currentDialogIndex++;
-
-            // Habilita el collider para que el jugador pueda interactuar nuevamente.
-            interactableCollider.enabled = true;
-        }
-        private void EndDialog(PlayerManager player)
-        {
-            isShowingDialog = false;
-            PlayerUIManager.instance.playerUIPopUpManager.closeAllPopUpWindows();
-
-            if (!isActivated.Value)
-            {
-                RestoreSiteOfGrace(player);
-            }
-            else
-            {
-                RestAtSiteOfGrace(player);
-            }
-        }
-
-        private void StartDialog(PlayerManager player, DialogObjectText dialog)
-        {
-            isShowingDialog = true;
-            currentDialog = dialog;
-            currentDialogIndex = 0;
-            ShowNextDialog(player);
-        }
-
         public override void OnNetworkSpawn()
         {
             base.OnNetworkSpawn();
-            if (!IsOwner)
-                OnIsActivatedChanged(false, isActivated.Value);
+
+            // Escuchar cambios en isActivated
+            isActivated.OnValueChanged += OnIsActivatedChanged;
 
             if (IsOwner)
             {
                 if (!WorldSaveGameManager.instance.currentCharacterData.sitesOfGrace.ContainsKey(siteOfGraceID))
                 {
                     WorldSaveGameManager.instance.currentCharacterData.sitesOfGrace.Add(siteOfGraceID, isActivated.Value);
-                    isActivated.OnValueChanged += OnIsActivatedChanged;
                 }
                 else
                 {
                     isActivated.Value = WorldSaveGameManager.instance.currentCharacterData.sitesOfGrace[siteOfGraceID];
-                    isActivated.OnValueChanged += OnIsActivatedChanged;
                 }
             }
         }
+
         public override void OnNetworkDespawn()
         {
             base.OnNetworkDespawn();
+
+            // Cancelar la suscripción
             isActivated.OnValueChanged -= OnIsActivatedChanged;
+        }
+
+        public override void Interact(PlayerManager player)
+        {
+            base.Interact(player);
+
+            if (isShowingDialog) return;
+
+            isShowingDialog = true;
+
+            if (!isActivated.Value)
+            {
+                DialogManager.instance.StartDialog(initialDialog, () =>
+                {
+                    RestoreSiteOfGrace(player);
+                    isShowingDialog = false;
+                });
+            }
+            else
+            {
+                DialogManager.instance.StartDialog(activatedDialog, () =>
+                {
+                    RestAtSiteOfGrace(player);
+                    isShowingDialog = false;
+                });
+            }
         }
 
         private void RestoreSiteOfGrace(PlayerManager player)
@@ -132,8 +106,8 @@ namespace KC
 
             WorldSaveGameManager.instance.currentCharacterData.sitesOfGrace.Add(siteOfGraceID, true);
             WorldSaveGameManager.instance.SaveGame();
-            player.playerAnimatorManager.PlayerTargetActionAnimation("Activate_Site_Of_Grace_01", true);
 
+            player.playerAnimatorManager.PlayerTargetActionAnimation("Activate_Site_Of_Grace_01", true);
             PlayerUIManager.instance.playerUIPopUpManager.SendbGraceRestoredPopUp("SITIO DE GRACIA RESTAURADO");
 
             StartCoroutine(WaitForAnimationAndPopUpThenRestoreCollider());
@@ -152,42 +126,22 @@ namespace KC
         private IEnumerator WaitForAnimationAndPopUpThenRestoreCollider()
         {
             yield return new WaitForSeconds(3);
-
-            interactableCollider.enabled =true;
+            interactableCollider.enabled = true;
         }
 
         private void OnIsActivatedChanged(bool oldStatus, bool newStatus)
         {
-            if (isActivated.Value)
+            if (newStatus)
             {
-                //Repdroducir algunos sonidos o efectos
+                // Mostrar partículas activadas
                 activedParticles.SetActive(true);
                 interactableText = activatedInteractionText;
             }
             else
             {
+                // Ocultar partículas desactivadas
+                activedParticles.SetActive(false);
                 interactableText = unactivatedInteractionText;
-            }
-        }
-
-        public override void Interact(PlayerManager player)
-        {
-            base.Interact(player);
-
-            if (isShowingDialog)
-            {
-                ShowNextDialog(player);
-            }
-            else
-            {
-                if (!isActivated.Value)
-                {
-                    StartDialog(player, initialDialog);
-                }
-                else
-                {
-                    StartDialog(player, activatedDialog);
-                }
             }
         }
     }

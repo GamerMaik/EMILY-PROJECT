@@ -135,9 +135,9 @@ namespace KC
             enteringPopUpBackgroundText.text = enteringMessage;
             enteringPopUpGameObject.SetActive(true);
             enteringPopUpBackgroundText.characterSpacing = 0;
-            StartCoroutine(StrechPopUpTextOverTime(enteringPopUpText, 8, 16f));
-            StartCoroutine(FadeInPopUpTextOverTime(enteringCanvasGroup, 5));
-            StartCoroutine(WaithThenFadeOutPopUpOverTime(enteringCanvasGroup, 2, 5));
+            StartCoroutine(StrechPopUpTextOverTime(enteringPopUpText, 5, 10f));
+            StartCoroutine(FadeInPopUpTextOverTime(enteringCanvasGroup, 3));
+            StartCoroutine(WaithThenFadeOutPopUpOverTime(enteringCanvasGroup, 2, 3));
         }
 
         public void MessagePopUp(string enteringMessage)
