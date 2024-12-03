@@ -46,28 +46,28 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CausticCutout: 0.19
+    - _CausticCutout: 0.2
     - _CausticsSpeed: 0.05
-    - _CauticsTiling: 12.64
-    - _Depth: 4.83
-    - _DepthFallout: 21.46
-    - _FoamAmmount: 0.93
-    - _FoamCutout: 0.5
-    - _FoamDepth: 3.65
-    - _FoamFallOff: 1.1
-    - _FoamShoreWidth: 0.93
+    - _CauticsTiling: 20
+    - _Depth: 0.5
+    - _DepthFallout: 14.8
+    - _FoamAmmount: 0.27
+    - _FoamCutout: 0.25
+    - _FoamDepth: 2.75
+    - _FoamFallOff: 5.1
+    - _FoamShoreWidth: 1.4
     - _FoamSpeed: 0.1
-    - _FoamTiling: 5.89
+    - _FoamTiling: 3.68
     - _QueueControl: 0
     - _QueueOffset: 0
     - _WaveIntensity: 0.05
     - _WaveSpeed: 1
     m_Colors:
-    - _CausticColor: {r: 1347.3098, g: 1367.1202, b: 0, a: 0}
+    - _CausticColor: {r: 1825.2128, g: 1825.2128, b: 1825.2128, a: 0}
     - _FoamSpeed: {r: 0, g: -0.2, b: 0, a: 0}
-    - _Foam_Color: {r: 0, g: 0, b: 0, a: 0}
-    - _Main_Color: {r: 0, g: 0.3490566, b: 0.09065376, a: 0}
-    - _Shore_Color: {r: 0.003803973, g: 0.1509434, b: 0, a: 0}
+    - _Foam_Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Main_Color: {r: 0, g: 0.30984586, b: 0.34901962, a: 0}
+    - _Shore_Color: {r: 0, g: 0.5484279, b: 0.6415094, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &32867090282621108

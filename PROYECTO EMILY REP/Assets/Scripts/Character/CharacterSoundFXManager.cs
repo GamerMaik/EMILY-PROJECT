@@ -5,7 +5,7 @@ namespace KC
 {
     public class CharacterSoundFXManager : MonoBehaviour
     {
-        private AudioSource audioSource;
+        public AudioSource audioSource;
 
         [Header("Damage Grunts")]
         [SerializeField] protected AudioClip[] damageGrunts;

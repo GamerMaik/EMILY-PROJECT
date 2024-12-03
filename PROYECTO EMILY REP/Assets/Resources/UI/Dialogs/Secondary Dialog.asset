@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f03fdd0180b774b9dc769028364445, type: 3}
+  m_Name: Secondary Dialog
+  m_EditorClassIdentifier: 
+  dialogTitle: Second Dialog
+  dialogLines:
+  - Hola, de nuevo...
+  - "\xBFPor qu\xE9 me despiertas esta vez?"
+  - "\xBFAcaso completaste los seis desaf\xEDos?"
+  - "Veo que a\xFAn no."
+  - mmmm....
+  - "Vamos\u2026 \xA1t\xFA puedes!"
+  - Pero, escucha bien...
+  - no vuelvas a despertarme en vano.
+  dialogAudioClips:
+  - {fileID: 8300000, guid: 3a1e758409eb20549a26b29a0c3bc9f3, type: 3}
+  - {fileID: 8300000, guid: 516f91680a66e044ea0c8d00fe8414cf, type: 3}
+  - {fileID: 8300000, guid: 407e9ab09c48a0543ae6e60d60fafe50, type: 3}
+  - {fileID: 8300000, guid: b694b54300fdd0142bd0ef9060ed509b, type: 3}
+  - {fileID: 8300000, guid: 1d1a2819717c05f4bbdf7fe66d0497b7, type: 3}
+  - {fileID: 8300000, guid: 5fef736da2bfcae4290ed2e5fbbc4ddf, type: 3}
+  - {fileID: 8300000, guid: e8fefc4310c4f8f4cbc15c5c3323eea0, type: 3}
+  - {fileID: 8300000, guid: 5b6939c7f49e0374585505db28bb0de9, type: 3}

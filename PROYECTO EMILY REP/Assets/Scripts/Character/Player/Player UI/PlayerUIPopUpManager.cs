@@ -43,10 +43,21 @@ namespace KC
         [SerializeField] TextMeshProUGUI enteringPopUpText;
         [SerializeField] CanvasGroup enteringCanvasGroup;
 
+        [Header("MessageText Pop Up")]
+        [SerializeField] GameObject messageTextPopUpGameObject;
+        [SerializeField] TextMeshProUGUI messageTextPopUpBackgroundText;
+        [SerializeField] TextMeshProUGUI messageTextPopUpText;
+        [SerializeField] CanvasGroup messageTextCanvasGroup;
+
+        [Header("Dialog Pop Up")]
+        [SerializeField] TextMeshProUGUI dialogTextPopUp;
+        [SerializeField] GameObject dialogPopUp;
+
         public void closeAllPopUpWindows()
         {
             popUpMessageGameObject.SetActive(false);
             itemPopUpGameObject.SetActive(false);
+            dialogPopUp.SetActive(false);
 
             PlayerUIManager.instance.popUpWindowIsOpen = false;
         }
@@ -56,6 +67,13 @@ namespace KC
             PlayerUIManager.instance.popUpWindowIsOpen = true;
             popUpMessageText.text = messageText;
             popUpMessageGameObject.SetActive(true);
+        }
+
+        public void SendDialogPopUp(string messageText)
+        {
+            PlayerUIManager.instance.popUpWindowIsOpen = true;
+            dialogTextPopUp.text = messageText;
+            dialogPopUp.SetActive(true);
         }
 
         public void SendItemPopUp(Item item, int amount)
@@ -120,6 +138,17 @@ namespace KC
             StartCoroutine(StrechPopUpTextOverTime(enteringPopUpText, 8, 16f));
             StartCoroutine(FadeInPopUpTextOverTime(enteringCanvasGroup, 5));
             StartCoroutine(WaithThenFadeOutPopUpOverTime(enteringCanvasGroup, 2, 5));
+        }
+
+        public void MessagePopUp(string enteringMessage)
+        {
+            messageTextPopUpText.text = enteringMessage;
+            messageTextPopUpBackgroundText.text = enteringMessage;
+            messageTextPopUpGameObject.SetActive(true);
+            messageTextPopUpBackgroundText.characterSpacing = 0;
+            StartCoroutine(StrechPopUpTextOverTime(messageTextPopUpText, 8, 0f));
+            StartCoroutine(FadeInPopUpTextOverTime(messageTextCanvasGroup, 5));
+            StartCoroutine(WaithThenFadeOutPopUpOverTime(messageTextCanvasGroup, 2, 5));
         }
 
         private IEnumerator StrechPopUpTextOverTime(TextMeshProUGUI text, float duration, float strechAmount)

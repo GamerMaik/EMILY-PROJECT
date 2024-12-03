@@ -8,7 +8,7 @@ namespace KC
         //Que es un interactuable? (Cualquier cosa con la que puedas o quieras interactuar)
 
         public string interactableText; //Este es el texto que aparece cuando interactuas con el objeto
-        [SerializeField] protected Collider interactableCollider;
+        [SerializeField] protected Collider interactableCollider; //Este es el collider el cual si esta activo se puede interactuar y si no pues no
         [Tooltip("Solo el jugador (host) puede interactuar")]
         [SerializeField] protected bool hostOnlyInteractable = true; //Solo el jugador (host) puede interactuar y no los jugadores que se unieron
 

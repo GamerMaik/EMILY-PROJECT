@@ -10479,7 +10479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 168637014554487918, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 93.5
       objectReference: {fileID: 0}
     - target: {fileID: 331465947052161505, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
       propertyPath: m_AnchorMax.y
@@ -11225,6 +11225,22 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5666147328455516697, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666147328455516697, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666147328455516697, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666147328455516697, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5700889043061167950, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
       propertyPath: m_Value
       value: 1
@@ -11948,6 +11964,26 @@ PrefabInstance:
     - target: {fileID: 8596941376312226315, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -540
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849596511779657113, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849596511779657113, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849596511779657113, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849596511779657113, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849596511779657113, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f03fdd0180b774b9dc769028364445, type: 3}
+  m_Name: Dead Dialog
+  m_EditorClassIdentifier: 
+  dialogTitle: Dead dialog
+  dialogLines:
+  - La muerte...
+  - "no es el final\u2026"
+  - solo un nuevo comienzo.
+  - "Vamos\u2026"
+  - No dejes que te detenga.
+  - "\xA1t\xFA puedes superar esto!"
+  dialogAudioClips:
+  - {fileID: 8300000, guid: c39c5134deda644448d40fdc42eaf346, type: 3}
+  - {fileID: 8300000, guid: 7645b23c231496246a48fe26050cfea8, type: 3}
+  - {fileID: 8300000, guid: e56efbe9187ce204fa4f21cdd26c00c0, type: 3}
+  - {fileID: 8300000, guid: 330edd66e62faa847950e4007e63cb08, type: 3}
+  - {fileID: 8300000, guid: f49a3916c96cf3b48a425154f4446109, type: 3}
+  - {fileID: 8300000, guid: b526dfa8950145541bd7bfefd4488402, type: 3}

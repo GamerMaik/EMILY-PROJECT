@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f03fdd0180b774b9dc769028364445, type: 3}
+  m_Name: Initial Dialog
+  m_EditorClassIdentifier: 
+  dialogTitle: Principal Dialog
+  dialogLines:
+  - "\xBFQuien se atreve a despertarme?"
+  - "\xBFPero quien eres t\xFA?..."
+  - "Supongo que no llegaste aqu\xED por gusto..."
+  - "Tal vez ni siquiera recuerdes de d\xF3nde vienes..."
+  - "L\xE1stima..."
+  - "Yo tampoco lo s\xE9."
+  - mmmm...
+  - Pero puedo ayudarte.
+  - He guiado a muchos desconocidos que llegan a este lugar.
+  - "Para empezar\u2026 bienvenido al Santuario \xC1gil."
+  - Soy el guardian de este lugar...
+  - "\xBFVes las puertas a tu derecha?..."
+  - "Seguramente ya te diste cuenta de que est\xE1n cerradas."
+  - Para abrirlas, necesitas una llave.
+  - pero no puedo dartela directamente...
+  - "eso ir\xEDa en contra de mis principios."
+  - "Todos los que pasaron por aqu\xED se llevaron m\xE1s que solo libertad"
+  - "Tambi\xE9n obtuvieron un conocimiento invaluable."
+  - "Y para ti, no ser\xE1 diferente."
+  - Tomalo como un castigo por despertarme...
+  - "Aunque, si fuera t\xFA, lo ver\xEDa m\xE1s bien como un premio."
+  - En fin...
+  - "lo que debes hacer es completar los seis desaf\xEDos."
+  - "\xBFCu\xE1les desaf\xEDos?"
+  - "Los que tienes detr\xE1s de ti..."
+  - en aquellos pilares.
+  - Puedes escoger el orden que prefieras.
+  - "Cada uno est\xE1 dise\xF1ado para fortalecer tus conocimientos..."
+  - "ya sea en un marco de trabajo\u2026"
+  - "o en una metodolog\xEDa \xE1gil."
+  - "Pero hay una condici\xF3n..."
+  - "debes completar cada desaf\xEDo al menos cuatro veces."
+  - Esto es para asegurarnos de que adquieras un conocimiento profundo.
+  - "Una vez que completes los 6 desaf\xEDos, te entregar\xE9 la llave."
+  - Es una promesa.
+  - "Despu\xE9s de eso, podr\xE1s volver a tu mundo."
+  - "Y, claro\u2026 regresar cuando gustes para seguir fortaleciendo tus conocimientos."
+  - Buena suerte viajero...
+  dialogAudioClips:
+  - {fileID: 8300000, guid: 3e58a904b73c61a45869afa7f128f1db, type: 3}
+  - {fileID: 8300000, guid: c530ba80e687dee439e85b6a5f3042bc, type: 3}
+  - {fileID: 8300000, guid: 7e173640bab87b743aa5050b2731d94a, type: 3}
+  - {fileID: 8300000, guid: 15402b0ad6dd4a249bc352ca5f13789d, type: 3}
+  - {fileID: 8300000, guid: 968eab8775b338d4e81f03a653f9abbb, type: 3}
+  - {fileID: 8300000, guid: 4f665dffd8f69c74c9086bd427f56a4c, type: 3}
+  - {fileID: 8300000, guid: 1d1a2819717c05f4bbdf7fe66d0497b7, type: 3}
+  - {fileID: 8300000, guid: 70612a1034f52ca488b95636ac9d54e2, type: 3}
+  - {fileID: 8300000, guid: 0b36c9cd3c9ef2f4b899c929baeb07a1, type: 3}
+  - {fileID: 8300000, guid: 3f6a60b7b0ebe9d4488c809129744001, type: 3}
+  - {fileID: 8300000, guid: b9970079bfe898a4d8420f4ea99bd133, type: 3}
+  - {fileID: 8300000, guid: ab68e4c39dbde5445811365f86c25de5, type: 3}
+  - {fileID: 8300000, guid: b5262581b570e444ea4e3f1c2a3db1e1, type: 3}
+  - {fileID: 8300000, guid: 77b1dfff3f5f5f04086732c677e8865c, type: 3}
+  - {fileID: 8300000, guid: a4441fa247307694982b1709014b869d, type: 3}
+  - {fileID: 8300000, guid: d17f61e285b94084586c29c478d9692b, type: 3}
+  - {fileID: 8300000, guid: d26c4a7d377764445b2708f2d82a89c0, type: 3}
+  - {fileID: 8300000, guid: 5b43a09f966936a4f906d0ed2d15a8dd, type: 3}
+  - {fileID: 8300000, guid: 51803bb8065c89246bee2abb04954b95, type: 3}
+  - {fileID: 8300000, guid: fa8f3b0f32201b24783e7cd0032151bf, type: 3}
+  - {fileID: 8300000, guid: 44a16e4de782f9e4e92e8edf81e46e89, type: 3}
+  - {fileID: 8300000, guid: 6727278f591ec774f8a8337ff15d6a2f, type: 3}
+  - {fileID: 8300000, guid: adffd848b25f2094383085df4077c723, type: 3}
+  - {fileID: 8300000, guid: 3f377519002151a4bb04fe76664c8342, type: 3}
+  - {fileID: 8300000, guid: b300049d4ee11744d94d93e3c80a0bde, type: 3}
+  - {fileID: 8300000, guid: 65f71872e8e120d4ba0ad8cd9a6cdcdd, type: 3}
+  - {fileID: 8300000, guid: f62aeb2563ac1e940b0a627227c80e8e, type: 3}
+  - {fileID: 8300000, guid: 155ebb7d4e25ed04eb163ad5bf313a86, type: 3}
+  - {fileID: 8300000, guid: d3d489e0ebd8e0e499ddfd1552f12ba5, type: 3}
+  - {fileID: 8300000, guid: d60f5a71a11cf0f4e9a9b3fc3571d66c, type: 3}
+  - {fileID: 8300000, guid: 5f21de954887bb14daa3617ebc17c424, type: 3}
+  - {fileID: 8300000, guid: 5aa330fb38187ba45b236593cd5a5acc, type: 3}
+  - {fileID: 8300000, guid: 513329a5fd1a03b45b4e3e6bd77cf9db, type: 3}
+  - {fileID: 8300000, guid: a122b2c621702ed46975a766a1f581db, type: 3}
+  - {fileID: 8300000, guid: d561849b59e525e43aa6dbe029586f37, type: 3}
+  - {fileID: 8300000, guid: ef278f0024e31d64fb3caa0d26433aca, type: 3}
+  - {fileID: 8300000, guid: ddd77c02038ee824cab35ae33d3c36a2, type: 3}
+  - {fileID: 8300000, guid: 2bd80875c0ab0ea4e960e0a1692f3a6f, type: 3}
