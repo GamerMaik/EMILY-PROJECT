@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace KC
@@ -50,10 +51,16 @@ namespace KC
             if (fogWallGenerationTransform != null)
             {
                 Vector3 positionFogwall = fogWallGenerationTransform.position;
-                Debug.Log($"Fog Wall Position - X: {positionFogwall.x}, Y: {positionFogwall.y}, Z: {positionFogwall.z}");
 
                 // Instanciar tu prefab de pared de niebla en esa posición
-                Instantiate(fogWall, positionFogwall, Quaternion.identity);
+                GameObject fogWallInstance = Instantiate(fogWall, positionFogwall, fogWallGenerationTransform.rotation);
+                // Asegurarse de que el objeto sea registrado en la red
+                NetworkObject networkObject = fogWallInstance.GetComponent<NetworkObject>();
+                if (networkObject != null && NetworkManager.Singleton.IsServer) // Solo el servidor puede hacer Spawn()
+                {
+                    networkObject.Spawn();
+                }
+                // Instanciar el enemigo final
                 Instantiate(finalEnemy, lastRoom.transform.position, Quaternion.identity);
             }
             else
@@ -78,7 +85,7 @@ namespace KC
             do
             {
                 keyRoomIndex = Random.Range(0, rooms.Count - 1);
-            } while (Vector3.Distance(rooms[keyRoomIndex].transform.position, rooms[rooms.Count - 1].transform.position) < 5); // Ajustar la distancia a lo que querramos
+            } while (Vector3.Distance(rooms[keyRoomIndex].transform.position, rooms[rooms.Count - 1].transform.position) < 5);
 
             Instantiate(key, rooms[keyRoomIndex].transform.position, Quaternion.identity);
         }

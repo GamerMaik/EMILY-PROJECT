@@ -3740,5 +3740,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ba339a205c34de4cb4930b359ab2452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterGameObject: {fileID: 3004574767744347735, guid: bc1b4b93995876a4fb0f3aa08b842b3c, type: 3}
+  characterGameObject: {fileID: 6957279348641909608, guid: 86bc6a1d0ace7cd428c9acf36cf1b29f, type: 3}
   instantiateGameObject: {fileID: 0}

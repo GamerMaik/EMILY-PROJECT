@@ -35,7 +35,8 @@ namespace KC
         {
             base.Interact(player);
 
-            Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward);
+            Vector3 forwardDirection = transform.forward; // Dirección "adelante" de la pared
+            Quaternion targetRotation = Quaternion.LookRotation(forwardDirection);
             player.transform.rotation = targetRotation;
 
             AllowPlayerThroughFogWallColliderServerRpc(player.NetworkObjectId);
@@ -103,6 +104,7 @@ namespace KC
             Physics.IgnoreCollision(player.characterController, fogWallCollider, true);
             yield return new  WaitForSeconds(3);
             Physics.IgnoreCollision(player.characterController, fogWallCollider, false);
+            trigguerObject.SetActive(false);
         }
     }
 }

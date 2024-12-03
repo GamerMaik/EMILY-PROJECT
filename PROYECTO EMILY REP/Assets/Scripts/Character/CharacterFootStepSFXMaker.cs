@@ -12,7 +12,7 @@ namespace KC
         private bool hasTouchedGround = false;
         private bool hasPlayedFootStepSFX = false;
 
-        [SerializeField] float distanceToGround = 0.05f;
+        [SerializeField] float distanceToGround = 1f;
 
         private void Awake()
         {
@@ -34,8 +34,15 @@ namespace KC
                 return;
 
             RaycastHit hit;
+            Vector3 rayOrigin = transform.position;
+            Vector3 rayDirection = character.transform.TransformDirection(Vector3.down);
 
-            if(Physics.Raycast(transform.position, character.transform.TransformDirection(Vector3.down),out hit, distanceToGround, WorldUtilityManager.Instance.GetEnviroLayers()))
+            // Dibujar varios rayos para depuración
+            Debug.DrawRay(rayOrigin, Vector3.down * distanceToGround, Color.green); // Global
+            Debug.DrawRay(rayOrigin, rayDirection * distanceToGround, Color.yellow); // Local
+            Debug.DrawRay(rayOrigin, rayDirection * distanceToGround, Color.red);
+            // Asegúrate de que el rayo impacta
+            if (Physics.Raycast(rayOrigin, rayDirection, out hit, distanceToGround, WorldUtilityManager.Instance.GetEnviroLayers()))
             {
                 hasTouchedGround = true;
 
@@ -44,14 +51,14 @@ namespace KC
             }
             else
             {
-                hasTouchedGround= false;
+                hasTouchedGround = false;
                 hasPlayedFootStepSFX = false;
                 steppedOnObject = null;
             }
 
-            if(hasTouchedGround && !hasPlayedFootStepSFX)
+            if (hasTouchedGround && !hasPlayedFootStepSFX)
             {
-                hasPlayedFootStepSFX= true;
+                hasPlayedFootStepSFX = true;
                 PlayFootStepSoundFX();
             }
         }

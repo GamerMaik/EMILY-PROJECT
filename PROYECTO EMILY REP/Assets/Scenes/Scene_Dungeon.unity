@@ -724,11 +724,11 @@ MonoBehaviour:
   - {fileID: 457677880055531643, guid: cffbde60c95984d49a8d793a3910a961, type: 3}
   closedRoom: {fileID: 408551261939023328, guid: 0cff53b9f27984449974994e466b935e, type: 3}
   rooms: []
-  finalEnemy: {fileID: 6957279348641909608, guid: 86bc6a1d0ace7cd428c9acf36cf1b29f, type: 3}
+  finalEnemy: {fileID: 9167775071992488525, guid: 84f92232db24a1a48be8ea2a7a8ef160, type: 3}
   simpleEnemy: {fileID: 8473457815301147489, guid: 5dd3f798454c40145bde4807c01b7463, type: 3}
   treasure: {fileID: 8473457815301147489, guid: 5dd3f798454c40145bde4807c01b7463, type: 3}
   key: {fileID: 8473457815301147489, guid: 5dd3f798454c40145bde4807c01b7463, type: 3}
-  fogWall: {fileID: 8473457815301147489, guid: 5dd3f798454c40145bde4807c01b7463, type: 3}
+  fogWall: {fileID: 9174565100400879181, guid: de2830d175eafea4ab768bb88d154cef, type: 3}
 --- !u!4 &2109701575
 Transform:
   m_ObjectHideFlags: 0
