@@ -91,9 +91,7 @@ namespace KC
             bool isCorrect = ShowRandomQuestionsManager.instance.CheckAnswer(answerIndex);
             Debug.Log(isCorrect ? "Respuesta Correcta" : "Respuesta Incorrecta");
 
-            // Puedes agregar más acciones aquí, como cerrar el panel o mostrar feedback visual.
-
-
+            // Cerrar el panel de preguntas
             CloseQuestionPanel();
         }
     }

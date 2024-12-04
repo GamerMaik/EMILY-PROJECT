@@ -33286,7 +33286,7 @@ Transform:
   m_GameObject: {fileID: 8827614731278085018}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710707, z: -0, w: 0.70710653}
-  m_LocalPosition: {x: -9.5, y: 0, z: 0}
+  m_LocalPosition: {x: -9.25, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39232,6 +39232,8 @@ MonoBehaviour:
   speed: 100
   angleClosed: -90
   angleOpened: -180
+  questionChancePercentage: 50
+  incorrectAnswerDamageEffect: {fileID: 11400000, guid: a815611d90d61064697b7992bd75ada3, type: 2}
 --- !u!4 &728158152683222961 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 481196, guid: 30cbf2b140e7ff04cac9897c5ab79430, type: 3}
@@ -39931,6 +39933,8 @@ MonoBehaviour:
   speed: 100
   angleClosed: 90
   angleOpened: 0
+  questionChancePercentage: 50
+  incorrectAnswerDamageEffect: {fileID: 11400000, guid: a815611d90d61064697b7992bd75ada3, type: 2}
 --- !u!4 &1709147954174240972 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 481196, guid: 30cbf2b140e7ff04cac9897c5ab79430, type: 3}

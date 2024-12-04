@@ -3,17 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class CursorManager : MonoBehaviour
 {
-    [SerializeField] bool activeCursor = false;
-
-    private void Update()
+    public static CursorManager instance;
+    private void Awake()
     {
-        if (activeCursor)
+        if (instance == null)
         {
-            ShowCursor();
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            HideCursor();
+            Destroy(gameObject);
         }
     }
     public void ShowCursor()

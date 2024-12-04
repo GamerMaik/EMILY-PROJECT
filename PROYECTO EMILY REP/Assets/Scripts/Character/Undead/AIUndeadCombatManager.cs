@@ -20,6 +20,8 @@ namespace KC
         [Range(0, 100)]
         [SerializeField] private int questionChancePercentage = 20; // Probabilidad de mostrar pregunta (0 a 100)
 
+        [Range(0,100)]
+        [SerializeField] private int slowMotionChancePercentage = 20;
         public void SettAttack01Damage()
         {
             rightHandDamageCollider.physicalDamage = baseDamage * attack01DamageModifier;
@@ -73,12 +75,31 @@ namespace KC
             int randomValue = Random.Range(0, 100); // Generar un número aleatorio entre 0 y 99
             if (randomValue < questionChancePercentage)
             {
-                Debug.Log("Mostrando pregunta aleatoria.");
-                ShowRandomQuestionsManager.instance.LoadRandomQuestion();
+                ShowRandomQuestionsManager.instance.LoadRandomQuestion(OnAnswerReceived);
+            }
+        }
+        private void OnAnswerReceived(bool isCorrect)
+        {
+            if (isCorrect)
+            {
+                Debug.Log("Respuesta correcta");
+                CameraSlowMotionManager.instance.DeactivateSlowMotion();
+                CursorManager.instance.HideCursor();
             }
             else
             {
-                Debug.Log("No se muestra pregunta esta vez.");
+                Debug.Log("Respuesta incorrecta, aplicando daño al personaje.");
+                int randomValue = Random.Range(0, 100);
+                if (randomValue < slowMotionChancePercentage)
+                {
+                    CameraSlowMotionManager.instance.ActiveSlowMotionForTime(0.3f,3);
+                    CursorManager.instance.HideCursor();
+                }
+                else
+                {
+                    CameraSlowMotionManager.instance.DeactivateSlowMotion();
+                    CursorManager.instance.HideCursor();
+                }
             }
         }
     }

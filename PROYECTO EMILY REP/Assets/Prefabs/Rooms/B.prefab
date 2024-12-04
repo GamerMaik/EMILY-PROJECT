@@ -2114,6 +2114,8 @@ MonoBehaviour:
   speed: 100
   angleClosed: -180
   angleOpened: -90
+  questionChancePercentage: 50
+  incorrectAnswerDamageEffect: {fileID: 11400000, guid: a815611d90d61064697b7992bd75ada3, type: 2}
 --- !u!1 &1302088498555795741
 GameObject:
   m_ObjectHideFlags: 0

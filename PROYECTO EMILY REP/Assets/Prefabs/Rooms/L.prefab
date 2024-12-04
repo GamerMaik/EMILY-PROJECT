@@ -46944,6 +46944,8 @@ MonoBehaviour:
   speed: 100
   angleClosed: 90
   angleOpened: 180
+  questionChancePercentage: 50
+  incorrectAnswerDamageEffect: {fileID: 11400000, guid: a815611d90d61064697b7992bd75ada3, type: 2}
 --- !u!1001 &6355477789500126659
 PrefabInstance:
   m_ObjectHideFlags: 0

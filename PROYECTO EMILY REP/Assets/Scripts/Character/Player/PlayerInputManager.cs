@@ -1,6 +1,8 @@
 using System;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.TextCore.Text;
 
 namespace KC
 {
@@ -70,6 +72,7 @@ namespace KC
 
         [Header("Debug")]
         [SerializeField] bool openQuestionPanelManager = false;
+        [SerializeField] private TakeDamageQuestionIncorrectEffect incorrectAnswerDamageEffect;
         #endregion
 
         private void Awake()
@@ -636,10 +639,26 @@ namespace KC
                 openQuestionPanelManager = false;
                 PlayerUIManager.instance.playerUIPopUpManager.closeAllPopUpWindows();
                 PlayerUIManager.instance.CloseAllMenuWindows();
-                ShowRandomQuestionsManager.instance.LoadRandomQuestion();
+                ShowRandomQuestionsManager.instance.LoadRandomQuestion(OnAnswerReceived);
             }
         }
 
+        private void OnAnswerReceived(bool isCorrect)
+        {
+            if (isCorrect)
+            {
+                Debug.Log("Respuesta correcta");
+                CameraSlowMotionManager.instance.DeactivateSlowMotion();
+                CursorManager.instance.HideCursor();
+            }
+            else
+            {
+                Debug.Log("Respuesta incorrecta, aplicando daño al personaje.");
+                CameraSlowMotionManager.instance.DeactivateSlowMotion();
+                CursorManager.instance.HideCursor();
+                ApplyDamageToPlayer();
+            }
+        }
         private void HandleCloseUIInput()
         {
             if (closeMenuInput)
@@ -649,6 +668,27 @@ namespace KC
                 {
                     PlayerUIManager.instance.CloseAllMenuWindows();
                 }
+            }
+        }
+
+        private void ApplyDamageToPlayer()
+        {
+            PlayerManager player = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerManager>();
+            if (player != null && incorrectAnswerDamageEffect != null)
+            {
+                // Configurar el daño si es necesario
+                incorrectAnswerDamageEffect.healthDamage = 10; // Puedes ajustar el daño dinámicamente
+
+                // Procesar el efecto en el jugador
+                player.characterEffectsManager.ProccessInstantEffect(incorrectAnswerDamageEffect);
+                player.characterEffectsManager.PlayBloodSplatterVFX(player.transform.position);
+                AudioClip physicalDamageSFX = WorldSoundFXManager.instance.ChooseRandomSFXFromArray(WorldSoundFXManager.instance.physicalDamageSFX);
+                player.characterSoundFXManager.PlaySoundFX(physicalDamageSFX);
+                player.characterSoundFXManager.PlayDamageGrunt();
+            }
+            else
+            {
+                Debug.LogWarning("Efecto o jugador no asignado correctamente.");
             }
         }
     }

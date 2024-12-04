@@ -1,12 +1,13 @@
+using System.Collections;
 using UnityEngine;
 
 namespace KC
 {
     public class CameraSlowMotionManager : MonoBehaviour
     {
-        public CameraSlowMotionManager instance;
-        [Header("Controls")]
-        [SerializeField] float timeScaleAmmount = 0.3f;
+        public static CameraSlowMotionManager instance;
+        //[Header("Controls")]
+        //[SerializeField] float timeScaleAmmount = 0f;
         [Header("Debug")]
         public bool isSlowMotionActive = false;
 
@@ -16,6 +17,7 @@ namespace KC
             if (instance == null)
             {
                 instance = this;
+                DontDestroyOnLoad(gameObject);
             }
             else
             {
@@ -23,27 +25,29 @@ namespace KC
             }
         }
 
-        private void Update()
-        {
-            if (isSlowMotionActive)
-            {
-                ActivateSlowMotion();
-            }
-            else
-            {
-                DeactivateSlowMotion();
-            }
-        }
 
-        public void ActivateSlowMotion()
+        public void ActivateSlowMotion(int timeScale)
         {
             isSlowMotionActive = true;
-            Time.timeScale = timeScaleAmmount;
+            Time.timeScale = timeScale;
         }
         public void DeactivateSlowMotion()
         {
             isSlowMotionActive = false;
             Time.timeScale = 1f; // Restaura el tiempo normal
+        }
+
+        public void ActiveSlowMotionForTime(float timeScale, int seconds)
+        {
+            isSlowMotionActive = true;
+            Time.timeScale = timeScale;
+            StartCoroutine(TimeSlowActive(seconds));
+        }
+        private IEnumerator TimeSlowActive(int seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+            isSlowMotionActive = false;
+            Time.timeScale = 1f;
         }
     }
 }

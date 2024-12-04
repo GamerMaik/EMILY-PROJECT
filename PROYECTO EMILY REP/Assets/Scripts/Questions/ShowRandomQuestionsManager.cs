@@ -12,7 +12,7 @@ namespace KC
 
         [Header("Questions List")]
         [SerializeField] private List<Question> questions = new List<Question>();
-        public event Action<bool> OnQuestionAnswered;
+        public event Action<bool> OnQuestionAnswered; // Evento para registrar callbacks de respuestas
         private Question currentQuestion;
 
         private void Awake()
@@ -26,31 +26,27 @@ namespace KC
                 Destroy(gameObject);
             }
         }
+
         private void Start()
         {
             DontDestroyOnLoad(gameObject);
         }
-        // Método para cargar una pregunta aleatoria
-        public void LoadRandomQuestion()
+
+        // Mostrar una pregunta aleatoria
+        public void LoadRandomQuestion(Action<bool> onAnswerCallback)
         {
-            PlayerManager player = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerManager>();
-            if (player == null)
-                return;
-
-            if (player.isDead.Value)
-                return;
-
             if (questions.Count == 0)
             {
-                Debug.LogWarning("No hay preguntas disponibles en la lista");
+                Debug.LogWarning("No hay preguntas disponibles en la lista.");
+                onAnswerCallback?.Invoke(false); // Respuesta incorrecta por defecto
                 return;
             }
 
-            // Seleccionar una pregunta aleatoria de la lista
+            // Seleccionar una pregunta aleatoria
             int randomIndex = Random.Range(0, questions.Count);
             currentQuestion = questions[randomIndex];
 
-            // Preparar los textos de las respuestas
+            // Configurar el panel de la pregunta
             string questionText = currentQuestion.questionText;
             string answerText01 = currentQuestion.answerOptions[0].answerText;
             string answerText02 = currentQuestion.answerOptions[1].answerText;
@@ -58,7 +54,33 @@ namespace KC
             string answerText04 = currentQuestion.answerOptions[3].answerText;
             float timeLimit = currentQuestion.timeLimit;
 
-            PlayerUIManager.instance.playerUIQuestionPanelManager.OpenQuestionPanel(questionText, answerText01, answerText02, answerText03, answerText04, timeLimit);
+            if (!PlayerUIManager.instance.menuWindowIsOpen)
+            {
+                CursorManager.instance.ShowCursor();
+                CameraSlowMotionManager.instance.ActivateSlowMotion(0);
+
+                PlayerUIManager.instance.playerUIQuestionPanelManager.OpenQuestionPanel(questionText, answerText01, answerText02, answerText03, answerText04, timeLimit);
+                // Suscribirse al evento de respuesta
+                OnQuestionAnswered = onAnswerCallback;
+            }
+            else
+            {
+                Debug.Log("PRIMERO RESPONDER LA PRIEMRA PREGUNTA");
+            }
+        }
+
+        // Comprobar respuesta
+        public bool CheckAnswer(int answerIndex)
+        {
+            bool isCorrect = currentQuestion.answerOptions[answerIndex].isCorrect;
+
+            // Llamar al callback con el resultado
+            OnQuestionAnswered?.Invoke(isCorrect);
+
+            // Reiniciar el evento para evitar llamadas no deseadas
+            OnQuestionAnswered = null;
+
+            return isCorrect;
         }
         public void LoadQuestionsFromPlayFabData(PlayFabQuestionData questionData)
         {
@@ -74,14 +96,6 @@ namespace KC
                 questions.Add(newQuestion);
             }
 
-            Debug.Log($"{questions.Count} preguntas cargadas en WorldQuestionManager.");
-        }
-        // Método para verificar si la respuesta seleccionada es correcta
-        public bool CheckAnswer(int answerIndex)
-        {
-            bool isCorrect = currentQuestion.answerOptions[answerIndex].isCorrect;
-            OnQuestionAnswered?.Invoke(isCorrect);
-            return isCorrect;
         }
     }
 }

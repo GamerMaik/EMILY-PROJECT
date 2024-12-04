@@ -76,5 +76,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66cf81246c7ab8742b082114641f27d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeScaleAmmount: 0.3
+  timeScaleAmmount: 0
   isSlowMotionActive: 0

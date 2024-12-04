@@ -206,6 +206,7 @@ namespace KC
             if (IsOwner)
             {
                 PlayerUIManager.instance.playerUIPopUpManager.SendYouDiedPopUp();
+                //mmc_agregar pantalla de carga y teleportar al jugador
             }
 
             //En un futuro verificaremos todos los jugadores que estén vivos y si hay 0 respawnaer a todos los jugadore
