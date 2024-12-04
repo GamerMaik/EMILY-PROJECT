@@ -54,19 +54,14 @@ namespace KC
             string answerText04 = currentQuestion.answerOptions[3].answerText;
             float timeLimit = currentQuestion.timeLimit;
 
-            if (!PlayerUIManager.instance.menuWindowIsOpen)
-            {
-                CursorManager.instance.ShowCursor();
-                CameraSlowMotionManager.instance.ActivateSlowMotion(0);
-
-                PlayerUIManager.instance.playerUIQuestionPanelManager.OpenQuestionPanel(questionText, answerText01, answerText02, answerText03, answerText04, timeLimit);
-                // Suscribirse al evento de respuesta
-                OnQuestionAnswered = onAnswerCallback;
-            }
-            else
-            {
-                Debug.Log("PRIMERO RESPONDER LA PRIEMRA PREGUNTA");
-            }
+            
+            CursorManager.instance.ShowCursor();
+            CameraSlowMotionManager.instance.ActivateSlowMotion(0);
+            WorldLevelManager.instance.AddCountTotalQuestions();
+            PlayerUIManager.instance.playerUIQuestionPanelManager.OpenQuestionPanel(questionText, answerText01, answerText02, answerText03, answerText04, timeLimit);
+            // Suscribirse al evento de respuesta
+            OnQuestionAnswered = onAnswerCallback;
+            
         }
 
         // Comprobar respuesta

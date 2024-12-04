@@ -13,13 +13,17 @@ namespace KC
             base.Awake();
 
             aiCharacter =  GetComponent<AICharacterManager>();
+
+            //aiCharacter.characterNetworkManager.currentHealth.Value = 200;
+            //aiCharacter.characterNetworkManager.maxHealth.Value = 200;
         }
         public override void OnIsDeadChange(bool oldStatus, bool newStatus)
         {
             base.OnIsDeadChange(oldStatus, newStatus);
 
             aiCharacter.aICharacterInventoryManager.DropItem();
-
+            WorldLevelManager.instance.AddNumberOfDead();
+            WorldLevelManager.instance.SubstractEnemiesInRoom();
             StartCoroutine(ActivateSpawners());
         }
 

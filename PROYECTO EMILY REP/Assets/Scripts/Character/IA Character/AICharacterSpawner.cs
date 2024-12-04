@@ -9,7 +9,6 @@ namespace KC
         [Header("Character")]
         [SerializeField] GameObject characterGameObject;
         [SerializeField] GameObject instantiateGameObject;
-
         private void Awake()
         {
              
@@ -26,10 +25,13 @@ namespace KC
             if (characterGameObject != null)
             {
                 instantiateGameObject = Instantiate(characterGameObject, transform.position, Quaternion.identity);
+                AICharacterManager character = instantiateGameObject.GetComponent<AICharacterManager>();
+                character.aiCharacterNetworkManager.currentHealth.Value = 150;
+                character.aiCharacterNetworkManager.maxHealth.Value = 150;
                 instantiateGameObject.transform.position = transform.position;
                 instantiateGameObject.transform.rotation = transform.rotation;
                 instantiateGameObject.GetComponent<NetworkObject>().Spawn();
-                WorldAIManager.instance.AddCharacterToSpawnedCharacterList(instantiateGameObject.GetComponent<AICharacterManager>());
+                WorldAIManager.instance.AddCharacterToSpawnedCharacterList(character);
             }
         }
     }

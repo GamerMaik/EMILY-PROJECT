@@ -26,6 +26,7 @@ namespace KC
         public void OpenQuestionPanel(string question, string answerR01, string answerR02, string answerR03, string answerR04, float timeLimit)
         {
             PlayerUIManager.instance.menuWindowIsOpen = true;
+            PlayerUIManager.instance.popUpWindowIsOpen = true;
             questionText.text = question;
             answer01.text = answerR01;
             answer02.text = answerR02;
@@ -41,7 +42,7 @@ namespace KC
             if (timerCoroutine != null)
                 StopCoroutine(timerCoroutine);
 
-            timerCoroutine = StartCoroutine(TimerCountdown());
+            timerCoroutine = StartCoroutine(TimerCountdown());                    
         }
 
         // Corrutina para controlar el temporizador
@@ -63,6 +64,7 @@ namespace KC
 
         public void CloseQuestionPanel()
         {
+            PlayerUIManager.instance.popUpWindowIsOpen = false;
             PlayerUIManager.instance.menuWindowIsOpen = false;
             panelQuestions.SetActive(false);
 
@@ -89,7 +91,7 @@ namespace KC
         public void CheckAnswerQuestion(int answerIndex)
         {
             bool isCorrect = ShowRandomQuestionsManager.instance.CheckAnswer(answerIndex);
-            Debug.Log(isCorrect ? "Respuesta Correcta" : "Respuesta Incorrecta");
+            //Debug.Log(isCorrect ? "Respuesta Correcta" : "Respuesta Incorrecta");
 
             // Cerrar el panel de preguntas
             CloseQuestionPanel();

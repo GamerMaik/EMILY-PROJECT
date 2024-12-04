@@ -8,6 +8,7 @@ namespace KC
         [Header("Level Configuration")]
         [SerializeField] GameObject WorldQuestionManager;
         [SerializeField] LevelType levelType;
+        [SerializeField] Levels levels;
 
         protected override void Start()
         {
@@ -19,6 +20,7 @@ namespace KC
         {
             base.Interact(player);
             LoadQuestionLevel(levelType, player);
+            WorldLevelManager.instance.ChangeCurrentLevel(levels);
         }
 
         public void LoadQuestionLevel(LevelType typeLoadLevel, PlayerManager player)

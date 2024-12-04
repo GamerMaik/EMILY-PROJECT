@@ -64,11 +64,11 @@ namespace KC {
             if (characterCausingDamage != null)
             {
                 // Verificar si hay modificadores de daño en ese personaje
-                Debug.Log("Hay modificadores");
+                //Debug.Log("Hay modificadores");
             }
 
             // Verificar si el personaje tienen una reduccion de vida fija
-            Debug.Log("Daño Original: " + physicalDamage);
+            //Debug.Log("Daño Original: " + physicalDamage);
 
             // Aplicar la absorción de daño como reducción proporcional
             physicalDamage *= (1 - character.characterStatManager.armorPhysicalDamageAbsroption / 100f);
@@ -85,7 +85,7 @@ namespace KC {
             {
                 finalDamageDealt = 1;
             }
-            Debug.Log("Daño final: " + finalDamageDealt);
+            //Debug.Log("Daño final: " + finalDamageDealt);
             // Aplicar el daño a la salud del personaje
             character.characterNetworkManager.currentHealth.Value -= finalDamageDealt;
 

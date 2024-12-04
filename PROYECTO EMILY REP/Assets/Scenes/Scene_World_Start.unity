@@ -3137,6 +3137,7 @@ MonoBehaviour:
   hostOnlyInteractable: 1
   WorldQuestionManager: {fileID: 1632785653}
   levelType: 5
+  levels: 5
 --- !u!1001 &561463006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4380,6 +4381,7 @@ MonoBehaviour:
   hostOnlyInteractable: 1
   WorldQuestionManager: {fileID: 1632785653}
   levelType: 0
+  levels: 0
 --- !u!1 &956718207
 GameObject:
   m_ObjectHideFlags: 0
@@ -5102,6 +5104,7 @@ MonoBehaviour:
   hostOnlyInteractable: 1
   WorldQuestionManager: {fileID: 1632785653}
   levelType: 2
+  levels: 2
 --- !u!4 &976751051
 Transform:
   m_ObjectHideFlags: 0
@@ -6296,6 +6299,7 @@ MonoBehaviour:
   hostOnlyInteractable: 1
   WorldQuestionManager: {fileID: 1632785653}
   levelType: 1
+  levels: 1
 --- !u!33 &1174524950
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10006,6 +10010,63 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.2452621, y: 7.201577, z: 2.1881294}
   m_Center: {x: 0, y: 3.6007886, z: 0}
+--- !u!1001 &1706444407
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 725452859006894550, guid: 001c338fae12ec44d8d3c4a3e5277789, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 725452859006894550, guid: 001c338fae12ec44d8d3c4a3e5277789, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 725452859006894550, guid: 001c338fae12ec44d8d3c4a3e5277789, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 725452859006894550, guid: 001c338fae12ec44d8d3c4a3e5277789, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 725452859006894550, guid: 001c338fae12ec44d8d3c4a3e5277789, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 725452859006894550, guid: 001c338fae12ec44d8d3c4a3e5277789, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 725452859006894550, guid: 001c338fae12ec44d8d3c4a3e5277789, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 725452859006894550, guid: 001c338fae12ec44d8d3c4a3e5277789, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 725452859006894550, guid: 001c338fae12ec44d8d3c4a3e5277789, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 725452859006894550, guid: 001c338fae12ec44d8d3c4a3e5277789, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4680243258230230616, guid: 001c338fae12ec44d8d3c4a3e5277789, type: 3}
+      propertyPath: m_Name
+      value: World Level Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 001c338fae12ec44d8d3c4a3e5277789, type: 3}
 --- !u!33 &1707258954
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10340,6 +10401,7 @@ MonoBehaviour:
   hostOnlyInteractable: 1
   WorldQuestionManager: {fileID: 1632785653}
   levelType: 3
+  levels: 3
 --- !u!1 &1742466132
 GameObject:
   m_ObjectHideFlags: 0
@@ -11048,6 +11110,7 @@ MonoBehaviour:
   hostOnlyInteractable: 1
   WorldQuestionManager: {fileID: 1632785653}
   levelType: 4
+  levels: 4
 --- !u!1 &1915414682
 GameObject:
   m_ObjectHideFlags: 0
@@ -18460,6 +18523,7 @@ SceneRoots:
   - {fileID: 1623242718}
   - {fileID: 674073180}
   - {fileID: 1590867151}
+  - {fileID: 1706444407}
   - {fileID: 716166136}
   - {fileID: 368682363}
   - {fileID: 1710668192}

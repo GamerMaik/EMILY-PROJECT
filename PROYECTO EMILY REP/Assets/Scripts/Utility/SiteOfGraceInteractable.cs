@@ -27,7 +27,7 @@ namespace KC
         protected override void Start()
         {
             base.Start();
-
+            CursorManager.instance.HideCursor();
             if (IsOwner)
             {
                 if (WorldSaveGameManager.instance.currentCharacterData.sitesOfGrace.ContainsKey(siteOfGraceID))

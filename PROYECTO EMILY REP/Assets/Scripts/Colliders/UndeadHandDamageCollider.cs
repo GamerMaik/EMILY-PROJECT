@@ -54,7 +54,7 @@ namespace KC
                     damageEffect.contactPoint.z);
             }
 
-            Debug.Log("TE METIO DAÑO DE: " + physicalDamage);
+            //Debug.Log("TE METIO DAÑO DE: " + physicalDamage);
 
         }
 

@@ -9,6 +9,7 @@ TagManager:
   - Rooms
   - ClosedRoom
   - Boss
+  - Enemy
   layers:
   - Default
   - TransparentFX

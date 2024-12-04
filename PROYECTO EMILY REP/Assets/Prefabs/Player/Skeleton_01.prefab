@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6233077368880172427}
   m_Layer: 6
   m_Name: Spine_01
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1403,7 +1403,7 @@ GameObject:
   - component: {fileID: 5625152027074201289}
   m_Layer: 6
   m_Name: Skeleton_01
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1461,7 +1461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1735307463
+  GlobalObjectIdHash: 4217092930
   InScenePlacedSourceGlobalObjectIdHash: 1735307463
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -1628,6 +1628,7 @@ MonoBehaviour:
   attack02DamageModifier: 2
   attack03DamageModifier: 1.5
   questionChancePercentage: 10
+  slowMotionChancePercentage: 20
 --- !u!114 &283346895470541391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2760,7 +2761,7 @@ GameObject:
   - component: {fileID: 8987100822442900405}
   m_Layer: 8
   m_Name: Spine_03
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

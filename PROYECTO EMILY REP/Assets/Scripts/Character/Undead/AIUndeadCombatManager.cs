@@ -83,12 +83,14 @@ namespace KC
             if (isCorrect)
             {
                 Debug.Log("Respuesta correcta");
+                WorldLevelManager.instance.AddCountQuestionsAnswers(true);
                 CameraSlowMotionManager.instance.DeactivateSlowMotion();
                 CursorManager.instance.HideCursor();
             }
             else
             {
                 Debug.Log("Respuesta incorrecta, aplicando daño al personaje.");
+                WorldLevelManager.instance.AddCountQuestionsAnswers(false);
                 int randomValue = Random.Range(0, 100);
                 if (randomValue < slowMotionChancePercentage)
                 {

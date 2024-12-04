@@ -9,12 +9,15 @@ public class CursorManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
     }
     public void ShowCursor()
     {

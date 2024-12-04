@@ -157,9 +157,6 @@ namespace KC
                 WorldSaveGameManager.instance.SaveGame();
             }
 
-
-
-
             //Si se quiere se reproduce un EFECTO DE SONIDO
 
             yield return new WaitForSeconds(5);

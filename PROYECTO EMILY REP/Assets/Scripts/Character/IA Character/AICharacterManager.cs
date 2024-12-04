@@ -40,7 +40,7 @@ namespace KC
 
             //mmc
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();
-            Debug.Log(navMeshAgent != null ? "NavMeshAgent asignado correctamente" : "NavMeshAgent es null");
+            //Debug.Log(navMeshAgent != null ? "NavMeshAgent asignado correctamente" : "NavMeshAgent es null");
 
             //Se usa una copia del scriptable object, para que el original no se modifique
 

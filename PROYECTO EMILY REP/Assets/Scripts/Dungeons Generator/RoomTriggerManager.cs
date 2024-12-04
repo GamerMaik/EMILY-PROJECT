@@ -29,7 +29,7 @@ namespace KC
 
                 // Actualizar el estado del navMesh actual
                 UpdateNavMeshState();
-                Debug.Log("NavMesh está: " + isActiveNavMesh);
+                //Debug.Log("NavMesh está: " + isActiveNavMesh);
             }
         }
 

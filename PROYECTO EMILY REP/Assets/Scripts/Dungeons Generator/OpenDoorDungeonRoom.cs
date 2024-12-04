@@ -44,6 +44,7 @@ namespace KC
             if (isCorrect)
             {
                 Debug.Log("Respuesta correcta, abriendo la puerta.");
+                WorldLevelManager.instance.AddCountQuestionsAnswers(true);
                 CameraSlowMotionManager.instance.DeactivateSlowMotion();
                 CursorManager.instance.HideCursor();
                 ToggleDoor();
@@ -51,6 +52,7 @@ namespace KC
             else
             {
                 Debug.Log("Respuesta incorrecta, aplicando daño al personaje.");
+                WorldLevelManager.instance.AddCountQuestionsAnswers(false);
                 CameraSlowMotionManager.instance.DeactivateSlowMotion();
                 CursorManager.instance.HideCursor();
                 interactableCollider.enabled = true;
