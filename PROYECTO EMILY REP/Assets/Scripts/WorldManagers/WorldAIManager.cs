@@ -24,6 +24,7 @@ namespace KC
             if (instance == null)
             {
                 instance = this;
+                DontDestroyOnLoad(gameObject);
             }
             else
             {
@@ -72,7 +73,7 @@ namespace KC
             }
         }
 
-        private void DespawnAllCharacters()
+        public void DespawnAllCharacters()
         {
             foreach (var character in spawnedInCharacters)
             {

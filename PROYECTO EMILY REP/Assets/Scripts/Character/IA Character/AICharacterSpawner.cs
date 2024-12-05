@@ -26,8 +26,6 @@ namespace KC
             {
                 instantiateGameObject = Instantiate(characterGameObject, transform.position, Quaternion.identity);
                 AICharacterManager character = instantiateGameObject.GetComponent<AICharacterManager>();
-                character.aiCharacterNetworkManager.currentHealth.Value = 150;
-                character.aiCharacterNetworkManager.maxHealth.Value = 150;
                 instantiateGameObject.transform.position = transform.position;
                 instantiateGameObject.transform.rotation = transform.rotation;
                 instantiateGameObject.GetComponent<NetworkObject>().Spawn();

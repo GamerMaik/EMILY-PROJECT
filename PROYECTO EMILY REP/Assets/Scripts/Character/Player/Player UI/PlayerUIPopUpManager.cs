@@ -53,6 +53,12 @@ namespace KC
         [SerializeField] TextMeshProUGUI dialogTextPopUp;
         [SerializeField] GameObject dialogPopUp;
 
+        [Header("Screen Load")]
+        [SerializeField] GameObject screenLoad;
+        [SerializeField] TextMeshProUGUI adviceText;
+        [SerializeField] Slider sliderScreenLoad;
+        [SerializeField] CanvasGroup screenLoadCanvasGroup;
+ 
         public void closeAllPopUpWindows()
         {
             popUpMessageGameObject.SetActive(false);
@@ -101,6 +107,18 @@ namespace KC
             StartCoroutine(StrechPopUpTextOverTime(youDiedPopUpBackgroundText,8 , 16f));
             StartCoroutine(FadeInPopUpTextOverTime(youDiedCanvasGroup, 5));
             StartCoroutine(WaithThenFadeOutPopUpOverTime(youDiedCanvasGroup, 2 , 5));
+        }
+
+        public void ShowScreenLoad(string adviceRandom)
+        {
+            adviceText.text = adviceRandom; // Configura el texto de consejo en la pantalla de carga.
+            screenLoad.SetActive(true);    // Muestra la pantalla de carga.
+
+            // Inicia las corrutinas de FadeIn y progreso del slider.
+            StartCoroutine(FadeInPopUpTextOverTime(screenLoadCanvasGroup, 0)); // Ajusta la duración si es necesario.
+            StartCoroutine(ProgressSlider(10)); // Controla el progreso del slider durante 10 segundos.
+            // Espera y luego oculta la pantalla de carga.
+            StartCoroutine(WaithThenFadeOutPopUpOverTime(screenLoadCanvasGroup, 1, 10)); // Mantén la pantalla durante 10 segundos.
 
         }
 
@@ -212,6 +230,21 @@ namespace KC
             }
             canvas.alpha = 0;
             yield return null;
+        }
+
+        private IEnumerator ProgressSlider(float duration)
+        {
+            sliderScreenLoad.value = 0; // Inicializa el slider en 0.
+            float elapsedTime = 0;
+
+            while (elapsedTime < duration)
+            {
+                elapsedTime += Time.deltaTime;
+                sliderScreenLoad.value = Mathf.Clamp01(elapsedTime / duration); // Calcula el progreso.
+                yield return null; // Espera al siguiente frame.
+            }
+
+            sliderScreenLoad.value = 1; // Asegúrate de que el slider esté al 100% al finalizar.
         }
     }
 }

@@ -13,6 +13,9 @@ namespace KC
         [SerializeField] GameObject titleScreenMainMenu;
         [SerializeField] GameObject titleScreenLoadMenu;
 
+        [Header("Player UI Manager")]
+        [SerializeField] Canvas titleScreenCanvas;
+
         [Header("Pop Ups")]
         [SerializeField] GameObject alertPopUpOk;
         [SerializeField] GameObject deleteCharacterSlotPopUp;
@@ -166,6 +169,11 @@ namespace KC
             titleAlertPopUp.text = "";
             textAlertPopUp.text = "";
             PopUpMessageAlert.SetActive(false);
+        }
+
+        public void EnableCanvasPlayerUI()
+        {
+            titleScreenCanvas.enabled = true;
         }
     }
 }

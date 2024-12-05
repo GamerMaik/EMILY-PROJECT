@@ -1,5 +1,6 @@
 using KC;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 namespace KC
 {

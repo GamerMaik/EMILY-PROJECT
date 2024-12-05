@@ -18,13 +18,11 @@ namespace KC
             Transform playerTransform = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<Transform>();
             base.Interact(player);
 
-            //GenerateNavMesh.instance.GenerateNavmesh();
-            // Llamar al Spawn después de un breve retraso
-            //StartCoroutine(SpawnObjectsWithDelay());
-
-            //Teletransporta al jugador a una nueva posición(ejemplo: X = 10, Y = 1, Z = 5)
+            string randomAdvice = AdviceManager.instance.SelectRandomListAdvice();
+            // Muestra la pantalla de carga con el consejo seleccionado.
             string worldScene = SceneUtility.GetScenePathByBuildIndex(2);
             NetworkManager.Singleton.SceneManager.LoadScene(worldScene, LoadSceneMode.Single);
+            PlayerUIManager.instance.playerUIPopUpManager.ShowScreenLoad(randomAdvice);
             Vector3 newLocation = new Vector3(0f, 0f, 0f);
             playerTransform.position = newLocation;
 

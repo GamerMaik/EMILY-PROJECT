@@ -208,10 +208,10 @@ namespace KC
                 PlayerUIManager.instance.playerUIPopUpManager.SendYouDiedPopUp();
                 //mmc_agregar pantalla de carga y teleportar al jugador
             }
-
+            StartCoroutine(ResetGame());
             //En un futuro verificaremos todos los jugadores que estén vivos y si hay 0 respawnaer a todos los jugadore
-
             return base.ProcessDeathEvent(manuallySelectDeathAnimation);
+
         }
 
         public override void ReviveCharacter()
@@ -221,6 +221,7 @@ namespace KC
             if (IsOwner) 
             {
                 isDead.Value = false;
+                isPerformingAction = false;
                 playerNetworkManager.currentHealth.Value = playerNetworkManager.maxHealth.Value;
                 playerNetworkManager.currentStamina.Value = playerNetworkManager.maxStamina.Value;
 
@@ -393,17 +394,19 @@ namespace KC
             }
         }
 
-        private string EncriptName(string name)
+        public IEnumerator ResetGame()
         {
-            using var sha256 = SHA256.Create();
-            byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(name));
-            
-            var sb = new StringBuilder();
-            for (int i = 0; i < bytes.Length; i++)
-            {
-                sb.Append(bytes[i].ToString("x2"));
-            }
-            return sb.ToString();
+            // Selecciona un consejo aleatorio.
+            string randomAdvice = AdviceManager.instance.SelectRandomListAdvice();
+            yield return new WaitForSeconds(5);
+            // Muestra la pantalla de carga con el consejo seleccionado.
+            PlayerUIManager.instance.playerUIPopUpManager.ShowScreenLoad(randomAdvice);
+            string worldScene = SceneUtility.GetScenePathByBuildIndex(1);
+            WorldAIManager.instance.DespawnAllCharacters();
+            NetworkManager.Singleton.SceneManager.LoadScene(worldScene, LoadSceneMode.Single);
+            Vector3 newLocation = new Vector3(0f, 0.1f, 0f);
+            transform.position = newLocation;
+            ReviveCharacter();
         }
     }
 }

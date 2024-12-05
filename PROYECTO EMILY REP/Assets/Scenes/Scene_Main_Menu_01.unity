@@ -704,6 +704,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308638680}
   m_CullTransparentMesh: 1
+--- !u!223 &325283959 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 7214532573832968492, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
+  m_PrefabInstance: {fileID: 1804873269}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &343438323
 GameObject:
   m_ObjectHideFlags: 0
@@ -2803,6 +2808,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1995501374}
+        m_TargetAssemblyTypeName: KC.TitleScreenManager, Assembly-CSharp
+        m_MethodName: EnableCanvasPlayerUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &578294215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3747,6 +3764,50 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640611763}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1995501374}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadGameFromCharactersSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnableCanvasPlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KC.UI_Character_Save_Slot, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KC.TitleScreenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5850545231546029203, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
       propertyPath: m_Name
       value: Save Slot Playfab (4)
@@ -4410,6 +4471,34 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1995501374}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnableCanvasPlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KC.TitleScreenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5850545231546029203, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
       propertyPath: m_Name
       value: Save Slot Playfab (1)
@@ -4545,6 +4634,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2529867712819821792, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 766165336}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1995501374}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadGameFromCharactersSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnableCanvasPlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KC.UI_Character_Save_Slot, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KC.TitleScreenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5850545231546029203, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
@@ -4828,6 +4961,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2529867712819821792, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 713624478}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1995501374}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadGameFromCharactersSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnableCanvasPlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KC.UI_Character_Save_Slot, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KC.TitleScreenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5850545231546029203, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
@@ -7637,6 +7814,50 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1946293600}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1995501374}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadGameFromCharactersSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnableCanvasPlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KC.UI_Character_Save_Slot, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KC.TitleScreenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5850545231546029203, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
       propertyPath: m_Name
       value: Save Slot Playfab (6)
@@ -10050,6 +10271,50 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1237118942}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1995501374}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadGameFromCharactersSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnableCanvasPlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KC.UI_Character_Save_Slot, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KC.TitleScreenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5850545231546029203, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
       propertyPath: m_Name
       value: Save Slot Playfab (9)
@@ -10539,6 +10804,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 735046262155995404, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 760597618447699402, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 760597618447699402, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 760597618447699402, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 760597618447699402, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 856211742567396413, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
@@ -11629,6 +11910,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 7214532573832968492, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7285095012360737543, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -11671,6 +11956,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7388216771467624722, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448552460738661301, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448552460738661301, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448552460738661301, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7463118902950840555, guid: 844c5e6bce6407847a0c2f199fd66990, type: 3}
@@ -12668,6 +12965,50 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1108656493}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1995501374}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadGameFromCharactersSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnableCanvasPlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KC.UI_Character_Save_Slot, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KC.TitleScreenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5850545231546029203, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
       propertyPath: m_Name
       value: Save Slot Playfab (2)
@@ -12860,6 +13201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleScreenMainMenu: {fileID: 648587914}
   titleScreenLoadMenu: {fileID: 510391787}
+  titleScreenCanvas: {fileID: 325283959}
   alertPopUpOk: {fileID: 2123293022}
   deleteCharacterSlotPopUp: {fileID: 1850834583}
   nameAlertErrorPopUp: {fileID: 1867559789}
@@ -13335,6 +13677,50 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1687286364}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1995501374}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadGameFromCharactersSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnableCanvasPlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KC.UI_Character_Save_Slot, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KC.TitleScreenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5850545231546029203, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
       propertyPath: m_Name
       value: Save Slot Playfab (8)
@@ -13606,6 +13992,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2529867712819821792, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1048623410}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1995501374}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadGameFromCharactersSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnableCanvasPlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KC.UI_Character_Save_Slot, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KC.TitleScreenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5850545231546029203, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
@@ -14290,6 +14720,34 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1995501374}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnableCanvasPlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: KC.TitleScreenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498862691929982246, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5850545231546029203, guid: 1d0474293553d7447a044b93ef8f95a6, type: 3}
       propertyPath: m_Name
       value: Save Slot Playfab (0)
@@ -14557,6 +15015,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a01d3b9bd78beb46bda3d6d9e5548f0, type: 3}
+--- !u!1001 &4067895291488030069
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7083278938470448883, guid: 161b58581c7f71846a0fed9c646b4451, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083278938470448883, guid: 161b58581c7f71846a0fed9c646b4451, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083278938470448883, guid: 161b58581c7f71846a0fed9c646b4451, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083278938470448883, guid: 161b58581c7f71846a0fed9c646b4451, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083278938470448883, guid: 161b58581c7f71846a0fed9c646b4451, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083278938470448883, guid: 161b58581c7f71846a0fed9c646b4451, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083278938470448883, guid: 161b58581c7f71846a0fed9c646b4451, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083278938470448883, guid: 161b58581c7f71846a0fed9c646b4451, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083278938470448883, guid: 161b58581c7f71846a0fed9c646b4451, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083278938470448883, guid: 161b58581c7f71846a0fed9c646b4451, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038850462080145265, guid: 161b58581c7f71846a0fed9c646b4451, type: 3}
+      propertyPath: m_Name
+      value: World Advice Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 161b58581c7f71846a0fed9c646b4451, type: 3}
 --- !u!1001 &4289736937598352075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15524,3 +16039,4 @@ SceneRoots:
   - {fileID: 5870408178393267790}
   - {fileID: 1758446390465473851}
   - {fileID: 8166798821018834860}
+  - {fileID: 4067895291488030069}

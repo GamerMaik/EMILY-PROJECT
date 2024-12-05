@@ -28,7 +28,6 @@ namespace KC
         public override void Interact(PlayerManager player)
         {
             base.Interact(player);
-            ActiveVFXAndSFXOpen();
             int randomValue = Random.Range(0, 100); // Generar un número aleatorio entre 0 y 99
             if (randomValue < questionChancePercentage)
             {
@@ -45,10 +44,12 @@ namespace KC
                 WorldLevelManager.instance.AddCountQuestionsAnswers(true);
                 CameraSlowMotionManager.instance.DeactivateSlowMotion();
                 CursorManager.instance.HideCursor();
+                ActiveVFXAndSFXOpen();
                 StartCoroutine(OpenChestAndDropItems());
             }
             else
             {
+                interactableCollider.enabled = true;
                 Debug.Log("Respuesta incorrecta, aplicando daño al personaje.");
                 WorldLevelManager.instance.AddCountQuestionsAnswers(false);
                 CursorManager.instance.HideCursor();
