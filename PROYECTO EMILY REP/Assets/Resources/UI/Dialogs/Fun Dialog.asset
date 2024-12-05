@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f03fdd0180b774b9dc769028364445, type: 3}
+  m_Name: Fun Dialog
+  m_EditorClassIdentifier: 
+  dialogTitle: Other Attemps
+  dialogLines:
+  - mmmm...
+  - "\xBFOtra vez ac\xE1?"
+  - "\xBFTe olvidaste algo? \xBFo que?"
+  - Es broma...
+  - ja ja ja ja (Risa finjida x2)
+  - "y\xE1 te la sabes..."
+  - Flojito y cooperando
+  - Digo digo...
+  - "V\xE1mos con todo."
+  dialogAudioClips:
+  - {fileID: 8300000, guid: 4c989fb5791f2bb4cb09ca1d7ef69b17, type: 3}
+  - {fileID: 8300000, guid: 027c30dba1e922d4d84f0e19f93adeff, type: 3}
+  - {fileID: 8300000, guid: 063dd590d0534ba4f8f96a28c420c4f5, type: 3}
+  - {fileID: 8300000, guid: 164a44edc268ca04a877c32f580f0ff0, type: 3}
+  - {fileID: 8300000, guid: 456fd0b8ae57e8d458d22d5a425f236b, type: 3}
+  - {fileID: 8300000, guid: a9219c9c217f47d43ab71fcf476580dd, type: 3}
+  - {fileID: 8300000, guid: f88e85642f1f5974fbb0c4617976abdb, type: 3}
+  - {fileID: 8300000, guid: 2b0180cad7fa260458f9330766941015, type: 3}
+  - {fileID: 8300000, guid: 4838021e575e2ae4981979520d8407fa, type: 3}

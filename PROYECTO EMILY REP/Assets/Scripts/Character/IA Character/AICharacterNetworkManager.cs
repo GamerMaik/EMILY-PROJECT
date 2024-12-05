@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 namespace KC
 {
@@ -24,6 +25,7 @@ namespace KC
             aiCharacter.aICharacterInventoryManager.DropItem();
             WorldLevelManager.instance.AddNumberOfDead();
             WorldLevelManager.instance.SubstractEnemiesInRoom();
+            WorldAIManager.instance.RemoveCharacterToSpawnedCharacterList(aiCharacter);
             StartCoroutine(ActivateSpawners());
         }
 

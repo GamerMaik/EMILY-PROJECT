@@ -1627,7 +1627,7 @@ MonoBehaviour:
   attack01DamageModifier: 1
   attack02DamageModifier: 2
   attack03DamageModifier: 1.5
-  questionChancePercentage: 5
+  questionChancePercentage: 10
   slowMotionChancePercentage: 20
 --- !u!114 &283346895470541391
 MonoBehaviour:
@@ -1662,7 +1662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c8fad76ae6b224fa26349ee125d3d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropItemChance: 30
+  dropItemChance: 5
   droppableItems:
   - {fileID: 11400000, guid: d8c707316c705e44983020b8c31584e7, type: 2}
   - {fileID: 11400000, guid: f93df752c5304df48a0ecfd7ee2cfbd0, type: 2}

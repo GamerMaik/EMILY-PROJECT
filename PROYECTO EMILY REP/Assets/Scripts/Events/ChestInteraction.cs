@@ -29,10 +29,16 @@ namespace KC
         {
             base.Interact(player);
             int randomValue = Random.Range(0, 100); // Generar un número aleatorio entre 0 y 99
-            if (randomValue < questionChancePercentage)
+
+            if (questionChancePercentage == 0)
+            {
+                StartCoroutine(OpenChestAndDropItems());
+            }
+            else if (randomValue < questionChancePercentage)
             {
                 ShowRandomQuestionsManager.instance.LoadRandomQuestion(OnAnswerReceived);
             }
+
             
         }
 
@@ -44,8 +50,8 @@ namespace KC
                 WorldLevelManager.instance.AddCountQuestionsAnswers(true);
                 CameraSlowMotionManager.instance.DeactivateSlowMotion();
                 CursorManager.instance.HideCursor();
-                ActiveVFXAndSFXOpen();
                 StartCoroutine(OpenChestAndDropItems());
+                ActiveVFXAndSFXOpen(); 
             }
             else
             {

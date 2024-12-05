@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using UnityEngine.AI;
+using UnityEngine.TextCore.Text;
 
 namespace KC
 {
@@ -57,7 +58,10 @@ namespace KC
                 spawnedInBosses.Add(bossCharacter);
             }
         }
-
+        public void RemoveCharacterToSpawnedCharacterList(AICharacterManager character)
+        {
+            spawnedInCharacters.Remove(character);
+        }
         public AIBossCharacterManager GetBossCharacterByID(int ID)
         {
             return spawnedInBosses.FirstOrDefault(boss => boss.bossID == ID);

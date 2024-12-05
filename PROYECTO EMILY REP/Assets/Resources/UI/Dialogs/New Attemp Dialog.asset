@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f03fdd0180b774b9dc769028364445, type: 3}
+  m_Name: New Attemp Dialog
+  m_EditorClassIdentifier: 
+  dialogTitle: New Attemp
+  dialogLines:
+  - Muy buenas Viajero...
+  - Dejame ayudarte
+  - toma las cosas del cofre
+  - "y equ\xEDpatelas"
+  - Derrota al jefe final para salir de la mazmorra
+  - "podr\xE1s llevarte las cosas que encuentres aqui"
+  - "pero cl\xE1ro..."
+  - "S\xF3lo si logras salir"
+  - jaja jaja (RISA FINJIDA)
+  - te desbloqueo las puertas
+  - y BUENA SUERTE...
+  dialogAudioClips:
+  - {fileID: 8300000, guid: 285dcef031d444648b3bb1768fdf8477, type: 3}
+  - {fileID: 8300000, guid: 117b95273e5e44b41bbc72dc83bb4713, type: 3}
+  - {fileID: 8300000, guid: aeca258a7c075a54fbfc256edba44baa, type: 3}
+  - {fileID: 8300000, guid: 2661d47dbd18dd04798ead97cebac5bb, type: 3}
+  - {fileID: 8300000, guid: 55b1e5739b7092246a921120b8e30f27, type: 3}
+  - {fileID: 8300000, guid: b162d12f48579c0488f75cf11f7efc27, type: 3}
+  - {fileID: 8300000, guid: ca78d825bf4f2404e84c1f597bd72d11, type: 3}
+  - {fileID: 8300000, guid: 947a0fc454fe2cc4bbc5f80e73587574, type: 3}
+  - {fileID: 8300000, guid: dd4574ebd4404a940b6048ee7bc3ddf3, type: 3}
+  - {fileID: 8300000, guid: 49186af970116134da152cfe1818ce6f, type: 3}
+  - {fileID: 8300000, guid: c4c9dac52546fce4a85ee6f05ce91e31, type: 3}
