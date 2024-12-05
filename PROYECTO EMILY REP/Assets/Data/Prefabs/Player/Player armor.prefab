@@ -56067,7 +56067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 705131192
+  GlobalObjectIdHash: 692331443
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -56392,8 +56392,7 @@ MonoBehaviour:
   bodyEquipmentItem: {fileID: 0}
   legEquipmentItem: {fileID: 0}
   handEquipmentItem: {fileID: 0}
-  itemsInventory:
-  - {fileID: 11400000, guid: ed5d37e6e3c6ec74c881ee8799892eb5, type: 2}
+  itemsInventory: []
 --- !u!114 &6251457930582299927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56515,6 +56514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ad73148ac51a3499af90bc8a25c921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   damageGrunts:
   - {fileID: 8300000, guid: 164c4cd428e81554a89f938451aae22f, type: 3}
   - {fileID: 8300000, guid: 5c25a8b6c2ef9624caf832fe0d756bbd, type: 3}
