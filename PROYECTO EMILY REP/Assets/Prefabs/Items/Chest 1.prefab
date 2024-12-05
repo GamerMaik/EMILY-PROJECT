@@ -106,8 +106,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.79458094, y: 0.43468216, z: 0.5865705}
-  m_Center: {x: 9.515149e-15, y: 0.1673923, z: 0.25949377}
+  m_Size: {x: 0.7197109, y: 0.32945257, z: 0.5396223}
+  m_Center: {x: 0.0000000011316027, y: 0.17115054, z: 0.25949377}
 --- !u!1 &3423620085501863859
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +172,6 @@ GameObject:
   - component: {fileID: 1363407321497200509}
   - component: {fileID: 8572468897531731612}
   - component: {fileID: 5876072324167581670}
-  - component: {fileID: 3352406151444417168}
   - component: {fileID: 3897139697995226819}
   - component: {fileID: 6057551714871940712}
   - component: {fileID: 2330437004679872724}
@@ -255,27 +254,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3352406151444417168
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6959616044894215604}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.85124326, y: 0.33838883, z: 0.57276917}
-  m_Center: {x: 0.00000002980233, y: 0.16919442, z: -0.006694542}
 --- !u!114 &3897139697995226819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,8 +266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1368392435
-  InScenePlacedSourceGlobalObjectIdHash: 0
+  GlobalObjectIdHash: 1471961957
+  InScenePlacedSourceGlobalObjectIdHash: 1368392435
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -321,8 +299,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ed5d37e6e3c6ec74c881ee8799892eb5, type: 2}
   chestLid: {fileID: 1938324307623557586}
   lidOpenDuration: 1.5
-  launchForce: 2
-  randomHorizontalForce: 4
+  launchForce: 5
+  randomHorizontalForce: 5
+  questionChancePercentage: 100
+  incorrectAnswerDamageEffect: {fileID: 11400000, guid: a815611d90d61064697b7992bd75ada3, type: 2}
 --- !u!54 &2330437004679872724
 Rigidbody:
   m_ObjectHideFlags: 0

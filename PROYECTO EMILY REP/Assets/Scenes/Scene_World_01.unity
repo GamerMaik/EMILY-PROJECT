@@ -51811,6 +51811,14 @@ PrefabInstance:
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 1368392435
       objectReference: {fileID: 0}
+    - target: {fileID: 6057551714871940712, guid: 34b12649ee4c3aa4080c171a130a4641, type: 3}
+      propertyPath: launchForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057551714871940712, guid: 34b12649ee4c3aa4080c171a130a4641, type: 3}
+      propertyPath: randomHorizontalForce
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6959616044894215604, guid: 34b12649ee4c3aa4080c171a130a4641, type: 3}
       propertyPath: m_Name
       value: Chest 1

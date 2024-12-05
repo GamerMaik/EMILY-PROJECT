@@ -20,13 +20,59 @@ namespace KC
         [SerializeField] float launchForce = 5f; // Fuerza del lanzamiento hacia arriba
         [SerializeField] float randomHorizontalForce = 2f; // Fuerza horizontal aleatoria
 
+        [Header("Question Configuration")]
+        [Range(0, 100)]
+        [SerializeField] private int questionChancePercentage = 20;
+        [SerializeField] private TakeDamageQuestionIncorrectEffect incorrectAnswerDamageEffect;
+
         public override void Interact(PlayerManager player)
         {
             base.Interact(player);
             ActiveVFXAndSFXOpen();
-            StartCoroutine(OpenChestAndDropItems());
+            int randomValue = Random.Range(0, 100); // Generar un número aleatorio entre 0 y 99
+            if (randomValue < questionChancePercentage)
+            {
+                ShowRandomQuestionsManager.instance.LoadRandomQuestion(OnAnswerReceived);
+            }
+            
         }
 
+        private void OnAnswerReceived(bool isCorrect)
+        {
+            if (isCorrect)
+            {
+                Debug.Log("Respuesta correcta");
+                WorldLevelManager.instance.AddCountQuestionsAnswers(true);
+                CameraSlowMotionManager.instance.DeactivateSlowMotion();
+                CursorManager.instance.HideCursor();
+                StartCoroutine(OpenChestAndDropItems());
+            }
+            else
+            {
+                Debug.Log("Respuesta incorrecta, aplicando daño al personaje.");
+                WorldLevelManager.instance.AddCountQuestionsAnswers(false);
+                CursorManager.instance.HideCursor();
+                CameraSlowMotionManager.instance.DeactivateSlowMotion();
+                ApplyDamageToPlayer();
+            }
+        }
+
+        private void ApplyDamageToPlayer()
+        {
+            PlayerManager player = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerManager>();
+            if (player != null && incorrectAnswerDamageEffect != null)
+            {
+                // Configurar el daño si es necesario
+                incorrectAnswerDamageEffect.healthDamage = 50; // Puedes ajustar el daño dinámicamente
+
+                // Procesar el efecto en el jugador
+                player.characterEffectsManager.ProccessInstantEffect(incorrectAnswerDamageEffect);
+                player.characterEffectsManager.PlayBloodSplatterVFX(player.transform.position);
+                AudioClip physicalDamageSFX = WorldSoundFXManager.instance.ChooseRandomSFXFromArray(WorldSoundFXManager.instance.physicalDamageSFX);
+                player.characterSoundFXManager.PlaySoundFX(physicalDamageSFX);
+                player.characterSoundFXManager.PlayDamageGrunt();
+            }
+        }
         public void ActiveVFXAndSFXOpen()
         {
             openVFX.SetActive(true);
@@ -34,42 +80,35 @@ namespace KC
 
         public void DropItemChest()
         {
-            if (droppableItems == null || droppableItems.Length == 0)
+            int itemsToDrop = 2; // Cantidad de ítems a dropear
+            for (int i = 0; i < itemsToDrop; i++)
             {
-                Debug.LogWarning("No hay ítems en la lista de dropeo.");
-                return;
+                Item generatedItem = droppableItems[Random.Range(0, droppableItems.Length)];
+
+                if (generatedItem == null)
+                    continue;
+
+                GameObject itemPickUpInteractableGameObject = Instantiate(WorldItemDatabase.Instance.pickUpItemsPrefab);
+                PickUpItemInteractable pickUpItemInteractable = itemPickUpInteractableGameObject.GetComponent<PickUpItemInteractable>();
+                itemPickUpInteractableGameObject.GetComponent<NetworkObject>().Spawn();
+                pickUpItemInteractable.itemID.Value = generatedItem.itemID;
+
+                Rigidbody rb = itemPickUpInteractableGameObject.AddComponent<Rigidbody>();
+                rb.useGravity = true;
+                rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+
+                SphereCollider sphereCollider = itemPickUpInteractableGameObject.AddComponent<SphereCollider>();
+                sphereCollider.radius = 0.1f; // Ajustar el tamaño según sea necesario
+                sphereCollider.isTrigger = false;
+
+                // Ajustar fuerza de lanzamiento con dirección lateral
+                Vector3 launchDirection = Vector3.up * launchForce +
+                                           transform.right * Random.Range(-randomHorizontalForce, randomHorizontalForce);
+                rb.AddForce(launchDirection, ForceMode.Impulse);
+
+                // Posicionar el ítem en el mismo lugar que el cofre
+                itemPickUpInteractableGameObject.transform.position = transform.position;
             }
-
-            Item generatedItem = droppableItems[Random.Range(0, droppableItems.Length)];
-
-            if (generatedItem == null)
-                return;
-
-            GameObject itemPickUpInteractableGameObject = Instantiate(WorldItemDatabase.Instance.pickUpItemsPrefab);
-            PickUpItemInteractable pickUpItemInteractable = itemPickUpInteractableGameObject.GetComponent<PickUpItemInteractable>();
-
-            // Asigna el ID del ítem y la posición de spawn
-            pickUpItemInteractable.itemID.Value = generatedItem.itemID;
-            itemPickUpInteractableGameObject.transform.position = transform.position;
-
-            // Añadir Rigidbody y configurar colisiones
-            Rigidbody rb = itemPickUpInteractableGameObject.AddComponent<Rigidbody>();
-            rb.useGravity = true;
-            rb.mass = 0.5f;
-            rb.collisionDetectionMode = CollisionDetectionMode.Continuous; // Mejorar detección de colisiones
-
-            SphereCollider sphereCollider = itemPickUpInteractableGameObject.AddComponent<SphereCollider>();
-            sphereCollider.radius = 0.3f; // Ajustar el tamaño según sea necesario
-            sphereCollider.isTrigger = false; // Asegurarnos de que sea un Collider sólido
-            
-
-            // Fuerza de lanzamiento
-            Vector3 launchDirection = Vector3.up * launchForce +
-                                       Vector3.right * Random.Range(-randomHorizontalForce, randomHorizontalForce);
-            rb.AddForce(launchDirection, ForceMode.Impulse);
-
-            // Spawnear el objeto en la red
-            itemPickUpInteractableGameObject.GetComponent<NetworkObject>().Spawn();
         }
 
         public IEnumerator StartItemDropTime()
